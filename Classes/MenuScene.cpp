@@ -9,7 +9,7 @@
 #include "ExitLayer.h"
 #include "LoginLayer.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#include "MyPurchaseIOS.h"
+//#include "MyPurchaseIOS.h"
 #endif
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -327,11 +327,7 @@ void Menu::SwitchSound( CCObject* sender ){
 void Menu::explodeFire( CCPoint position ){
 	CCParticleExplosion *pEmitter = CCParticleExplosion::create();
 	//CCParticleSnow *pEmitter = CCParticleSnow::create();
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    pEmitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("fire.png") );
-#else
     pEmitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("particle/fire.png") );
-#endif
 	
 	pEmitter->setAutoRemoveOnFinish(true);
 

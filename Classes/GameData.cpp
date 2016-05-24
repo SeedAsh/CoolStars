@@ -3,7 +3,7 @@
 #define ARR_SIZE(arr) (sizeof(arr)/sizeof(arr[0]))
 #define RETURN_ARR_ELEMENT(arr, i) do {if (i < arr##Count) return &arr[i]; return NULL;} while (0);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#define DATA_FILE(n) "data_"#n".json"
+#define DATA_FILE(n) "data/data_"#n".json"
 #else
 #define DATA_FILE(n) "data/data_"#n".json"
 #endif

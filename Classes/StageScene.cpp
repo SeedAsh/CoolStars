@@ -304,20 +304,20 @@ void StageScene::refreshStar(){
 				{
 				case DIC_UP:
 					spos = ccp(tpos.x, tpos.y - STAR_SIZE * 2);
-					actionTime = abs(spos.y - tpos.y);
+					actionTime = fabs(spos.y - tpos.y);
 					break;
 				case DIC_DOWN:
 					spos = ccp(tpos.x, tpos.y + STAR_SIZE * 2);
-					actionTime = abs(spos.y - tpos.y);
+					actionTime = fabs(spos.y - tpos.y);
 					break;
 				case DIC_LEFT:
 					spos = ccp(tpos.x + STAR_SIZE * 2, tpos.y);
-					actionTime = abs(spos.x - tpos.x);
+					actionTime = fabs(spos.x - tpos.x);
 					speed = m_obOriginPoint.y / 1.0f;
 					break;
 				case DIC_RIGHT:
 					spos = ccp(tpos.x - STAR_SIZE * 2, tpos.y);
-					actionTime = abs(spos.x - tpos.x);
+					actionTime = fabs(spos.x - tpos.x);
 					speed = m_obOriginPoint.y / 1.0f;
 					break;
 				}
