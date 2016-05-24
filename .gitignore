@@ -1,9 +1,9 @@
 #Resources
 proj.android
 proj.blackberry
-proj.ios
+#proj.ios
 proj.linux
-#proj.mac
+proj.mac
 proj.marmalade
 proj.tizen
 proj.win32
