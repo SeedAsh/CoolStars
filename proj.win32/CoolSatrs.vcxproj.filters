@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shop">
+      <UniqueIdentifier>{f2b8ae14-fbc0-4fd4-a3c5-fea68f3e9c3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{9178bfb2-84f6-4fe8-b143-698d73f69de0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameUi">
+      <UniqueIdentifier>{7b8e9456-b054-44d5-994e-4fc03674f7ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameModel">
+      <UniqueIdentifier>{75e98067-82e3-40b2-9570-f9e1cac82477}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCUserDefaultEx.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ShopLayer.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StarUtil.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\VisibleRect.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sqlite3.c">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MyPurchase.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ExitLayer.cpp">
+      <Filter>GameUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelpLayer.cpp">
+      <Filter>GameUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoginLayer.cpp">
+      <Filter>GameUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MenuScene.cpp">
+      <Filter>GameUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PanelLayer.cpp">
+      <Filter>GameUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PauseLayer.cpp">
+      <Filter>GameUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SoundMgr.cpp">
+      <Filter>GameModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StageScene.cpp">
+      <Filter>GameUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\QuickBuyScene.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DataManager.cpp">
+      <Filter>GameModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameData.cpp">
+      <Filter>GameModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UserInfo.cpp">
+      <Filter>GameModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ConfirmLayer.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppMacros.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCUserDefaultEx.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ConfData.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShopLayer.h">
+      <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StarUtil.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\VisibleRect.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite3.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MyPurchase.h">
+      <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ExitLayer.h">
+      <Filter>GameUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelpLayer.h">
+      <Filter>GameUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoginLayer.h">
+      <Filter>GameUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuScene.h">
+      <Filter>GameUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PanelLayer.h">
+      <Filter>GameUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PauseLayer.h">
+      <Filter>GameUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SoundMgr.h">
+      <Filter>GameModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageScene.h">
+      <Filter>GameUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuickBuyScene.h">
+      <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DataManager.h">
+      <Filter>GameModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameData.h">
+      <Filter>GameModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UserInfo.h">
+      <Filter>GameModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ConfirmLayer.h">
+      <Filter>Shop</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
