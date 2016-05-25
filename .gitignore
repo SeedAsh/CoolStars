@@ -13,3 +13,4 @@ proj.win32/*
 proj.winrt
 proj.wp8-xaml
 proj.wp8
+.DS_Store

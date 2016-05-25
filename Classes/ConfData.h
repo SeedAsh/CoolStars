@@ -6,11 +6,7 @@ USING_NS_CC;
 USING_NS_CC_EXT;  
 using namespace rapidjson;
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
-#define XML_DATA "strings.xml"
-#else
 #define XML_DATA "data/strings.xml"
-#endif
 
 #define BALL_QUEUE_SIZE 10
 

@@ -37,20 +37,7 @@ USING_NS_CC_EXT;
 
 #define REMAIN_CONTINUE_TIME 10
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-static const char s_fire[] = "fire.png";
-#else
 static const char s_fire[] = "particle/fire.png";
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-static const string s_stars[] = {
-    "starp1.png",
-    "starp2.png",
-    "starp3.png",
-    "starp4.png",
-    "starp5.png"
-};
-#else
 static const string s_stars[] = {
     "particle/starp1.png",
     "particle/starp2.png",
@@ -58,7 +45,6 @@ static const string s_stars[] = {
     "particle/starp4.png",
     "particle/starp5.png"
 };
-#endif
 class StageScene :
     public CCLayer
 {
