@@ -1,7 +1,4 @@
-#Resources
-proj.android
 proj.blackberry
-#proj.ios
 proj.linux
 proj.mac
 proj.marmalade
@@ -13,4 +10,10 @@ proj.win32/*
 proj.winrt
 proj.wp8-xaml
 proj.wp8
+/proj.android/.settings
+/proj.android/assets
+/proj.android/bin
+/proj.android/gen
+/proj.android/obj
+/proj.android/libs/armeabi
 .DS_Store
