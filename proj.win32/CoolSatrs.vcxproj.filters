@@ -13,11 +13,20 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{9178bfb2-84f6-4fe8-b143-698d73f69de0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameUi">
-      <UniqueIdentifier>{7b8e9456-b054-44d5-994e-4fc03674f7ec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameModel">
       <UniqueIdentifier>{75e98067-82e3-40b2-9570-f9e1cac82477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainMenu">
+      <UniqueIdentifier>{62cc3003-b2f0-43b7-a04c-dea89143ea89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStage">
+      <UniqueIdentifier>{7b8e9456-b054-44d5-994e-4fc03674f7ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStage\StageModel">
+      <UniqueIdentifier>{1f7d331a-7c86-481e-b94d-4600f195d77a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStage\StageUi">
+      <UniqueIdentifier>{95b1fa82-2a6c-49fa-8096-93390779d637}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,29 +54,8 @@
     <ClCompile Include="..\Classes\MyPurchase.cpp">
       <Filter>Shop</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ExitLayer.cpp">
-      <Filter>GameUi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelpLayer.cpp">
-      <Filter>GameUi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\LoginLayer.cpp">
-      <Filter>GameUi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\MenuScene.cpp">
-      <Filter>GameUi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PanelLayer.cpp">
-      <Filter>GameUi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PauseLayer.cpp">
-      <Filter>GameUi</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\SoundMgr.cpp">
       <Filter>GameModel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\StageScene.cpp">
-      <Filter>GameUi</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\QuickBuyScene.cpp">
       <Filter>Shop</Filter>
@@ -83,6 +71,42 @@
     </ClCompile>
     <ClCompile Include="..\Classes\ConfirmLayer.cpp">
       <Filter>Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MenuScene.cpp">
+      <Filter>MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PauseLayer.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StageScene.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ExitLayer.cpp">
+      <Filter>MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelpLayer.cpp">
+      <Filter>MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoginLayer.cpp">
+      <Filter>MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StageUiLayer.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StarsLayer.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StarNode.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StarsMoveController.cpp">
+      <Filter>GameStage\StageModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StageModel.cpp">
+      <Filter>GameStage\StageModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StagePanelState.cpp">
+      <Filter>GameStage\StageUi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,29 +140,8 @@
     <ClInclude Include="..\Classes\MyPurchase.h">
       <Filter>Shop</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ExitLayer.h">
-      <Filter>GameUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelpLayer.h">
-      <Filter>GameUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoginLayer.h">
-      <Filter>GameUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MenuScene.h">
-      <Filter>GameUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PanelLayer.h">
-      <Filter>GameUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PauseLayer.h">
-      <Filter>GameUi</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\SoundMgr.h">
       <Filter>GameModel</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\StageScene.h">
-      <Filter>GameUi</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\QuickBuyScene.h">
       <Filter>Shop</Filter>
@@ -154,6 +157,45 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ConfirmLayer.h">
       <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuScene.h">
+      <Filter>MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PauseLayer.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageScene.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ExitLayer.h">
+      <Filter>MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelpLayer.h">
+      <Filter>MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoginLayer.h">
+      <Filter>MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageUiLayer.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StarsLayer.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StarNode.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StarsMoveController.h">
+      <Filter>GameStage\StageModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageModel.h">
+      <Filter>GameStage\StageModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PanelMacros.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StagePanelState.h">
+      <Filter>GameStage\StageUi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

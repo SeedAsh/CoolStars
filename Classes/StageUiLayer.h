@@ -1,5 +1,5 @@
-#ifndef __PANELLLAYER_H__
-#define __PANELLLAYER_H__
+#ifndef __STAGEUILAYER_H___
+#define __STAGEUILAYER_H___ 
 
 #define FADE_COUNT1 4
 #define FADE_COUNT2 6
@@ -41,15 +41,15 @@ typedef struct {
     SEL_CallFuncI pCallback;
 } OnClickListener;
 
-class StageUiPanel :
+class StageUiLayer :
     public CCLayer
 {
 public:
-    StageUiPanel(void);
-    ~StageUiPanel(void);
+    StageUiLayer(void);
+    ~StageUiLayer(void);
 
     /** create one layer */
-    static StageUiPanel *create();
+    static StageUiLayer *create();
 
     virtual bool init();
 

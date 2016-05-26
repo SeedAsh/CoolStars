@@ -8,6 +8,10 @@
 #include "MyPurchase.h"
 #include "ExitLayer.h"
 #include "LoginLayer.h"
+#include "PanelMacros.h"
+#include "QuickBuyScene.h"
+#include "StageUiLayer.h"
+#include "..\CoolSatrs\Classes\StarUtil.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 //#include "MyPurchaseIOS.h"
 #endif
@@ -25,7 +29,7 @@ enum {
 
 #define MENU_ITEM_HEIGHT 70
 
-bool Menu::init()  
+bool MenuScene::init()  
 {  
 	//////////////////////////////  
 	// 1. super init first  
@@ -57,12 +61,12 @@ bool Menu::init()
 	CCSprite* soundSp = CCSprite::create("menu_sound_on.png");
 	CCSprite* sound2Sp = CCSprite::create("menu_sound_off.png");
 
-	CCMenuItemSprite* menuItemHelp = CreateMenuItemSprite("menu_help.png", menu_selector(Menu::helpClicked));
+	CCMenuItemSprite* menuItemHelp = CreateMenuItemSprite("menu_help.png", menu_selector(MenuScene::helpClicked));
 	menuItemHelp->setPosition(VisibleRect::center());
 	CCSize size = menuItemHelp->getContentSize();
 	menuItemHelp->setPosition(ccp(VisibleRect::left().x + size.width,VisibleRect::bottom().y + size.height));
 
-	CCMenuItemToggle* menuItempSound = CCMenuItemToggle::createWithTarget(this, menu_selector(Menu::SwitchSound)
+	CCMenuItemToggle* menuItempSound = CCMenuItemToggle::createWithTarget(this, menu_selector(MenuScene::SwitchSound)
 		,CCMenuItemSprite::create(soundSp, soundSp)
 		,CCMenuItemSprite::create(sound2Sp, sound2Sp),NULL);
 	menuItempSound->setSelectedIndex(SoundMgr::isMute() ? 1 : 0);	
@@ -70,7 +74,7 @@ bool Menu::init()
 		menuItemHelp->getPositionY() + menuItemHelp->getContentSize().height / 2 + menuItempSound->getContentSize().height / 2 + 5));
 
 
-	CCMenuItemSprite* menuItem1 = CreateMenuItemSprite("menu_start.png", menu_selector(Menu::NewGame));
+	CCMenuItemSprite* menuItem1 = CreateMenuItemSprite("menu_start.png", menu_selector(MenuScene::NewGame));
 #if (PAY_PLUGIN_TYPE_JIDI == 1)
 	menuItem1->setPosition(VisibleRect::center() + ccp(0, menuItem1->getContentSize().height));
 #else
@@ -84,7 +88,7 @@ bool Menu::init()
 	light3Pos = ccp(origin.x+visibleSize.width/2+menuItem1->getContentSize().width/2-10, 
 		VisibleRect::top().y - 30);
 
-	CCMenuItemSprite* menuItem2 = CreateMenuItemSprite("menu_continue.png", menu_selector(Menu::ResumeGame));
+	CCMenuItemSprite* menuItem2 = CreateMenuItemSprite("menu_continue.png", menu_selector(MenuScene::ResumeGame));
 	float y = menuItem1->getPositionY() - MENU_ITEM_HEIGHT;
 	menuItem2->setPosition(ccp(origin.x + visibleSize.width / 2, y));
 
@@ -97,7 +101,7 @@ bool Menu::init()
 	newSp1->setPosition(newSp->getPosition());
 	sSelItem->setScale(MENU_ITEM_SEL_SCALE);
 	sSelItem->addChild(newSp1);
-	CCMenuItemSprite* menuItem3 = CCMenuItemSprite::create(sItem, sSelItem, this, menu_selector(Menu::shopClicked));
+	CCMenuItemSprite* menuItem3 = CCMenuItemSprite::create(sItem, sSelItem, this, menu_selector(MenuScene::shopClicked));
 	sSelItem->setAnchorPoint(MENU_ITEM_SEL_ANCHOR);
 	y = menuItem2->getPositionY() - MENU_ITEM_HEIGHT;
 	menuItem3->setPosition(ccp(origin.x + visibleSize.width / 2, y));
@@ -112,7 +116,7 @@ bool Menu::init()
 	this->addChild(pMenu,Z_ORDER_PANEL,TAG_MENU);
 
 #if (PAY_PLUGIN_TYPE_JIDI == 1)
-	CCMenuItemSprite* menuItem4 = CreateMenuItemSprite("menu_moregame.png", menu_selector(Menu::moreGame));
+	CCMenuItemSprite* menuItem4 = CreateMenuItemSprite("menu_moregame.png", menu_selector(MenuScene::moreGame));
 	y = menuItem3->getPositionY() - MENU_ITEM_HEIGHT;
 	menuItem4->setPosition(ccp(origin.x + visibleSize.width / 2, y));
 	pMenu->addChild(menuItem4);
@@ -121,7 +125,7 @@ bool Menu::init()
 	
 	if (UserInfo::getFishLiBao()){
 		CCSprite* fishItem = CCSprite::create("fish_icon.png");
-		m_pMenuFishItem = CCMenuItemSprite::create(fishItem, fishItem, this, menu_selector(Menu::showOrHideLiBao));
+		m_pMenuFishItem = CCMenuItemSprite::create(fishItem, fishItem, this, menu_selector(MenuScene::showOrHideLiBao));
 		m_pMenuFishItem->setPosition(ccp(VisibleRect::right().x - m_pMenuFishItem->getContentSize().width / 2 - 20,
 			VisibleRect::center().y + m_pMenuFishItem->getContentSize().height * 2));
 		m_pMenuFishItem->runAction(CCRepeatForever::create(
@@ -139,7 +143,7 @@ bool Menu::init()
 	//礼包
 	/*
 	CCSprite* fishItem = CCSprite::create("fish_icon.png");
-	CCMenuItemSprite* pDalibaoItem = CCMenuItemSprite::create(fishItem, fishItem, this, menu_selector(Menu::showDaLiBao));
+	CCMenuItemSprite* pDalibaoItem = CCMenuItemSprite::create(fishItem, fishItem, this, menu_selector(MenuScene::showDaLiBao));
 	pDalibaoItem->setPosition(ccp(VisibleRect::right().x - pDalibaoItem->getContentSize().width / 2 - 20,
 		VisibleRect::center().y + pDalibaoItem->getContentSize().height * 2));
 	pDalibaoItem->runAction(CCRepeatForever::create(
@@ -170,7 +174,7 @@ bool Menu::init()
 	return true;  
 }  
 
-void Menu::onEnter()
+void MenuScene::onEnter()
 {
 	CCLayer::onEnter();
 
@@ -185,13 +189,13 @@ void Menu::onEnter()
 	runMenuAction(MENU_COUNT-1);
 }
 
-void Menu::moreGame(CCObject* sender){
+void MenuScene::moreGame(CCObject* sender){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && PAY_PLUGIN_TYPE_JIDI == 1)
 	MyPurchase::sharedPurchase()->moreGame();
 #endif
 }
 
-void Menu::onExit(){
+void MenuScene::onExit(){
 	CCLayer::onExit();
 	unscheduleAllSelectors();
 	removeAllChildByTag(TAG_LIGHT);
@@ -199,7 +203,7 @@ void Menu::onExit(){
 	removeAllChildByTag(TAG_FIRE);
 }
 
-cocos2d::CCMenuItemSprite* Menu::CreateMenuItemSprite( const char* frameName, SEL_MenuHandler selector ){
+cocos2d::CCMenuItemSprite* MenuScene::CreateMenuItemSprite( const char* frameName, SEL_MenuHandler selector ){
 	CCSprite* sItem = CCSprite::create(frameName);
 	CCSprite* sSelItem = CCSprite::create(frameName);
 	sSelItem->setScale(MENU_ITEM_SEL_SCALE);
@@ -209,12 +213,12 @@ cocos2d::CCMenuItemSprite* Menu::CreateMenuItemSprite( const char* frameName, SE
 }
 
 
-CCScene* Menu::scene(){
+CCScene* MenuScene::scene(){
 	// 'scene' is an autorelease object
 	CCScene *scene = CCScene::create();
 
 	// 'layer' is an autorelease object
-	Menu *layer = Menu::create();
+	MenuScene *layer = MenuScene::create();
 
 	// add layer as a child to scene
 	scene->addChild(layer);
@@ -223,7 +227,7 @@ CCScene* Menu::scene(){
 	return scene;
 }
 
-void Menu::NewGame( CCObject* sender ){
+void MenuScene::NewGame( CCObject* sender ){
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
@@ -231,17 +235,17 @@ void Menu::NewGame( CCObject* sender ){
     CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));
 }
 
-void Menu::ResumeGame( CCObject* sender ){
+void MenuScene::ResumeGame( CCObject* sender ){
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
     if (StarUtil::hasSavedState()){
-        CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene(true)));
+        CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));
     }
 }
 
-void Menu::shopClicked( CCObject* sender ){
+void MenuScene::shopClicked( CCObject* sender ){
 	if(getChildByTag(TAG_SHOP) != NULL || getChildByTag(TAG_HELP) != NULL){
 		return;
 	}
@@ -254,7 +258,7 @@ void Menu::shopClicked( CCObject* sender ){
 	UserInfo::s_nCurrentLevel = 0;
 }
 
-void Menu::helpClicked( CCObject* sender ){
+void MenuScene::helpClicked( CCObject* sender ){
 	if(getChildByTag(TAG_SHOP) != NULL || getChildByTag(TAG_HELP) != NULL){
 		return;
 	}
@@ -266,7 +270,7 @@ void Menu::helpClicked( CCObject* sender ){
 	addChild(pHelp, Z_ORDER_SHOP, TAG_HELP);
 }
 
-void Menu::EndGame( CCObject* sender )
+void MenuScene::EndGame( CCObject* sender )
 {	
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && PAY_PLUGIN_TYPE_JIDI == 1)
 	if (MyPurchase::sharedPurchase()->exitGame()){
@@ -281,7 +285,7 @@ void Menu::EndGame( CCObject* sender )
 #endif
 }
 
-void Menu::keyBackClicked(){
+void MenuScene::keyBackClicked(){
 	if (getChildByTag(TAG_DALIBAO) != NULL || getChildByTag(TAG_LOGIN) != NULL){
 
 		return;
@@ -313,18 +317,18 @@ void Menu::keyBackClicked(){
 }
 
 
-CCScene* Menu::getTansitionScene( CCScene* scene ){
+CCScene* MenuScene::getTansitionScene( CCScene* scene ){
 	return CCTransitionTurnOffTiles::create(0.5f, scene);
 }
 
 
-void Menu::SwitchSound( CCObject* sender ){
+void MenuScene::SwitchSound( CCObject* sender ){
 	int sel =  dynamic_cast<CCMenuItemToggle*>(sender)->getSelectedIndex();
 	SoundMgr::setMute(sel == 0 ? false : true);
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 }
 
-void Menu::explodeFire( CCPoint position ){
+void MenuScene::explodeFire( CCPoint position ){
 	CCParticleExplosion *pEmitter = CCParticleExplosion::create();
 	//CCParticleSnow *pEmitter = CCParticleSnow::create();
     pEmitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("particle/fire.png") );
@@ -351,7 +355,7 @@ void Menu::explodeFire( CCPoint position ){
 	SoundMgr::playFire(SoundMgr::FIRE_MAX);
 }
 
-void Menu::startFire()
+void MenuScene::startFire()
 {
 	srand(time(NULL));
 
@@ -359,7 +363,7 @@ void Menu::startFire()
 	fire(0);
 }
 
-void Menu::fire( float dt )
+void MenuScene::fire( float dt )
 {
 	//CCLog("fire db %f",dt);
 	float delay = 0.5f;
@@ -374,11 +378,11 @@ void Menu::fire( float dt )
 	if (fireTime != 0) {
 		explodeFire(getRandomPosForFire());
 	}
-	unschedule(schedule_selector(Menu::fire));
-	schedule(schedule_selector(Menu::fire), delay);
+	unschedule(schedule_selector(MenuScene::fire));
+	schedule(schedule_selector(MenuScene::fire), delay);
 }
 
-cocos2d::CCPoint Menu::getRandomPosForFire()
+cocos2d::CCPoint MenuScene::getRandomPosForFire()
 {
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();  
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();  
@@ -387,18 +391,18 @@ cocos2d::CCPoint Menu::getRandomPosForFire()
 	return ccp(x, y);
 }
 
-void Menu::runFadeInAction( CCNode* sprite )
+void MenuScene::runFadeInAction( CCNode* sprite )
 {
 	CCAction* showAction = CCFadeIn::create(2.0f);
 	//sprite->setOpacity(0);
 	sprite->runAction(showAction);
 }
 
-void Menu::nextMenu( CCNode* node, void* data ){
+void MenuScene::nextMenu( CCNode* node, void* data ){
 	runMenuAction((int)data);
 }
 
-void Menu::runMenuAction( int i ){
+void MenuScene::runMenuAction( int i ){
 	if (i < 0 || i >= MENU_COUNT) {
 		startFire();
 		for (int i = 0; i < FADE_COUNT; i++) {
@@ -425,7 +429,7 @@ void Menu::runMenuAction( int i ){
 	sprite->setVisible(true);
 	CCMoveTo* dropAction1 = CCMoveTo::create((origin.y+visibleSize.height-pos.y)/speed, ccp(pos.x, pos.y));
 	CCEaseElasticOut* dropAction = CCEaseElasticOut::create(dropAction1, 0.5f);
-	CCCallFuncND* nextMenuAction = CCCallFuncND::create(this, callfuncND_selector(Menu::nextMenu), (void*)i);
+	CCCallFuncND* nextMenuAction = CCCallFuncND::create(this, callfuncND_selector(MenuScene::nextMenu), (void*)i);
 	CCDelayTime *startDelay = CCDelayTime::create(0.5f);
 	if (i+1 == MENU_COUNT-1) {
 		sprite->runAction(CCSequence::create(startDelay, dropAction, NULL));
@@ -436,7 +440,7 @@ void Menu::runMenuAction( int i ){
 	}	
 }
 
-void Menu::removeAllChildByTag( int tag ){
+void MenuScene::removeAllChildByTag( int tag ){
 	CCNode* child = NULL;
 	while (child = getChildByTag(tag)) {
 		child->stopAllActions();
@@ -444,29 +448,29 @@ void Menu::removeAllChildByTag( int tag ){
 	}
 }
 
-void Menu::showDaLiBao(CCObject* sender){
+void MenuScene::showDaLiBao(CCObject* sender){
 	if (getChildByTag(TAG_DALIBAO) != NULL){
 		return;
 	}
 	QuickBuyLayer* pQuickBuyLayer = QuickBuyLayer::create();
 	addChild(pQuickBuyLayer,Z_ORDER_BUY,TAG_DALIBAO);
-	pQuickBuyLayer->setCallbackListener(this,callfuncN3I_selector(Menu::payLiBaoCallBack));
+	pQuickBuyLayer->setCallbackListener(this,callfuncN3I_selector(MenuScene::payLiBaoCallBack));
 }
 
-void Menu::showOrHideLiBao(CCObject* sender){
-	MyPurchase::sharedPurchase()->payForProducts(this,(MyPayProducts)PAY_TYPE_FISH_LIBAO,callfuncN3I_selector(Menu::payCallBack));
+void MenuScene::showOrHideLiBao(CCObject* sender){
+	MyPurchase::sharedPurchase()->payForProducts(this,(MyPayProducts)PAY_TYPE_FISH_LIBAO,callfuncN3I_selector(MenuScene::payCallBack));
 }
 
-void Menu::fishLiBaoClickedCallBack(CCObject* sender){
+void MenuScene::fishLiBaoClickedCallBack(CCObject* sender){
 	int tag = ((CCNode *)sender)->getTag();
 	if (tag == TAG_FISH_BUY){
-		MyPurchase::sharedPurchase()->payForProducts(this,(MyPayProducts)PAY_TYPE_FISH_LIBAO,callfuncN3I_selector(Menu::payCallBack));
+		MyPurchase::sharedPurchase()->payForProducts(this,(MyPayProducts)PAY_TYPE_FISH_LIBAO,callfuncN3I_selector(MenuScene::payCallBack));
 	}else{
 		showOrHideLiBao(NULL);
 	}	
 }
 
-void Menu::payLiBaoCallBack(CCNode* nouse, int payType, int payResult,int payTag){
+void MenuScene::payLiBaoCallBack(CCNode* nouse, int payType, int payResult,int payTag){
 	if (payTag == QUICK_MENU_CLOSE_TAG){
 		CCNode* liBao = getChildByTag(TAG_DALIBAO);
 		if (liBao != NULL){
@@ -483,7 +487,7 @@ void Menu::payLiBaoCallBack(CCNode* nouse, int payType, int payResult,int payTag
 	}
 }
 
-void Menu::payCallBack(CCNode* nouse, int payType, int payResult,int payIntNoUse){
+void MenuScene::payCallBack(CCNode* nouse, int payType, int payResult,int payIntNoUse){
 	if (payResult != PAY_RESULT_SUCCESS){
 		return;
 	}

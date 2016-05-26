@@ -1,4 +1,4 @@
-﻿#include "StageUiPanel.h"
+﻿#include "StageUiLayer.h"
 #include "VisibleRect.h"
 #include "UserInfo.h"
 #include "GameData.h"
@@ -12,7 +12,7 @@
 
 #define SELECTED_SKILL_OFFSET 20
 
-StageUiPanel::StageUiPanel(void)
+StageUiLayer::StageUiLayer(void)
     : m_pStageLabel(NULL),
       m_pTargetLabel(NULL),
       m_pScoreLabel(NULL),
@@ -34,7 +34,7 @@ StageUiPanel::StageUiPanel(void)
 }
 
 
-StageUiPanel::~StageUiPanel(void)
+StageUiLayer::~StageUiLayer(void)
 {
     CC_SAFE_RELEASE_NULL(m_pStageLabel);
     CC_SAFE_RELEASE_NULL(m_pTargetLabel);
@@ -47,8 +47,8 @@ StageUiPanel::~StageUiPanel(void)
     CC_SAFE_RELEASE_NULL(m_pSelectedSkill);
 }
 
-StageUiPanel * StageUiPanel::create(){
-    StageUiPanel *pRet = new StageUiPanel();
+StageUiLayer * StageUiLayer::create(){
+    StageUiLayer *pRet = new StageUiLayer();
     if (pRet && pRet->init()){
         pRet->autorelease();
         return pRet;
@@ -58,7 +58,7 @@ StageUiPanel * StageUiPanel::create(){
     }
 }
 
-bool StageUiPanel::init(){
+bool StageUiLayer::init(){
     if (!CCLayer::init()){
         return false;
     }
@@ -144,7 +144,7 @@ bool StageUiPanel::init(){
 	CCSprite *pBuyItemSelected = CCSprite::create("coin_add.png");
 	pBuyItemSelected->setScale(1.1f);
 	pBuyItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
-	CCMenuItem *pBuy = CCMenuItemSprite::create(pBuyItemNormal, pBuyItemSelected, this, menu_selector(StageUiPanel::menuCallback));
+	CCMenuItem *pBuy = CCMenuItemSprite::create(pBuyItemNormal, pBuyItemSelected, this, menu_selector(StageUiLayer::menuCallback));
 	pBuy->setPosition(ccp(currentCoinBg->getPositionX() + currentCoinBg->getContentSize().width / 2 - pBuy->getContentSize().width / 2,
 		currentCoinBg->getPositionY()));
 	pBuy->setTag(TAG_SHOP);
@@ -154,7 +154,7 @@ bool StageUiPanel::init(){
 
     CCSprite *pItemNormal = CCSprite::create("Item_pause.png");
     CCSprite *pItemSelected = CCSprite::create("Item_pause.png");
-    CCMenuItem *pPause = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiPanel::menuCallback));
+    CCMenuItem *pPause = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
     pItemSelected->setScale(1.1f);
     pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
     pPause->setTag(TAG_PAUSE_BUTTON);
@@ -178,7 +178,7 @@ bool StageUiPanel::init(){
 
     pItemNormal = CCSprite::create("Props_Bomb.png");
     pItemSelected = CCSprite::create("Props_Bomb.png");
-    CCMenuItemSprite* pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiPanel::menuCallback));
+    CCMenuItemSprite* pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
     pMagic->setTag(TAG_BOMB);
     pMagic->setPosition(ccp(leftX + 108, propsY));
     pMenu->addChild(pMagic);
@@ -190,7 +190,7 @@ bool StageUiPanel::init(){
     leftX = pMagic->getPositionX();
     pItemNormal = CCSprite::create("Props_Paint.png");
     pItemSelected = CCSprite::create("Props_Paint.png");
-    pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiPanel::menuCallback));
+    pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
     pItemSelected->setScale(1.2f);
     pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
     pMagic->setTag(TAG_PAINT);
@@ -211,7 +211,7 @@ bool StageUiPanel::init(){
     leftX = pMagic->getPositionX();
     pItemNormal = CCSprite::create("Props_Rainbow.png");
     pItemSelected = CCSprite::create("Props_Rainbow.png");
-    pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiPanel::menuCallback));
+    pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
     pItemSelected->setScale(1.2f);
     pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
     pMagic->setTag(TAG_RAINBOW);
@@ -241,57 +241,57 @@ bool StageUiPanel::init(){
     return true;
 }
 
-void StageUiPanel::ccTouchesBegan( CCSet *pTouches, CCEvent *pEvent ){
+void StageUiLayer::ccTouchesBegan( CCSet *pTouches, CCEvent *pEvent ){
 
 }
 
-void StageUiPanel::ccTouchesMoved( CCSet *pTouches, CCEvent *pEvent ){
+void StageUiLayer::ccTouchesMoved( CCSet *pTouches, CCEvent *pEvent ){
 
 }
 
-void StageUiPanel::ccTouchesEnded( CCSet *pTouches, CCEvent *pEvent ){
+void StageUiLayer::ccTouchesEnded( CCSet *pTouches, CCEvent *pEvent ){
 
 }
 
-void StageUiPanel::ccTouchesCancelled( CCSet *pTouches, CCEvent *pEvent ){
+void StageUiLayer::ccTouchesCancelled( CCSet *pTouches, CCEvent *pEvent ){
 
 }
 
-void StageUiPanel::setBestScore( int bestScore ){
+void StageUiLayer::setBestScore( int bestScore ){
 
 }
 
-void StageUiPanel::setStage( int stage ){
+void StageUiLayer::setStage( int stage ){
     char *label = new char[16];
     sprintf(label, "%d", stage);
     m_pStageLabel->setString(label);
     CC_SAFE_DELETE_ARRAY(label);
 }
 
-void StageUiPanel::setTarget( int target ){
+void StageUiLayer::setTarget( int target ){
     char *label = new char[16];
     sprintf(label, "%d", target);
     m_pTargetLabel->setString(label);
     CC_SAFE_DELETE_ARRAY(label);
 }
 
-void StageUiPanel::setStep(int step){
+void StageUiLayer::setStep(int step){
 	char *label = new char[16];
 	sprintf(label, "%d", step);
 	m_pStepLabel->setString(label);
 	CC_SAFE_DELETE_ARRAY(label);
 }
 
-void StageUiPanel::setScore( int score ){
+void StageUiLayer::setScore( int score ){
     m_nCurrentScore = score;
     char *label = new char[16];
     sprintf(label, "%d", score);
     m_pScoreLabel->setString(label);
-    unschedule(schedule_selector(StageUiPanel::updateScore));
+    unschedule(schedule_selector(StageUiLayer::updateScore));
     CC_SAFE_DELETE_ARRAY(label);
 }
 
-void StageUiPanel::setScore( int targetScore, float duration ){
+void StageUiLayer::setScore( int targetScore, float duration ){
     if (m_nCurrentScore < targetScore){
         int steps = targetScore - m_nCurrentScore;
         m_nTargetScore = targetScore;
@@ -303,12 +303,12 @@ void StageUiPanel::setScore( int targetScore, float duration ){
         m_nCurrentScore += m_nUpdateDelta;
         setScore(m_nCurrentScore);
         m_fUpdateInterval = duration / steps;
-        unschedule(schedule_selector(StageUiPanel::updateScore));
-        schedule(schedule_selector(StageUiPanel::updateScore), m_fUpdateInterval);
+        unschedule(schedule_selector(StageUiLayer::updateScore));
+        schedule(schedule_selector(StageUiLayer::updateScore), m_fUpdateInterval);
     }
 }
 
-void StageUiPanel::setScoreHint( const char* hint ){
+void StageUiLayer::setScoreHint( const char* hint ){
     m_pScoreHint->setString(hint);
     m_pScoreHint->runAction(CCSequence::create(
         CCScaleTo::create(0.06f, 1.3f, 1.3f),
@@ -318,7 +318,7 @@ void StageUiPanel::setScoreHint( const char* hint ){
         ));
 }
 
-void StageUiPanel::setCoins( int coins ){
+void StageUiLayer::setCoins( int coins ){
     char *label = new char[16];
     sprintf(label, "%d", coins);
     m_pCoins->setString(label);
@@ -326,19 +326,19 @@ void StageUiPanel::setCoins( int coins ){
 	m_nCurrentCoins = coins;
 }
 
-void StageUiPanel::setTargetCoins(int target,float delayTime){
+void StageUiLayer::setTargetCoins(int target,float delayTime){
 	m_nTargetCoins = target;
 	m_fUpdateCoinsAllTime = 0;
 	if (m_nTargetCoins == m_nCurrentCoins){
 		return;
 	}
 	m_nUpdateCoinsInterval = (UPDATE_COINS_TIME * 1.0f) / (target - m_nCurrentCoins);
-	unschedule(schedule_selector(StageUiPanel::updateCoins));
-	schedule(schedule_selector(StageUiPanel::updateCoins), delayTime + abs(m_nUpdateCoinsInterval));
+	unschedule(schedule_selector(StageUiLayer::updateCoins));
+	schedule(schedule_selector(StageUiLayer::updateCoins), delayTime + abs(m_nUpdateCoinsInterval));
 }
 
-void StageUiPanel::updateCoins(float dt){
-	 unschedule(schedule_selector(StageUiPanel::updateCoins));
+void StageUiLayer::updateCoins(float dt){
+	 unschedule(schedule_selector(StageUiLayer::updateCoins));
 	 m_fUpdateCoinsAllTime += dt;
 	 if (m_fUpdateCoinsAllTime > UPDATE_COINS_TIME){
 		 m_nCurrentCoins = m_nTargetCoins;
@@ -352,7 +352,7 @@ void StageUiPanel::updateCoins(float dt){
 				 m_nCurrentCoins = m_nTargetCoins;
 			 }
 			 setCoins(m_nCurrentCoins);
-			 schedule(schedule_selector(StageUiPanel::updateCoins), m_nUpdateCoinsInterval);
+			 schedule(schedule_selector(StageUiLayer::updateCoins), m_nUpdateCoinsInterval);
 		 }else{
 			 CCLOG("%f",m_fUpdateCoinsAllTime);
 		 }
@@ -363,14 +363,14 @@ void StageUiPanel::updateCoins(float dt){
 				 m_nCurrentCoins = m_nTargetCoins;
 			 }
 			 setCoins(m_nCurrentCoins);
-			 schedule(schedule_selector(StageUiPanel::updateCoins), abs(m_nUpdateCoinsInterval));
+			 schedule(schedule_selector(StageUiLayer::updateCoins), abs(m_nUpdateCoinsInterval));
 		 }else{
 			 CCLOG("%f",m_fUpdateCoinsAllTime);
 		 }
 	 }	 
 }
 
-void StageUiPanel::showCoinsAni(){
+void StageUiLayer::showCoinsAni(){
 	CCSprite* dia = CCSprite::create("diamond.png");
 	dia->setPosition(VisibleRect::center());
 	addChild(dia, 11);
@@ -380,24 +380,24 @@ void StageUiPanel::showCoinsAni(){
 	dia->runAction(CCSequence::create(
 		CCDelayTime::create(showTime),
 		CCSpawn::createWithTwoActions(CCMoveTo::create(moveTime, m_pCoins->getPosition()),CCScaleTo::create(moveTime,1.0f)),
-		CCCallFuncN::create(this, callfuncN_selector(StageUiPanel::removeChild)),
+		CCCallFuncN::create(this, callfuncN_selector(StageUiLayer::removeChild)),
 		NULL));
 	setTargetCoins(UserInfo::getCoins(),showTime + moveTime);
 }
 
-void StageUiPanel::updateScore(float dt){
+void StageUiLayer::updateScore(float dt){
     if (m_nCurrentScore < m_nTargetScore){
         m_nCurrentScore += m_nUpdateDelta;
         if (m_nCurrentScore > m_nTargetScore){
             m_nCurrentScore = m_nTargetScore;
         }
         setScore(m_nCurrentScore);
-        unschedule(schedule_selector(StageUiPanel::updateScore));
-        schedule(schedule_selector(StageUiPanel::updateScore), m_fUpdateInterval);
+        unschedule(schedule_selector(StageUiLayer::updateScore));
+        schedule(schedule_selector(StageUiLayer::updateScore), m_fUpdateInterval);
     }
 }
 
-void StageUiPanel::deliveryScore( const CCPoint &from, int totalScore, int count ){
+void StageUiLayer::deliveryScore( const CCPoint &from, int totalScore, int count ){
     int delay = 0;
     int delta = totalScore / count;
     char *label = new char[16];
@@ -412,13 +412,13 @@ void StageUiPanel::deliveryScore( const CCPoint &from, int totalScore, int count
         pScore->runAction(CCSequence::create(
             CCDelayTime::create(0.1 * delay),
             CCMoveTo::create(0.5f, to),
-            CCCallFuncN::create(this, callfuncN_selector(StageUiPanel::removeChild)),
+            CCCallFuncN::create(this, callfuncN_selector(StageUiLayer::removeChild)),
             NULL));
         delay++;
     }
 }
 
-void StageUiPanel::setStageClear( bool clear ){
+void StageUiLayer::setStageClear( bool clear ){
     if (clear){
         m_pStageClear->setScale(0.8f);
         m_pStageClear->setPosition(VisibleRect::center());
@@ -437,7 +437,7 @@ void StageUiPanel::setStageClear( bool clear ){
     }
 }
 
-void StageUiPanel::menuCallback( CCObject *pSender )
+void StageUiLayer::menuCallback( CCObject *pSender )
 {
     CCNode *pNode = dynamic_cast<CCNode *>(pSender);
 	
@@ -548,7 +548,7 @@ void StageUiPanel::menuCallback( CCObject *pSender )
     }
 }
 
-void StageUiPanel::toggleSkill( int tag )
+void StageUiLayer::toggleSkill( int tag )
 {
     CCSprite *pNewSkill = (CCSprite *) getChildByTag(TAG_MENU)->getChildByTag(tag);
 
@@ -570,7 +570,7 @@ void StageUiPanel::toggleSkill( int tag )
     }
 }
 
-void StageUiPanel::disableSkill()
+void StageUiLayer::disableSkill()
 {
     if (m_pSelectedSkill){
         int tag = m_pSelectedSkill->getTag();
@@ -593,7 +593,7 @@ void StageUiPanel::disableSkill()
     }
 }
 
-void StageUiPanel::invokeListener( CCNode *pSender ){
+void StageUiLayer::invokeListener( CCNode *pSender ){
     CCObject *pTarget = m_obOnClickListener.pTarget;
     SEL_CallFuncI pCallback = m_obOnClickListener.pCallback;
     if (pTarget && pCallback){
@@ -601,7 +601,7 @@ void StageUiPanel::invokeListener( CCNode *pSender ){
     }
 }
 
-void StageUiPanel::setTouchEnabled( bool value ){
+void StageUiLayer::setTouchEnabled( bool value ){
     CCLayer::setTouchEnabled(value);
 
     CCMenu *pMenu = (CCMenu *) getChildByTag(TAG_MENU);
@@ -610,7 +610,7 @@ void StageUiPanel::setTouchEnabled( bool value ){
     }
 }
 
-void StageUiPanel::updateProCountLabel(int proType){
+void StageUiLayer::updateProCountLabel(int proType){
 	if (proType == USERINFO_PRO_TYPE_REFLASH && m_pReflashLabel != NULL){
 		m_pReflashLabel->setString(CCString::createWithFormat("%d",UserInfo::getProCount(USERINFO_PRO_TYPE_REFLASH))->getCString());
 	}
