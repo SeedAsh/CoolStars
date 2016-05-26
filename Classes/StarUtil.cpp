@@ -53,6 +53,7 @@ void StarUtil::initScore(){
 
 void StarUtil::initStarEx()
 {
+	//star[n]保存的是一列列
 	StageInfo m_sCurrentStageInfo = DataManagerSelf->StagesVec.at((stage) % DataManagerSelf->StagesVec.size());
 	DataManagerSelf->LoadStageData((stage + 1) % DataManagerSelf->StagesVec.size());
 	int stageCount = DataManagerSelf->StageVec.size();

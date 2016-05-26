@@ -3,6 +3,7 @@
 #include "UserInfo.h"
 #include "GameData.h"
 #include "SoundMgr.h"
+#include "MenuScene.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -241,6 +242,11 @@ bool StageUiLayer::init(){
     return true;
 }
 
+void StageUiLayer::onQuitGame()
+{
+	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+}
+
 void StageUiLayer::ccTouchesBegan( CCSet *pTouches, CCEvent *pEvent ){
 
 }
@@ -439,6 +445,8 @@ void StageUiLayer::setStageClear( bool clear ){
 
 void StageUiLayer::menuCallback( CCObject *pSender )
 {
+	onQuitGame();
+	return;
     CCNode *pNode = dynamic_cast<CCNode *>(pSender);
 	
     if (pNode) {

@@ -61,6 +61,9 @@ public:
 
     virtual void setTouchEnabled(bool value);
 
+	void onQuitGame();
+
+
     void setBestScore(int bestScore);
     void setStage(int stage);
     void setTarget(int target);
