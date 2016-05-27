@@ -1,6 +1,7 @@
 #include "StarNode.h"
 #include "StarsLayer.h"
 #include "StarUtil.h"
+#include "StageModel.h"
 using namespace cocos2d;
 using namespace std;
 
@@ -62,9 +63,10 @@ void StarNode::onClick()
 
 }
 
-void StarNode::doMove(CCPoint targetPos)
+void StarNode::doMove()
 {
-
+	StarsLayer *layer = (StarsLayer *)getParent();
+	return layer->moveStar(this);
 }
 
 void StarNode::runExplosion(){
@@ -106,4 +108,7 @@ void StarNode::doExplodeAction()
 	{
 		neighbours[i]->doExplodeAction();
 	}
+	
+	StarsLayer *layer = (StarsLayer *)getParent();
+	layer->removeStar(this);
 }

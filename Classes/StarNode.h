@@ -4,9 +4,9 @@
 //Âß¼­Íø¸ñ£¬×óÏÂ½ÇÎª[0,0]
 struct LogicGrid
 {
-	int GridX;
-	int GridY;
-	LogicGrid(int x = 0, int y = 0) : GridX(x), GridY(y){}
+	int x;
+	int y;
+	LogicGrid(int x = 0, int y = 0) : x(x), y(y){}
 };
 
 class StarNode : public cocos2d::CCNode
@@ -24,12 +24,13 @@ public :
 	int getStarType(){ return m_starType; }
 	int sameType(int type){ return m_starType == type; }
 	LogicGrid getLogicGrid(){ return m_grid; }
+	void setLogicGrid(LogicGrid grid){ m_grid = grid; }
 	bool hasNeighbour();
-
+	
 	void onClick();
 	void runExplosion();
 	void doExplodeAction();
-	void doMove(cocos2d::CCPoint targetPos);
+	void doMove();
 
 protected:
 	int m_colorIndex;

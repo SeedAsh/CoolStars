@@ -22,9 +22,13 @@ public:
 	void starInitDone();
 	StarNode *getClickedStar(CCPoint pos);
 	std::vector<StarNode *>	getStarNeighbours(StarNode *star);
+	void moveStars();
+	void genNewStars();
+	void moveStar(StarNode *star);
 	virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
-
+	bool isGridEmpty(LogicGrid grid);
 	CCPoint getPosByGrid(LogicGrid grid);
+	void removeStar(StarNode *node);
 private:
 	StarUtil *m_pStarUtil;
 	std::vector<StarNode *> m_starsSprite;
