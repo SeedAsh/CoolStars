@@ -17,6 +17,7 @@ string g_starFrameNameArray[][2] = {
 	{ "stars/diamond.png", "stars/diamond.png" },
 	{ "stars/stone.png", "stars/stone.png" }
 };
+
 //Withered timbo
 string g_trapFrameNameArray[3] = {
 	"iceball.png"

@@ -99,14 +99,14 @@
     <ClCompile Include="..\Classes\StarNode.cpp">
       <Filter>GameStage\StageUi</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\StarsMoveController.cpp">
-      <Filter>GameStage\StageModel</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\StageModel.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\StagePanelState.cpp">
       <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StarsController.cpp">
+      <Filter>GameStage\StageModel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,9 +185,6 @@
     <ClInclude Include="..\Classes\StarNode.h">
       <Filter>GameStage\StageUi</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\StarsMoveController.h">
-      <Filter>GameStage\StageModel</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\StageModel.h">
       <Filter>GameStage\StageModel</Filter>
     </ClInclude>
@@ -196,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StagePanelState.h">
       <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StarsController.h">
+      <Filter>GameStage\StageModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

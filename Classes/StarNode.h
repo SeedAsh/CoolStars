@@ -1,22 +1,41 @@
 #ifndef __STARNODE_H__
 #define __STARNODE_H__
 #include "cocos2d.h"
+//Âß¼­Íø¸ñ£¬×óÏÂ½ÇÎª[0,0]
+struct LogicGrid
+{
+	int GridX;
+	int GridY;
+	LogicGrid(int x = 0, int y = 0) : GridX(x), GridY(y){}
+};
 
 class StarNode : public cocos2d::CCNode
 {
 public :
-	static StarNode *create();
+	static StarNode *create(int starType, LogicGrid grid);
 	virtual bool init();
 
+	StarNode(int starType, LogicGrid grid);
 	StarNode(){}
-	~StarNode(){}
+	~StarNode();
 	
-	CCNode *getNeighbours(){}
-	void onClick(){}
+	std::vector<StarNode *>getNeighbours();
+	
+	int getStarType(){ return m_starType; }
+	int sameType(int type){ return m_starType == type; }
+	LogicGrid getLogicGrid(){ return m_grid; }
+	bool hasNeighbour();
+
+	void onClick();
+	void runExplosion();
+	void doExplodeAction();
+	void doMove(cocos2d::CCPoint targetPos);
 
 protected:
-	int colorIndex;
-	
+	int m_colorIndex;
+	int m_starType;
+	LogicGrid m_grid;
+	bool m_isExploded;
 };
 
 
@@ -30,7 +49,6 @@ private:
 	ColorStar(){}
 	~ColorStar(){}
 };
-
 
 
 class StoneNode : public StarNode
