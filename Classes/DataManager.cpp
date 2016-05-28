@@ -224,7 +224,7 @@ void DataManager::updateAchieveData(int id, int count)
 		sprintf(str, "%d", id);
 		sqlite3_bind_text(statement, 2, str, -1, NULL);
 		if (sqlite3_step(statement) != SQLITE_DONE) {
-			CCLOG(false, "Upate Data failure.");
+			CCLOG("Upate Data failure.");
 		}
 	}
 	sqlite3_finalize(statement);
@@ -258,7 +258,7 @@ void DataManager::deleteAchieveData(int id)
 	if (sqlite3_prepare_v2(pDB, sqlstr.c_str(), -1, &statement, NULL) == SQLITE_OK) {
 		sqlite3_bind_text(statement, 1, str, -1, NULL);
 		if (sqlite3_step(statement) != SQLITE_DONE) {
-			CCLOG(false, "Upate Data failure.");
+			CCLOG( "Upate Data failure.");
 		}
 	}
 	sqlite3_finalize(statement);

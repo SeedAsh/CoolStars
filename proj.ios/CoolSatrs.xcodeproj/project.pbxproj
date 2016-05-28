@@ -142,7 +142,6 @@
 		1A1DCFFF1CF4728C00AF5E1D /* LoginLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DCFDF1CF4728C00AF5E1D /* LoginLayer.cpp */; };
 		1A1DD0001CF4728C00AF5E1D /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DCFE11CF4728C00AF5E1D /* MenuScene.cpp */; };
 		1A1DD0011CF4728C00AF5E1D /* MyPurchase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DCFE31CF4728C00AF5E1D /* MyPurchase.cpp */; };
-		1A1DD0021CF4728C00AF5E1D /* PanelLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DCFE51CF4728C00AF5E1D /* PanelLayer.cpp */; };
 		1A1DD0031CF4728C00AF5E1D /* PauseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DCFE71CF4728C00AF5E1D /* PauseLayer.cpp */; };
 		1A1DD0041CF4728C00AF5E1D /* QuickBuyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DCFE91CF4728C00AF5E1D /* QuickBuyScene.cpp */; };
 		1A1DD0051CF4728C00AF5E1D /* ShopLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DCFEB1CF4728C00AF5E1D /* ShopLayer.cpp */; };
@@ -214,6 +213,12 @@
 		1A1DD0931CF4840200AF5E1D /* Title_shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1DD05C1CF4840200AF5E1D /* Title_shop.png */; };
 		1A1DD0941CF4840200AF5E1D /* zengsong.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1DD05D1CF4840200AF5E1D /* zengsong.png */; };
 		1A27573F1697CF2B00504026 /* CCEditBoxImplAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A27573D1697CF2B00504026 /* CCEditBoxImplAndroid.cpp */; };
+		1A34F86E1CF91DCF00DE809C /* StageModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F8621CF91DCF00DE809C /* StageModel.cpp */; };
+		1A34F86F1CF91DCF00DE809C /* StagePanelState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F8641CF91DCF00DE809C /* StagePanelState.cpp */; };
+		1A34F8701CF91DCF00DE809C /* StageUiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F8661CF91DCF00DE809C /* StageUiLayer.cpp */; };
+		1A34F8711CF91DCF00DE809C /* StarNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F8681CF91DCF00DE809C /* StarNode.cpp */; };
+		1A34F8721CF91DCF00DE809C /* StarsController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F86A1CF91DCF00DE809C /* StarsController.cpp */; };
+		1A34F8731CF91DCF00DE809C /* StarsLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F86C1CF91DCF00DE809C /* StarsLayer.cpp */; };
 		1A8F3B6E175E05DA00049216 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F3B43175E05DA00049216 /* Animation.cpp */; };
 		1A8F3B6F175E05DA00049216 /* AnimationState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F3B45175E05DA00049216 /* AnimationState.cpp */; };
 		1A8F3B70175E05DA00049216 /* AnimationStateData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F3B47175E05DA00049216 /* AnimationStateData.cpp */; };
@@ -623,7 +628,6 @@
 		1A1DCFE21CF4728C00AF5E1D /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuScene.h; path = ../Classes/MenuScene.h; sourceTree = "<group>"; };
 		1A1DCFE31CF4728C00AF5E1D /* MyPurchase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyPurchase.cpp; path = ../Classes/MyPurchase.cpp; sourceTree = "<group>"; };
 		1A1DCFE41CF4728C00AF5E1D /* MyPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyPurchase.h; path = ../Classes/MyPurchase.h; sourceTree = "<group>"; };
-		1A1DCFE51CF4728C00AF5E1D /* PanelLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PanelLayer.cpp; path = ../Classes/PanelLayer.cpp; sourceTree = "<group>"; };
 		1A1DCFE61CF4728C00AF5E1D /* PanelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelLayer.h; path = ../Classes/PanelLayer.h; sourceTree = "<group>"; };
 		1A1DCFE71CF4728C00AF5E1D /* PauseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PauseLayer.cpp; path = ../Classes/PauseLayer.cpp; sourceTree = "<group>"; };
 		1A1DCFE81CF4728C00AF5E1D /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseLayer.h; path = ../Classes/PauseLayer.h; sourceTree = "<group>"; };
@@ -714,6 +718,19 @@
 		1A1DD05D1CF4840200AF5E1D /* zengsong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zengsong.png; sourceTree = "<group>"; };
 		1A27573D1697CF2B00504026 /* CCEditBoxImplAndroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCEditBoxImplAndroid.cpp; sourceTree = "<group>"; };
 		1A27573E1697CF2B00504026 /* CCEditBoxImplAndroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCEditBoxImplAndroid.h; sourceTree = "<group>"; };
+		1A34F8611CF91DCF00DE809C /* PanelMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelMacros.h; path = ../Classes/PanelMacros.h; sourceTree = "<group>"; };
+		1A34F8621CF91DCF00DE809C /* StageModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StageModel.cpp; path = ../Classes/StageModel.cpp; sourceTree = "<group>"; };
+		1A34F8631CF91DCF00DE809C /* StageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StageModel.h; path = ../Classes/StageModel.h; sourceTree = "<group>"; };
+		1A34F8641CF91DCF00DE809C /* StagePanelState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StagePanelState.cpp; path = ../Classes/StagePanelState.cpp; sourceTree = "<group>"; };
+		1A34F8651CF91DCF00DE809C /* StagePanelState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StagePanelState.h; path = ../Classes/StagePanelState.h; sourceTree = "<group>"; };
+		1A34F8661CF91DCF00DE809C /* StageUiLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StageUiLayer.cpp; path = ../Classes/StageUiLayer.cpp; sourceTree = "<group>"; };
+		1A34F8671CF91DCF00DE809C /* StageUiLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StageUiLayer.h; path = ../Classes/StageUiLayer.h; sourceTree = "<group>"; };
+		1A34F8681CF91DCF00DE809C /* StarNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StarNode.cpp; path = ../Classes/StarNode.cpp; sourceTree = "<group>"; };
+		1A34F8691CF91DCF00DE809C /* StarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarNode.h; path = ../Classes/StarNode.h; sourceTree = "<group>"; };
+		1A34F86A1CF91DCF00DE809C /* StarsController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StarsController.cpp; path = ../Classes/StarsController.cpp; sourceTree = "<group>"; };
+		1A34F86B1CF91DCF00DE809C /* StarsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarsController.h; path = ../Classes/StarsController.h; sourceTree = "<group>"; };
+		1A34F86C1CF91DCF00DE809C /* StarsLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StarsLayer.cpp; path = ../Classes/StarsLayer.cpp; sourceTree = "<group>"; };
+		1A34F86D1CF91DCF00DE809C /* StarsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarsLayer.h; path = ../Classes/StarsLayer.h; sourceTree = "<group>"; };
 		1A8F3B43175E05DA00049216 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		1A8F3B44175E05DA00049216 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		1A8F3B45175E05DA00049216 /* AnimationState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationState.cpp; sourceTree = "<group>"; };
@@ -1457,6 +1474,19 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1A34F8611CF91DCF00DE809C /* PanelMacros.h */,
+				1A34F8621CF91DCF00DE809C /* StageModel.cpp */,
+				1A34F8631CF91DCF00DE809C /* StageModel.h */,
+				1A34F8641CF91DCF00DE809C /* StagePanelState.cpp */,
+				1A34F8651CF91DCF00DE809C /* StagePanelState.h */,
+				1A34F8661CF91DCF00DE809C /* StageUiLayer.cpp */,
+				1A34F8671CF91DCF00DE809C /* StageUiLayer.h */,
+				1A34F8681CF91DCF00DE809C /* StarNode.cpp */,
+				1A34F8691CF91DCF00DE809C /* StarNode.h */,
+				1A34F86A1CF91DCF00DE809C /* StarsController.cpp */,
+				1A34F86B1CF91DCF00DE809C /* StarsController.h */,
+				1A34F86C1CF91DCF00DE809C /* StarsLayer.cpp */,
+				1A34F86D1CF91DCF00DE809C /* StarsLayer.h */,
 				1A1DD00D1CF4751B00AF5E1D /* MyPurchaseIOS.h */,
 				1A1DCFD11CF4728C00AF5E1D /* AppMacros.h */,
 				1A1DCFD21CF4728C00AF5E1D /* CCUserDefaultEx.cpp */,
@@ -1478,7 +1508,6 @@
 				1A1DCFE21CF4728C00AF5E1D /* MenuScene.h */,
 				1A1DCFE31CF4728C00AF5E1D /* MyPurchase.cpp */,
 				1A1DCFE41CF4728C00AF5E1D /* MyPurchase.h */,
-				1A1DCFE51CF4728C00AF5E1D /* PanelLayer.cpp */,
 				1A1DCFE61CF4728C00AF5E1D /* PanelLayer.h */,
 				1A1DCFE71CF4728C00AF5E1D /* PauseLayer.cpp */,
 				1A1DCFE81CF4728C00AF5E1D /* PauseLayer.h */,
@@ -2353,6 +2382,7 @@
 				1A1DD0001CF4728C00AF5E1D /* MenuScene.cpp in Sources */,
 				15A3D91D1682F7D5002FB0C5 /* b2EdgeAndPolygonContact.cpp in Sources */,
 				15A3D91E1682F7D5002FB0C5 /* b2PolygonAndCircleContact.cpp in Sources */,
+				1A34F8701CF91DCF00DE809C /* StageUiLayer.cpp in Sources */,
 				1A1DD0101CF480E000AF5E1D /* CocoLoader.cpp in Sources */,
 				15A3D91F1682F7D5002FB0C5 /* b2PolygonContact.cpp in Sources */,
 				1A1DCFFD1CF4728C00AF5E1D /* GameData.cpp in Sources */,
@@ -2370,7 +2400,9 @@
 				15A3D92A1682F7D5002FB0C5 /* b2WheelJoint.cpp in Sources */,
 				15A3D9391682F7D5002FB0C5 /* b2Rope.cpp in Sources */,
 				15A3D9951682F7F9002FB0C5 /* chipmunk.c in Sources */,
+				1A34F86F1CF91DCF00DE809C /* StagePanelState.cpp in Sources */,
 				15A3D9971682F7F9002FB0C5 /* cpConstraint.c in Sources */,
+				1A34F8731CF91DCF00DE809C /* StarsLayer.cpp in Sources */,
 				15A3D9981682F7F9002FB0C5 /* cpDampedRotarySpring.c in Sources */,
 				15A3D9991682F7F9002FB0C5 /* cpDampedSpring.c in Sources */,
 				15A3D99A1682F7F9002FB0C5 /* cpGearJoint.c in Sources */,
@@ -2443,6 +2475,7 @@
 				375BD50F1868454E0024609E /* CCActionFrame.cpp in Sources */,
 				15A3DA4D1682F826002FB0C5 /* CCControlPotentiometer.cpp in Sources */,
 				15A3DA4E1682F826002FB0C5 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
+				1A34F86E1CF91DCF00DE809C /* StageModel.cpp in Sources */,
 				15A3DA4F1682F826002FB0C5 /* CCControlSlider.cpp in Sources */,
 				15A3DA501682F826002FB0C5 /* CCControlStepper.cpp in Sources */,
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
@@ -2453,13 +2486,13 @@
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
 				15A3DA541682F826002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				15A3DA551682F826002FB0C5 /* CCEditBox.cpp in Sources */,
-				1A1DD0021CF4728C00AF5E1D /* PanelLayer.cpp in Sources */,
 				15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
 				15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */,
 				15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */,
 				15A3DA5C1682F826002FB0C5 /* CCTableViewCell.cpp in Sources */,
 				15A3DA5D1682F826002FB0C5 /* HttpClient.cpp in Sources */,
+				1A34F8711CF91DCF00DE809C /* StarNode.cpp in Sources */,
 				15A3DA5E1682F826002FB0C5 /* CCPhysicsDebugNode.cpp in Sources */,
 				375BD5131868454E0024609E /* CCActionObject.cpp in Sources */,
 				15A3DA5F1682F826002FB0C5 /* CCPhysicsSprite.cpp in Sources */,
@@ -2504,6 +2537,7 @@
 				1A8F3B82175E05DA00049216 /* spine-cocos2dx.cpp in Sources */,
 				298B29C418D0668400C1920F /* ScrollViewReader.cpp in Sources */,
 				1AB87035175E0A84005D39BF /* WebSocket.cpp in Sources */,
+				1A34F8721CF91DCF00DE809C /* StarsController.cpp in Sources */,
 				375BD4C51868411B0024609E /* TriggerMng.cpp in Sources */,
 				1A9CE8781765A12C000E3062 /* AssetsManager.cpp in Sources */,
 				379BB99A17F03F3700829B88 /* CCArmatureAnimation.cpp in Sources */,
@@ -2576,9 +2610,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2626,9 +2663,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

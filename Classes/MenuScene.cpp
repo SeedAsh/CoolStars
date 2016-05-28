@@ -11,7 +11,7 @@
 #include "PanelMacros.h"
 #include "QuickBuyScene.h"
 #include "StageUiLayer.h"
-#include "..\CoolSatrs\Classes\StarUtil.h"
+#include "StarUtil.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 //#include "MyPurchaseIOS.h"
 #endif

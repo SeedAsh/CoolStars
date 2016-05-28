@@ -171,6 +171,7 @@ void StarsLayer::genNewStars()
 	{
 		for (int y = 0; y < ROWS_SIZE; ++y)
 		{
+        
 			auto iter = find_if(m_starsSprite.begin(), m_starsSprite.end(), [=](StarNode *node)->bool
 			{
 				auto grid = node->getLogicGrid();
@@ -238,14 +239,13 @@ void StarsLayer::genNewStars()
 		auto grid = newGrid[i];
 		auto pStarSprite = createStar(color, grid);
 		pStarSprite->setAnchorPoint(ccp(0.5f, 0.5f));
-		CCPoint targetPos = getPosByGrid(grid);
 		addChild(pStarSprite);
 	}
 }
 
 bool StarsLayer::isGridEmpty(LogicGrid grid)
 {
-	auto iter = find_if(m_starsSprite.begin(), m_starsSprite.end(), [=](StarNode *node)->bool
+    auto iter = find_if(m_starsSprite.begin(), m_starsSprite.end(), [=](StarNode *node)->bool
 	{
 		auto temp = node->getLogicGrid();
 		return  grid.x == temp.x && grid.y == temp.y;

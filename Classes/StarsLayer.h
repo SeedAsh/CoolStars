@@ -1,10 +1,10 @@
 #ifndef __STARSLAYER_H__ 
 #define __STARSLAYER_H__
 #include "cocos2d.h"
+#include "StarNode.h"
 USING_NS_CC;
 class StarUtil;
-class StarNode;
-struct LogicGrid;
+
 class StarsLayer
 	: public CCLayer
 {
@@ -17,7 +17,7 @@ public:
 
 	void initBackground();
 	cocos2d::CCNode *createStar(int starType, LogicGrid grid);
-	StarNode *StarsLayer::getStarByGrid(LogicGrid grid);
+	StarNode *getStarByGrid(LogicGrid grid);
 	void showStars();
 	void starInitDone();
 	StarNode *getClickedStar(CCPoint pos);
