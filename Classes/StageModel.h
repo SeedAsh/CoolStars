@@ -21,12 +21,14 @@ public:
 	void saveStage(){ m_savingHelper.saveCurState(); }
 
 	void initStarsData();
+    void moveStars();
 private:
 	StageModel();
 	~StageModel();
 
 	void resetStarsData();
 	void releaseStarsData();
+    void moveStar(StarNode *node);
 private:
 	bool m_isNewStage;
 	int m_direction;

@@ -101,3 +101,96 @@ StarNode *StageModel::getStarData(LogicGrid &grid)
 
 	return m_starNodes[grid.x][grid.y];
 }
+
+void StageModel::moveStars()
+{
+    switch(m_direction)
+    {
+        case MOVE_UP:
+            for(int i = ROWS_SIZE - 1; i >= 0; --i)
+            {
+                for(int j = 0; j < COlUMNS_SIZE; ++j)
+                {
+                    moveStar(m_starNodes[j][i]);
+                }
+            }
+            break;
+        case MOVE_DOWN:
+            for(int i = 0; i < ROWS_SIZE; ++i)
+            {
+                for(int j = 0; j < COlUMNS_SIZE; ++j)
+                {
+                    moveStar(m_starNodes[j][i]);
+                }
+            }
+            break;
+        case MOVE_LEFT:
+            for(int i = COlUMNS_SIZE - 1; i >= 0; --i)
+            {
+                for(int j = 0; j < ROWS_SIZE; ++j)
+                {
+                    moveStar(m_starNodes[i][j]);
+                }
+            }
+            break;
+        case MOVE_RIGHT:
+            for(int i = 0; i < COlUMNS_SIZE; ++i)
+            {
+                for(int j = 0; j < ROWS_SIZE; ++j)
+                {
+                    moveStar(m_starNodes[i][j]);
+                }
+            }
+            break;
+    }
+    
+}
+
+void StageModel::moveStar(StarNode *node)
+{
+    if(!node->isValid()) return;
+    int direction = StageModel::theModel()->getCurDirection();
+    auto curGrid = node->getAttr().grid;
+    auto targetGrid = curGrid;
+    switch (direction)
+    {
+        case MOVE_UP :
+            for (int i = curGrid.y + 1; i < ROWS_SIZE; ++i)
+            {
+                if(!m_starNodes[curGrid.x][i]->isValid())
+                {
+                    targetGrid.y++;
+                }
+            }
+            break;
+        case MOVE_DOWN:
+            for (int i = 0; i < curGrid.y; ++i)
+            {
+                if(!m_starNodes[curGrid.x][i]->isValid())
+                {
+                    targetGrid.y--;
+                }
+            }
+            break;
+        case MOVE_LEFT:
+            for (int i = 0; i < curGrid.x; i++)
+            {
+                if(!m_starNodes[i][curGrid.y]->isValid())
+                {
+                    targetGrid.x--;
+                }
+            }
+            break;	
+        case MOVE_RIGHT:
+            for (int i = curGrid.x + 1; i < COlUMNS_SIZE; ++i)
+            {
+                if(!m_starNodes[i][curGrid.y]->isValid())
+                {
+                    targetGrid.x++;
+                    
+                }
+            }
+            break;
+    }
+    node->moveTo(targetGrid);
+}

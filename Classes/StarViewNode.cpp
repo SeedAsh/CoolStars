@@ -29,6 +29,9 @@ StarViewNode::StarViewNode(StarNode *node)
     m_model->bindView(this);
 }
 
+StarViewNode::~StarViewNode()
+{
+}
 bool StarViewNode::init()
 {
 	auto attr = m_model->getAttr();
@@ -42,22 +45,25 @@ bool StarViewNode::init()
 	return true;
 }
 
-vector<StarViewNode *>StarViewNode::getNeighbours()
-{
-	StarsLayer *layer = (StarsLayer *)getParent();
-	return layer->getStarNeighbours(this);
-}
-
-
 void StarViewNode::onClick()
 {
 	m_model->handleClick();
 }
 
-void StarViewNode::doMove()
+//左下第一个grid为（0，0）
+CCPoint StarViewNode::getPosByGrid(LogicGrid grid)
 {
-	StarsLayer *layer = (StarsLayer *)getParent();
-	return layer->moveStar(this);
+    CCPoint pos;
+    pos.x = STAR_SIZE * (grid.x + 0.5f);
+    pos.y = STAR_SIZE * (grid.y + 0.5f);
+    return pos;
+}
+
+void StarViewNode::doMove(LogicGrid grid)
+{
+    CCPoint pos = getPosByGrid(grid);
+    CCMoveTo *moveTo = CCMoveTo::create(0.2, pos);
+    runAction(moveTo);
 }
 
 void StarViewNode::runExplosion(){
@@ -86,21 +92,8 @@ void StarViewNode::runExplosion(){
 	pEmitter->setScale(1.2f);
 	pEmitter->setGravity(ccp(0, -200));
 
-	getParent()->addChild(pEmitter);
-}
-
-void StarViewNode::doExplodeAction()
-{
-	if (m_isExploded) return;
-	m_isExploded = true;
-	runExplosion();
-
-	auto neighbours = getNeighbours();
-	for (size_t i = 0; i < neighbours.size(); ++i)
-	{
-		neighbours[i]->doExplodeAction();
-	}
-	
-	StarsLayer *layer = (StarsLayer *)getParent();
-	layer->removeStar(this);
+    StarsLayer *layer = (StarsLayer *)getParent();
+    layer->addChild(pEmitter);
+    layer->removeStar(this);
+    
 }

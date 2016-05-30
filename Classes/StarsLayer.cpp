@@ -86,8 +86,7 @@ void StarsLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	if (star == NULL) return;
 	
 	star->onClick();
-//	genNewStars();
-//	moveStars();
+    StageModel::theModel()->moveStars();
 }
 
 //左下第一个grid为（0，0）
@@ -111,53 +110,6 @@ StarViewNode *StarsLayer::getStarByGrid(LogicGrid grid)
 			return m_starsSprite[i];
 	}
 	return NULL;
-}
-
-vector<StarViewNode *>	StarsLayer::getStarNeighbours(StarViewNode *star)
-{
-	vector<StarViewNode *> neighbours;
-	LogicGrid grid = star->getLogicGrid();
-	int arr[4][2] = { { 1, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 } };
-	for (int i = 0; i < 4; ++i)
-	{
-		auto neighbour = getStarByGrid(LogicGrid(grid.x + arr[i][0], grid.y + arr[i][1]));
-		if (neighbour != NULL && neighbour->sameType(star->getStarType()))
-		{
-			neighbours.push_back(neighbour);
-		}
-	}
-	return neighbours;
-}
-void StarsLayer::moveStars()
-{
-	sort(m_starsSprite.begin(), m_starsSprite.end(), [=](StarViewNode *node1, StarViewNode *node2)->bool
-	{
-		int direction = StageModel::theModel()->getCurDirection();
-		switch (direction)
-		{
-		case MOVE_UP:
-			return node1->getLogicGrid().y > node2->getLogicGrid().y;
-			break;
-		case MOVE_DOWN:
-			return node1->getLogicGrid().y < node2->getLogicGrid().y;
-			break;
-		case MOVE_LEFT:
-			return node1->getLogicGrid().x < node2->getLogicGrid().x;
-			break;
-		case MOVE_RIGHT:
-			return node1->getLogicGrid().x > node2->getLogicGrid().x;
-			break;
-		default:
-			return false;
-			break;
-		}
-		
-	});
-	for (size_t i = 0; i < m_starsSprite.size(); ++i)
-	{
-		//m_starsSprite[i]->doMove();
-        moveStar(m_starsSprite[i]);
-	}
 }
 
 void StarsLayer::genNewStars()
@@ -241,69 +193,6 @@ void StarsLayer::genNewStars()
 		pStarSprite->setAnchorPoint(ccp(0.5f, 0.5f));
 		addChild(pStarSprite);
 	}
-}
-
-bool StarsLayer::isGridEmpty(LogicGrid grid)
-{
-    auto iter = find_if(m_starsSprite.begin(), m_starsSprite.end(), [=](StarViewNode *node)->bool
-	{
-		auto temp = node->getLogicGrid();
-		return  grid.x == temp.x && grid.y == temp.y;
-	});
-
-	return iter == m_starsSprite.end();
-}
-
-void StarsLayer::moveStar(StarViewNode *star)
-{
-	int direction = StageModel::theModel()->getCurDirection();
-	auto curGrid = star->getLogicGrid();
-	auto targetGrid = curGrid;
-	switch (direction)
-	{
-	case MOVE_UP :
-		for (int i = curGrid.y + 1; i < ROWS_SIZE; ++i)
-		{
-			if (isGridEmpty(LogicGrid(curGrid.x, i)))
-			{
-				targetGrid.y++;
-			}
-		}
-		break;
-	case MOVE_DOWN:
-		for (int i = 0; i < curGrid.y; ++i)
-		{
-			if (isGridEmpty(LogicGrid(curGrid.x, i)))
-			{
-				targetGrid.y--;
-			}
-		}
-		break;	
-	case MOVE_LEFT:
-		for (int i = 0; i < curGrid.x; i++)
-			{
-			if (isGridEmpty(LogicGrid(i, curGrid.y)))
-				{
-					targetGrid.x--;
-				}
-			}
-		break;	
-	case MOVE_RIGHT:
-		for (int i = curGrid.x + 1; i < COlUMNS_SIZE; ++i)
-			{
-			if (isGridEmpty(LogicGrid(i, curGrid.y)))
-				{
-					targetGrid.x++;
-
-				}
-			}
-		break;
-	}
-
-	auto targetPos = getPosByGrid(targetGrid);
-	auto moveTo = CCMoveTo::create(0.1f, targetPos);
-	star->runAction(moveTo);
-	star->setLogicGrid(targetGrid);
 }
 
 void StarsLayer::removeStar(StarViewNode *node)

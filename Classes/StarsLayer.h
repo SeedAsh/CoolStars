@@ -20,12 +20,8 @@ public:
 	void initStars();
 	void starInitDone();
 	StarViewNode *getClickedStar(CCPoint pos);
-	std::vector<StarViewNode *>	getStarNeighbours(StarViewNode *star);
-	void moveStars();
 	void genNewStars();
-	void moveStar(StarViewNode *star);
 	virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
-	bool isGridEmpty(LogicGrid grid);
 	CCPoint getPosByGrid(LogicGrid grid);
 	void removeStar(StarViewNode *node);
 private:

@@ -10,9 +10,7 @@ public :
 
 	StarViewNode(StarNode *node);
 	StarViewNode(){}
-	~StarViewNode(){}
-	
-	std::vector<StarViewNode *>getNeighbours();
+	~StarViewNode();
 	
 	int getStarType(){ return m_starType; }
 	int sameType(int type){ return m_starType == type; }
@@ -22,8 +20,8 @@ public :
 	
 	void onClick();
 	void runExplosion();
-	void doExplodeAction();
-	void doMove();
+	void doMove(LogicGrid grid);
+    cocos2d::CCPoint getPosByGrid(LogicGrid grid);
 
 protected:
 	int m_colorIndex;

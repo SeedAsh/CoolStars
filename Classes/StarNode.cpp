@@ -41,6 +41,12 @@ StarNode *StarNode::createNodeFatory(StarAttr &attr)
 		break;
 	}
 }
+StarNode::StarNode(StarAttr &attr)
+    : m_attr(attr)
+    , m_isValid(true)
+{
+    
+}
 
 void StarNode::handleClick()
 {
@@ -65,6 +71,7 @@ void StarNode::handleClick()
 void StarNode::runExplosion()
 {
 	m_view->runExplosion();
+    m_isValid = false;
 }
 
 void StarNode::getConnectedStars(StarNode *node, std::vector<StarNode *> &connectedNodes)
@@ -110,4 +117,11 @@ vector<StarNode *> StarNode::getNeighbours()
 		}
 	}
 	return neighbours;
+}
+
+
+void StarNode::moveTo(LogicGrid grid)
+{
+    m_view->doMove(grid);
+    m_isValid = false;
 }

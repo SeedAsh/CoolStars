@@ -44,15 +44,19 @@ public:
 	void handleClick();
 	std::vector<StarNode *> getNeighbours();
 	void runExplosion();
+
+    bool isValid(){return m_isValid;}
+    void setValid(bool valid){m_isValid = valid;}
+    void moveTo(LogicGrid grid);
 protected:
 	StarNode(){}
-	StarNode(StarAttr &attr) : m_attr(attr), m_isExploded(false){}
+    StarNode(StarAttr &attr);
 private:
 	void getConnectedStars(StarNode *node, std::vector<StarNode *> &connectedNodes);
 private:
 	StarAttr m_attr;
 	StarViewNode *m_view;
-	bool m_isExploded;
+    bool m_isValid;
 };
 
 class ColorStar : public StarNode
