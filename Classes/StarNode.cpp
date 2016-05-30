@@ -47,11 +47,17 @@ void StarNode::handleClick()
 	std::vector<StarNode *> connectedNodes;
 	getConnectedStars(this, connectedNodes);
 	size_t count = connectedNodes.size();
+    for(size_t i = 0; i < count; ++i)
+    {
+        auto grid = connectedNodes[i]->getAttr().grid;
+        
+    }
 	if (count >= CONNECT_COUNT)
 	{
-		for (size_t i = 0; i < count; ++i)
+
+		for (size_t j = 0; j < count; ++j)
 		{
-			connectedNodes[i]->runExplosion();
+			connectedNodes[j]->runExplosion();
 		}
 	}
 }
@@ -63,15 +69,21 @@ void StarNode::runExplosion()
 
 void StarNode::getConnectedStars(StarNode *node, std::vector<StarNode *> &connectedNodes)
 {
+     auto grid = node->getAttr().grid;
 	if (find(connectedNodes.begin(), connectedNodes.end(), node) != connectedNodes.end())
 	{
 		return;
 	}
 
 	connectedNodes.push_back(node);
-	auto neighbours = getNeighbours();
+    
+	auto neighbours = node->getNeighbours();
 	if (!neighbours.empty())
 	{
+        for (size_t i = 0; i < neighbours.size(); ++i)
+        {
+            auto temp = neighbours[i]->getAttr().grid;
+        }
 		for (size_t i = 0; i < neighbours.size(); ++i)
 		{
 			getConnectedStars(neighbours[i], connectedNodes);
@@ -86,7 +98,8 @@ vector<StarNode *> StarNode::getNeighbours()
 	int arr[4][2] = { { 1, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 } };
 	for (int i = 0; i < 4; ++i)
 	{
-		StarNode *neighbour = StageModel::theModel()->getStarData(LogicGrid(grid.x + arr[i][0], grid.y + arr[i][1]));
+        auto temp = LogicGrid(grid.x + arr[i][0], grid.y + arr[i][1]);
+		StarNode *neighbour = StageModel::theModel()->getStarData(temp);
 		
 		if (neighbour != NULL)
 		{

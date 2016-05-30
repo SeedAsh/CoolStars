@@ -46,7 +46,7 @@ void StageModel::initStarsData()
 			for (int col = 0; col < COlUMNS_SIZE; ++col)
 			{
 				auto attr = _getStarAttrByIndex(stageStarRow.col[col]);
-				attr.grid = LogicGrid(col, row);
+				attr.grid = LogicGrid(col, ROWS_SIZE - row - 1);
 				m_starNodes[col][ROWS_SIZE - row - 1] = StarNode::createNodeFatory(attr);
 			}
 		}
@@ -59,7 +59,7 @@ void StageModel::initStarsData()
 			for (int row = 0; row < ROWS_SIZE; ++row)
 			{
 				auto attr = _getStarAttrByIndex(StageVec[col][row]);
-				attr.grid = LogicGrid(col, row);
+				attr.grid = LogicGrid(col, ROWS_SIZE - row - 1);
 				m_starNodes[col][ROWS_SIZE - row - 1] = StarNode::createNodeFatory(attr);
 			}
 		}

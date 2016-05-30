@@ -26,7 +26,7 @@ StarViewNode::StarViewNode(StarNode *node)
 : m_model(node)
 , m_isExploded(false)
 {
-
+    m_model->bindView(this);
 }
 
 bool StarViewNode::init()
