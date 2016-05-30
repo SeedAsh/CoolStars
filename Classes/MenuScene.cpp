@@ -113,7 +113,7 @@ bool MenuScene::init()
 	CCMenu* pMenu = CCMenu::create(menuItem1, menuItem2,menuItem3,menuItempSound, menuItemHelp, NULL);
 	pMenu->setPosition(CCPointZero);
 	pMenu->setTouchPriority(5);
-	this->addChild(pMenu,Z_ORDER_PANEL,TAG_MENU);
+	this->addChild(pMenu,Z_ORDER_PANEL);
 
 #if (PAY_PLUGIN_TYPE_JIDI == 1)
 	CCMenuItemSprite* menuItem4 = CreateMenuItemSprite("menu_moregame.png", menu_selector(MenuScene::moreGame));
@@ -138,7 +138,7 @@ bool MenuScene::init()
 	}
 	if (UserInfo::s_bShowLogin){
 		LoginLayer* pLoginLayer = LoginLayer::create();
-		addChild(pLoginLayer,Z_ORDER_BUY,TAG_LOGIN);
+		addChild(pLoginLayer,Z_ORDER_BUY);
 	}
 	//礼包
 	/*
@@ -246,28 +246,22 @@ void MenuScene::ResumeGame( CCObject* sender ){
 }
 
 void MenuScene::shopClicked( CCObject* sender ){
-	if(getChildByTag(TAG_SHOP) != NULL || getChildByTag(TAG_HELP) != NULL){
-		return;
-	}
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 	ShopLayer *pShop = ShopLayer::create();
-	addChild(pShop, Z_ORDER_SHOP, TAG_SHOP);
+	addChild(pShop, Z_ORDER_SHOP);
 	UserInfo::s_nCurrentLevel = 0;
 }
 
 void MenuScene::helpClicked( CCObject* sender ){
-	if(getChildByTag(TAG_SHOP) != NULL || getChildByTag(TAG_HELP) != NULL){
-		return;
-	}
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 	HelpLayer *pHelp = HelpLayer::create();
-	addChild(pHelp, Z_ORDER_SHOP, TAG_HELP);
+	addChild(pHelp, Z_ORDER_SHOP);
 }
 
 void MenuScene::EndGame( CCObject* sender )
@@ -286,34 +280,8 @@ void MenuScene::EndGame( CCObject* sender )
 }
 
 void MenuScene::keyBackClicked(){
-	if (getChildByTag(TAG_DALIBAO) != NULL || getChildByTag(TAG_LOGIN) != NULL){
-
-		return;
-	}
-	if (getChildByTag(TAG_SHOP) != NULL ){
-		ShopLayer *shop = (ShopLayer*)getChildByTag(TAG_SHOP);
-		shop->close(NULL);
-		return;
-	}
-	if (getChildByTag(TAG_HELP) != NULL){
-		HelpLayer *help = (HelpLayer*)getChildByTag(TAG_HELP);
-		help->close(NULL);
-		return;
-	}
-	if (m_pFishShop!= NULL && m_pFishShop->isVisible()){
-		m_pFishShop->setVisible(false);
-		return;
-	}
-
-	if(GameData::getInstance()->m_bShowExitDig == 1){
-		if (getChildByTag(TAG_EXIT) == NULL){
-			Exit *exitLayer = Exit::create();
-			addChild(exitLayer,Z_ORDER_BUY,TAG_EXIT);
-			return;
-		}	
-	}else{
-		EndGame(NULL);	
-	}	
+	
+	EndGame(NULL);	
 }
 
 

@@ -35,8 +35,10 @@ StageScene* StageScene::create()
 
 bool StageScene::init()
 {
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	initBackground();
 	StarsLayer *starsLayer = StarsLayer::create();
+	starsLayer->setPosition(visibleSize.width * 0.1f, visibleSize.height * 0.2f);
 	StageUiLayer *uiLayer = StageUiLayer::create();
 
 	addChild(starsLayer, ZORDER_STARS);

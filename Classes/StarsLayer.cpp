@@ -84,7 +84,8 @@ StarNode *StarsLayer::getClickedStar(CCPoint pos)
 void StarsLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 {
 	CCPoint touchLocation = (((CCTouch*)(*(pTouches->begin())))->getLocation());
-	StarNode *star = getClickedStar(touchLocation);
+	CCPoint pos = convertToNodeSpace(touchLocation);
+	StarNode *star = getClickedStar(pos);
 	if (star == NULL) return;
 	
 	star->doExplodeAction();
