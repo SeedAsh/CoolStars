@@ -1,7 +1,7 @@
 #ifndef __STARSLAYER_H__ 
 #define __STARSLAYER_H__
 #include "cocos2d.h"
-#include "StarNode.h"
+#include "StarViewNode.h"
 USING_NS_CC;
 class StarUtil;
 
@@ -16,21 +16,20 @@ public:
 	virtual bool init();
 
 	void initBackground();
-	cocos2d::CCNode *createStar(int starType, LogicGrid grid);
-	StarNode *getStarByGrid(LogicGrid grid);
+	StarViewNode *getStarByGrid(LogicGrid grid);
 	void initStars();
 	void starInitDone();
-	StarNode *getClickedStar(CCPoint pos);
-	std::vector<StarNode *>	getStarNeighbours(StarNode *star);
+	StarViewNode *getClickedStar(CCPoint pos);
+	std::vector<StarViewNode *>	getStarNeighbours(StarViewNode *star);
 	void moveStars();
 	void genNewStars();
-	void moveStar(StarNode *star);
+	void moveStar(StarViewNode *star);
 	virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
 	bool isGridEmpty(LogicGrid grid);
 	CCPoint getPosByGrid(LogicGrid grid);
-	void removeStar(StarNode *node);
+	void removeStar(StarViewNode *node);
 private:
 	StarUtil *m_pStarUtil;
-	std::vector<StarNode *> m_starsSprite;
+	std::vector<StarViewNode *> m_starsSprite;
 };
 #endif 

@@ -1,6 +1,21 @@
 #ifndef __STARNODE_H__
 #define __STARNODE_H__
 #include "cocos2d.h"
+
+enum StarType
+{
+	kColorStar = 1,
+	kStone,
+	kDeadVine,
+	kLiveVine,
+	kIron,
+	kBounceBall,
+	kdiamant,
+	kKey,
+	kBomb
+
+};
+
 //Âß¼­Íø¸ñ£¬×óÏÂ½ÇÎª[0,0]
 struct LogicGrid
 {
@@ -9,45 +24,29 @@ struct LogicGrid
 	LogicGrid(int x = 0, int y = 0) : x(x), y(y){}
 };
 
-class StarNode : public cocos2d::CCNode
+struct StarAttr
 {
-public :
-	static StarNode *create(int starType, LogicGrid grid);
-	virtual bool init();
-
-	StarNode(int starType, LogicGrid grid);
-	StarNode(){}
-	~StarNode();
-	
-	std::vector<StarNode *>getNeighbours();
-	
-	int getStarType(){ return m_starType; }
-	int sameType(int type){ return m_starType == type; }
-	LogicGrid getLogicGrid(){ return m_grid; }
-	void setLogicGrid(LogicGrid grid){ m_grid = grid; }
-	bool hasNeighbour();
-	
-	void onClick();
-	void runExplosion();
-	void doExplodeAction();
-	void doMove();
-
-protected:
-	int m_colorIndex;
-	int m_starType;
-	LogicGrid m_grid;
-	bool m_isExploded;
+	int type;
+	int color;
 };
 
+class StarNode
+{
+public:
+	static StarNode *createNodeFatory(int starIndex);
+	virtual ~StarNode(){}
+	StarAttr &getAttr(){ return m_attr; }
+protected:
+	StarNode(){}
+	StarNode(StarAttr &attr) : m_attr(attr){}
+private:
+	StarAttr m_attr;
+};
 
 class ColorStar : public StarNode
 {
 public:
-	static ColorStar *create();
-	virtual bool init();
-
-private:
-	ColorStar(){}
+	ColorStar(StarAttr &attr) : StarNode(attr){}
 	~ColorStar(){}
 };
 
@@ -55,10 +54,7 @@ private:
 class StoneNode : public StarNode
 {
 public:
-	static StoneNode *create();
-	virtual bool init();
 
-private:
 	StoneNode(){}
 	~StoneNode(){}
 };
@@ -68,10 +64,7 @@ private:
 class DeadVineNode : public StarNode
 {
 public:
-	static DeadVineNode *create();
-	virtual bool init();
 
-private:
 	DeadVineNode(){}
 	~DeadVineNode(){}
 };
@@ -79,10 +72,7 @@ private:
 class LiveVineNode : public StarNode
 {
 public:
-	static LiveVineNode *create();
-	virtual bool init();
 
-private:
 	LiveVineNode(){}
 	~LiveVineNode(){}
 };
@@ -91,10 +81,7 @@ private:
 class IronNode : public StarNode
 {
 public:
-	static IronNode *create();
-	virtual bool init();
 
-private:
 	IronNode(){}
 	~IronNode(){}
 };
@@ -103,10 +90,7 @@ private:
 class BounceBallNode : public StarNode
 {
 public:
-	static BounceBallNode *create();
-	virtual bool init();
 
-private:
 	BounceBallNode(){}
 	~BounceBallNode(){}
 };
@@ -114,10 +98,7 @@ private:
 class diamantNode : public StarNode
 {
 public:
-	static LiveVineNode *create();
-	virtual bool init();
 
-private:
 	diamantNode(){}
 	~diamantNode(){}
 };
@@ -125,10 +106,7 @@ private:
 class KeyNode : public StarNode
 {
 public:
-	static LiveVineNode *create();
-	virtual bool init();
 
-private:
 	KeyNode(){}
 	~KeyNode(){}
 };
@@ -136,11 +114,9 @@ private:
 class BombNode : public StarNode
 {
 public:
-	static BombNode *create();
-	virtual bool init();
 
-private:
 	BombNode(){}
 	~BombNode(){}
 };
+
 #endif
