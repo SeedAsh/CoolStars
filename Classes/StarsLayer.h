@@ -18,7 +18,7 @@ public:
 	void initBackground();
 	cocos2d::CCNode *createStar(int starType, LogicGrid grid);
 	StarNode *getStarByGrid(LogicGrid grid);
-	void showStars();
+	void initStars();
 	void starInitDone();
 	StarNode *getClickedStar(CCPoint pos);
 	std::vector<StarNode *>	getStarNeighbours(StarNode *star);

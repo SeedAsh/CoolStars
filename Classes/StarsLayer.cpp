@@ -19,7 +19,7 @@ bool StarsLayer::init()
 {
 	m_pStarUtil = new StarUtil();
 	m_pStarUtil->initStarEx();
-	showStars();
+	initStars();
 	return true;
 }
 
@@ -30,7 +30,7 @@ CCNode *StarsLayer::createStar(int starType, LogicGrid grid)
 	return node;
 }
 
-void StarsLayer::showStars()
+void StarsLayer::initStars()
 {
 	//m_pStarUtil->star[][] 中是一列列保存的
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -156,7 +156,8 @@ void StarsLayer::moveStars()
 	});
 	for (size_t i = 0; i < m_starsSprite.size(); ++i)
 	{
-		m_starsSprite[i]->doMove();
+		//m_starsSprite[i]->doMove();
+        moveStar(m_starsSprite[i]);
 	}
 }
 
