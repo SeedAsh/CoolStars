@@ -13,12 +13,21 @@ StageModel::StageModel()
 
 StageModel::~StageModel()
 {
-
+	releaseStarsData();
 }
+
 StageModel *StageModel::theModel()
 {
 	static StageModel model;
 	return &model;
+}
+
+static StarAttr _getStarAttrByIndex(int starIndex)
+{
+	StarAttr attr;
+	attr.type = kColorStar;
+	attr.color = (starIndex - 1) % 5 + 1;
+	return attr;
 }
 
 void StageModel::initStarsData()
@@ -36,7 +45,9 @@ void StageModel::initStarsData()
 			StageData stageStarRow = DataManagerSelf->StageVec[row];
 			for (int col = 0; col < COlUMNS_SIZE; ++col)
 			{
-				m_starNodes[col][ROWS_SIZE - row - 1] = StarNode::createNodeFatory(stageStarRow.col[col]);
+				auto attr = _getStarAttrByIndex(stageStarRow.col[col]);
+				attr.grid = LogicGrid(col, row);
+				m_starNodes[col][ROWS_SIZE - row - 1] = StarNode::createNodeFatory(attr);
 			}
 		}
 	}
@@ -47,12 +58,12 @@ void StageModel::initStarsData()
 		{
 			for (int row = 0; row < ROWS_SIZE; ++row)
 			{
-				m_starNodes[col][ROWS_SIZE - row - 1] = StarNode::createNodeFatory(StageVec[col][row]);
+				auto attr = _getStarAttrByIndex(StageVec[col][row]);
+				attr.grid = LogicGrid(col, row);
+				m_starNodes[col][ROWS_SIZE - row - 1] = StarNode::createNodeFatory(attr);
 			}
 		}
 	}
-	
-	
 }
 
 void StageModel::resetStarsData()
@@ -85,5 +96,8 @@ void StageModel::releaseStarsData()
 
 StarNode *StageModel::getStarData(LogicGrid &grid)
 {
+	if (grid.x < 0 || grid.x >= COlUMNS_SIZE || grid.y < 0 || grid.y >= ROWS_SIZE)
+		return NULL;
+
 	return m_starNodes[grid.x][grid.y];
 }

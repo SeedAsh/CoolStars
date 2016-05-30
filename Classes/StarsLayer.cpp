@@ -47,6 +47,7 @@ void StarsLayer::initStars()
 				sourcePos.y = targetPos.y + visibleSize.height + grid.y * STAR_SIZE + (grid.x % 2) * STAR_SIZE;
 				pStarSprite->setPosition(sourcePos);
 				addChild(pStarSprite);
+				m_starsSprite.push_back(pStarSprite);
 
 				float kDuration = (sourcePos.y - targetPos.y) / speed;
 				CCMoveTo *moveTo = CCMoveTo::create(kDuration, targetPos);
@@ -84,9 +85,9 @@ void StarsLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	StarViewNode *star = getClickedStar(pos);
 	if (star == NULL) return;
 	
-	star->doExplodeAction();
+	star->onClick();
 //	genNewStars();
-	moveStars();
+//	moveStars();
 }
 
 //左下第一个grid为（0，0）

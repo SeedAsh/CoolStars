@@ -10,7 +10,7 @@ public :
 
 	StarViewNode(StarNode *node);
 	StarViewNode(){}
-	~StarViewNode();
+	~StarViewNode(){}
 	
 	std::vector<StarViewNode *>getNeighbours();
 	
@@ -29,8 +29,11 @@ protected:
 	int m_colorIndex;
 	int m_starType;
 	LogicGrid m_grid;
+
+
+
 	bool m_isExploded;
-	StarNode *m_nodeData;
+	StarNode *m_model;
 };
 
 

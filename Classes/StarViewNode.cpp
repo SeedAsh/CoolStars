@@ -23,20 +23,15 @@ StarViewNode *StarViewNode::create(StarNode *node)
 }
 
 StarViewNode::StarViewNode(StarNode *node)
-: m_nodeData(node)
+: m_model(node)
 , m_isExploded(false)
-{
-
-}
-
-StarViewNode::~StarViewNode()
 {
 
 }
 
 bool StarViewNode::init()
 {
-	auto attr = m_nodeData->getAttr();
+	auto attr = m_model->getAttr();
 	string fileName = g_starFrameNameArray[attr.color - 1][1];
 	CCSprite *spr = CCSprite::create(fileName.c_str());
 	CCSize size = spr->getContentSize();
@@ -53,14 +48,10 @@ vector<StarViewNode *>StarViewNode::getNeighbours()
 	return layer->getStarNeighbours(this);
 }
 
-bool StarViewNode::hasNeighbour()
-{
-	return false;
-}
 
 void StarViewNode::onClick()
 {
-
+	m_model->handleClick();
 }
 
 void StarViewNode::doMove()
@@ -71,7 +62,8 @@ void StarViewNode::doMove()
 
 void StarViewNode::runExplosion(){
 	CCParticleExplosion *pEmitter = CCParticleExplosion::create();
-	string fileImage = s_stars[m_starType];
+	auto attr = m_model->getAttr();
+	string fileImage = s_stars[attr.color - 1];
 	if (fileImage.empty()) return;
 	pEmitter->setTexture(CCTextureCache::sharedTextureCache()->addImage(fileImage.c_str()));
 	pEmitter->setAutoRemoveOnFinish(true);
