@@ -33,8 +33,9 @@ public:
 	static StageModel *theModel();
 
 	StarNode *getStarData(const LogicGrid &grid);
-	void saveStage(){ m_savingHelper.saveCurState(); }
+	std::vector<StarNode *> &getStarDatas(){ return m_starNodes; }
 
+	void saveStage(){ m_savingHelper.saveCurState(); }
 	void initStarsData();
     void moveStars();
 	void removeStarNode(StarNode *node);

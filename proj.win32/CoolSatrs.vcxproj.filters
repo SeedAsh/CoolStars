@@ -28,6 +28,12 @@
     <Filter Include="GameStage\StageUi">
       <UniqueIdentifier>{95b1fa82-2a6c-49fa-8096-93390779d637}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pet">
+      <UniqueIdentifier>{33764a91-2c63-4597-a015-e7cdfb3bb1a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Prop">
+      <UniqueIdentifier>{24fbae7e-22b7-4713-8edf-2e5a058a8122}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -116,6 +122,27 @@
     </ClCompile>
     <ClCompile Include="..\Classes\DataCheck.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PetEntity.cpp">
+      <Filter>Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PetManager.cpp">
+      <Filter>Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PetSkill.cpp">
+      <Filter>Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PropManager.cpp">
+      <Filter>Prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PropItem.cpp">
+      <Filter>Prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StageOperator.cpp">
+      <Filter>GameStage\StageModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StageTarget.cpp">
+      <Filter>GameStage\StageModel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +241,27 @@
     </ClInclude>
     <ClInclude Include="..\Classes\DataCheck.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PetManager.h">
+      <Filter>Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PetEntity.h">
+      <Filter>Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PetSkill.h">
+      <Filter>Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PropManager.h">
+      <Filter>Prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PropItem.h">
+      <Filter>Prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageOperator.h">
+      <Filter>GameStage\StageModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageTarget.h">
+      <Filter>GameStage\StageModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
