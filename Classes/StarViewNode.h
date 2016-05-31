@@ -20,7 +20,7 @@ public :
 	
 	void onClick();
 	void runExplosion();
-	void doMove(LogicGrid grid);
+	void doMove(LogicGrid targetGrid);
     cocos2d::CCPoint getPosByGrid(LogicGrid grid);
 
 protected:

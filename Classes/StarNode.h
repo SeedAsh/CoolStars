@@ -2,7 +2,7 @@
 #define __STARNODE_H__
 #include "cocos2d.h"
 
-#define  CONNECT_COUNT 3
+#define  CONNECT_COUNT 2
 enum StarType
 {
 	kColorStar = 1,
@@ -23,6 +23,15 @@ struct LogicGrid
 	int x;
 	int y;
 	LogicGrid(int x = 0, int y = 0) : x(x), y(y){}
+	//*
+	bool operator == (const LogicGrid &grid)const
+	{
+		return grid.x == x && grid.y == y;
+	}
+	bool operator != (const LogicGrid &grid)const
+	{
+		return (x != grid.x || y != grid.y);
+	}
 };
 
 struct StarAttr
@@ -38,15 +47,14 @@ class StarNode
 public:
 	static StarNode *createNodeFatory(StarAttr &attr);
 	virtual ~StarNode(){}
-	StarAttr &getAttr(){ return m_attr; }
+	const StarAttr &getAttr(){ return m_attr; }
+	void setLogicGrid(const LogicGrid &grid){ m_attr.grid = grid; }
 	void bindView(StarViewNode *view){ m_view = view; }
 
 	void handleClick();
 	std::vector<StarNode *> getNeighbours();
 	void runExplosion();
 
-    bool isValid(){return m_isValid;}
-    void setValid(bool valid){m_isValid = valid;}
     void moveTo(LogicGrid grid);
 protected:
 	StarNode(){}
@@ -56,7 +64,6 @@ private:
 private:
 	StarAttr m_attr;
 	StarViewNode *m_view;
-    bool m_isValid;
 };
 
 class ColorStar : public StarNode

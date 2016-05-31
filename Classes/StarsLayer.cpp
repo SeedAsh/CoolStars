@@ -8,11 +8,23 @@ using namespace std;
 StarsLayer::StarsLayer()
 :m_starsSprite(NULL)
 {
-
+	
 }
 
 StarsLayer::~StarsLayer()
 {
+}
+
+void StarsLayer::onEnter()
+{
+	CCLayer::onEnter();
+	StageModel::theModel()->addView(this);
+}
+
+void StarsLayer::onExit()
+{
+	CCLayer::onExit();
+	StageModel::theModel()->removeView(this);
 }
 
 bool StarsLayer::init()
@@ -22,9 +34,18 @@ bool StarsLayer::init()
 	return true;
 }
 
+StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
+{
+	StarNode *nodeData = StageModel::theModel()->getStarData(grid);
+	if (nodeData)
+	{
+		return StarViewNode::create(nodeData);
+	}
+	return NULL;
+}
+
 void StarsLayer::initStars()
 {
-	//m_pStarUtil->star[][] 中是一列列保存的
 	auto starUtil = new StarUtil();
 	starUtil->initStarEx();
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -36,10 +57,9 @@ void StarsLayer::initStars()
 		for (int row = 0; row < ROWS_SIZE; ++row) 
 		{
 			LogicGrid grid(col, row);
-			StarNode *nodeData = StageModel::theModel()->getStarData(grid);
-			if (nodeData)
+			pStarSprite = createStarByGrid(grid);
+			if (pStarSprite)
 			{
-				pStarSprite = StarViewNode::create(nodeData);
 				pStarSprite->setAnchorPoint(ccp(0.5f, 0.5f));
 				CCPoint targetPos = getPosByGrid(grid);
 				CCPoint sourcePos = targetPos;
@@ -53,7 +73,6 @@ void StarsLayer::initStars()
 				CCMoveTo *moveTo = CCMoveTo::create(kDuration, targetPos);
 				pStarSprite->runAction(moveTo);
 			}
-
 		}
 	}
 	runAction(CCCallFunc::create(this, callfunc_selector(StarsLayer::starInitDone)));
@@ -74,7 +93,6 @@ StarViewNode *StarsLayer::getClickedStar(CCPoint pos)
 			return star;
 		}
 	}
-
 	return NULL;
 }
 
@@ -86,7 +104,7 @@ void StarsLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	if (star == NULL) return;
 	
 	star->onClick();
-    StageModel::theModel()->moveStars();
+	StageModel::theModel()->genNewStars();
 }
 
 //左下第一个grid为（0，0）
@@ -112,89 +130,6 @@ StarViewNode *StarsLayer::getStarByGrid(LogicGrid grid)
 	return NULL;
 }
 
-void StarsLayer::genNewStars()
-{
-	int direction = 1;
-	//移动方向： 上下左右
-	int moveDirection[4][2] = { { 0, 1 }, { 0, -1 }, { -1, 0 }, { 1, 0 } };
-	int emptyGridX[COlUMNS_SIZE];	//值为x的一列上空格的个数
-	int emptyGridY[ROWS_SIZE];		//值为y的一行上空格的个数
-	for (int x = 0; x < COlUMNS_SIZE; ++x)
-	{
-		for (int y = 0; y < ROWS_SIZE; ++y)
-		{
-        
-			auto iter = find_if(m_starsSprite.begin(), m_starsSprite.end(), [=](StarViewNode *node)->bool
-			{
-				auto grid = node->getLogicGrid();
-				return  grid.x == x && grid.y == y;
-			});
-			
-			if (iter == m_starsSprite.end())
-			{
-				emptyGridX[x]++;
-				emptyGridY[y]++;
-			}
-		}
-	}
-
-	vector<LogicGrid> newGrid;
-	switch (direction)
-	{
-	case MOVE_UP:
-		for (int i = 0; i < COlUMNS_SIZE; ++i)
-		{
-			for (int j = 0; j < emptyGridX[i]; ++j)
-			{
-				LogicGrid grid(i, -2 + j);
-				newGrid.push_back(grid);
-			}
-		}
-		break;
-	case MOVE_DOWN:
-		for (int i = 0; i < COlUMNS_SIZE; ++i)
-		{
-			for (int j = 0; j < emptyGridX[i]; ++j)
-			{
-				LogicGrid grid(i, ROWS_SIZE + 2 - j);
-				newGrid.push_back(grid);
-			}
-		}
-		break;
-	case MOVE_LEFT:
-		for (int i = 0; i < ROWS_SIZE; ++i)
-		{
-			for (int j = 0; j < emptyGridY[i]; ++j)
-			{
-				LogicGrid grid(i, COlUMNS_SIZE + 2 - j);
-				newGrid.push_back(grid);
-			}
-		}
-		break;
-	case MOVE_RIGHT:
-		for (int i = 0; i < ROWS_SIZE; ++i)
-		{
-			for (int j = 0; j < emptyGridY[i]; ++j)
-			{
-				LogicGrid grid(i, -2 + j);
-				newGrid.push_back(grid);
-			}
-		}
-		break;
-	default:
-		break;
-	}
-
-	int color = ((int)(CCRANDOM_0_1() * 100)) % 5;
-	for (size_t i = 0; i < newGrid.size(); ++i)
-	{
-		auto grid = newGrid[i];
-		auto pStarSprite = StarViewNode::create(NULL);
-		pStarSprite->setAnchorPoint(ccp(0.5f, 0.5f));
-		addChild(pStarSprite);
-	}
-}
-
 void StarsLayer::removeStar(StarViewNode *node)
 {
 	node->removeFromParent();
@@ -202,5 +137,19 @@ void StarsLayer::removeStar(StarViewNode *node)
 	if (iter != m_starsSprite.end())
 	{
 		m_starsSprite.erase(iter);
+	}
+}
+
+void StarsLayer::createNewStar(StarNode *node)
+{
+	auto pStarSprite = StarViewNode::create(node);
+	auto grid = node->getAttr().grid;
+	if (pStarSprite)
+	{
+		pStarSprite->setAnchorPoint(ccp(0.5f, 0.5f));
+		CCPoint pos = getPosByGrid(grid);
+		pStarSprite->setPosition(pos);
+		addChild(pStarSprite);
+		m_starsSprite.push_back(pStarSprite);
 	}
 }
