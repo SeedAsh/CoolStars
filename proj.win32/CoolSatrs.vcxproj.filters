@@ -114,6 +114,9 @@
     <ClCompile Include="..\Classes\StarNode.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\DataCheck.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StarNode.h">
       <Filter>GameStage\StageModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DataCheck.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

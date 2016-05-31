@@ -5,6 +5,7 @@
 #include "SoundMgr.h"
 #include "MyPurchase.h"
 #include "DataManager.h"
+#include "DataCheck.h"
 
 USING_NS_CC;
 
@@ -41,17 +42,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	DataManagerSelf->UnzipGameData(false);
 	DataManagerSelf->LoadData();
 
-	if ((2 & 2) != NULL)
-	{
-		CCLOG("..........................................................1");
-	}
-	if ((1 & 2) != NULL)
-	{
-		CCLOG("..........................................................2");
-	}
-	CCLOG("result1================%d", 2 & 2);
-	CCLOG("result2================%d", 32 & 2);
-	CCLOG("result3================%d", 2 & 8);
+	//对数据库数据进行数据校验 正式版本着取消校验
+	DataCheck check;
+	check.checkDataBase();
 
     // turn on display FPS
     pDirector->setDisplayStats(false);
