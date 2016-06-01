@@ -1,11 +1,6 @@
 #ifndef __STAGEMODEL_H__
 #define __STAGEMODEL_H__
 
-#define MOVE_UP 0
-#define MOVE_DOWN 1
-#define MOVE_LEFT 2
-#define MOVE_RIGHT 3
-
 #include "cocos2d.h"
 #include "SavingHelper.h"
 #include "ConfData.h"
@@ -54,7 +49,7 @@ private:
 	void resetStarsData();
     void moveStar(StarNode *node);
 	bool isGridEmpty(const LogicGrid &grid);
-;
+
 private:
 	bool m_isNewStage;
 	int m_curStage;
@@ -64,5 +59,13 @@ private:
 	std::vector<StarNode *> m_starNodes;
 	std::vector<IStageView *> m_views;
 	StageTarget m_target;
+private:
+	enum Direction
+	{
+		kMoveUp		= 1,
+		kMoveDown	= 2,
+		kMoveLeft	= 3,
+		kMoveRight	= 4,
+	};
 };
 #endif

@@ -116,20 +116,6 @@ CCPoint StarsLayer::getPosByGrid(LogicGrid grid)
 	return pos;
 }
 
-StarViewNode *StarsLayer::getStarByGrid(LogicGrid grid)
-{
-	if (grid.x < 0 || grid.x >= COlUMNS_SIZE || grid.y < 0 || grid.y >= ROWS_SIZE)
-		return NULL;
-
-	for (size_t i = 0; i < m_starsSprite.size(); ++i)
-	{
-		auto temp = m_starsSprite[i]->getLogicGrid();
-		if (temp.x == grid.x && temp.y == grid.y)
-			return m_starsSprite[i];
-	}
-	return NULL;
-}
-
 void StarsLayer::removeStar(StarViewNode *node)
 {
 	node->removeFromParent();

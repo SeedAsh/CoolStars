@@ -12,24 +12,12 @@ public :
 	StarViewNode(){}
 	~StarViewNode();
 	
-	int getStarType(){ return m_starType; }
-	int sameType(int type){ return m_starType == type; }
-	LogicGrid getLogicGrid(){ return m_grid; }
-	void setLogicGrid(LogicGrid grid){ m_grid = grid; }
-	bool hasNeighbour();
-	
 	void onClick();
 	void runExplosion();
 	void doMove(LogicGrid targetGrid);
     cocos2d::CCPoint getPosByGrid(LogicGrid grid);
 
 protected:
-	int m_colorIndex;
-	int m_starType;
-	LogicGrid m_grid;
-
-
-
 	bool m_isExploded;
 	StarNode *m_model;
 };

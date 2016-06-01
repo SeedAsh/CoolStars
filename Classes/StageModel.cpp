@@ -4,7 +4,7 @@
 USING_NS_CC;
 using namespace std;
 StageModel::StageModel()
-	: m_curStage(1)
+	: m_curStage(kMoveUp)
 	, m_isNewStage(true)
 	, m_step(0)
 {
@@ -112,13 +112,13 @@ void StageModel::moveStars()
 		auto grid2 = node2->getAttr().grid;
 		switch (getCurDirection())
 		{
-		case MOVE_UP:
+		case kMoveUp:
 			return grid1.y > grid2.y;
-		case MOVE_DOWN:
+		case kMoveDown:
 			return grid1.y < grid2.y;
-		case MOVE_LEFT :
+		case kMoveLeft :
 			return grid1.x < grid2.x;
-		case MOVE_RIGHT:
+		case kMoveRight:
 			return grid1.x > grid2.x;
 		default:
 			return false;
@@ -146,7 +146,7 @@ void StageModel::moveStar(StarNode *node)
     auto targetGrid = curGrid;
     switch (direction)
     {
-        case MOVE_UP :
+        case kMoveUp :
             for (int i = curGrid.y + 1; i < ROWS_SIZE; ++i)
             {
 				LogicGrid temp(curGrid.x, i);
@@ -156,7 +156,7 @@ void StageModel::moveStar(StarNode *node)
                 }
             }
             break;
-        case MOVE_DOWN:
+        case kMoveDown:
             for (int i = 0; i < curGrid.y; ++i)
             {
 				LogicGrid temp(curGrid.x, i);
@@ -166,7 +166,7 @@ void StageModel::moveStar(StarNode *node)
                 }
             }
             break;
-        case MOVE_LEFT:
+        case kMoveLeft:
             for (int i = 0; i < curGrid.x; i++)
             {
 				LogicGrid temp(i, curGrid.y);
@@ -176,7 +176,7 @@ void StageModel::moveStar(StarNode *node)
                 }
             }
             break;	
-        case MOVE_RIGHT:
+        case kMoveRight:
             for (int i = curGrid.x + 1; i < COlUMNS_SIZE; ++i)
             {
 				LogicGrid temp(i, curGrid.y);
@@ -234,7 +234,7 @@ void StageModel::genNewStars()
 	vector<LogicGrid> newGrid;
 	switch (getCurDirection())
 	{
-	case MOVE_UP:
+	case kMoveUp:
 		for (int i = 0; i < COlUMNS_SIZE; ++i)
 		{
 			for (int j = 0; j < emptyGridX[i]; ++j)
@@ -244,7 +244,7 @@ void StageModel::genNewStars()
 			}
 		}
 		break;
-	case MOVE_DOWN:
+	case kMoveDown:
 		for (int i = 0; i < COlUMNS_SIZE; ++i)
 		{
 			for (int j = 0; j < emptyGridX[i]; ++j)
@@ -254,7 +254,7 @@ void StageModel::genNewStars()
 			}
 		}
 		break;
-	case MOVE_LEFT:
+	case kMoveLeft:
 		for (int i = 0; i < ROWS_SIZE; ++i)
 		{
 			for (int j = 0; j < emptyGridY[i]; ++j)
@@ -264,7 +264,7 @@ void StageModel::genNewStars()
 			}
 		}
 		break;
-	case MOVE_RIGHT:
+	case kMoveRight:
 		for (int i = 0; i < ROWS_SIZE; ++i)
 		{
 			for (int j = 0; j < emptyGridY[i]; ++j)

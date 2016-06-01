@@ -18,7 +18,6 @@ public:
 	virtual bool init();
 
 	void initBackground();
-	StarViewNode *getStarByGrid(LogicGrid grid);
 	void initStars();
 	void starInitDone();
 	StarViewNode *getClickedStar(CCPoint pos);
