@@ -42,6 +42,7 @@ int StageModel::getCurDirection()
 void StageModel::initStarsData()
 {
 	resetStarsData();
+	m_target.initTargets();
 	m_currentStageInfo = DataManagerSelf->StagesVec[m_curStage - 1];
 
 	//关卡星星数据是一列列保存的，需要转换
@@ -88,6 +89,8 @@ void StageModel::resetStarsData()
 	m_step = 0;
 	m_curStage = 1;
 	m_isNewStage = true;
+
+	m_target.resetData();
 }
 
 StarNode *StageModel::getStarData(const LogicGrid &grid)

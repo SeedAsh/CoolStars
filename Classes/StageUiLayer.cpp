@@ -12,7 +12,8 @@
 #define Z_ORDER_REWARD Z_ORDER_TITLE
 
 #define SELECTED_SKILL_OFFSET 20
-
+USING_NS_CC;
+using namespace std;
 StageUiLayer::StageUiLayer(void)
       :m_pScoreLabel(NULL),
 	  m_pStepLabel(NULL),
@@ -45,6 +46,16 @@ bool StageUiLayer::init(){
 
 	this->setTouchEnabled(true);
 
+	initTopUi();
+	initPets();
+	initBottomUi();
+
+    return true;
+}
+
+
+void StageUiLayer::initTopUi()
+{
 	char str[100] = { 0 };
 	CCPoint top = VisibleRect::top();
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -63,14 +74,14 @@ bool StageUiLayer::init(){
 	bestSocre->setPosition(ccp(hightScore->getPositionX() + size.width / 2 + bestSocre->getContentSize().width,
 		hightScore->getPositionY()));
 	this->addChild(bestSocre, Z_ORDER_TITLE);
-	
+
 	//stage num
 	msg = (CCString*)text->objectForKey("lev");
-    CCLabelTTF* pStage = CCLabelTTF::create(msg->getCString(), "Arial", 21);
-    pStage->setColor(ccWHITE);
-    size = pStage->getContentSize();
-    pStage->setPosition(ccp(size.width / 2 + 10, hightScore->getPositionY() - hightScore->getContentSize().height - pStage->getContentSize().height));
-    this->addChild(pStage, Z_ORDER_TITLE);
+	CCLabelTTF* pStage = CCLabelTTF::create(msg->getCString(), "Arial", 21);
+	pStage->setColor(ccWHITE);
+	size = pStage->getContentSize();
+	pStage->setPosition(ccp(size.width / 2 + 10, hightScore->getPositionY() - hightScore->getContentSize().height - pStage->getContentSize().height));
+	this->addChild(pStage, Z_ORDER_TITLE);
 
 	CCLabelTTF *pStageLabel = CCLabelTTF::create("1", "Arial", 21);
 	pStageLabel->setColor((ccc3(255, 255, 255)));
@@ -81,11 +92,11 @@ bool StageUiLayer::init(){
 
 	//taget
 	msg = (CCString*)text->objectForKey("tar");
-    CCLabelTTF *pTarget = CCLabelTTF::create(msg->getCString(), "Arial", 21);
-    pTarget->setColor(ccWHITE);
-    size = pTarget->getContentSize();
-    pTarget->setPosition(ccp(visibleSize.width * 2 / 5, pStage->getPositionY()));
-    this->addChild(pTarget, Z_ORDER_TITLE);
+	CCLabelTTF *pTarget = CCLabelTTF::create(msg->getCString(), "Arial", 21);
+	pTarget->setColor(ccWHITE);
+	size = pTarget->getContentSize();
+	pTarget->setPosition(ccp(visibleSize.width * 2 / 5, pStage->getPositionY()));
+	this->addChild(pTarget, Z_ORDER_TITLE);
 
 	CCLabelTTF *pTargetLabel = CCLabelTTF::create("1000", "Arial", 21);
 	pTargetLabel->setColor(ccWHITE);
@@ -110,7 +121,7 @@ bool StageUiLayer::init(){
 	currentCoinBg->setPosition(ccp(VisibleRect::right().x - currentCoinBg->getContentSize().width / 2 - 10, pTarget->getPositionY()));
 	this->addChild(currentCoinBg, Z_ORDER_PROPS_BG);
 	CCSprite* diamondSp = CCSprite::create("diamond.png");
-	diamondSp->setPosition(ccp(diamondSp->getContentSize().width / 4,currentCoinBg->getContentSize().height / 2));
+	diamondSp->setPosition(ccp(diamondSp->getContentSize().width / 4, currentCoinBg->getContentSize().height / 2));
 	currentCoinBg->addChild(diamondSp);
 
 	CCLabelTTF *m_pCoins = CCLabelTTF::create("0", "Arial", 21);
@@ -126,89 +137,130 @@ bool StageUiLayer::init(){
 	pBuy->setPosition(ccp(currentCoinBg->getPositionX() + currentCoinBg->getContentSize().width / 2 - pBuy->getContentSize().width / 2,
 		currentCoinBg->getPositionY()));
 
+	CCMenu *pMenu = CCMenu::create();
+	pMenu->setTouchPriority(1);
+	pMenu->setPosition(CCPointZero);
+	addChild(pMenu, Z_ORDER_PROPS);
+	pMenu->addChild(pBuy);
+
+
+}
+
+CCMenuItemSprite *StageUiLayer::getItemSprite(string fileName, SEL_MenuHandler selector)
+{
+	auto pItemNormal = CCSprite::create(fileName.c_str());
+	auto pItemSelected = CCSprite::create(fileName.c_str());
+	pItemSelected->setScale(1.2f);
+	pItemSelected->setAnchorPoint(ccp(0.5f, 0.5f));
+	return CCMenuItemSprite::create(pItemNormal, pItemSelected, this, selector);
+}
+
+void StageUiLayer::onPetClicked(CCObject *pSender)
+{
+	CCMessageBox("clicked", "clicked");
+}
+
+void StageUiLayer::initPets()
+{
+	/*
+	PetManager::petMgr()->
+	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
+	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
+	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
+	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
+	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
+	*/
+}
+
+void StageUiLayer::initBottomUi()
+{
+	char str[100] = { 0 };
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+
 	//pause
-    CCSprite *pItemNormal = CCSprite::create("Item_pause.png");
-    CCSprite *pItemSelected = CCSprite::create("Item_pause.png");
-    CCMenuItem *pPause = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::onPauseBtnClicked));
-    pItemSelected->setScale(1.1f);
-    pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
-    size = pPause->getContentSize();
+	CCSprite *pItemNormal = CCSprite::create("Item_pause.png");
+	CCSprite *pItemSelected = CCSprite::create("Item_pause.png");
+	CCMenuItem *pPause = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::onPauseBtnClicked));
+	pItemSelected->setScale(1.1f);
+	pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
+	CCSize size = pPause->getContentSize();
 	pPause->setPosition(ccp(size.width * 0.5f, size.height *0.5f));
-	 
+
+	//menu for ui buttons 
+	CCMenu *pMenu = CCMenu::create();
+	pMenu->setTouchPriority(1);
+	pMenu->setPosition(CCPointZero);
+	addChild(pMenu, Z_ORDER_PROPS);
+	pMenu->addChild(pPause);
+
 	//current score
 	m_pScoreLabel = CCLabelTTF::create("0", "Arial", 32);
 	m_pScoreLabel->setColor(ccWHITE);
 	m_pScoreLabel->setPosition(ccp(VisibleRect::center().x - 16 * 3, pPause->getPositionY()));
 	this->addChild(m_pScoreLabel, Z_ORDER_TITLE);
 
+	/*
 	m_pScoreHint = CCLabelTTF::create("", "Arial", 21);
 	m_pScoreHint->setPosition(ccp(VisibleRect::center().x,
 		pTargetLabel->getPositionY() - size.height - m_pScoreHint->getContentSize().height - 80));
 	m_pScoreHint->setColor(ccWHITE);
 	this->addChild(m_pScoreHint, Z_ORDER_TITLE);
+	*/
 
-	//menu for ui buttons 
-    CCMenu *pMenu = CCMenu::create();
-    pMenu->setTouchPriority(1);
-    pMenu->setPosition(CCPointZero);
-    addChild(pMenu, Z_ORDER_PROPS);
-	pMenu->addChild(pPause);
-	pMenu->addChild(pBuy);
-
-    float leftX = VisibleRect::center().x;
+	//props
+	float leftX = VisibleRect::center().x;
 	float propsY = VisibleRect::rightBottom().y + 10;
 	float propsX = VisibleRect::rightBottom().x - 10;
 	//bomb btn
-    pItemNormal = CCSprite::create("Props_Bomb.png");
-    pItemSelected = CCSprite::create("Props_Bomb.png");
-    pItemSelected->setScale(1.2f);
+	pItemNormal = CCSprite::create("Props_Bomb.png");
+	pItemSelected = CCSprite::create("Props_Bomb.png");
+	pItemSelected->setScale(1.2f);
 	pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
-    CCMenuItemSprite* pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
+	CCMenuItemSprite* pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
 	pMagic->setAnchorPoint(ccp(1, 0));
 	pMagic->setPosition(ccp(propsX, propsY));
 	propsX -= pMagic->getContentSize().width * 1.2f;
-    pMenu->addChild(pMagic);
+	pMenu->addChild(pMagic);
 	if (GameData::getInstance()->m_nUseProType != USE_PRO_TYPE_COINONLY){
-		m_pBombLabel = CCLabelTTF::create(CCString::createWithFormat("%d",UserInfo::getProCount(USERINFO_PRO_TYPE_BOMB))->getCString(), "Arial", 18);
-		m_pBombLabel->setPosition(ccp(pMagic->getContentSize().width - m_pBombLabel->getContentSize().width / 2,0));
+		m_pBombLabel = CCLabelTTF::create(CCString::createWithFormat("%d", UserInfo::getProCount(USERINFO_PRO_TYPE_BOMB))->getCString(), "Arial", 18);
+		m_pBombLabel->setPosition(ccp(pMagic->getContentSize().width - m_pBombLabel->getContentSize().width / 2, 0));
 		pMagic->addChild(m_pBombLabel);
 	}
 
 	//panit btn
-    leftX = pMagic->getPositionX();
-    pItemNormal = CCSprite::create("Props_Paint.png");
-    pItemSelected = CCSprite::create("Props_Paint.png");
-    pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
-    pItemSelected->setScale(1.2f);
-    pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
+	leftX = pMagic->getPositionX();
+	pItemNormal = CCSprite::create("Props_Paint.png");
+	pItemSelected = CCSprite::create("Props_Paint.png");
+	pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
+	pItemSelected->setScale(1.2f);
+	pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
 	pMagic->setAnchorPoint(ccp(1, 0));
 	pMagic->setPosition(ccp(propsX, propsY));
 	propsX -= pMagic->getContentSize().width * 1.2f;;
-    pMenu->addChild(pMagic);
+	pMenu->addChild(pMagic);
 	if (GameData::getInstance()->m_nUseProType != USE_PRO_TYPE_COINONLY){
-		m_pPaintLabel = CCLabelTTF::create(CCString::createWithFormat("%d",UserInfo::getProCount(USERINFO_PRO_TYPE_PAINT))->getCString(), "Arial", 18);
-		m_pPaintLabel->setPosition(ccp(pMagic->getContentSize().width- m_pPaintLabel->getContentSize().width / 2,0));
+		m_pPaintLabel = CCLabelTTF::create(CCString::createWithFormat("%d", UserInfo::getProCount(USERINFO_PRO_TYPE_PAINT))->getCString(), "Arial", 18);
+		m_pPaintLabel->setPosition(ccp(pMagic->getContentSize().width - m_pPaintLabel->getContentSize().width / 2, 0));
 		pMagic->addChild(m_pPaintLabel);
 	}
 
 	//rainbow btn
-    leftX = pMagic->getPositionX();
-    pItemNormal = CCSprite::create("Props_Rainbow.png");
-    pItemSelected = CCSprite::create("Props_Rainbow.png");
-    pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
-    pItemSelected->setScale(1.2f);
-    pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
+	leftX = pMagic->getPositionX();
+	pItemNormal = CCSprite::create("Props_Rainbow.png");
+	pItemSelected = CCSprite::create("Props_Rainbow.png");
+	pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
+	pItemSelected->setScale(1.2f);
+	pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
 	pMagic->setAnchorPoint(ccp(1, 0));
 	pMagic->setPosition(ccp(propsX, propsY));
 	propsX -= pMagic->getContentSize().width * 1.2f;
-    pMenu->addChild(pMagic);
+	pMenu->addChild(pMagic);
 	if (GameData::getInstance()->m_nUseProType != USE_PRO_TYPE_COINONLY){
-		m_pReflashLabel = CCLabelTTF::create(CCString::createWithFormat("%d",UserInfo::getProCount(USERINFO_PRO_TYPE_REFLASH))->getCString(), "Arial", 18);
-		m_pReflashLabel->setPosition(ccp(pMagic->getContentSize().width - m_pReflashLabel->getContentSize().width / 2,0));
+		m_pReflashLabel = CCLabelTTF::create(CCString::createWithFormat("%d", UserInfo::getProCount(USERINFO_PRO_TYPE_REFLASH))->getCString(), "Arial", 18);
+		m_pReflashLabel->setPosition(ccp(pMagic->getContentSize().width - m_pReflashLabel->getContentSize().width / 2, 0));
 		pMagic->addChild(m_pReflashLabel);
 	}
 
-    return true;
 }
 
 void StageUiLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent){

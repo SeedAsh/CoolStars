@@ -11,6 +11,7 @@
 #include "ConfData.h"
 #include "StarNode.h"
 #include "DataManager.h"
+#include "StageTarget.h"
 
 #define NOTIFY_VIEWS(_FUNC_ ,...)						\
 for (size_t index = 0; index < m_views.size(); ++index) \
@@ -62,5 +63,6 @@ private:
 	SavingHelper m_savingHelper;
 	std::vector<StarNode *> m_starNodes;
 	std::vector<IStageView *> m_views;
+	StageTarget m_target;
 };
 #endif

@@ -144,6 +144,15 @@
     <ClCompile Include="..\Classes\StageTarget.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\ScaleDialog.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PetScene.cpp">
+      <Filter>Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SqliteHelper.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -262,6 +271,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StageTarget.h">
       <Filter>GameStage\StageModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScaleDialog.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PetScene.h">
+      <Filter>Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SqliteHelper.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

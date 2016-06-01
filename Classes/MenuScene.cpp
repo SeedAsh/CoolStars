@@ -12,6 +12,8 @@
 #include "QuickBuyScene.h"
 #include "StageUiLayer.h"
 #include "StarUtil.h"
+#include "PetScene.h"
+#include "SqliteHelper.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 //#include "MyPurchaseIOS.h"
 #endif

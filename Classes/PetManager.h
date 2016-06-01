@@ -8,6 +8,7 @@ class PetManager
 public:
 	static PetManager *petMgr();
 	void loadPetsData();
+	void getCurPetsInfo(int color = 0);
 private:
 	PetManager();
 	~PetManager();

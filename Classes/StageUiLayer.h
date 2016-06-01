@@ -30,6 +30,9 @@ public:
 
     static StageUiLayer *create();
     virtual bool init();
+	void initTopUi();
+	void initPets();
+	void initBottomUi();
     virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
 public:
 	void stepsChanged();
@@ -43,6 +46,8 @@ private:
 
 	void onPauseBtnClicked(CCObject *pSender);
 	void menuCallback(CCObject *pSender);
+	CCMenuItemSprite *getItemSprite(std::string fileName, SEL_MenuHandler selector);
+	void onPetClicked(CCObject *pSender);
 private:
     CCLabelTTF *m_pScoreLabel;
 	CCLabelTTF *m_pStepLabel;
