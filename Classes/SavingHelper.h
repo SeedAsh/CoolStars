@@ -10,19 +10,19 @@
 #define OK 1
 
 
-
 class SavingHelper
 {
 public:
-	SavingHelper();
+	static SavingHelper *theHelper();
 	~SavingHelper();
 
-	int saveCurState();
-	std::vector<std::vector<int>> getLastState();
+	void saveCurStars();
+	void setPetsData();
+	void getLastSaving(std::vector<std::vector<int>> &stars);
+	void loadPetsData();
 private:
+	SavingHelper();
 
-	void putInt(int src, FILE* file);
-	int xorEncDecInt(int i);
 };
 
 #endif

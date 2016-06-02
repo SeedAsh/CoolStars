@@ -4,12 +4,14 @@
 #include "GameData.h"
 #include "SoundMgr.h"
 #include "MenuScene.h"
+#include "PauseLayer.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
 #define Z_ORDER_TITLE_BG (Z_ORDER_PROPS + 1)
 #define Z_ORDER_TITLE (Z_ORDER_TITLE_BG + 1)
-#define Z_ORDER_REWARD Z_ORDER_TITLE
+#define Z_ORDER_REWARD (Z_ORDER_TITLE + 1)
+#define Z_ORDER_PAUSE (Z_ORDER_REWARD + 1)
 
 #define SELECTED_SKILL_OFFSET 20
 USING_NS_CC;
@@ -142,8 +144,6 @@ void StageUiLayer::initTopUi()
 	pMenu->setPosition(CCPointZero);
 	addChild(pMenu, Z_ORDER_PROPS);
 	pMenu->addChild(pBuy);
-
-
 }
 
 CCMenuItemSprite *StageUiLayer::getItemSprite(string fileName, SEL_MenuHandler selector)
@@ -344,5 +344,6 @@ void StageUiLayer::coinsChanged()
 
 void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 {
-	onQuitGame();
+	addChild(PauseLayer::create(), Z_ORDER_PAUSE);
+	//onQuitGame();
 }

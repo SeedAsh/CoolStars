@@ -1,15 +1,15 @@
 #include "PauseLayer.h"
 #include "VisibleRect.h"
+#include "StageModel.h"
+#include "MenuScene.h"
 
 PauseLayer::PauseLayer(void)
 {
-    m_pOnSaveListener = NULL;
 }
 
 
 PauseLayer::~PauseLayer(void)
 {
-    CC_SAFE_RELEASE_NULL(m_pOnSaveListener);
 }
 
 bool PauseLayer::ccTouchBegan( CCTouch *pTouch, CCEvent *pEvent )
@@ -59,10 +59,8 @@ void PauseLayer::menuResumeCallback(CCObject* pSender)
 }
 
 void PauseLayer::menuSaveCallback(CCObject* pSender){
-    if (m_pOnSaveListener){
-        m_pOnSaveListener->execute();
-    }
-    getParent()->removeChild(this);
+	StageModel::theModel()->doSave();
+	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 }
 
 void PauseLayer::onEnter(){

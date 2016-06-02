@@ -3,21 +3,21 @@
 USING_NS_CC;
 using namespace std;
 
-SqliteHelper::SqliteHelper( )
+SqliteHelper::SqliteHelper(const char* dbPath)
 {
-	string dbPath;
+	/*
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	dbPath = DB_FILE_PATH;
 #else
 	dbPath = CCFileUtils::sharedFileUtils()->getWritablePath() + DB_NAME;
 #endif
-
-	m_pGameDataBase = prepareTableInDB("", dbPath.c_str());
+*/
+	m_pGameDataBase = prepareTableInDB(dbPath);
 }
 
 SqliteHelper::~SqliteHelper()
 {
-	sqlite3_close(m_pGameDataBase);
+	closeDB();
 }
 
 vector<vector<char *>> SqliteHelper::readRecord(const char *sql_str)
@@ -49,7 +49,7 @@ vector<vector<char *>> SqliteHelper::readRecord(const char *sql_str)
 	return record;
 }
 
-sqlite3* SqliteHelper::prepareTableInDB(const char* table, const char* dbFilename)
+sqlite3* SqliteHelper::prepareTableInDB(const char* dbFilename)
 {
 	sqlite3 *splite2Data = 0;
 	char *errMsg = 0;
@@ -102,9 +102,40 @@ void SqliteHelper::insertRecordIntoSqlite(const char *sql_str)
 	} while (0);
 }
 
+void SqliteHelper::clearTable(const char *tabelName)
+{
+	string sql_str = "delete from ";
+	sql_str += tabelName;
+	sql_str += " ;";
+	char *perrMsg = 0;
+	int info = sqlite3_exec(m_pGameDataBase,
+		sql_str.c_str(),
+		0,
+		0,
+		&perrMsg);
+
+	if (perrMsg != 0) {
+		CCLOG("clear table data failed\n");
+	}
+	{
+		CCLOG("clear table data succeed");
+	}
+}
+
+void SqliteHelper::openDB(const char* dbPath)
+{
+	closeDB();
+	m_pGameDataBase = prepareTableInDB(dbPath);
+}
+
+
 void SqliteHelper::closeDB()
 {
-	sqlite3_close(m_pGameDataBase);
+	if (m_pGameDataBase)
+	{
+		sqlite3_close(m_pGameDataBase);
+		m_pGameDataBase = NULL;
+	}
 }
 
 /*

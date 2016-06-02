@@ -3,8 +3,8 @@
 #include "cocos2d.h"
 
 #define ZORDER_BACKGROUND 0 
-#define	ZORDE_UI  10
-#define ZORDER_STARS	20
+#define ZORDER_STARS 10 
+#define	ZORDE_UI  20
 class StageScene :
 	public cocos2d::CCLayer
 {

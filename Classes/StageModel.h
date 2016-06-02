@@ -28,16 +28,18 @@ class StageModel
 public:
 	static StageModel *theModel();
 
-	StarNode *getStarData(const LogicGrid &grid);
+	StarNode *getStarNode(const LogicGrid &grid);
 	std::vector<StarNode *> &getStarDatas(){ return m_starNodes; }
 
-	void saveStage(){ m_savingHelper.saveCurState(); }
 	void initStarsData();
     void moveStars();
 	void removeStarNode(StarNode *node);
 	void genNewStars();
 
 	void moveOneStep();
+	void doSave();
+
+	void setIsNewStage(bool isNewStage){m_isNewStage = isNewStage;}
 public:
 	void addView(IStageView *view);
 	void removeView(IStageView *view);
@@ -51,11 +53,12 @@ private:
 	bool isGridEmpty(const LogicGrid &grid);
 
 private:
-	bool m_isNewStage;
+	bool m_isNewStage;//是否为新关卡
 	int m_curStage;
 	int m_step;
+	int m_curScore;
+	int m_highScore;
 	StageInfo m_currentStageInfo;
-	SavingHelper m_savingHelper;
 	std::vector<StarNode *> m_starNodes;
 	std::vector<IStageView *> m_views;
 	StageTarget m_target;

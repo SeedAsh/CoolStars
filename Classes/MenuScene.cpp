@@ -14,6 +14,7 @@
 #include "StarUtil.h"
 #include "PetScene.h"
 #include "SqliteHelper.h"
+#include "StageModel.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 //#include "MyPurchaseIOS.h"
 #endif
@@ -233,6 +234,7 @@ void MenuScene::NewGame( CCObject* sender ){
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
+	StageModel::theModel()->setIsNewStage(true);
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
     CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));
 }
@@ -241,6 +243,7 @@ void MenuScene::ResumeGame( CCObject* sender ){
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
+	StageModel::theModel()->setIsNewStage(false);
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
     if (StarUtil::hasSavedState()){
         CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));

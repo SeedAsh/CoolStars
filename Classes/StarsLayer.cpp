@@ -36,7 +36,7 @@ bool StarsLayer::init()
 
 StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
 {
-	StarNode *nodeData = StageModel::theModel()->getStarData(grid);
+	StarNode *nodeData = StageModel::theModel()->getStarNode(grid);
 	if (nodeData)
 	{
 		return StarViewNode::create(nodeData);

@@ -9,33 +9,44 @@ StarNode *StarNode::createNodeFatory(StarAttr &attr)
 {
 	switch (attr.type)
 	{
-	case kColorStar:
-		return new ColorStar(attr);
-		break;
+	case kRedStar:
+		return new ColorStar(attr ,kRed);
+	case kYellowStar:
+		return new ColorStar(attr, kYellow);
+	case kBlueStar:
+		return new ColorStar(attr, kBlue);
+	case kGreenStar:
+		return new ColorStar(attr, kGreen);
+	case kPurpleStar :
+		return new ColorStar(attr, kPurple);
 	case kStone:
 		return new StoneNode();
-		break;
 	case kDeadVine:
 		return new DeadVineNode();
-		break;
 	case kLiveVine:
 		return new LiveVineNode();
-		break;
 	case kIron:
 		return new IronNode();
-		break;
-	case kBounceBall:
-		return new BounceBallNode();
-		break;
-	case kdiamant:
-		return new diamantNode();
-		break;
+	case kdiamond:
+		return new diamondNode();
 	case kKey:
 		return new KeyNode();
-		break;
 	case kBomb:
 		return new BombNode();
-		break;
+	case kBounceRedBall:
+		return new BounceBallNode();
+	case kBounceYellowBall:
+		return new BounceBallNode();
+	case kBounceBlueBall:
+		return new BounceBallNode();
+	case kBounceGreenBall:
+		return new BounceBallNode();
+	case kBouncePurpleBall:
+		return new BounceBallNode();
+	case kRandomColorStar:
+		return new ColorStar(attr, kRandom);
+	case kRandomBounceBall:
+		return new BounceBallNode();
 	default:
 		return NULL;
 		assert("no this node type!");
@@ -46,7 +57,11 @@ StarNode::StarNode(StarAttr &attr)
     : m_attr(attr)
 	, m_view(NULL)
 {
-    
+}
+
+const StarsConfig &StarNode::getConfig()
+{
+	return DataManagerSelf->getStarsConfig(m_attr.type);
 }
 
 void StarNode::handleClick()
@@ -110,11 +125,11 @@ vector<StarNode *> StarNode::getNeighbours()
 	for (int i = 0; i < 4; ++i)
 	{
         auto temp = LogicGrid(grid.x + arr[i][0], grid.y + arr[i][1]);
-		StarNode *neighbour = StageModel::theModel()->getStarData(temp);
+		StarNode *neighbour = StageModel::theModel()->getStarNode(temp);
 		
 		if (neighbour != NULL)
 		{
-			if (neighbour->getAttr().color == m_attr.color)
+			if (neighbour->isNeighbour(m_attr.type))
 			{
 				neighbours.push_back(neighbour);
 			}
@@ -130,4 +145,11 @@ void StarNode::moveTo(LogicGrid grid)
 	{
 		m_view->doMove(grid);
 	}
+}
+
+
+
+bool ColorStar::isNeighbour(int type)
+{
+	return m_attr.type == type;
 }

@@ -7,17 +7,6 @@
 int StarUtil::m_nDirection = 0;
 int StarUtil::m_nCurDirectionIndex = 0;
 
-string g_starFrameNameArray[][2] = {
-	{ "stars/star1.png", "stars/star1.png" },
-	{ "stars/star2.png", "stars/star2.png" },
-	{ "stars/star3.png", "stars/star3.png" },
-	{ "stars/star4.png", "stars/star4.png" },
-	{ "stars/star5.png", "stars/star5.png" },
-	{ "stars/bomb.png", "stars/bomb.png" },
-	{ "stars/diamond.png", "stars/diamond.png" },
-	{ "stars/stone.png", "stars/stone.png" }
-};
-
 //Withered timbo
 string g_trapFrameNameArray[3] = {
 	"iceball.png"

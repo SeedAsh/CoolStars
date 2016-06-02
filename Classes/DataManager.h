@@ -241,6 +241,23 @@ struct GameString      //ÖÐÎÄ×Ö
 	string desc;      
 };
 
+struct StarsConfig
+{
+	int id;
+	string desc;
+	int score;
+	string resPath;
+	int extra;
+	string explosionPath;
+};
+
+struct CurState
+{
+	int curStage;
+	int curScore;
+	int topScore;
+};
+
 class DataManager
 {
 public:
@@ -297,6 +314,17 @@ public:
 	vector<LuckyConfigs> LuckyConfigsVec;
 	vector<GideConfig> GuideConfigVec;
 	vector<GameString> GameStringVec;
+
+
+public:
+	void loadStarsConfig();
+	const StarsConfig &getStarsConfig(int starType);
+
+	void loadCurState();
+	const CurState &getCurState();
+private:
+	vector<StarsConfig> m_starsConfig;
+	CurState m_curState;
 };
 
 #endif

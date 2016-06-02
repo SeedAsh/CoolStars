@@ -2,6 +2,7 @@
 #define __PAUSE_LAYER_H__
 
 #include "cocos2d.h"
+#include <functional>
 USING_NS_CC;
 
 class PauseLayer :
@@ -21,19 +22,14 @@ public:
 
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 
-    inline void setOnSaveListener(CCCallFunc *listener) {
-        if (listener)
-        {
-            m_pOnSaveListener = listener;
-            m_pOnSaveListener->retain();
-        }
-    }
+	void setOnSaveListener(std::function<void()> listener){ m_pOnSaveListener = listener; }
+ 
 
     void menuResumeCallback(CCObject* pSender);
     void menuSaveCallback(CCObject* pSender);
 
 private:
-    CCCallFunc *m_pOnSaveListener;
+	std::function<void()>  m_pOnSaveListener;
 };
 
 #endif //__PAUSE_LAYER_H__

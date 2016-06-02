@@ -1,20 +1,48 @@
 #ifndef __STARNODE_H__
 #define __STARNODE_H__
 #include "cocos2d.h"
+#include "DataManager.h"
 
 #define  CONNECT_COUNT 2
 enum StarType
 {
-	kColorStar = 1,
+	kEmpty,
+
+	kRedStar,
+	kYellowStar,
+	kBlueStar,
+	kGreenStar,
+	kPurpleStar,
+
 	kStone,
 	kDeadVine,
 	kLiveVine,
-	kIron,
-	kBounceBall,
-	kdiamant,
-	kKey,
-	kBomb
 
+	kIron,
+	kdiamond,
+	kKey,
+	kBomb,
+
+	kBounceRedBall,
+	kBounceYellowBall,
+	kBounceBlueBall,
+	kBounceGreenBall,
+	kBouncePurpleBall,
+
+	kRandomColorStar,
+	kRandomBounceBall,
+	
+	kStarTypeCount,
+};
+
+enum StarColors
+{
+	kRandom,
+	kRed,
+	kYellow,
+	kBlue,
+	kGreen,
+	kPurple,
 };
 
 //Âß¼­Íø¸ñ£¬×óÏÂ½ÇÎª[0,0]
@@ -37,7 +65,6 @@ struct LogicGrid
 struct StarAttr
 {
 	int type;
-	int color;
 	LogicGrid grid;
 };
 
@@ -56,12 +83,17 @@ public:
 	void runExplosion();
 
     void moveTo(LogicGrid grid);
+
+	const StarsConfig &getConfig();
+
+public:
+	virtual bool isNeighbour(int type){ return false; }
 protected:
 	StarNode(){}
     StarNode(StarAttr &attr);
 private:
 	void getConnectedStars(StarNode *node, std::vector<StarNode *> &connectedNodes);
-private:
+protected:
 	StarAttr m_attr;
 	StarViewNode *m_view;
 };
@@ -69,8 +101,12 @@ private:
 class ColorStar : public StarNode
 {
 public:
-	ColorStar(StarAttr &attr) : StarNode(attr){}
+	ColorStar(StarAttr &attr, int color) : StarNode(attr), m_color(color){}
 	~ColorStar(){}
+public:
+	virtual bool isNeighbour(int type);
+private:
+	int m_color;
 };
 
 
@@ -118,12 +154,12 @@ public:
 	~BounceBallNode(){}
 };
 
-class diamantNode : public StarNode
+class diamondNode : public StarNode
 {
 public:
 
-	diamantNode(){}
-	~diamantNode(){}
+	diamondNode(){}
+	~diamondNode(){}
 };
 
 class KeyNode : public StarNode

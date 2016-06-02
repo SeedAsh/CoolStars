@@ -1,4 +1,6 @@
 #include "DataManager.h"
+#include "SqliteHelper.h"
+#include "StarNode.h"
 
 #define DB_NAME "coolstar.db"
 #define DB_FILE_PATH "data/coolstar.db"
@@ -47,6 +49,9 @@ void DataManager::LoadData()
 	loadBallConfigDataEx();*/
 	LoadPetlistData();
 	loadStageConfigDataEx();
+	
+	loadStarsConfig();
+	loadCurState();
 	/*LoadBallQueueDataEx();
 	LoadStageViewToolsData();
 	LoadLuckyConfigsData();
@@ -1270,4 +1275,64 @@ void DataManager::loadGameString()
 	sqlite3_free_table(dbResult);
 	sqlite3_close(pDB);
 	sqlite3_free(errMsg);
+}
+
+
+void DataManager::loadStarsConfig()
+{
+	SqliteHelper helper(DB_COOLSTAR);
+	auto result = helper.readRecord("select * from stars");
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		StarsConfig config;
+		assert((*iter).size() == 6);
+
+		config.id = atoi((*iter)[0]);
+		config.desc = (*iter)[1];
+		config.score = atoi((*iter)[2]);
+		config.resPath = (*iter)[3];
+		config.extra = atoi((*iter)[4]); 
+		config.explosionPath = (*iter)[5];
+
+		m_starsConfig.push_back(config);
+	}
+}
+
+const StarsConfig &DataManager::getStarsConfig(int starType)
+{ 
+	assert(starType > kEmpty && starType < kStarTypeCount);
+	if (starType > kEmpty && starType < kStarTypeCount)
+	{
+		return m_starsConfig[starType - 1];
+	}
+	else
+	{
+		return m_starsConfig[0];
+	}
+}
+
+void DataManager::loadCurState()
+{
+	SqliteHelper helper(DB_SAVING);
+	auto result = helper.readRecord("select * from save_curState");
+	//只有一行数据
+	assert(result.size() == 1 && result[0].size() == 3);
+	if (result.size() > 1 && result[0].size() >=3)
+	{
+		m_curState.curStage = atoi(result[0][0]);
+		m_curState.curScore = atoi(result[0][1]);
+		m_curState.topScore = atoi(result[0][2]);
+	}
+	else
+	{
+		m_curState.curStage = 1;
+		m_curState.curScore = 0;
+		m_curState.topScore = 0;
+	}
+	
+}
+
+const CurState &DataManager::getCurState()
+{
+	return m_curState;
 }

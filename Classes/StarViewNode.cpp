@@ -34,8 +34,8 @@ StarViewNode::~StarViewNode()
 }
 bool StarViewNode::init()
 {
-	auto attr = m_model->getAttr();
-	string fileName = g_starFrameNameArray[attr.color - 1][1];
+	auto config = m_model->getConfig();
+	string fileName = config.resPath;
 	CCSprite *spr = CCSprite::create(fileName.c_str());
 	CCSize size = spr->getContentSize();
 	spr->setPosition(ccp(size.width * 0.5, size.height * 0.5f));
@@ -68,8 +68,8 @@ void StarViewNode::doMove(LogicGrid targetGrid)
 
 void StarViewNode::runExplosion(){
 	CCParticleExplosion *pEmitter = CCParticleExplosion::create();
-	auto attr = m_model->getAttr();
-	string fileImage = s_stars[attr.color - 1];
+	auto config = m_model->getConfig();
+	string fileImage = config.explosionPath;
 	if (fileImage.empty()) return;
 	pEmitter->setTexture(CCTextureCache::sharedTextureCache()->addImage(fileImage.c_str()));
 	pEmitter->setAutoRemoveOnFinish(true);
