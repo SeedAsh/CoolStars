@@ -153,6 +153,15 @@
     <ClCompile Include="..\Classes\SqliteHelper.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameDataPreLoader.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PetView.cpp">
+      <Filter>Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TouchNode.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -279,6 +288,18 @@
       <Filter>Pet</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SqliteHelper.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameDataPreLoader.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonMacros.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PetView.h">
+      <Filter>Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TouchNode.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

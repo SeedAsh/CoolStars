@@ -29,7 +29,7 @@ public:
 	static StageModel *theModel();
 
 	StarNode *getStarNode(const LogicGrid &grid);
-	std::vector<StarNode *> &getStarDatas(){ return m_starNodes; }
+	std::vector<StarNode *> &getStarNodes(){ return m_starNodes; }
 
 	void initStarsData();
     void moveStars();
@@ -37,9 +37,13 @@ public:
 	void genNewStars();
 
 	void moveOneStep();
+	int getStep(){ return m_step;}
+	void setStep(int step){ m_step = step; }
 	void doSave();
 
 	void setIsNewStage(bool isNewStage){m_isNewStage = isNewStage;}
+
+	void replaceStar(const StarAttr &attr);
 public:
 	void addView(IStageView *view);
 	void removeView(IStageView *view);

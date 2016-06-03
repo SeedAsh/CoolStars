@@ -138,6 +138,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\DataManager.cpp" />
     <ClCompile Include="..\Classes\ExitLayer.cpp" />
     <ClCompile Include="..\Classes\GameData.cpp" />
+    <ClCompile Include="..\Classes\GameDataPreLoader.cpp" />
     <ClCompile Include="..\Classes\HelpLayer.cpp" />
     <ClCompile Include="..\Classes\LoginLayer.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
@@ -147,6 +148,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PetManager.cpp" />
     <ClCompile Include="..\Classes\PetScene.cpp" />
     <ClCompile Include="..\Classes\PetSkill.cpp" />
+    <ClCompile Include="..\Classes\PetView.cpp" />
     <ClCompile Include="..\Classes\PropItem.cpp" />
     <ClCompile Include="..\Classes\PropManager.cpp" />
     <ClCompile Include="..\Classes\QuickBuyScene.cpp" />
@@ -167,6 +169,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StarsLayer.cpp" />
     <ClCompile Include="..\Classes\StarUtil.cpp" />
     <ClCompile Include="..\Classes\StarViewNode.cpp" />
+    <ClCompile Include="..\Classes\TouchNode.cpp" />
     <ClCompile Include="..\Classes\UserInfo.cpp" />
     <ClCompile Include="..\Classes\VisibleRect.cpp" />
     <ClCompile Include="main.cpp" />
@@ -175,12 +178,14 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AppMacros.h" />
     <ClInclude Include="..\Classes\CCUserDefaultEx.h" />
+    <ClInclude Include="..\Classes\CommonMacros.h" />
     <ClInclude Include="..\Classes\ConfData.h" />
     <ClInclude Include="..\Classes\ConfirmLayer.h" />
     <ClInclude Include="..\Classes\DataCheck.h" />
     <ClInclude Include="..\Classes\DataManager.h" />
     <ClInclude Include="..\Classes\ExitLayer.h" />
     <ClInclude Include="..\Classes\GameData.h" />
+    <ClInclude Include="..\Classes\GameDataPreLoader.h" />
     <ClInclude Include="..\Classes\HelpLayer.h" />
     <ClInclude Include="..\Classes\LoginLayer.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
@@ -191,6 +196,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PetManager.h" />
     <ClInclude Include="..\Classes\PetScene.h" />
     <ClInclude Include="..\Classes\PetSkill.h" />
+    <ClInclude Include="..\Classes\PetView.h" />
     <ClInclude Include="..\Classes\PropItem.h" />
     <ClInclude Include="..\Classes\PropManager.h" />
     <ClInclude Include="..\Classes\QuickBuyScene.h" />
@@ -211,6 +217,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StarsLayer.h" />
     <ClInclude Include="..\Classes\StarUtil.h" />
     <ClInclude Include="..\Classes\StarViewNode.h" />
+    <ClInclude Include="..\Classes\TouchNode.h" />
     <ClInclude Include="..\Classes\UserInfo.h" />
     <ClInclude Include="..\Classes\VisibleRect.h" />
     <ClInclude Include="main.h" />

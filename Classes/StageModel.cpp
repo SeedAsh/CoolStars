@@ -59,7 +59,7 @@ void StageModel::initStarsData()
 	{
 		//返回的数据是保存行的
 		vector<vector<int>> StageVec;
-		SavingHelper::theHelper()->getLastSaving(StageVec);
+		SavingHelper::theHelper()->getLastSavedStars(StageVec);
 
 		for (int row = 0; row < ROWS_SIZE; ++row)
 		{
@@ -351,9 +351,20 @@ void StageModel::doSave()
 	sql += str;
 	sprintf(str, "%d", m_highScore);
 	sql += str;
-	sql += ");";
+	sql += ",\"1,6,12\");";
 	helper.insertRecordIntoSqlite(sql.c_str());
 
 	helper.closeDB();
 
+}
+
+void StageModel::replaceStar(const StarAttr &attr)
+{
+	auto grid = attr.grid;
+	StarNode *node = getStarNode(grid);
+	if (!node) return;
+
+	node->removeSelf();
+	m_starNodes.push_back(StarNode::createNodeFatory(attr));
+	NOTIFY_VIEWS(createNewStar, node);
 }

@@ -5,20 +5,20 @@
 using namespace cocos2d;
 using namespace std;
 
-StarNode *StarNode::createNodeFatory(StarAttr &attr)
+StarNode *StarNode::createNodeFatory(const StarAttr &attr)
 {
 	switch (attr.type)
 	{
 	case kRedStar:
-		return new ColorStar(attr ,kRed);
+		return new ColorStar(attr ,kColorRed);
 	case kYellowStar:
-		return new ColorStar(attr, kYellow);
+		return new ColorStar(attr, kColorYellow);
 	case kBlueStar:
-		return new ColorStar(attr, kBlue);
+		return new ColorStar(attr, kColorBlue);
 	case kGreenStar:
-		return new ColorStar(attr, kGreen);
+		return new ColorStar(attr, kColorGreen);
 	case kPurpleStar :
-		return new ColorStar(attr, kPurple);
+		return new ColorStar(attr, kColorPurple);
 	case kStone:
 		return new StoneNode();
 	case kDeadVine:
@@ -44,7 +44,7 @@ StarNode *StarNode::createNodeFatory(StarAttr &attr)
 	case kBouncePurpleBall:
 		return new BounceBallNode();
 	case kRandomColorStar:
-		return new ColorStar(attr, kRandom);
+		return new ColorStar(attr, kColorRandom);
 	case kRandomBounceBall:
 		return new BounceBallNode();
 	default:
@@ -89,6 +89,15 @@ void StarNode::runExplosion()
 	if (m_view)
 	{
 		m_view->runExplosion();
+	}
+	StageModel::theModel()->removeStarNode(this);
+}
+
+void StarNode::removeSelf()
+{
+	if (m_view)
+	{
+		m_view->removeSelf();
 	}
 	StageModel::theModel()->removeStarNode(this);
 }

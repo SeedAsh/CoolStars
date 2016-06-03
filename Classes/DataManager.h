@@ -29,6 +29,7 @@ struct AchieveData
 	int has;
 };
 
+/*
 struct PetData
 {
 	int id;
@@ -43,7 +44,7 @@ struct PetData
 	int probabilty;
 	float duration;
 };
-
+*/
 struct ShoptoolsData
 {
 	int id;
@@ -256,6 +257,18 @@ struct CurState
 	int curStage;
 	int curScore;
 	int topScore;
+	vector<int> save_pet_ids;
+};
+
+struct PetsConfig
+{
+	int id;
+	int skillId;
+	vector<int> energy;
+	vector<int> count;
+	vector<int> upgrade;
+	vector<string> iconPath;
+	string desc;
 };
 
 class DataManager
@@ -299,7 +312,6 @@ public:
 	void loadGuideConfig();
 	void loadGameString();
 	vector<AchieveData> AchieveVec;
-	vector<PetData> PetVec;
 	vector<ShoptoolsData> ShoptoolsVec;
 	vector<MoneyshopData> MoneyshopVec;
 	vector<StageData> StageVec;
@@ -322,9 +334,14 @@ public:
 
 	void loadCurState();
 	const CurState &getCurState();
+
+	void loadCommonPetsConfig();
+	const PetsConfig &getCommonPetsConfig(int petId);
 private:
 	vector<StarsConfig> m_starsConfig;
 	CurState m_curState;
+	vector<PetsConfig> m_petsConfig;
+
 };
 
 #endif

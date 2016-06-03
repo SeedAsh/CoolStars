@@ -5,6 +5,8 @@
 #include "SoundMgr.h"
 #include "MenuScene.h"
 #include "PauseLayer.h"
+#include "PetManager.h"
+#include "PetView.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -155,21 +157,18 @@ CCMenuItemSprite *StageUiLayer::getItemSprite(string fileName, SEL_MenuHandler s
 	return CCMenuItemSprite::create(pItemNormal, pItemSelected, this, selector);
 }
 
-void StageUiLayer::onPetClicked(CCObject *pSender)
-{
-	CCMessageBox("clicked", "clicked");
-}
-
 void StageUiLayer::initPets()
 {
-	/*
-	PetManager::petMgr()->
-	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
-	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
-	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
-	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
-	auto blue = getItemSprite("pets/blue.png", menu_selector(StageUiLayer::onPetClicked));
-	*/
+	auto ids = PetManager::petMgr()->getCurPetIds();
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	for (int i = 0; i < ids.size(); ++i)
+	{
+		PetView *view = PetView::create(ids[i]);
+		addChild(view, kZorder_Pet);
+		
+		CCSize size = view->getContentSize();
+		view->setPosition(ccp(winSize.width * 0.25f + size.width * i * 1.2f, winSize.height * 0.8f));
+	}
 }
 
 void StageUiLayer::initBottomUi()

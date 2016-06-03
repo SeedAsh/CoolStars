@@ -1,7 +1,7 @@
 #include "DataManager.h"
 #include "SqliteHelper.h"
 #include "StarNode.h"
-
+#include "cocos2d.h"
 #define DB_NAME "coolstar.db"
 #define DB_FILE_PATH "data/coolstar.db"
 
@@ -51,7 +51,7 @@ void DataManager::LoadData()
 	loadStageConfigDataEx();
 	
 	loadStarsConfig();
-	loadCurState();
+	loadCommonPetsConfig();
 	/*LoadBallQueueDataEx();
 	LoadStageViewToolsData();
 	LoadLuckyConfigsData();
@@ -59,74 +59,6 @@ void DataManager::LoadData()
 	loadGameString();*/
 }
 
-void DataManager::LoadPetData()
-{                  //宠物表
-	sqlite3 *pDB = NULL;//数据库指针 
-	char * errMsg = NULL;//错误信息 
-	char **dbResult; //是 char ** 类型，两个*号
-	std::string sqlstr;//SQL指令 
-	int result;//sqlite3_exec返回值 
-	int nRow, nColumn;
-	int i, j;
-	int index, index2;
-	string pathKey;
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	pathKey = DB_FILE_PATH;
-#else
-	pathKey = CCFileUtils::sharedFileUtils()->getWritablePath() + DB_NAME;
-#endif
-
-
-	result = sqlite3_open(pathKey.c_str(), &pDB);
-	if (result != SQLITE_OK)
-	{
-
-	}
-
-	result = sqlite3_get_table(pDB, "select * from pet", &dbResult, &nRow, &nColumn, &errMsg);
-	if (SQLITE_OK == result)
-	{
-		index2 = index = nColumn; //前面说过 dbResult 前面第一行数据是字段名称，从 nColumn 索引开始才是真正的数据
-		for (i = 0; i < nRow; i++)
-		{
-			for (j = 0; j < nColumn; j++)
-			{
-				++index; // dbResult 的字段值是连续的，从第0索引到第 nColumn - 1索引都是字段名称，从第 nColumn 索引开始，后面都是字段值，它把一个二维的表（传统的行列表示法）用一个扁平的形式来表示
-			}
-
-			PetData ed;
-
-			ed.id = atoi(dbResult[index2]);
-			index2++;
-			ed.name = dbResult[index2];
-			index2++;
-			ed.png = dbResult[index2];
-			index2++;
-			ed.plist = dbResult[index2];
-			index2++;
-			ed.json = dbResult[index2];
-			index2++;
-			ed.toolid = atoi(dbResult[index2]);
-			index2++;
-			ed.paytype = atoi(dbResult[index2]);
-			index2++;
-			ed.cost = atoi(dbResult[index2]);
-			index2++;
-			ed.combo_num = atoi(dbResult[index2]);
-			index2++;
-			ed.probabilty = atoi(dbResult[index2]);
-			index2++;
-			ed.duration = atoi(dbResult[index2]);
-			index2++;
-
-			PetVec.push_back(ed);
-		}
-	}
-	sqlite3_free_table(dbResult);
-	sqlite3_close(pDB);
-	sqlite3_free(errMsg);  
-}
 
 void DataManager::LoadAchieveData()
 {                  //成就表
@@ -1316,12 +1248,32 @@ void DataManager::loadCurState()
 	SqliteHelper helper(DB_SAVING);
 	auto result = helper.readRecord("select * from save_curState");
 	//只有一行数据
-	assert(result.size() == 1 && result[0].size() == 3);
-	if (result.size() > 1 && result[0].size() >=3)
+	
+	const int kColumns = 4;
+	assert(result.size() == 1 && result[0].size() == kColumns);
+	if (result.size() >= 1 && result[0].size() >= kColumns)
 	{
 		m_curState.curStage = atoi(result[0][0]);
 		m_curState.curScore = atoi(result[0][1]);
 		m_curState.topScore = atoi(result[0][2]);
+		//获取save_pet_ids,以逗号分隔
+		string ids = result[0][3];
+		auto pos = ids.find(",");
+		auto prePos = 0;
+		while (pos != string::npos)
+		{
+			int id = atoi(ids.substr(prePos, pos).c_str());
+			m_curState.save_pet_ids.push_back(id);
+
+			prePos = pos + 1;
+			pos = ids.find(",", prePos);
+		}
+		int id = atoi(ids.substr(prePos).c_str());
+		if (id > 0)
+		{
+			m_curState.save_pet_ids.push_back(id);
+
+		}
 	}
 	else
 	{
@@ -1335,4 +1287,43 @@ void DataManager::loadCurState()
 const CurState &DataManager::getCurState()
 {
 	return m_curState;
+}
+
+void DataManager::loadCommonPetsConfig()
+{
+	SqliteHelper helper(DB_COOLSTAR);
+	auto result = helper.readRecord("select * from commonPets");
+
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		PetsConfig config;
+		assert((*iter).size() == 7);
+
+		config.id = atoi((*iter)[0]);
+		config.skillId = atoi((*iter)[4]);
+		/*
+		config.energy = (*iter)[1];
+		config.count = atoi((*iter)[2]);
+		config.upgrade = (*iter)[3];
+		config.desc = atoi((*iter)[4]);
+		*/
+		const string path = (*iter)[5];
+		char chars[10] = { 0 };
+		for (int i = kColorRed; i <= kColorPurple; ++i)
+		{
+			sprintf(chars, "%d", i);
+			string str = path;
+			str.replace(str.find("*"), 1, chars);
+			config.iconPath.push_back(str);
+		}
+
+		m_petsConfig.push_back(config);
+
+	}
+}
+
+const PetsConfig &DataManager::getCommonPetsConfig(int petId)
+{
+	assert(petId > 0 && petId < CommonPetsAmount);
+	return m_petsConfig[petId - 1];
 }

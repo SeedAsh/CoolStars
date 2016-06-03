@@ -12,9 +12,9 @@ public:
 	void eraseStars(std::vector<LogicGrid> &grids);
 	void addSteps(int amount);
 	void changeColor(bool isRandom);
-	void addPetPower(int who, int value);
+	void addPetEnergy(int petId, int value);
 	void removePetDebuff(int who);
 	void chageStarType(int type);
-	void reOrderStars(std::vector<LogicGrid> &grids);
+	void reOrderStars();
 };
 #endif

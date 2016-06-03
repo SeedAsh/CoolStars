@@ -18,7 +18,7 @@ void SavingHelper::saveCurStars()
 {
 }
 
-void SavingHelper::getLastSaving(std::vector<std::vector<int>> &stars)
+void SavingHelper::getLastSavedStars(std::vector<std::vector<int>> &stars)
 {
 	SqliteHelper sqlHelper(DB_SAVING);
 	auto result = sqlHelper.readRecord("select * from save_stars");
@@ -42,9 +42,23 @@ void SavingHelper::setPetsData()
 
 }
 
-void SavingHelper::loadPetsData()
+PetData SavingHelper::getPetsData(int petId)
 {
+	SqliteHelper sqlHelper(DB_SAVING);
+	char str[100] = { 0 };
+	sprintf(str, "select * from save_pets where id = %d;", petId);
+	auto result = sqlHelper.readRecord(str);
+	assert(result.size() == 1);
 
+	PetData data;
+	data.petId = atoi(result[0][0]);
+	data.commonid = atoi(result[0][1]);
+	data.color = atoi(result[0][2]);
+	data.level = atoi(result[0][3]);
+	data.exp = atoi(result[0][4]);
+	data.energy = atoi(result[0][5]);
+	return data;
+	
 }
 
 SavingHelper *SavingHelper::theHelper()

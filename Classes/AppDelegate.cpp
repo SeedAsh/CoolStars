@@ -1,11 +1,6 @@
 #include "AppDelegate.h"
 #include "MenuScene.h"
-#include "GameData.h"
-#include "UserInfo.h"
-#include "SoundMgr.h"
-#include "MyPurchase.h"
-#include "DataManager.h"
-#include "DataCheck.h"
+#include "GameDataPreLoader.h"
 
 USING_NS_CC;
 
@@ -34,17 +29,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #else
 	CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionFixedWidth);
 #endif
-	MyPurchase::sharedPurchase()->loadIAPPlugin();
-	GameData::getInstance()->preloadData();
-	UserInfo::init();
-	SoundMgr::init();
-	//不强制复制数据库，若数据库升级，再强制复制，此时考虑若是有写数据库操作，怎么备份已经有的数据或写其它数据库或写其它文件实现，如CCUserDefaultEx
-	DataManagerSelf->UnzipGameData(false);
-	DataManagerSelf->LoadData();
-
-	//对数据库数据进行数据校验 正式版本着取消校验
-	DataCheck check;
-	check.checkDataBase();
+	//加载数据并初始化游戏环境
+	GameDataPreLoader loader;
+	loader.initGameData();
 
     // turn on display FPS
     pDirector->setDisplayStats(false);

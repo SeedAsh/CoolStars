@@ -2,8 +2,9 @@
 #define __STARNODE_H__
 #include "cocos2d.h"
 #include "DataManager.h"
-
+#include "CommonMacros.h"
 #define  CONNECT_COUNT 2
+
 enum StarType
 {
 	kEmpty,
@@ -34,17 +35,6 @@ enum StarType
 	
 	kStarTypeCount,
 };
-
-enum StarColors
-{
-	kRandom,
-	kRed,
-	kYellow,
-	kBlue,
-	kGreen,
-	kPurple,
-};
-
 //逻辑网格，左下角为[0,0]
 struct LogicGrid
 {
@@ -72,7 +62,7 @@ class StarViewNode;
 class StarNode
 {
 public:
-	static StarNode *createNodeFatory(StarAttr &attr);
+	static StarNode *createNodeFatory(const StarAttr &attr);
 	virtual ~StarNode(){}
 	const StarAttr &getAttr(){ return m_attr; }
 	void setLogicGrid(const LogicGrid &grid){ m_attr.grid = grid; }
@@ -81,7 +71,7 @@ public:
 	void handleClick();
 	std::vector<StarNode *> getNeighbours();
 	void runExplosion();
-
+	void removeSelf();//没有爆炸特效
     void moveTo(LogicGrid grid);
 
 	const StarsConfig &getConfig();

@@ -47,7 +47,6 @@ private:
 	void onPauseBtnClicked(CCObject *pSender);
 	void menuCallback(CCObject *pSender);
 	CCMenuItemSprite *getItemSprite(std::string fileName, SEL_MenuHandler selector);
-	void onPetClicked(CCObject *pSender);
 private:
     CCLabelTTF *m_pScoreLabel;
 	CCLabelTTF *m_pStepLabel;
@@ -57,6 +56,9 @@ private:
 	CCLabelTTF *m_pBombLabel;
 	CCLabelTTF *m_pPaintLabel;
 	CCLabelTTF *m_pReflashLabel;
+
+private:
+	static const int kZorder_Pet = 10;
 
 };
 #endif // __PANELLLAYER_H__

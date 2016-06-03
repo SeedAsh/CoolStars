@@ -16,7 +16,7 @@ public :
 	void runExplosion();
 	void doMove(LogicGrid targetGrid);
     cocos2d::CCPoint getPosByGrid(LogicGrid grid);
-
+	void removeSelf();
 protected:
 	bool m_isExploded;
 	StarNode *m_model;

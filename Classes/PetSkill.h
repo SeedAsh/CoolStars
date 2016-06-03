@@ -1,12 +1,23 @@
 #ifndef __PETSKILL_H__
 #define __PETSKILL_H__
 
+enum SkillType
+{
+	kEraseOnRow = 1,
+	kEraseOnColumn,
+	kAddSteps,
+	kChangeColor,
+
+};
 class PetSkill
 {
 public:
+	virtual ~PetSkill(){}
+	static PetSkill *petSkillFactory(int skillId);
+	void doMagic(){}
 protected:
+	PetSkill(int id){}
 	PetSkill(){}
-	~PetSkill(){}
 private:
 };
 
@@ -20,7 +31,7 @@ class PetSkillEraseOnColumn : public PetSkill
 
 };
 
-class PetSkillAddSteps : PetSkill
+class PetSkillAddSteps : public PetSkill
 {
 public:
 	PetSkillAddSteps(){}
@@ -29,7 +40,7 @@ private:
 
 };
 
-class PetSkillChangeColor : PetSkill
+class PetSkillChangeColor : public PetSkill
 {
 public:
 	PetSkillChangeColor(){}

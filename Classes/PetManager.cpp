@@ -1,4 +1,5 @@
 #include "PetManager.h"
+#include "DataManager.h"
 PetManager::PetManager()
 {
 
@@ -15,19 +16,42 @@ PetManager *PetManager::petMgr()
 	return &mgr;
 }
 
-void PetManager::loadPetsData()
+void PetManager::init()
 {
-	
+	clearCurPets();
+	auto ids = DataManagerSelf->getCurState().save_pet_ids;
+	for (size_t i = 0; i < ids.size(); ++i)
+	{
+		int id = ids[i];
+		m_pets[id] = new PetEntity(id);
+	}
 }
 
-void PetManager::getCurPetsInfo(int color)
+void PetManager::clearCurPets()
 {
-	if (color == 0)
+	for (auto iter = m_pets.begin(); iter != m_pets.end(); ++iter)
 	{
-		// return all
+		delete (iter->second);
 	}
-	else
+	m_pets.clear();
+}
+
+vector<int> PetManager::getCurPetIds()
+{
+	vector<int> ids;
+	for (auto iter = m_pets.begin(); iter != m_pets.end(); ++iter)
 	{
-		//return color
+		ids.push_back(iter->first);
 	}
+	return ids;
+}
+
+PetEntity *PetManager::getCurPetById(int id)
+{
+	if (m_pets.find(id) != m_pets.end())
+	{
+		return m_pets[id];
+	}
+	
+	return NULL;
 }
