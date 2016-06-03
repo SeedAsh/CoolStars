@@ -221,6 +221,17 @@
 		1A34F8711CF91DCF00DE809C /* StarNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F8681CF91DCF00DE809C /* StarNode.cpp */; };
 		1A34F8721CF91DCF00DE809C /* StarsController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F86A1CF91DCF00DE809C /* StarsController.cpp */; };
 		1A34F8731CF91DCF00DE809C /* StarsLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A34F86C1CF91DCF00DE809C /* StarsLayer.cpp */; };
+		1A3D225E1D00488000540508 /* DataCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D22481D00488000540508 /* DataCheck.cpp */; };
+		1A3D225F1D00488000540508 /* PetEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D224A1D00488000540508 /* PetEntity.cpp */; };
+		1A3D22601D00488000540508 /* PetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D224C1D00488000540508 /* PetManager.cpp */; };
+		1A3D22611D00488000540508 /* PetScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D224E1D00488000540508 /* PetScene.cpp */; };
+		1A3D22621D00488000540508 /* PetSkill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D22501D00488000540508 /* PetSkill.cpp */; };
+		1A3D22631D00488000540508 /* PropItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D22521D00488000540508 /* PropItem.cpp */; };
+		1A3D22641D00488000540508 /* PropManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D22541D00488000540508 /* PropManager.cpp */; };
+		1A3D22651D00488000540508 /* ScaleDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D22561D00488000540508 /* ScaleDialog.cpp */; };
+		1A3D22661D00488000540508 /* SqliteHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D22581D00488000540508 /* SqliteHelper.cpp */; };
+		1A3D22671D00488000540508 /* StageOperator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D225A1D00488000540508 /* StageOperator.cpp */; };
+		1A3D22681D00488000540508 /* StageTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D225C1D00488000540508 /* StageTarget.cpp */; };
 		1A8F3B6E175E05DA00049216 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F3B43175E05DA00049216 /* Animation.cpp */; };
 		1A8F3B6F175E05DA00049216 /* AnimationState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F3B45175E05DA00049216 /* AnimationState.cpp */; };
 		1A8F3B70175E05DA00049216 /* AnimationStateData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A8F3B47175E05DA00049216 /* AnimationStateData.cpp */; };
@@ -737,6 +748,28 @@
 		1A34F86B1CF91DCF00DE809C /* StarsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarsController.h; path = ../Classes/StarsController.h; sourceTree = "<group>"; };
 		1A34F86C1CF91DCF00DE809C /* StarsLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StarsLayer.cpp; path = ../Classes/StarsLayer.cpp; sourceTree = "<group>"; };
 		1A34F86D1CF91DCF00DE809C /* StarsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarsLayer.h; path = ../Classes/StarsLayer.h; sourceTree = "<group>"; };
+		1A3D22481D00488000540508 /* DataCheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DataCheck.cpp; path = ../Classes/DataCheck.cpp; sourceTree = "<group>"; };
+		1A3D22491D00488000540508 /* DataCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCheck.h; path = ../Classes/DataCheck.h; sourceTree = "<group>"; };
+		1A3D224A1D00488000540508 /* PetEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PetEntity.cpp; path = ../Classes/PetEntity.cpp; sourceTree = "<group>"; };
+		1A3D224B1D00488000540508 /* PetEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PetEntity.h; path = ../Classes/PetEntity.h; sourceTree = "<group>"; };
+		1A3D224C1D00488000540508 /* PetManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PetManager.cpp; path = ../Classes/PetManager.cpp; sourceTree = "<group>"; };
+		1A3D224D1D00488000540508 /* PetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PetManager.h; path = ../Classes/PetManager.h; sourceTree = "<group>"; };
+		1A3D224E1D00488000540508 /* PetScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PetScene.cpp; path = ../Classes/PetScene.cpp; sourceTree = "<group>"; };
+		1A3D224F1D00488000540508 /* PetScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PetScene.h; path = ../Classes/PetScene.h; sourceTree = "<group>"; };
+		1A3D22501D00488000540508 /* PetSkill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PetSkill.cpp; path = ../Classes/PetSkill.cpp; sourceTree = "<group>"; };
+		1A3D22511D00488000540508 /* PetSkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PetSkill.h; path = ../Classes/PetSkill.h; sourceTree = "<group>"; };
+		1A3D22521D00488000540508 /* PropItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PropItem.cpp; path = ../Classes/PropItem.cpp; sourceTree = "<group>"; };
+		1A3D22531D00488000540508 /* PropItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropItem.h; path = ../Classes/PropItem.h; sourceTree = "<group>"; };
+		1A3D22541D00488000540508 /* PropManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PropManager.cpp; path = ../Classes/PropManager.cpp; sourceTree = "<group>"; };
+		1A3D22551D00488000540508 /* PropManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropManager.h; path = ../Classes/PropManager.h; sourceTree = "<group>"; };
+		1A3D22561D00488000540508 /* ScaleDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScaleDialog.cpp; path = ../Classes/ScaleDialog.cpp; sourceTree = "<group>"; };
+		1A3D22571D00488000540508 /* ScaleDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScaleDialog.h; path = ../Classes/ScaleDialog.h; sourceTree = "<group>"; };
+		1A3D22581D00488000540508 /* SqliteHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SqliteHelper.cpp; path = ../Classes/SqliteHelper.cpp; sourceTree = "<group>"; };
+		1A3D22591D00488000540508 /* SqliteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SqliteHelper.h; path = ../Classes/SqliteHelper.h; sourceTree = "<group>"; };
+		1A3D225A1D00488000540508 /* StageOperator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StageOperator.cpp; path = ../Classes/StageOperator.cpp; sourceTree = "<group>"; };
+		1A3D225B1D00488000540508 /* StageOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StageOperator.h; path = ../Classes/StageOperator.h; sourceTree = "<group>"; };
+		1A3D225C1D00488000540508 /* StageTarget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StageTarget.cpp; path = ../Classes/StageTarget.cpp; sourceTree = "<group>"; };
+		1A3D225D1D00488000540508 /* StageTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StageTarget.h; path = ../Classes/StageTarget.h; sourceTree = "<group>"; };
 		1A8F3B43175E05DA00049216 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		1A8F3B44175E05DA00049216 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		1A8F3B45175E05DA00049216 /* AnimationState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationState.cpp; sourceTree = "<group>"; };
@@ -1480,6 +1513,28 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1A3D22481D00488000540508 /* DataCheck.cpp */,
+				1A3D22491D00488000540508 /* DataCheck.h */,
+				1A3D224A1D00488000540508 /* PetEntity.cpp */,
+				1A3D224B1D00488000540508 /* PetEntity.h */,
+				1A3D224C1D00488000540508 /* PetManager.cpp */,
+				1A3D224D1D00488000540508 /* PetManager.h */,
+				1A3D224E1D00488000540508 /* PetScene.cpp */,
+				1A3D224F1D00488000540508 /* PetScene.h */,
+				1A3D22501D00488000540508 /* PetSkill.cpp */,
+				1A3D22511D00488000540508 /* PetSkill.h */,
+				1A3D22521D00488000540508 /* PropItem.cpp */,
+				1A3D22531D00488000540508 /* PropItem.h */,
+				1A3D22541D00488000540508 /* PropManager.cpp */,
+				1A3D22551D00488000540508 /* PropManager.h */,
+				1A3D22561D00488000540508 /* ScaleDialog.cpp */,
+				1A3D22571D00488000540508 /* ScaleDialog.h */,
+				1A3D22581D00488000540508 /* SqliteHelper.cpp */,
+				1A3D22591D00488000540508 /* SqliteHelper.h */,
+				1A3D225A1D00488000540508 /* StageOperator.cpp */,
+				1A3D225B1D00488000540508 /* StageOperator.h */,
+				1A3D225C1D00488000540508 /* StageTarget.cpp */,
+				1A3D225D1D00488000540508 /* StageTarget.h */,
 				1A2DEFC01CFC568A00292F08 /* SavingHelper.cpp */,
 				1A2DEFC11CFC568A00292F08 /* SavingHelper.h */,
 				1A2DEFC21CFC568A00292F08 /* StarViewNode.cpp */,
@@ -2356,6 +2411,7 @@
 				298B29C018D0668400C1920F /* LayoutReader.cpp in Sources */,
 				15A3D9011682F7D5002FB0C5 /* b2CollideEdge.cpp in Sources */,
 				15A3D9021682F7D5002FB0C5 /* b2CollidePolygon.cpp in Sources */,
+				1A3D22661D00488000540508 /* SqliteHelper.cpp in Sources */,
 				15A3D9031682F7D5002FB0C5 /* b2Collision.cpp in Sources */,
 				15A3D9041682F7D5002FB0C5 /* b2Distance.cpp in Sources */,
 				15A3D9051682F7D5002FB0C5 /* b2DynamicTree.cpp in Sources */,
@@ -2386,9 +2442,11 @@
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
 				15A3D91A1682F7D5002FB0C5 /* b2Contact.cpp in Sources */,
 				15A3D91B1682F7D5002FB0C5 /* b2ContactSolver.cpp in Sources */,
+				1A3D225F1D00488000540508 /* PetEntity.cpp in Sources */,
 				1A1DD0091CF4728C00AF5E1D /* StarUtil.cpp in Sources */,
 				298B29BA18D0668400C1920F /* ButtonReader.cpp in Sources */,
 				15A3D91C1682F7D5002FB0C5 /* b2EdgeAndCircleContact.cpp in Sources */,
+				1A3D22601D00488000540508 /* PetManager.cpp in Sources */,
 				1A1DD0001CF4728C00AF5E1D /* MenuScene.cpp in Sources */,
 				15A3D91D1682F7D5002FB0C5 /* b2EdgeAndPolygonContact.cpp in Sources */,
 				15A3D91E1682F7D5002FB0C5 /* b2PolygonAndCircleContact.cpp in Sources */,
@@ -2422,6 +2480,7 @@
 				15A3D99D1682F7F9002FB0C5 /* cpPivotJoint.c in Sources */,
 				15A3D99E1682F7F9002FB0C5 /* cpRatchetJoint.c in Sources */,
 				15A3D99F1682F7F9002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
+				1A3D22611D00488000540508 /* PetScene.cpp in Sources */,
 				15A3D9A01682F7F9002FB0C5 /* cpSimpleMotor.c in Sources */,
 				15A3D9A11682F7F9002FB0C5 /* cpSlideJoint.c in Sources */,
 				15A3D9A21682F7F9002FB0C5 /* cpArbiter.c in Sources */,
@@ -2476,6 +2535,7 @@
 				298B29C118D0668400C1920F /* ListViewReader.cpp in Sources */,
 				15A3DA451682F826002FB0C5 /* CCParticleSystemQuadLoader.cpp in Sources */,
 				15A3DA461682F826002FB0C5 /* CCScale9SpriteLoader.cpp in Sources */,
+				1A3D22671D00488000540508 /* StageOperator.cpp in Sources */,
 				15A3DA471682F826002FB0C5 /* CCScrollViewLoader.cpp in Sources */,
 				15A3DA481682F826002FB0C5 /* CCSpriteLoader.cpp in Sources */,
 				15A3DA491682F826002FB0C5 /* CCControl.cpp in Sources */,
@@ -2493,10 +2553,12 @@
 				298B29C718D0668400C1920F /* WidgetReader.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
 				375BD4C41868411B0024609E /* TriggerBase.cpp in Sources */,
+				1A3D22641D00488000540508 /* PropManager.cpp in Sources */,
 				298B29BB18D0668400C1920F /* CheckBoxReader.cpp in Sources */,
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
 				15A3DA541682F826002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				15A3DA551682F826002FB0C5 /* CCEditBox.cpp in Sources */,
+				1A3D225E1D00488000540508 /* DataCheck.cpp in Sources */,
 				15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
 				15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */,
@@ -2531,6 +2593,7 @@
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
 				1A8F3B76175E05DA00049216 /* BoneData.cpp in Sources */,
 				1A1DCFFC1CF4728C00AF5E1D /* ExitLayer.cpp in Sources */,
+				1A3D22621D00488000540508 /* PetSkill.cpp in Sources */,
 				1A8F3B77175E05DA00049216 /* CCSkeleton.cpp in Sources */,
 				1A8F3B78175E05DA00049216 /* CCSkeletonAnimation.cpp in Sources */,
 				375BD5121868454E0024609E /* CCActionNode.cpp in Sources */,
@@ -2560,7 +2623,9 @@
 				379BB99F17F03F3700829B88 /* CCDatas.cpp in Sources */,
 				379BB9A017F03F3700829B88 /* CCBatchNode.cpp in Sources */,
 				379BB9A117F03F3700829B88 /* CCDecorativeDisplay.cpp in Sources */,
+				1A3D22651D00488000540508 /* ScaleDialog.cpp in Sources */,
 				379BB9A217F03F3700829B88 /* CCDisplayFactory.cpp in Sources */,
+				1A3D22681D00488000540508 /* StageTarget.cpp in Sources */,
 				379BB9A317F03F3700829B88 /* CCDisplayManager.cpp in Sources */,
 				379BB9A417F03F3700829B88 /* CCSkin.cpp in Sources */,
 				1A1DD00A1CF4728C00AF5E1D /* UserInfo.cpp in Sources */,
@@ -2602,6 +2667,7 @@
 				379BB9C917F03F3700829B88 /* UITextField.cpp in Sources */,
 				379BB9CB17F03F3700829B88 /* DictionaryHelper.cpp in Sources */,
 				1A1DCFF91CF4728C00AF5E1D /* CCUserDefaultEx.cpp in Sources */,
+				1A3D22631D00488000540508 /* PropItem.cpp in Sources */,
 				379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */,
 				379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */,
 			);
