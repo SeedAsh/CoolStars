@@ -10,7 +10,6 @@
 void GameDataPreLoader::initGameData()
 {
 	LoadGameConfigs();
-	LoadSaving();
 	intModels();
 }
 
@@ -27,11 +26,6 @@ void GameDataPreLoader::LoadGameConfigs()
 	DataManagerSelf->UnzipGameData(false);
 	DataManagerSelf->LoadData();
 
-}
-
-void GameDataPreLoader::LoadSaving()
-{
-	DataManagerSelf->loadCurState();
 }
 
 void GameDataPreLoader::intModels()

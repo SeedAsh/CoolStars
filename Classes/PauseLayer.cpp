@@ -2,6 +2,7 @@
 #include "VisibleRect.h"
 #include "StageModel.h"
 #include "MenuScene.h"
+#include "StageSavingHelper.h"
 
 PauseLayer::PauseLayer(void)
 {
@@ -59,7 +60,9 @@ void PauseLayer::menuResumeCallback(CCObject* pSender)
 }
 
 void PauseLayer::menuSaveCallback(CCObject* pSender){
-	StageModel::theModel()->doSave();
+	StageSavingHelper::saveCurStars();
+	StageSavingHelper::saveCurStageData();
+
 	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 }
 

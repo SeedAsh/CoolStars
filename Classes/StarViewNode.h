@@ -13,10 +13,11 @@ public :
 	~StarViewNode();
 	
 	void onClick();
-	void runExplosion();
 	void doMove(LogicGrid targetGrid);
     cocos2d::CCPoint getPosByGrid(LogicGrid grid);
-	void removeSelf();
+	void removeSelf(bool withExplosion);
+private:
+	void runExplosion();
 protected:
 	bool m_isExploded;
 	StarNode *m_model;

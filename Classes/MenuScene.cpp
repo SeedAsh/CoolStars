@@ -15,6 +15,7 @@
 #include "PetScene.h"
 #include "SqliteHelper.h"
 #include "StageModel.h"
+#include "StageOperator.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 //#include "MyPurchaseIOS.h"
 #endif
@@ -261,6 +262,7 @@ void MenuScene::shopClicked( CCObject* sender ){
 }
 
 void MenuScene::helpClicked( CCObject* sender ){
+	
 	return;
 	SqliteHelper helper(DB_SAVING);
 

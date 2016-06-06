@@ -1,5 +1,6 @@
 #include "PetManager.h"
 #include "DataManager.h"
+#include "PetSavingHelper.h"
 PetManager::PetManager()
 {
 
@@ -19,7 +20,7 @@ PetManager *PetManager::petMgr()
 void PetManager::init()
 {
 	clearCurPets();
-	auto ids = DataManagerSelf->getCurState().save_pet_ids;
+	auto ids = PetSavingHelper::getCurActivePets();
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
 		int id = ids[i];

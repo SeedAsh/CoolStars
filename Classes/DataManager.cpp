@@ -1243,52 +1243,6 @@ const StarsConfig &DataManager::getStarsConfig(int starType)
 	}
 }
 
-void DataManager::loadCurState()
-{
-	SqliteHelper helper(DB_SAVING);
-	auto result = helper.readRecord("select * from save_curState");
-	//只有一行数据
-	
-	const int kColumns = 4;
-	assert(result.size() == 1 && result[0].size() == kColumns);
-	if (result.size() >= 1 && result[0].size() >= kColumns)
-	{
-		m_curState.curStage = atoi(result[0][0]);
-		m_curState.curScore = atoi(result[0][1]);
-		m_curState.topScore = atoi(result[0][2]);
-		//获取save_pet_ids,以逗号分隔
-		string ids = result[0][3];
-		auto pos = ids.find(",");
-		auto prePos = 0;
-		while (pos != string::npos)
-		{
-			int id = atoi(ids.substr(prePos, pos).c_str());
-			m_curState.save_pet_ids.push_back(id);
-
-			prePos = pos + 1;
-			pos = ids.find(",", prePos);
-		}
-		int id = atoi(ids.substr(prePos).c_str());
-		if (id > 0)
-		{
-			m_curState.save_pet_ids.push_back(id);
-
-		}
-	}
-	else
-	{
-		m_curState.curStage = 1;
-		m_curState.curScore = 0;
-		m_curState.topScore = 0;
-	}
-	
-}
-
-const CurState &DataManager::getCurState()
-{
-	return m_curState;
-}
-
 void DataManager::loadCommonPetsConfig()
 {
 	SqliteHelper helper(DB_COOLSTAR);

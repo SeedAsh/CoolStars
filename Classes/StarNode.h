@@ -70,8 +70,7 @@ public:
 
 	void handleClick();
 	std::vector<StarNode *> getNeighbours();
-	void runExplosion();
-	void removeSelf();//没有爆炸特效
+	void removeSelf(bool withExplosion = true);
     void moveTo(LogicGrid grid);
 
 	const StarsConfig &getConfig();
@@ -80,7 +79,7 @@ public:
 	virtual bool isNeighbour(int type){ return false; }
 protected:
 	StarNode(){}
-    StarNode(StarAttr &attr);
+    StarNode(const StarAttr &attr);
 private:
 	void getConnectedStars(StarNode *node, std::vector<StarNode *> &connectedNodes);
 protected:
@@ -91,7 +90,7 @@ protected:
 class ColorStar : public StarNode
 {
 public:
-	ColorStar(StarAttr &attr, int color) : StarNode(attr), m_color(color){}
+	ColorStar(const StarAttr &attr, int color) : StarNode(attr), m_color(color){}
 	~ColorStar(){}
 public:
 	virtual bool isNeighbour(int type);

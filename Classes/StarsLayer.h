@@ -26,7 +26,7 @@ public:
 	void removeStar(StarViewNode *node);
 	StarViewNode *createStarByGrid(const LogicGrid &grid);
 private:
-	virtual void createNewStar(StarNode *node);
+	virtual void onCreateNewStar(StarNode *node);
 	virtual void onEnter();
 	virtual void onExit();
 private:

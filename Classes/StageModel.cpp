@@ -2,11 +2,12 @@
 #include "StarUtil.h"
 #include "DataManager.h"
 #include "SqliteHelper.h"
+#include "StageSavingHelper.h"
 USING_NS_CC;
 using namespace std;
 StageModel::StageModel()
 	: m_isNewStage(true)
-	, m_highScore(0)
+	, m_topScore(0)
 {
 	resetStarsData();
 }
@@ -40,36 +41,52 @@ void StageModel::initStarsData()
 	//关卡星星数据是一列列保存的，需要转换
 	if (m_isNewStage)
 	{
-		//数据库
-		DataManagerSelf->LoadStageData(m_curStage);
-
-		for (int row = 0; row < ROWS_SIZE; ++row)
-		{
-			StageData stageStarRow = DataManagerSelf->StageVec[row];
-			for (int col = 0; col < COlUMNS_SIZE; ++col)
-			{
-				StarAttr attr;
-				attr.type = (stageStarRow.col[col] - 1) % 5 + 1;
-				attr.grid = LogicGrid(col, ROWS_SIZE - row - 1);
-				m_starNodes.push_back(StarNode::createNodeFatory(attr));
-			}
-		}
+		loadNewStageStars();
 	}
 	else 
 	{
-		//返回的数据是保存行的
-		vector<vector<int>> StageVec;
-		SavingHelper::theHelper()->getLastSavedStars(StageVec);
+		loadLastSavedStars();
+	}
+}
 
-		for (int row = 0; row < ROWS_SIZE; ++row)
+void StageModel::loadLastSavedStars()
+{
+	//返回的数据是保存行的
+	vector<vector<int>> StageVec;
+	bool isSucceed = StageSavingHelper::getLastSavedStars(StageVec);
+	//加载失败则直接读取关卡数据
+	if (!isSucceed)
+	{
+		loadNewStageStars();
+		return;
+	}
+
+	for (int row = 0; row < ROWS_SIZE; ++row)
+	{
+		for (int col = 0; col < COlUMNS_SIZE; ++col)
 		{
-			for (int col = 0; col < COlUMNS_SIZE; ++col)
-			{
-				StarAttr attr;
-				attr.type = StageVec[col][row];
-				attr.grid = LogicGrid(row, ROWS_SIZE - col - 1);
-				m_starNodes.push_back(StarNode::createNodeFatory(attr));
-			}
+			StarAttr attr;
+			attr.type = StageVec[col][row];
+			attr.grid = LogicGrid(row, ROWS_SIZE - col - 1);
+			m_starNodes.push_back(StarNode::createNodeFatory(attr));
+		}
+	}
+}
+
+void StageModel::loadNewStageStars()
+{
+	//数据库
+	DataManagerSelf->LoadStageData(m_curStage);
+
+	for (int row = 0; row < ROWS_SIZE; ++row)
+	{
+		StageData stageStarRow = DataManagerSelf->StageVec[row];
+		for (int col = 0; col < COlUMNS_SIZE; ++col)
+		{
+			StarAttr attr;
+			attr.type = (stageStarRow.col[col] - 1) % 5 + 1;
+			attr.grid = LogicGrid(col, ROWS_SIZE - row - 1);
+			m_starNodes.push_back(StarNode::createNodeFatory(attr));
 		}
 	}
 }
@@ -84,8 +101,9 @@ void StageModel::resetStarsData()
 	m_starNodes.clear();
 
 	m_step = 0;
-	m_curStage = DataManagerSelf->getCurState().curStage;
+	m_curStage = 0;
 	m_curScore = 0;
+	StageSavingHelper::LoadLastSavedStageData();
 
 	m_target.resetData();
 }
@@ -197,9 +215,21 @@ void StageModel::removeStarNode(StarNode *node)
 	auto iter = find(m_starNodes.begin(), m_starNodes.end(), node);
 	if (iter != m_starNodes.end())
 	{
+		m_target.recordErasedStars((*iter)->getAttr().type);
+		if (m_target.isReachTarget())
+		{
+			gameOver();
+		}
+
 		delete *iter;
 		m_starNodes.erase(iter);
+
 	}
+}
+
+void StageModel::gameOver()
+{
+	NOTIFY_VIEWS(onGameOver);
 }
 
 void StageModel::genNewStars()
@@ -283,7 +313,7 @@ void StageModel::genNewStars()
 		attr.type = startype;
 		StarNode *node = StarNode::createNodeFatory(attr);
 		m_starNodes.push_back(node);
-		NOTIFY_VIEWS(createNewStar, node);
+		NOTIFY_VIEWS(onCreateNewStar, node);
 	}
 	moveStars();
 }
@@ -309,52 +339,7 @@ void StageModel::removeView(IStageView *view)
 void StageModel::moveOneStep()
 {
 	m_step++;
-	NOTIFY_VIEWS(stepsChanged);
-}
-
-void StageModel::doSave()
-{
-	char str[100] = { 0 };
-	SqliteHelper helper(DB_SAVING);
-	string sql;
-	helper.clearTable("save_stars");
-	for (int row = ROWS_SIZE - 1; row >= 0; --row)
-	{
-		vector<string> stars;
-		sql.clear();
-		sql = "insert into save_stars values(";
-		for (int col = 0; col < COlUMNS_SIZE; ++col)
-		{
-			LogicGrid grid(col, row);
-			int star = kEmpty;
-			auto node = getStarNode(grid);
-			if (node)
-			{
-				star = node->getAttr().type;
-			}
-			sprintf(str, "%d,", star);
-			sql += str;
-		}
-		sql = sql.substr(0, sql.length() - 1); //去掉最后一个逗号
-		sql += ");";
-		helper.insertRecordIntoSqlite(sql.c_str());
-	}
-
-
-	//保存当前关卡id 分数 最高分
-	helper.clearTable("save_curState");
-	sql.clear();
-	sql = "insert into save_curState values(";
-	sprintf(str, "%d,", m_curStage);
-	sql += str;
-	sprintf(str, "%d,", m_curScore);
-	sql += str;
-	sprintf(str, "%d", m_highScore);
-	sql += str;
-	sql += ",\"1,6,12\");";
-	helper.insertRecordIntoSqlite(sql.c_str());
-
-	helper.closeDB();
+	NOTIFY_VIEWS(onStepsChanged);
 
 }
 
@@ -366,5 +351,5 @@ void StageModel::replaceStar(const StarAttr &attr)
 
 	node->removeSelf();
 	m_starNodes.push_back(StarNode::createNodeFatory(attr));
-	NOTIFY_VIEWS(createNewStar, node);
+	NOTIFY_VIEWS(onCreateNewStar, node);
 }

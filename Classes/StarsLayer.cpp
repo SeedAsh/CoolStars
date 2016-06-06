@@ -126,7 +126,7 @@ void StarsLayer::removeStar(StarViewNode *node)
 	}
 }
 
-void StarsLayer::createNewStar(StarNode *node)
+void StarsLayer::onCreateNewStar(StarNode *node)
 {
 	auto pStarSprite = StarViewNode::create(node);
 	auto grid = node->getAttr().grid;

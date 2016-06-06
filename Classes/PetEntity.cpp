@@ -1,10 +1,10 @@
 #include "PetEntity.h"
-#include "SavingHelper.h"
 #include "PetSkill.h"
+#include "PetSavingHelper.h"
 PetEntity::PetEntity(int petId)
 {
 	//上次保存的宠物数据
-	m_data = SavingHelper::theHelper()->getPetsData(petId);
+	m_data = PetSavingHelper::getPetState(petId);
 	//获取通用宠物的数据
 	int skillId = getMyCommonPetData().skillId;
 	m_skill = PetSkill::petSkillFactory(skillId);

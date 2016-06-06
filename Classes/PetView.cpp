@@ -44,7 +44,7 @@ bool PetView::init()
 	
 	CCLayerColor *mask = CCLayerColor::create(ccc4(255, 0, 0, 75));
 	mask->setContentSize(size);
-	addChild(mask);
+	//addChild(mask);
 	return true;
 }
 

@@ -94,11 +94,14 @@ void StarViewNode::runExplosion(){
 
     StarsLayer *layer = (StarsLayer *)getParent();
     layer->addChild(pEmitter);
-	removeSelf();
 }
 
-void StarViewNode::removeSelf()
+void StarViewNode::removeSelf(bool withExplosion)
 {
+	if (withExplosion)
+	{
+		runExplosion();
+	}
 	StarsLayer *layer = (StarsLayer *)getParent();
 	layer->removeStar(this);
 }

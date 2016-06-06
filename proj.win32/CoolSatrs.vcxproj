@@ -146,13 +146,13 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PauseLayer.cpp" />
     <ClCompile Include="..\Classes\PetEntity.cpp" />
     <ClCompile Include="..\Classes\PetManager.cpp" />
+    <ClCompile Include="..\Classes\PetSavingHelper.cpp" />
     <ClCompile Include="..\Classes\PetScene.cpp" />
     <ClCompile Include="..\Classes\PetSkill.cpp" />
     <ClCompile Include="..\Classes\PetView.cpp" />
     <ClCompile Include="..\Classes\PropItem.cpp" />
     <ClCompile Include="..\Classes\PropManager.cpp" />
     <ClCompile Include="..\Classes\QuickBuyScene.cpp" />
-    <ClCompile Include="..\Classes\SavingHelper.cpp" />
     <ClCompile Include="..\Classes\ScaleDialog.cpp" />
     <ClCompile Include="..\Classes\ShopLayer.cpp" />
     <ClCompile Include="..\Classes\SoundMgr.cpp" />
@@ -161,6 +161,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StageModel.cpp" />
     <ClCompile Include="..\Classes\StageOperator.cpp" />
     <ClCompile Include="..\Classes\StagePanelState.cpp" />
+    <ClCompile Include="..\Classes\StageSavingHelper.cpp" />
     <ClCompile Include="..\Classes\StageScene.cpp" />
     <ClCompile Include="..\Classes\StageTarget.cpp" />
     <ClCompile Include="..\Classes\StageUiLayer.cpp" />
@@ -194,13 +195,13 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PauseLayer.h" />
     <ClInclude Include="..\Classes\PetEntity.h" />
     <ClInclude Include="..\Classes\PetManager.h" />
+    <ClInclude Include="..\Classes\PetSavingHelper.h" />
     <ClInclude Include="..\Classes\PetScene.h" />
     <ClInclude Include="..\Classes\PetSkill.h" />
     <ClInclude Include="..\Classes\PetView.h" />
     <ClInclude Include="..\Classes\PropItem.h" />
     <ClInclude Include="..\Classes\PropManager.h" />
     <ClInclude Include="..\Classes\QuickBuyScene.h" />
-    <ClInclude Include="..\Classes\SavingHelper.h" />
     <ClInclude Include="..\Classes\ScaleDialog.h" />
     <ClInclude Include="..\Classes\ShopLayer.h" />
     <ClInclude Include="..\Classes\SoundMgr.h" />
@@ -209,6 +210,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StageModel.h" />
     <ClInclude Include="..\Classes\StageOperator.h" />
     <ClInclude Include="..\Classes\StagePanelState.h" />
+    <ClInclude Include="..\Classes\StageSavingHelper.h" />
     <ClInclude Include="..\Classes\StageScene.h" />
     <ClInclude Include="..\Classes\StageTarget.h" />
     <ClInclude Include="..\Classes\StageUiLayer.h" />

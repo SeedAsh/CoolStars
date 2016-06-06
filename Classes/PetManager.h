@@ -12,7 +12,8 @@ public:
 	void init();
 	void clearCurPets();
 	std::vector<int> getCurPetIds();
-	 PetEntity *getCurPetById(int id);
+	PetEntity *getCurPetById(int id);
+
 private:
 	PetManager();
 	~PetManager();

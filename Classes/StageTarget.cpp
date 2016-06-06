@@ -1,11 +1,12 @@
 #include "StageTarget.h"
+#include "StageModel.h"
 
 using namespace std;
 USING_NS_CC; 
 
 StageTarget::StageTarget()
 {
-
+	resetData();
 }
 
 StageTarget::~StageTarget()
@@ -36,11 +37,37 @@ void StageTarget::initTargets()
 
 void StageTarget::resetData()
 {
+	m_winType = kScore;
+	m_targetScore = 0;
+	m_targetGrid.x = 0; 
+	m_targetGrid.y = 0;
+
 	m_records.clear();
 	m_targets.clear();
 }
 
 bool StageTarget::isReachTarget()
+{
+	switch (m_winType)
+	{
+	case kScore:
+		return isGetEnoughScore();
+	case kStarAmount:
+		return isErasedEnoughStars();
+	case kTargetGrid:
+		return isReachTargetGrid();
+	default:
+		return false;
+	}
+	
+}
+
+bool StageTarget::isGetEnoughScore()
+{
+	return StageModel::theModel()->getCurScore() >= m_targetScore;
+}
+
+bool StageTarget::isErasedEnoughStars()
 {
 	for (size_t i = 0; i < m_targets.size(); ++i)
 	{
@@ -52,4 +79,9 @@ bool StageTarget::isReachTarget()
 		}
 	}
 	return true;
+}
+
+bool StageTarget::isReachTargetGrid()
+{
+	return false;
 }

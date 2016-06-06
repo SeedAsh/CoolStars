@@ -22,7 +22,7 @@ void StageOperator::eraseStars(vector<LogicGrid> &grids)
 		auto node = StageModel::theModel()->getStarNode(grids[i]);
 		if (node)
 		{
-			node->runExplosion();
+			node->removeSelf(false);
 		}
 	}
 	StageModel::theModel()->moveStars();
@@ -64,20 +64,43 @@ void StageOperator::chageStarType(int type)
 	StageModel::theModel()->replaceStar(attr);
 }
 
-LogicGrid randomGridCreater()
-{
+//生成 [0 , length-1] 的随机序列
+static vector<int> buildRandomSequence(int length) {
+	vector<int> seq;
+	for (int i = 0; i < length; ++i)
+	{
+		seq.push_back(i);
+	}
+	int index = 0;
+	int tmp = 0;
+	for (int i = length - 1; i > 0; i--) {
+		index = (int(CCRANDOM_0_1() * 100)) % i;
 
+		tmp = seq[i];
+		seq[i] = seq[index];
+		seq[index] = tmp;
+	}
+	
+	return seq;
 }
 
 void StageOperator::reOrderStars()
 {
 	//规则？没有就随机
-	auto originNodes = StageModel::theModel()->getStarNodes();
+	auto rowSeq = buildRandomSequence(ROWS_SIZE);
+	auto colSeq = buildRandomSequence(COlUMNS_SIZE);
 
-	for (size_t i = 0; i < originNodes.size(); ++i)
+	auto nodes = StageModel::theModel()->getStarNodes();
+	assert(nodes.size() <= ROWS_SIZE * COlUMNS_SIZE);
+
+	for (size_t i = 0; i < nodes.size(); ++i)
 	{
-		auto node = originNodes[i];
+		auto node =nodes[i];
 		LogicGrid targetGrid;
+		
+		targetGrid.x = colSeq[i % COlUMNS_SIZE];
+		targetGrid.y = rowSeq[i / ROWS_SIZE];
+
 		node->moveTo(targetGrid);
 		node->setLogicGrid(targetGrid);
 	}

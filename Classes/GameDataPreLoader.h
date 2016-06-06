@@ -11,7 +11,6 @@ public:
 
 private:
 	void LoadGameConfigs();
-	void LoadSaving();
 	void intModels();
 private:
 };

@@ -7,6 +7,7 @@
 #include "PauseLayer.h"
 #include "PetManager.h"
 #include "PetView.h"
+#include "StageOperator.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -161,7 +162,7 @@ void StageUiLayer::initPets()
 {
 	auto ids = PetManager::petMgr()->getCurPetIds();
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	for (int i = 0; i < ids.size(); ++i)
+	for (size_t i = 0; i < ids.size(); ++i)
 	{
 		PetView *view = PetView::create(ids[i]);
 		addChild(view, kZorder_Pet);
@@ -322,7 +323,8 @@ void StageUiLayer::setStageClear( bool clear ){
 
 void StageUiLayer::menuCallback( CCObject *pSender )
 {
-
+	StageOperator obj;
+	obj.reOrderStars();
 }
 
 void StageUiLayer::stepsChanged()

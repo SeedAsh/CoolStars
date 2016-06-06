@@ -252,14 +252,6 @@ struct StarsConfig
 	string explosionPath;
 };
 
-struct CurState
-{
-	int curStage;
-	int curScore;
-	int topScore;
-	vector<int> save_pet_ids;
-};
-
 struct PetsConfig
 {
 	int id;
@@ -332,14 +324,10 @@ public:
 	void loadStarsConfig();
 	const StarsConfig &getStarsConfig(int starType);
 
-	void loadCurState();
-	const CurState &getCurState();
-
 	void loadCommonPetsConfig();
 	const PetsConfig &getCommonPetsConfig(int petId);
 private:
 	vector<StarsConfig> m_starsConfig;
-	CurState m_curState;
 	vector<PetsConfig> m_petsConfig;
 
 };

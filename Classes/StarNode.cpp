@@ -53,7 +53,7 @@ StarNode *StarNode::createNodeFatory(const StarAttr &attr)
 		break;
 	}
 }
-StarNode::StarNode(StarAttr &attr)
+StarNode::StarNode(const StarAttr &attr)
     : m_attr(attr)
 	, m_view(NULL)
 {
@@ -79,25 +79,16 @@ void StarNode::handleClick()
 		StageModel::theModel()->moveOneStep();
 		for (size_t j = 0; j < count; ++j)
 		{
-			connectedNodes[j]->runExplosion();
+			connectedNodes[j]->removeSelf();
 		}
 	}
 }
 
-void StarNode::runExplosion()
+void StarNode::removeSelf(bool withExplosion)
 {
 	if (m_view)
 	{
-		m_view->runExplosion();
-	}
-	StageModel::theModel()->removeStarNode(this);
-}
-
-void StarNode::removeSelf()
-{
-	if (m_view)
-	{
-		m_view->removeSelf();
+		m_view->removeSelf(withExplosion);
 	}
 	StageModel::theModel()->removeStarNode(this);
 }
