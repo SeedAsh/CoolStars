@@ -272,6 +272,11 @@ struct StageConfig
 	vector<int> direction;
 };
 
+struct SystemConfig
+{
+	int stageAmount;
+};
+
 class DataManager
 {
 public:
@@ -340,11 +345,14 @@ public:
 
 	void loadCommonPetsConfig();
 	const PetsConfig &getCommonPetsConfig(int petId);
+
+	void loadSystemConfig();
+	const SystemConfig &getSystemConfig();
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
 	vector<PetsConfig> m_petsConfig;
-
+	SystemConfig m_systemConfig;
 };
 
 #endif

@@ -31,3 +31,10 @@ vector<int> CommonUtil::parseStrToInts(string str)
 	}
 	return ints;
 }
+
+const char *CommonUtil::intToStr(int value)
+{
+	static char str[100];
+	sprintf(str, "%d", value);
+	return str;
+}

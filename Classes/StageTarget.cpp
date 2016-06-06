@@ -1,5 +1,7 @@
 #include "StageTarget.h"
 #include "StageModel.h"
+#include "StageBaseInfo.h"
+#include "CommonUtil.h"
 
 using namespace std;
 USING_NS_CC; 
@@ -23,27 +25,68 @@ void StageTarget::recordErasedStars(int starIndex)
 void StageTarget::initTargets()
 {
 	resetData();
-	typedef tuple<int, int> targetType;
 
-	int indexs[] = { 1, 10, 2, 5 };
-	vector<int> targets(indexs, indexs + 4);
-	assert(targets.size() % 2 == 0);
-	for (size_t i = 0; i < targets.size(); i += 2)
+	auto info = StageModel::theModel()->getStageInfo();
+	auto config = DataManagerSelf->getStageConfig(info->getCurStage());
+	m_winType = config.tagetType;
+	auto param = config.targetParam;
+	switch (m_winType)
 	{
-		targetType target(targets[i], targets[i + 1]); 
-		m_targets.push_back(target);
+	case kScore:
+	{
+		assert(param.size() == 1);
+		m_targetScore = param[0];
+		break;
 	}
+	case kStarAmount:
+	{
+		typedef tuple<int, int> targetType;
+
+		assert(param.size() % 2 == 0);
+		for (size_t i = 0; i < param.size(); i += 2)
+		{
+			targetType target(param[i], param[i + 1]);
+			m_targets.push_back(target);
+		}
+		break;
+	}
+	case kTargetGrid:
+	{
+		assert(param.size() == 2);
+		m_targetGrid.x = param[0];
+		m_targetGrid.x = param[1];
+		break;
+	}
+	default:
+		assert(false && "on this kind!");
+	}
+
+}
+
+void StageTarget::getCurTarget()
+{
+
 }
 
 void StageTarget::resetData()
 {
 	m_winType = kScore;
+
 	m_targetScore = 0;
 	m_targetGrid.x = 0; 
 	m_targetGrid.y = 0;
 
 	m_records.clear();
 	m_targets.clear();
+}
+
+bool StageTarget::isGameOver()
+{
+	if (isReachTarget()) return true;
+
+	auto stageInfo = StageModel::theModel()->getStageInfo();
+	return stageInfo->getLeftStep() <= 0;
+
 }
 
 bool StageTarget::isReachTarget()
@@ -64,7 +107,8 @@ bool StageTarget::isReachTarget()
 
 bool StageTarget::isGetEnoughScore()
 {
-	return StageModel::theModel()->getCurScore() >= m_targetScore;
+	auto stageInfo = StageModel::theModel()->getStageInfo();
+	return stageInfo->getCurScore() >= m_targetScore;
 }
 
 bool StageTarget::isErasedEnoughStars()

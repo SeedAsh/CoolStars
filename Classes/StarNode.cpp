@@ -76,11 +76,11 @@ void StarNode::handleClick()
     }
 	if (count >= CONNECT_COUNT)
 	{
-		StageModel::theModel()->moveOneStep();
 		for (size_t j = 0; j < count; ++j)
 		{
 			connectedNodes[j]->removeSelf();
 		}
+		StageModel::theModel()->moveOneStep();
 	}
 }
 
@@ -88,7 +88,10 @@ void StarNode::removeSelf(bool withExplosion)
 {
 	if (m_view)
 	{
+		int myScore = getConfig().score;
+		StageModel::theModel()->addScore(myScore);//±¬Õ¨Ôò¼Ó·Ö
 		m_view->removeSelf(withExplosion);
+		
 	}
 	StageModel::theModel()->removeStarNode(this);
 }

@@ -8,6 +8,8 @@
 #include "PetManager.h"
 #include "PetView.h"
 #include "StageOperator.h"
+#include "CommonUtil.h"
+#include "GameResultLayer.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -31,6 +33,18 @@ StageUiLayer::StageUiLayer(void)
 
 StageUiLayer::~StageUiLayer(void)
 {
+}
+
+void StageUiLayer::onEnter()
+{
+	CCLayer::onEnter();
+	StageModel::theModel()->addView(this);
+}
+
+void StageUiLayer::onExit()
+{
+	CCLayer::onExit();
+	StageModel::theModel()->removeView(this);
 }
 
 StageUiLayer * StageUiLayer::create(){
@@ -61,6 +75,7 @@ bool StageUiLayer::init(){
 
 void StageUiLayer::initTopUi()
 {
+	auto stageInfo = StageModel::theModel()->getStageInfo();
 	char str[100] = { 0 };
 	CCPoint top = VisibleRect::top();
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -79,6 +94,7 @@ void StageUiLayer::initTopUi()
 	bestSocre->setPosition(ccp(hightScore->getPositionX() + size.width / 2 + bestSocre->getContentSize().width,
 		hightScore->getPositionY()));
 	this->addChild(bestSocre, Z_ORDER_TITLE);
+	bestSocre->setString(CommonUtil::intToStr(stageInfo->getTopScore()));
 
 	//stage num
 	msg = (CCString*)text->objectForKey("lev");
@@ -91,9 +107,8 @@ void StageUiLayer::initTopUi()
 	CCLabelTTF *pStageLabel = CCLabelTTF::create("1", "Arial", 21);
 	pStageLabel->setColor((ccc3(255, 255, 255)));
 	pStageLabel->setPosition(ccp(pStage->getPositionX() + size.width + 10, pStage->getPositionY()));
-	sprintf(str, "%d", UserInfo::getBestScore());
-	pStageLabel->setString(str);
 	this->addChild(pStageLabel, Z_ORDER_TITLE);
+	pStageLabel->setString(CommonUtil::intToStr(stageInfo->getCurStage()));
 
 	//taget
 	msg = (CCString*)text->objectForKey("tar");
@@ -107,19 +122,21 @@ void StageUiLayer::initTopUi()
 	pTargetLabel->setColor(ccWHITE);
 	pTargetLabel->setPosition(ccp(pTarget->getPositionX() + size.width, pStage->getPositionY()));
 	this->addChild(pTargetLabel, Z_ORDER_TITLE);
+	//在onstepchaged 里面修改
 
 	//steps
 	msg = (CCString*)text->objectForKey("step");
 	CCLabelTTF *pStep = CCLabelTTF::create(msg->getCString(), "Arial", 21);
 	pStep->setColor(ccWHITE);
 	size = pStep->getContentSize();
-	pStep->setPosition(ccp(visibleSize.width * 0.1f, hightScore->getPositionY()));
+	pStep->setPosition(ccp(visibleSize.width * 0.15f, hightScore->getPositionY()));
 	this->addChild(pStep, Z_ORDER_TITLE);
 
 	m_pStepLabel = CCLabelTTF::create("10", "Arial", 21);
 	m_pStepLabel->setColor(ccWHITE);
 	m_pStepLabel->setPosition(ccp(pStep->getPositionX() + size.width, hightScore->getPositionY()));
 	this->addChild(m_pStepLabel, Z_ORDER_TITLE);
+	onStepsChanged();
 
 	//coins 
 	CCSprite* currentCoinBg = CCSprite::create("dialog_item.png");
@@ -147,6 +164,7 @@ void StageUiLayer::initTopUi()
 	pMenu->setPosition(CCPointZero);
 	addChild(pMenu, Z_ORDER_PROPS);
 	pMenu->addChild(pBuy);
+
 }
 
 CCMenuItemSprite *StageUiLayer::getItemSprite(string fileName, SEL_MenuHandler selector)
@@ -198,7 +216,7 @@ void StageUiLayer::initBottomUi()
 	m_pScoreLabel->setColor(ccWHITE);
 	m_pScoreLabel->setPosition(ccp(VisibleRect::center().x - 16 * 3, pPause->getPositionY()));
 	this->addChild(m_pScoreLabel, Z_ORDER_TITLE);
-
+	onScoreChanged();
 	/*
 	m_pScoreHint = CCLabelTTF::create("", "Arial", 21);
 	m_pScoreHint->setPosition(ccp(VisibleRect::center().x,
@@ -327,21 +345,41 @@ void StageUiLayer::menuCallback( CCObject *pSender )
 	obj.reOrderStars();
 }
 
-void StageUiLayer::stepsChanged()
+void StageUiLayer::onStepsChanged()
+{
+	auto stageInfo = StageModel::theModel()->getStageInfo();
+	int leftStep = stageInfo->getLeftStep();
+	m_pStepLabel->setString(CommonUtil::intToStr(leftStep));
+
+
+}
+
+void StageUiLayer::onScoreChanged()
+{
+	auto stageInfo = StageModel::theModel()->getStageInfo();
+	int curScore = stageInfo->getCurScore();
+	m_pScoreLabel->setString(CommonUtil::intToStr(curScore));
+}
+
+void StageUiLayer::onCoinsChanged()
 {
 
 }
 
-void StageUiLayer::scoreChanged()
+void StageUiLayer::onGameOver(int isWon)
 {
-
+	CCNode *node = NULL;
+	if (isWon)
+	{
+		node = GameWinLayer::create();
+	}
+	else
+	{
+		node = GameFailLayer::create();
+	}
+	
+	addChild(node, kZorder_Dialog);
 }
-
-void StageUiLayer::coinsChanged()
-{
-
-}
-
 
 void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 {

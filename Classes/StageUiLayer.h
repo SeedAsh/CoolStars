@@ -2,6 +2,7 @@
 #define __STAGEUILAYER_H___ 
 
 #include "cocos2d.h"
+#include "StageModel.h"
 USING_NS_CC;
 struct StageUiValue
 {
@@ -13,16 +14,10 @@ struct StageUiValue
 	int coins;
 
 };
-struct IStageUiView
-{
-	virtual void stepsChanged(){}
-	virtual void scoreChanged(){}
-	virtual void coinsChanged(){}
-};
 
 class StageUiLayer
     : public CCLayer
-	, public IStageUiView 	
+	, public IStageView
 {
 public:
     StageUiLayer(void);
@@ -35,10 +30,14 @@ public:
 	void initBottomUi();
     virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
 public:
-	void stepsChanged();
-	void scoreChanged();
-	void coinsChanged();
+	virtual void onStepsChanged();
+	virtual void onScoreChanged();
+	virtual void onCoinsChanged();
+	virtual void onGameOver(int isWon);
+
 private:
+	virtual void onEnter();
+	virtual void onExit();
 	void onQuitGame();
 	void showGameOverHint();
 	void deliveryScore(const CCPoint &from, int totalScore, int count);
@@ -59,6 +58,7 @@ private:
 
 private:
 	static const int kZorder_Pet = 10;
+	static const int kZorder_Dialog = 20;
 
 };
 #endif // __PANELLLAYER_H__

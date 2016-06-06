@@ -235,7 +235,8 @@ void MenuScene::NewGame( CCObject* sender ){
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
-	StageModel::theModel()->setIsNewStage(true);
+	auto stageInfo = StageModel::theModel()->getStageInfo();
+	stageInfo->setIsNewStage(true);
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
     CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));
 }
@@ -244,7 +245,9 @@ void MenuScene::ResumeGame( CCObject* sender ){
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
-	StageModel::theModel()->setIsNewStage(false);
+	auto stageInfo = StageModel::theModel()->getStageInfo();
+	stageInfo->setIsNewStage(false);
+
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
     if (StarUtil::hasSavedState()){
         CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));

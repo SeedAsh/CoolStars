@@ -14,12 +14,13 @@ bool ScaleDialog::init()
 		"loginCancel.png",
 		this,
 		menu_selector(ScaleDialog::closeCallback));
-
+	/*
 	CCMenu *menu = CCMenu::create(pCloseItem, NULL);
-	addChild(menu);
+	//addChild(menu);
 	auto size = getContentSize();
 	auto closeItemSize = pCloseItem->getContentSize();
 	menu->setPosition(size.width - closeItemSize.width  * 0.5f, size.height - closeItemSize.height  * 0.5f);
+	*/
 
 	setAnchorPoint(ccp(0.5f, 0.5f));
 	ignoreAnchorPointForPosition(false);

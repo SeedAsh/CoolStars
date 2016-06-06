@@ -6,8 +6,6 @@
 USING_NS_CC;
 using namespace std;
 StageModel::StageModel()
-	: m_isNewStage(true)
-	, m_topScore(0)
 {
 	resetStarsData();
 }
@@ -22,34 +20,25 @@ StageModel *StageModel::theModel()
 	return &model;
 }
 
-int StageModel::getCurDirection()
-{
-	int index = 0;
-	auto dirs = m_stageInfo.direction;
-	if (m_step > 0)
-	{
-		index = ((m_step - 1) % dirs.size());
-	}
-	return dirs[index];
-}
 
 void StageModel::initStarsData()
 {
 	resetStarsData();
-	m_target.initTargets();
-	m_stageInfo = DataManagerSelf->getStageConfig(m_curStage);
+
+	
 
 	//返回的数据是保存行的
 	vector<vector<int>> StageVec;
 	do 
 	{
-		if (!m_isNewStage)
+		if (!m_stageInfo.isNewStage())
 		{
 			bool isSucceed = StageSavingHelper::getLastSavedStars(StageVec);
 			if (isSucceed) break;
 		}
 		
-		DataManagerSelf->getNewStageStarsData(StageVec, m_curStage);
+		DataManagerSelf->getNewStageStarsData(StageVec, m_stageInfo.getCurStage());
+
 	} while (0);
 	
 	for (int row = 0; row < ROWS_SIZE; ++row)
@@ -64,48 +53,6 @@ void StageModel::initStarsData()
 	}
 }
 
-void StageModel::loadLastSavedStars()
-{
-	//返回的数据是保存行的
-	vector<vector<int>> StageVec;
-	bool isSucceed = StageSavingHelper::getLastSavedStars(StageVec);
-	//加载失败则直接读取关卡数据
-	if (!isSucceed)
-	{
-		loadNewStageStars();
-		return;
-	}
-
-	for (int row = 0; row < ROWS_SIZE; ++row)
-	{
-		for (int col = 0; col < COlUMNS_SIZE; ++col)
-		{
-			StarAttr attr;
-			attr.type = StageVec[col][row];
-			attr.grid = LogicGrid(row, ROWS_SIZE - col - 1);
-			m_starNodes.push_back(StarNode::createNodeFatory(attr));
-		}
-	}
-}
-
-void StageModel::loadNewStageStars()
-{
-	//数据库
-	DataManagerSelf->LoadStageData(m_curStage);
-
-	for (int row = 0; row < ROWS_SIZE; ++row)
-	{
-		StageData stageStarRow = DataManagerSelf->StageVec[row];
-		for (int col = 0; col < COlUMNS_SIZE; ++col)
-		{
-			StarAttr attr;
-			attr.type = (stageStarRow.col[col] - 1) % 5 + 1;
-			attr.grid = LogicGrid(col, ROWS_SIZE - row - 1);
-			m_starNodes.push_back(StarNode::createNodeFatory(attr));
-		}
-	}
-}
-
 void StageModel::resetStarsData()
 {
 	//reset nodes
@@ -114,13 +61,8 @@ void StageModel::resetStarsData()
 		delete(*iter);
 	}
 	m_starNodes.clear();
-
-	m_step = 0;
-	m_curStage = 0;
-	m_curScore = 0;
-	StageSavingHelper::LoadLastSavedStageData();
-
-	m_target.resetData();
+	m_stageInfo.init();
+	m_target.initTargets();
 }
 
 StarNode *StageModel::getStarNode(const LogicGrid &grid)
@@ -140,7 +82,7 @@ void StageModel::moveStars()
 	{
 		auto grid1 = node1->getAttr().grid;
 		auto grid2 = node2->getAttr().grid;
-		switch (getCurDirection())
+		switch (m_stageInfo.getCurDirection())
 		{
 		case kMoveUp:
 			return grid1.y > grid2.y;
@@ -171,7 +113,7 @@ bool StageModel::isGridEmpty(const LogicGrid &grid)
 
 void StageModel::moveStar(StarNode *node)
 {
-    int direction = StageModel::theModel()->getCurDirection();
+	int direction = m_stageInfo.getCurDirection();
     auto curGrid = node->getAttr().grid;
     auto targetGrid = curGrid;
     switch (direction)
@@ -231,10 +173,6 @@ void StageModel::removeStarNode(StarNode *node)
 	if (iter != m_starNodes.end())
 	{
 		m_target.recordErasedStars((*iter)->getAttr().type);
-		if (m_target.isReachTarget())
-		{
-			gameOver();
-		}
 
 		delete *iter;
 		m_starNodes.erase(iter);
@@ -242,9 +180,10 @@ void StageModel::removeStarNode(StarNode *node)
 	}
 }
 
-void StageModel::gameOver()
+void StageModel::gameOver(bool isWon)
 {
-	NOTIFY_VIEWS(onGameOver);
+	StageSavingHelper::saveCurStageData();
+	NOTIFY_VIEWS(onGameOver, isWon);
 }
 
 void StageModel::genNewStars()
@@ -272,9 +211,9 @@ void StageModel::genNewStars()
 		}
 	}
 
-	int kExtraGridOffset = 2;
+	int kExtraGridOffset = 2;//新创建的星星初始 在四方扩大kExtraGridOffset个的地方
 	vector<LogicGrid> newGrid;
-	switch (getCurDirection())
+	switch (m_stageInfo.getCurDirection())
 	{
 	case kMoveUp:
 		for (int i = 0; i < COlUMNS_SIZE; ++i)
@@ -353,9 +292,24 @@ void StageModel::removeView(IStageView *view)
 
 void StageModel::moveOneStep()
 {
-	m_step++;
+	m_stageInfo.addStep();
 	NOTIFY_VIEWS(onStepsChanged);
 
+	if (m_target.isGameOver())
+	{
+		bool isWon = false;
+		if (m_target.isReachTarget())
+		{
+			isWon = true;
+		}
+		gameOver(isWon);
+	}
+}
+
+void StageModel::addScore(int value)
+{
+	m_stageInfo.addCurScore(value);
+	NOTIFY_VIEWS(onScoreChanged);
 }
 
 void StageModel::replaceStar(const StarAttr &attr)
@@ -364,7 +318,7 @@ void StageModel::replaceStar(const StarAttr &attr)
 	StarNode *node = getStarNode(grid);
 	if (!node) return;
 
-	node->removeSelf();
+	node->removeSelf(false);
 	m_starNodes.push_back(StarNode::createNodeFatory(attr));
 	NOTIFY_VIEWS(onCreateNewStar, node);
 }

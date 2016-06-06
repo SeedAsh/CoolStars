@@ -11,9 +11,11 @@ public:
 	~StageTarget();
 	
 	void initTargets();
+	bool isGameOver();
 	bool isReachTarget();
 	void recordErasedStars(int starIndex);
 	void resetData();
+	void getCurTarget();
 private:
 	bool isGetEnoughScore();
 	bool isErasedEnoughStars();

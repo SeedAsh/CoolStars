@@ -51,6 +51,7 @@ void DataManager::LoadData()
 	LoadPetlistData();
 //	loadStageConfigDataEx();
 	
+	loadSystemConfig();
 	loadStageConfig();
 	loadStarsConfig();
 	loadCommonPetsConfig();
@@ -1248,7 +1249,7 @@ const StarsConfig &DataManager::getStarsConfig(int starType)
 void DataManager::loadCommonPetsConfig()
 {
 	SqliteHelper helper(DB_COOLSTAR);
-	auto result = helper.readRecord("select * from commonPets");
+	auto result = helper.readRecord("select * from common_pets");
 
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
@@ -1334,3 +1335,16 @@ void DataManager::getNewStageStarsData(std::vector<std::vector<int>> &stars, int
 	
 }
 
+void DataManager::loadSystemConfig()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from system");
+	assert(result.size() == 1);
+
+	m_systemConfig.stageAmount = atoi(result[0][0]);
+}
+
+const SystemConfig &DataManager::getSystemConfig()
+{
+	return m_systemConfig;
+}

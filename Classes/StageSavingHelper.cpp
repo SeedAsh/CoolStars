@@ -74,15 +74,14 @@ void StageSavingHelper::saveCurStageData()
 	char str[100] = { 0 };
 	SqliteHelper helper(DB_SAVING);
 
-	sql.clear();
-	sql = "replace into save_curState values(1, ";
+	auto stageInfo = stageModel->getStageInfo();
+	int curStage = stageInfo->getCurStage();
+	int curScore = stageInfo->getCurScore();
+	int topScore = stageInfo->getTopScore();
+	sprintf(str, "replace into save_cur_stage values(1, %d,%d,%d);"
+		, curStage, curScore, topScore);
 	
-	int curStage = stageModel->getCurStage();
-	int curScore = stageModel->getCurScore();
-	int topScore = stageModel->getTopScore();
-	sprintf(str, "%d,%d,%d);", curStage, curScore, topScore);
-	
-	helper.insertRecordIntoSqlite(sql.c_str());
+	helper.insertRecordIntoSqlite(str);
 	helper.closeDB();
 }
 
@@ -96,11 +95,13 @@ void StageSavingHelper::LoadLastSavedStageData()
 	auto result = helper.readRecord(sql.c_str());
 	assert(result.size() == 1);
 
-	int curStage = atoi(result[0][0]);
-	int curScore = atoi(result[0][1]);
-	int topScore = atoi(result[0][2]);
-	stageModel->setCurStage(curStage);
-	stageModel->setCurScore(curScore);
-	stageModel->setTopScore(topScore);
+	int curStage = atoi(result[0][1]);
+	int curScore = atoi(result[0][2]);
+	int topScore = atoi(result[0][3]);
+
+	auto stageInfo = stageModel->getStageInfo();
+	stageInfo->setCurStage(curStage);
+	stageInfo->setCurScore(curScore);
+	stageInfo->setTopScore(topScore);
 }
 

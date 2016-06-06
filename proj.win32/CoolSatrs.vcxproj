@@ -140,6 +140,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\ExitLayer.cpp" />
     <ClCompile Include="..\Classes\GameData.cpp" />
     <ClCompile Include="..\Classes\GameDataPreLoader.cpp" />
+    <ClCompile Include="..\Classes\GameResultLayer.cpp" />
     <ClCompile Include="..\Classes\HelpLayer.cpp" />
     <ClCompile Include="..\Classes\LoginLayer.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
@@ -159,6 +160,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\SoundMgr.cpp" />
     <ClCompile Include="..\Classes\sqlite3.c" />
     <ClCompile Include="..\Classes\SqliteHelper.cpp" />
+    <ClCompile Include="..\Classes\StageBaseInfo.cpp" />
     <ClCompile Include="..\Classes\StageModel.cpp" />
     <ClCompile Include="..\Classes\StageOperator.cpp" />
     <ClCompile Include="..\Classes\StagePanelState.cpp" />
@@ -189,6 +191,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\ExitLayer.h" />
     <ClInclude Include="..\Classes\GameData.h" />
     <ClInclude Include="..\Classes\GameDataPreLoader.h" />
+    <ClInclude Include="..\Classes\GameResultLayer.h" />
     <ClInclude Include="..\Classes\HelpLayer.h" />
     <ClInclude Include="..\Classes\LoginLayer.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
@@ -209,6 +212,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\SoundMgr.h" />
     <ClInclude Include="..\Classes\sqlite3.h" />
     <ClInclude Include="..\Classes\SqliteHelper.h" />
+    <ClInclude Include="..\Classes\StageBaseInfo.h" />
     <ClInclude Include="..\Classes\StageModel.h" />
     <ClInclude Include="..\Classes\StageOperator.h" />
     <ClInclude Include="..\Classes\StagePanelState.h" />

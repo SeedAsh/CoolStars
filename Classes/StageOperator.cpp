@@ -22,7 +22,7 @@ void StageOperator::eraseStars(vector<LogicGrid> &grids)
 		auto node = StageModel::theModel()->getStarNode(grids[i]);
 		if (node)
 		{
-			node->removeSelf(false);
+			node->removeSelf();
 		}
 	}
 	StageModel::theModel()->moveStars();
@@ -30,8 +30,9 @@ void StageOperator::eraseStars(vector<LogicGrid> &grids)
 
 void StageOperator::addSteps(int amount)
 {
-	int curStep = StageModel::theModel()->getStep();
-	StageModel::theModel()->setStep(curStep + amount);
+	auto stageInfo = StageModel::theModel()->getStageInfo();
+	int curStep = stageInfo->getCurStep();
+	stageInfo->setCurStep(curStep + amount);
 }
 
 void StageOperator::changeColor(bool isRandom)
