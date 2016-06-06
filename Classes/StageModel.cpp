@@ -25,27 +25,42 @@ StageModel *StageModel::theModel()
 int StageModel::getCurDirection()
 {
 	int index = 0;
+	auto dirs = m_stageInfo.direction;
 	if (m_step > 0)
 	{
-		index = ((m_step - 1) % 12);
+		index = ((m_step - 1) % dirs.size());
 	}
-	return m_currentStageInfo.content[index];
+	return dirs[index];
 }
 
 void StageModel::initStarsData()
 {
 	resetStarsData();
 	m_target.initTargets();
-	m_currentStageInfo = DataManagerSelf->StagesVec[m_curStage - 1];
+	m_stageInfo = DataManagerSelf->getStageConfig(m_curStage);
 
-	//关卡星星数据是一列列保存的，需要转换
-	if (m_isNewStage)
+	//返回的数据是保存行的
+	vector<vector<int>> StageVec;
+	do 
 	{
-		loadNewStageStars();
-	}
-	else 
+		if (!m_isNewStage)
+		{
+			bool isSucceed = StageSavingHelper::getLastSavedStars(StageVec);
+			if (isSucceed) break;
+		}
+		
+		DataManagerSelf->getNewStageStarsData(StageVec, m_curStage);
+	} while (0);
+	
+	for (int row = 0; row < ROWS_SIZE; ++row)
 	{
-		loadLastSavedStars();
+		for (int col = 0; col < COlUMNS_SIZE; ++col)
+		{
+			StarAttr attr;
+			attr.type = StageVec[col][row];
+			attr.grid = LogicGrid(row, ROWS_SIZE - col - 1);
+			m_starNodes.push_back(StarNode::createNodeFatory(attr));
+		}
 	}
 }
 

@@ -165,6 +165,9 @@
     <ClCompile Include="..\Classes\PetSavingHelper.cpp">
       <Filter>Pet</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CommonUtil.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -307,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PetSavingHelper.h">
       <Filter>Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonUtil.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

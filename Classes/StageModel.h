@@ -67,17 +67,17 @@ private:
 	int m_step;
 	int m_curScore;
 	int m_topScore;
-	StageInfo m_currentStageInfo;
+	StageConfig m_stageInfo;
 	std::vector<StarNode *> m_starNodes;
 	std::vector<IStageView *> m_views;
 	StageTarget m_target;
 private:
 	enum Direction
 	{
-		kMoveUp		= 1,
-		kMoveDown	= 2,
-		kMoveLeft	= 3,
-		kMoveRight	= 4,
+		kMoveUp,		
+		kMoveDown,	
+		kMoveLeft,	
+		kMoveRight,
 	};
 };
 #endif

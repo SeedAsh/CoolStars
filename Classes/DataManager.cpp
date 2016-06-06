@@ -2,6 +2,7 @@
 #include "SqliteHelper.h"
 #include "StarNode.h"
 #include "cocos2d.h"
+#include "CommonUtil.h"
 #define DB_NAME "coolstar.db"
 #define DB_FILE_PATH "data/coolstar.db"
 
@@ -48,8 +49,9 @@ void DataManager::LoadData()
 	LoadMoneyshopData();
 	loadBallConfigDataEx();*/
 	LoadPetlistData();
-	loadStageConfigDataEx();
+//	loadStageConfigDataEx();
 	
+	loadStageConfig();
 	loadStarsConfig();
 	loadCommonPetsConfig();
 	/*LoadBallQueueDataEx();
@@ -1281,3 +1283,54 @@ const PetsConfig &DataManager::getCommonPetsConfig(int petId)
 	assert(petId > 0 && petId < CommonPetsAmount);
 	return m_petsConfig[petId - 1];
 }
+
+void DataManager::loadStageConfig()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from stages");
+	assert(!result.empty());
+
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto rowData = *iter;
+		StageConfig stage;
+		stage.id = atoi(rowData[0]);
+		stage.tagetType = atoi(rowData[1]);
+		stage.targetParam = CommonUtil::parseStrToInts(rowData[2]);
+		stage.step= atoi(rowData[3]);
+		stage.direction = CommonUtil::parseStrToInts(rowData[4]);
+
+		m_stagesConfig.push_back(stage);
+	}
+}
+
+const StageConfig &DataManager::getStageConfig(int stage)
+{
+	assert(stage > 0 && stage <= m_petsConfig.size());
+	return m_stagesConfig[stage - 1];
+}
+
+void DataManager::getNewStageStarsData(std::vector<std::vector<int>> &stars, int stageNum)
+{
+	vector<StageConfig> m_stagesConfig;
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	
+	char str[100] = { 0 };
+	sprintf(str, "select * from stage%d", stageNum);
+	auto result = sqlHelper.readRecord(str);
+
+	assert(result.size() == ROWS_SIZE);
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		assert((*iter).size() == COlUMNS_SIZE);
+
+		vector<int> oneRow;
+		for (size_t i = 0; i < (*iter).size(); ++i)
+		{
+			oneRow.push_back(atoi((*iter)[i]));
+		}
+		stars.push_back(oneRow);
+	}
+	
+}
+

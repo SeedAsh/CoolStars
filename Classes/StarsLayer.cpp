@@ -47,7 +47,6 @@ StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
 void StarsLayer::initStars()
 {
 	auto starUtil = new StarUtil();
-	starUtil->initStarEx();
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	StarViewNode *pStarSprite = NULL;
 	Star *pStar = NULL;

@@ -263,6 +263,15 @@ struct PetsConfig
 	string desc;
 };
 
+struct StageConfig
+{
+	int id;
+	int tagetType;
+	vector<int> targetParam;
+	int step;
+	vector<int> direction;
+};
+
 class DataManager
 {
 public:
@@ -321,12 +330,18 @@ public:
 
 
 public:
+	void loadStageConfig();
+	const StageConfig &getStageConfig(int stage);
+
+	void getNewStageStarsData(std::vector<std::vector<int>> &stars, int stageNum);
+
 	void loadStarsConfig();
 	const StarsConfig &getStarsConfig(int starType);
 
 	void loadCommonPetsConfig();
 	const PetsConfig &getCommonPetsConfig(int petId);
 private:
+	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
 	vector<PetsConfig> m_petsConfig;
 

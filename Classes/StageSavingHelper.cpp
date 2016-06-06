@@ -53,12 +53,12 @@ bool StageSavingHelper::getLastSavedStars(std::vector<std::vector<int>> &stars)
 		assert((*iter).size() == COlUMNS_SIZE);
 		if ((*iter).size() != ROWS_SIZE) return false;
 
-		vector<int> line;
+		vector<int> oneRow;
 		for (size_t i = 0; i < (*iter).size(); ++i)
 		{
-			line.push_back(atoi((*iter)[i]));
+			oneRow.push_back(atoi((*iter)[i]));
 		}
-		stars.push_back(line);
+		stars.push_back(oneRow);
 	}
 	return true;
 }
