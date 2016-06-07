@@ -11,7 +11,6 @@
 #include "PanelMacros.h"
 #include "QuickBuyScene.h"
 #include "StageUiLayer.h"
-#include "StarUtil.h"
 #include "PetScene.h"
 #include "SqliteHelper.h"
 #include "StageModel.h"
@@ -109,10 +108,6 @@ bool MenuScene::init()
 	sSelItem->setAnchorPoint(MENU_ITEM_SEL_ANCHOR);
 	y = menuItem2->getPositionY() - MENU_ITEM_HEIGHT;
 	menuItem3->setPosition(ccp(origin.x + visibleSize.width / 2, y));
-
-	if (!StarUtil::hasSavedState()){
-		menuItem2->setEnabled(false);
-	}
 
 	CCMenu* pMenu = CCMenu::create(menuItem1, menuItem2,menuItem3,menuItempSound, menuItemHelp, NULL);
 	pMenu->setPosition(CCPointZero);
@@ -249,9 +244,6 @@ void MenuScene::ResumeGame( CCObject* sender ){
 	stageInfo->resumeGame();
 
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-    if (StarUtil::hasSavedState()){
-        CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));
-    }
 }
 
 void MenuScene::shopClicked( CCObject* sender ){

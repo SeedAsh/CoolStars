@@ -22,8 +22,6 @@ void GameDataPreLoader::LoadGameConfigs()
 	DataCheck check;
 	check.checkDataBase();
 
-	//不强制复制数据库，若数据库升级，再强制复制，此时考虑若是有写数据库操作，怎么备份已经有的数据或写其它数据库或写其它文件实现，如CCUserDefaultEx
-	DataManagerSelf->UnzipGameData(false);
 	DataManagerSelf->LoadData();
 
 }

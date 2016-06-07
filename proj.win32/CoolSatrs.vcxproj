@@ -171,7 +171,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StarNode.cpp" />
     <ClCompile Include="..\Classes\StarsController.cpp" />
     <ClCompile Include="..\Classes\StarsLayer.cpp" />
-    <ClCompile Include="..\Classes\StarUtil.cpp" />
     <ClCompile Include="..\Classes\StarViewNode.cpp" />
     <ClCompile Include="..\Classes\TouchNode.cpp" />
     <ClCompile Include="..\Classes\UserInfo.cpp" />
@@ -187,6 +186,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\ConfData.h" />
     <ClInclude Include="..\Classes\ConfirmLayer.h" />
     <ClInclude Include="..\Classes\DataCheck.h" />
+    <ClInclude Include="..\Classes\DataConfig.h" />
     <ClInclude Include="..\Classes\DataManager.h" />
     <ClInclude Include="..\Classes\ExitLayer.h" />
     <ClInclude Include="..\Classes\GameData.h" />
@@ -223,7 +223,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StarNode.h" />
     <ClInclude Include="..\Classes\StarsController.h" />
     <ClInclude Include="..\Classes\StarsLayer.h" />
-    <ClInclude Include="..\Classes\StarUtil.h" />
     <ClInclude Include="..\Classes\StarViewNode.h" />
     <ClInclude Include="..\Classes\TouchNode.h" />
     <ClInclude Include="..\Classes\UserInfo.h" />

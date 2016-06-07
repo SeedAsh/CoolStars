@@ -48,9 +48,6 @@
     <ClCompile Include="..\Classes\ShopLayer.cpp">
       <Filter>Shop</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\StarUtil.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\VisibleRect.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -194,9 +191,6 @@
     <ClInclude Include="..\Classes\ShopLayer.h">
       <Filter>Shop</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\StarUtil.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\VisibleRect.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -325,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameResultLayer.h">
       <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DataConfig.h">
+      <Filter>GameModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

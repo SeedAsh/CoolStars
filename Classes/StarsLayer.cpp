@@ -1,5 +1,4 @@
 ﻿#include "StarsLayer.h"
-#include "StarUtil.h"
 #include "StarViewNode.h"
 #include "StageModel.h"
 
@@ -46,10 +45,8 @@ StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
 
 void StarsLayer::initStars()
 {
-	auto starUtil = new StarUtil();
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	StarViewNode *pStarSprite = NULL;
-	Star *pStar = NULL;
 	float speed = visibleSize.height / 0.9f;
 	for (int col = 0; col < COlUMNS_SIZE; ++col)
 	{

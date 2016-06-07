@@ -5,15 +5,6 @@
 using namespace cocos2d;
 using namespace std;
 
-static const char s_fire[] = "particle/fire.png";
-static const string s_stars[] = {
-	"particle/starp1.png",
-	"particle/starp2.png",
-	"particle/starp3.png",
-	"particle/starp4.png",
-	"particle/starp5.png"
-};
-
 StarViewNode *StarViewNode::create(StarNode *node)
 {
 	StarViewNode *ViewNode = new StarViewNode(node);
