@@ -7,6 +7,7 @@ USING_NS_CC;
 using namespace std;
 StageModel::StageModel()
 {
+	m_stageInfo.init();
 	resetStarsData();
 }
 
@@ -24,33 +25,22 @@ StageModel *StageModel::theModel()
 void StageModel::initStarsData()
 {
 	resetStarsData();
-
-	
-
 	//返回的数据是保存行的
-	vector<vector<int>> StageVec;
-	do 
-	{
-		if (!m_stageInfo.isNewStage())
-		{
-			bool isSucceed = StageSavingHelper::getLastSavedStars(StageVec);
-			if (isSucceed) break;
-		}
-		
-		DataManagerSelf->getNewStageStarsData(StageVec, m_stageInfo.getCurStage());
-
-	} while (0);
+	vector<vector<int>> stageVec;
+	m_stageInfo.getStageStars(stageVec);
 	
 	for (int row = 0; row < ROWS_SIZE; ++row)
 	{
 		for (int col = 0; col < COlUMNS_SIZE; ++col)
 		{
 			StarAttr attr;
-			attr.type = StageVec[col][row];
+			attr.type = stageVec[col][row];
 			attr.grid = LogicGrid(row, ROWS_SIZE - col - 1);
 			m_starNodes.push_back(StarNode::createNodeFatory(attr));
 		}
 	}
+	
+	m_stageInfo.doSave();
 }
 
 void StageModel::resetStarsData()
@@ -61,7 +51,6 @@ void StageModel::resetStarsData()
 		delete(*iter);
 	}
 	m_starNodes.clear();
-	m_stageInfo.init();
 	m_target.initTargets();
 }
 
@@ -211,7 +200,7 @@ void StageModel::genNewStars()
 		}
 	}
 
-	int kExtraGridOffset = 2;//新创建的星星初始 在四方扩大kExtraGridOffset个的地方
+	int kExtraGridOffset = max(COlUMNS_SIZE, ROWS_SIZE);//新创建的星星初始 在四方扩大kExtraGridOffset个的地方
 	vector<LogicGrid> newGrid;
 	switch (m_stageInfo.getCurDirection())
 	{

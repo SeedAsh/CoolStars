@@ -236,7 +236,7 @@ void MenuScene::NewGame( CCObject* sender ){
 		return;
 	}
 	auto stageInfo = StageModel::theModel()->getStageInfo();
-	stageInfo->setIsNewStage(true);
+	stageInfo->newGame();
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
     CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));
 }
@@ -246,7 +246,7 @@ void MenuScene::ResumeGame( CCObject* sender ){
 		return;
 	}
 	auto stageInfo = StageModel::theModel()->getStageInfo();
-	stageInfo->setIsNewStage(false);
+	stageInfo->resumeGame();
 
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
     if (StarUtil::hasSavedState()){

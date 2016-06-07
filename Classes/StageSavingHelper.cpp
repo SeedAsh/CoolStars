@@ -14,6 +14,8 @@ void StageSavingHelper::saveCurStars()
 	SqliteHelper helper(DB_SAVING);
 	helper.clearTable("save_stars");
 	string sql;
+	
+	helper.openTransaction(true);
 	for (int row = ROWS_SIZE - 1; row >= 0; --row)
 	{
 		vector<string> stars;
@@ -35,6 +37,7 @@ void StageSavingHelper::saveCurStars()
 		sql += ");";
 		helper.insertRecordIntoSqlite(sql.c_str());
 	}
+	helper.openTransaction(false);
 	helper.closeDB();
 }
 
@@ -42,6 +45,8 @@ void StageSavingHelper::saveCurStars()
 bool StageSavingHelper::getLastSavedStars(std::vector<std::vector<int>> &stars)
 {
 	SqliteHelper sqlHelper(DB_SAVING);
+	
+	auto temp = stars;
 	auto result = sqlHelper.readRecord("select * from save_stars");
 
 	assert(result.size() == ROWS_SIZE);
@@ -58,8 +63,9 @@ bool StageSavingHelper::getLastSavedStars(std::vector<std::vector<int>> &stars)
 		{
 			oneRow.push_back(atoi((*iter)[i]));
 		}
-		stars.push_back(oneRow);
+		temp.push_back(oneRow);
 	}
+	stars = temp;
 	return true;
 }
 
@@ -78,8 +84,9 @@ void StageSavingHelper::saveCurStageData()
 	int curStage = stageInfo->getCurStage();
 	int curScore = stageInfo->getCurScore();
 	int topScore = stageInfo->getTopScore();
-	sprintf(str, "replace into save_cur_stage values(1, %d,%d,%d);"
-		, curStage, curScore, topScore);
+	int step = stageInfo->getCurStep();
+	sprintf(str, "replace into save_cur_stage values(1, %d,%d,%d,%d);"
+		, curStage, curScore, topScore, step);
 	
 	helper.insertRecordIntoSqlite(str);
 	helper.closeDB();
@@ -98,10 +105,12 @@ void StageSavingHelper::LoadLastSavedStageData()
 	int curStage = atoi(result[0][1]);
 	int curScore = atoi(result[0][2]);
 	int topScore = atoi(result[0][3]);
+	int step = atoi(result[0][4]);
 
 	auto stageInfo = stageModel->getStageInfo();
 	stageInfo->setCurStage(curStage);
 	stageInfo->setCurScore(curScore);
 	stageInfo->setTopScore(topScore);
+	stageInfo->setCurStep(step);
 }
 

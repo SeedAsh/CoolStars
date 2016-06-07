@@ -138,6 +138,17 @@ void SqliteHelper::closeDB()
 	}
 }
 
+void SqliteHelper::openTransaction(bool open)
+{
+	if (open)
+	{
+		sqlite3_exec(m_pGameDataBase, "begin;", 0, 0, 0);
+	}
+	else
+	{
+		sqlite3_exec(m_pGameDataBase, "commit;", 0, 0, 0);
+	}
+}
 /*
 //使用回调函数获取表结果的方法
 //方法一

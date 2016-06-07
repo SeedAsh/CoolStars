@@ -62,8 +62,8 @@ CCPoint StarViewNode::getPosByGrid(LogicGrid grid)
 void StarViewNode::doMove(LogicGrid targetGrid)
 {
 	CCPoint pos = getPosByGrid(targetGrid);
-    CCMoveTo *moveTo = CCMoveTo::create(0.2f, pos);
-    runAction(moveTo);
+    CCMoveTo *moveTo = CCMoveTo::create(0.4f, pos);
+	runAction(CCEaseBackInOut::create(moveTo));
 }
 
 void StarViewNode::runExplosion(){

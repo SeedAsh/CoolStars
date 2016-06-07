@@ -19,7 +19,7 @@ bool GameWinLayer::init()
 		"btn_mainMenu.png",
 		this,
 		menu_selector(GameWinLayer::toMainMenu));
-	pToMainMenu->setPosition(size.width * 0.25f, size.height * 0.1f);
+	pToMainMenu->setPosition(size.width * 0.5f, size.height * 0.1f);
 
 
 	CCMenuItemImage *pToNextStage = CCMenuItemImage::create(
@@ -31,12 +31,13 @@ bool GameWinLayer::init()
 
 	CCMenu *menu = CCMenu::create();
 	menu->addChild(pToMainMenu);
+	menu->setPosition(ccp(0, 0));
 
 	auto info = StageModel::theModel()->getStageInfo();
 	bool isLastStage = info->isTheLastStage();
-	if (isLastStage)
+	if (!isLastStage)
 	{
-		pToMainMenu->setPosition(size.width * 0.5f, size.height * 0.1f);
+		pToMainMenu->setPosition(size.width * 0.25f, size.height * 0.1f);
 		menu->addChild(pToNextStage);
 	}
 

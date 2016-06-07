@@ -375,7 +375,8 @@ void StageUiLayer::onGameOver(int isWon)
 	}
 	else
 	{
-		node = GameFailLayer::create();
+		//GameFailLayer
+		node = GameWinLayer::create();
 	}
 	
 	addChild(node, kZorder_Dialog);

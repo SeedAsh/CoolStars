@@ -60,7 +60,6 @@ void StageTarget::initTargets()
 	default:
 		assert(false && "on this kind!");
 	}
-
 }
 
 void StageTarget::getCurTarget()

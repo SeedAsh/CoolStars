@@ -1,5 +1,6 @@
 #ifndef __STAGEBASEINFO_H__
 #define __STAGEBASEINFO_H__
+#include "cocos2d.h"
 class StageBaseInfo
 {
 public:
@@ -9,9 +10,6 @@ public: //基本信息存取
 	void setCurStep(int step){ m_step = step; }
 	int getLeftStep();
 	void addStep() {m_step++; }
-
-	bool isNewStage(){ return m_isNewStage; }
-	void setIsNewStage(bool isNewStage){ m_isNewStage = isNewStage; }
 
 	int getCurScore(){ return m_curScore; }
 	void addCurScore(int value){ setCurScore(m_curScore + value); }
@@ -23,11 +21,18 @@ public: //基本信息存取
 	int getCurStage(){ return m_curStage; }
 	void setCurStage(int stage){ m_curStage = stage; }
 	bool isTheLastStage();
-	void toNextStage();
 
 	int getCurDirection();
 
+	void newGame();//新游戏
+	void resumeGame();
+	void toNextStage();
+	void getStageStars(std::vector<std::vector<int>> &stars);
 	void init();
+	void doSave();
+private:
+	void reset();
+
 private:
 	bool m_isNewStage;//是否为新关卡
 	int m_curStage;
