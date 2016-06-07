@@ -244,6 +244,7 @@ void MenuScene::ResumeGame( CCObject* sender ){
 	stageInfo->resumeGame();
 
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	CCDirector::sharedDirector()->replaceScene(getTansitionScene(StageScene::scene()));
 }
 
 void MenuScene::shopClicked( CCObject* sender ){

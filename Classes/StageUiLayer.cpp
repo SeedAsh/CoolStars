@@ -10,6 +10,8 @@
 #include "StageOperator.h"
 #include "CommonUtil.h"
 #include "GameResultLayer.h"
+#include "PropManager.h"
+#include "PropItemView.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -229,56 +231,21 @@ void StageUiLayer::initBottomUi()
 	float leftX = VisibleRect::center().x;
 	float propsY = VisibleRect::rightBottom().y + 10;
 	float propsX = VisibleRect::rightBottom().x - 10;
-	//bomb btn
-	pItemNormal = CCSprite::create("Props_Bomb.png");
-	pItemSelected = CCSprite::create("Props_Bomb.png");
-	pItemSelected->setScale(1.2f);
-	pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
-	CCMenuItemSprite* pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
-	pMagic->setAnchorPoint(ccp(1, 0));
-	pMagic->setPosition(ccp(propsX, propsY));
-	propsX -= pMagic->getContentSize().width * 1.2f;
-	pMenu->addChild(pMagic);
-	if (GameData::getInstance()->m_nUseProType != USE_PRO_TYPE_COINONLY){
-		m_pBombLabel = CCLabelTTF::create(CCString::createWithFormat("%d", UserInfo::getProCount(USERINFO_PRO_TYPE_BOMB))->getCString(), "Arial", 18);
-		m_pBombLabel->setPosition(ccp(pMagic->getContentSize().width - m_pBombLabel->getContentSize().width / 2, 0));
-		pMagic->addChild(m_pBombLabel);
-	}
 
-	//panit btn
-	leftX = pMagic->getPositionX();
-	pItemNormal = CCSprite::create("Props_Paint.png");
-	pItemSelected = CCSprite::create("Props_Paint.png");
-	pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
-	pItemSelected->setScale(1.2f);
-	pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
-	pMagic->setAnchorPoint(ccp(1, 0));
-	pMagic->setPosition(ccp(propsX, propsY));
-	propsX -= pMagic->getContentSize().width * 1.2f;;
-	pMenu->addChild(pMagic);
-	if (GameData::getInstance()->m_nUseProType != USE_PRO_TYPE_COINONLY){
-		m_pPaintLabel = CCLabelTTF::create(CCString::createWithFormat("%d", UserInfo::getProCount(USERINFO_PRO_TYPE_PAINT))->getCString(), "Arial", 18);
-		m_pPaintLabel->setPosition(ccp(pMagic->getContentSize().width - m_pPaintLabel->getContentSize().width / 2, 0));
-		pMagic->addChild(m_pPaintLabel);
-	}
+	auto propReorder = PropItemView::create(kPropReorder);
+	propReorder->setPosition(ccp(propsX, propsY));
+	propsX -= propReorder->getContentSize().width + 10;
+	addChild(propReorder);
 
-	//rainbow btn
-	leftX = pMagic->getPositionX();
-	pItemNormal = CCSprite::create("Props_Rainbow.png");
-	pItemSelected = CCSprite::create("Props_Rainbow.png");
-	pMagic = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::menuCallback));
-	pItemSelected->setScale(1.2f);
-	pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
-	pMagic->setAnchorPoint(ccp(1, 0));
-	pMagic->setPosition(ccp(propsX, propsY));
-	propsX -= pMagic->getContentSize().width * 1.2f;
-	pMenu->addChild(pMagic);
-	if (GameData::getInstance()->m_nUseProType != USE_PRO_TYPE_COINONLY){
-		m_pReflashLabel = CCLabelTTF::create(CCString::createWithFormat("%d", UserInfo::getProCount(USERINFO_PRO_TYPE_REFLASH))->getCString(), "Arial", 18);
-		m_pReflashLabel->setPosition(ccp(pMagic->getContentSize().width - m_pReflashLabel->getContentSize().width / 2, 0));
-		pMagic->addChild(m_pReflashLabel);
-	}
+	auto propBrush = PropItemView::create(kPropBrush);
+	propBrush->setPosition(ccp(propsX, propsY));
+	propsX -= propBrush->getContentSize().width + 10;
+	addChild(propBrush);
 
+	auto propBomb = PropItemView::create(kPropBomb);
+	propBomb->setPosition(ccp(propsX, propsY));
+	propsX -= propBomb->getContentSize().width + 10;
+	addChild(propBomb);
 }
 
 void StageUiLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent){

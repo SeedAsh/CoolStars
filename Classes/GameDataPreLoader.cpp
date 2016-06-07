@@ -6,6 +6,7 @@
 #include "DataManager.h"
 #include "DataCheck.h"
 #include "PetManager.h"
+#include "PropManager.h"
 
 void GameDataPreLoader::initGameData()
 {
@@ -31,5 +32,6 @@ void GameDataPreLoader::intModels()
 	UserInfo::init();
 	SoundMgr::init();
 	
+	PropManager::propMgr()->loadPropData();
 	PetManager::petMgr()->init();
 }

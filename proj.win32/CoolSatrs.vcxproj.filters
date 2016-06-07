@@ -129,9 +129,6 @@
     <ClCompile Include="..\Classes\PropManager.cpp">
       <Filter>Prop</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\PropItem.cpp">
-      <Filter>Prop</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\StageOperator.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
@@ -170,6 +167,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GameResultLayer.cpp">
       <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PropItemView.cpp">
+      <Filter>Prop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,9 +275,6 @@
     <ClInclude Include="..\Classes\PropManager.h">
       <Filter>Prop</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\PropItem.h">
-      <Filter>Prop</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\StageOperator.h">
       <Filter>GameStage\StageModel</Filter>
     </ClInclude>
@@ -322,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\DataConfig.h">
       <Filter>GameModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PropItemView.h">
+      <Filter>Prop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
