@@ -1,6 +1,5 @@
 #include "StarViewNode.h"
 #include "StarsLayer.h"
-#include "StarUtil.h"
 #include "StageModel.h"
 using namespace cocos2d;
 using namespace std;

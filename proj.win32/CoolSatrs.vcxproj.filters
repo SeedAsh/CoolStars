@@ -102,9 +102,6 @@
     <ClCompile Include="..\Classes\StageModel.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\StagePanelState.cpp">
-      <Filter>GameStage\StageUi</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\StarsController.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
@@ -170,6 +167,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\PropItemView.cpp">
       <Filter>Prop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StageLayersMgr.cpp">
+      <Filter>GameStage\StageUi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -248,9 +248,6 @@
     <ClInclude Include="..\Classes\PanelMacros.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\StagePanelState.h">
-      <Filter>GameStage\StageUi</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\StarsController.h">
       <Filter>GameStage\StageModel</Filter>
     </ClInclude>
@@ -322,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PropItemView.h">
       <Filter>Prop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageLayersMgr.h">
+      <Filter>GameStage\StageUi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

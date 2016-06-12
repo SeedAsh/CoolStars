@@ -5,14 +5,10 @@ using namespace std;
 USING_NS_CC; 
 
 //道具和宠物对stars的操作
-StageOperator::StageOperator()
+StageOperator *StageOperator::theOperator()
 {
-
-}
-
-StageOperator::~StageOperator()
-{
-
+	static StageOperator op;
+	return &op;
 }
 
 void StageOperator::eraseStars(vector<LogicGrid> &grids)

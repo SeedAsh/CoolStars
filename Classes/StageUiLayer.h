@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "StageModel.h"
+#include "StageLayersMgr.h"
 USING_NS_CC;
 struct StageUiValue
 {
@@ -18,6 +19,7 @@ struct StageUiValue
 class StageUiLayer
     : public CCLayer
 	, public IStageView
+	, public IStageLayer
 {
 public:
     StageUiLayer(void);

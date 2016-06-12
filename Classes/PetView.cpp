@@ -1,7 +1,6 @@
 #include "PetView.h"
 #include "PetEntity.h"
 #include "PetManager.h"
-#include "layers_scenes_transitions_nodes\CCLayer.h"
 using namespace std;
 USING_NS_CC;
 
@@ -33,8 +32,14 @@ bool PetView::init()
 	string iconPath = commonData.iconPath[color];
 
 	auto spr = CCSprite::create(iconPath.c_str());
-	
 	CCSize size = spr->getContentSize();
+
+	//设置宠物的宽度为两个星星的大小
+	float scale = STAR_SIZE / size.width * 2;
+	spr->setScale(scale);
+	size.width *= scale;
+	size.height *= scale;
+
 	setContentSize(size);
 	setAnchorPoint(ccp(0.5f, 0.5f));
 
@@ -48,12 +53,38 @@ bool PetView::init()
 	return true;
 }
 
-void PetView::runScale()
-{
-	CCScaleTo *scaleLarge = CCScaleTo::create(0.15f, 1.3f);
-	CCScaleTo *scaleSmall = CCScaleTo::create(0.15f, 0.8f);
-	CCScaleTo *scaleNormal = CCScaleTo::create(0.1f, 1.0f);
-	CCSequence *seq = CCSequence::create(scaleLarge, scaleSmall, scaleNormal, NULL);
 
-	runAction(seq);
+
+////////////////////////////////////////////////////////////////////////////////////////
+PetEmptyView *PetEmptyView::create()
+{
+	auto view = new PetEmptyView();
+	view->init();
+	view->autorelease();
+	return view;
+}
+
+bool PetEmptyView::init()
+{
+	string iconPath = "pets/black.png";
+	auto spr = CCSprite::create(iconPath.c_str());
+	CCSize size = spr->getContentSize();
+
+	//设置宠物的宽度为两个星星的大小
+	float scale = STAR_SIZE / size.width * 2;
+	spr->setScale(scale);
+	size.width *= scale;
+	size.height *= scale;
+
+	setContentSize(size);
+	setAnchorPoint(ccp(0.5f, 0.5f));
+
+	spr->setPosition(ccp(size.width * 0.5f, size.height *0.5f));
+	addChild(spr);
+	return true;
+}
+
+void PetEmptyView::onTouchBegan()
+{
+	runScale();
 }

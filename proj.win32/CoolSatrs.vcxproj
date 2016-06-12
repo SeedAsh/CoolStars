@@ -161,9 +161,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\sqlite3.c" />
     <ClCompile Include="..\Classes\SqliteHelper.cpp" />
     <ClCompile Include="..\Classes\StageBaseInfo.cpp" />
+    <ClCompile Include="..\Classes\StageLayersMgr.cpp" />
     <ClCompile Include="..\Classes\StageModel.cpp" />
     <ClCompile Include="..\Classes\StageOperator.cpp" />
-    <ClCompile Include="..\Classes\StagePanelState.cpp" />
     <ClCompile Include="..\Classes\StageSavingHelper.cpp" />
     <ClCompile Include="..\Classes\StageScene.cpp" />
     <ClCompile Include="..\Classes\StageTarget.cpp" />
@@ -213,9 +213,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\sqlite3.h" />
     <ClInclude Include="..\Classes\SqliteHelper.h" />
     <ClInclude Include="..\Classes\StageBaseInfo.h" />
+    <ClInclude Include="..\Classes\StageLayersMgr.h" />
     <ClInclude Include="..\Classes\StageModel.h" />
     <ClInclude Include="..\Classes\StageOperator.h" />
-    <ClInclude Include="..\Classes\StagePanelState.h" />
     <ClInclude Include="..\Classes\StageSavingHelper.h" />
     <ClInclude Include="..\Classes\StageScene.h" />
     <ClInclude Include="..\Classes\StageTarget.h" />

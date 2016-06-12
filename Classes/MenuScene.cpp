@@ -258,26 +258,7 @@ void MenuScene::shopClicked( CCObject* sender ){
 }
 
 void MenuScene::helpClicked( CCObject* sender ){
-	
-	return;
-	SqliteHelper helper(DB_SAVING);
 
-	char str[100] = { 0 };
-	
-	for (int uid = 0; uid < 60; ++uid)
-	{
-		int petId = uid / 4 + 1;
-		int color = uid % 4 + 1;
-		sprintf(str, "%d,%d,%d", uid + 1, petId, color);
-		
-		string sql = "insert into save_pets values(";
-		sql += str;
-		sql += ",1,0,0);";
-		helper.insertRecordIntoSqlite(sql.c_str());
-	}
-	
-
-	return;
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}

@@ -3,12 +3,14 @@
 #include "cocos2d.h"
 #include "StarViewNode.h"
 #include "StageModel.h"
+#include "StageLayersMgr.h"
 USING_NS_CC;
 class StarUtil;
 
 class StarsLayer
 	: public CCLayer
 	, public IStageView
+	, public IStageLayer
 {
 public:
 	StarsLayer();

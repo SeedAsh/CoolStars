@@ -1,6 +1,7 @@
 #include "PropItemView.h"
 #include "PropManager.h"
 #include "CommonUtil.h"
+#include "StageOperator.h"
 using namespace cocos2d;
 using namespace std;
 using namespace CommonUtil;
@@ -84,7 +85,8 @@ bool PropItemViewBomb::init()
 
 void PropItemViewBomb::onClick()
 {
-	//CCMessageBox("bomb", "bomb");
+	//auto grids
+	//StageOp->eraseStars();
 }
 
 bool PropItemViewBrush::init()
@@ -111,6 +113,6 @@ bool PropItemViewReOrder::init()
 
 void PropItemViewReOrder::onClick()
 {
-	//CCMessageBox("reorder", "reorder");
+	StageOp->reOrderStars();
 
 }

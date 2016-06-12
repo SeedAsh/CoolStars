@@ -3,11 +3,12 @@
 #include "cocos2d.h"
 #include "StageModel.h"
 
+#define StageOp StageOperator::theOperator()
 class StageOperator
 {
 public:
-	StageOperator();
-	~StageOperator();
+	static StageOperator *theOperator();
+	~StageOperator(){}
 public:
 	void eraseStars(std::vector<LogicGrid> &grids);
 	void addSteps(int amount);
@@ -16,5 +17,6 @@ public:
 	void removePetDebuff(int who);
 	void chageStarType(int type);
 	void reOrderStars();
+private:
 };
 #endif

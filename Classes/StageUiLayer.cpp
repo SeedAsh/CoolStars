@@ -13,6 +13,7 @@
 #include "PropManager.h"
 #include "PropItemView.h"
 
+
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
 #define Z_ORDER_TITLE_BG (Z_ORDER_PROPS + 1)
@@ -41,12 +42,14 @@ void StageUiLayer::onEnter()
 {
 	CCLayer::onEnter();
 	StageModel::theModel()->addView(this);
+	StageLayersMgr::theMgr()->addLayers(this);
 }
 
 void StageUiLayer::onExit()
 {
 	CCLayer::onExit();
 	StageModel::theModel()->removeView(this);
+	StageLayersMgr::theMgr()->removeLayers(this);
 }
 
 StageUiLayer * StageUiLayer::create(){
@@ -182,13 +185,25 @@ void StageUiLayer::initPets()
 {
 	auto ids = PetManager::petMgr()->getCurPetIds();
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	CCPoint nextPos = CCPoint(winSize.width * 0.2f, winSize.height * 0.8f);
+	//已上场的宠物
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
 		PetView *view = PetView::create(ids[i]);
-		addChild(view, kZorder_Pet);
-		
 		CCSize size = view->getContentSize();
-		view->setPosition(ccp(winSize.width * 0.25f + size.width * i * 1.2f, winSize.height * 0.8f));
+		addChild(view, kZorder_Pet);
+		view->setPosition(nextPos);
+		nextPos.x += size.width;
+	}
+	//空置的宠物位位
+	int emptyAmount = MaxActivePetsAmount - ids.size();
+	for (int i = 0; i < emptyAmount; ++i)
+	{
+		PetEmptyView *view = PetEmptyView::create();
+		CCSize size = view->getContentSize();
+		addChild(view, kZorder_Pet);
+		view->setPosition(nextPos);
+		nextPos.x += size.width;
 	}
 }
 
@@ -308,8 +323,7 @@ void StageUiLayer::setStageClear( bool clear ){
 
 void StageUiLayer::menuCallback( CCObject *pSender )
 {
-	StageOperator obj;
-	obj.reOrderStars();
+
 }
 
 void StageUiLayer::onStepsChanged()

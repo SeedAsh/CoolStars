@@ -29,3 +29,13 @@ bool TouchNode::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 	}
 	return false;
 }
+
+void TouchNode::runScale()
+{
+	CCScaleTo *scaleLarge = CCScaleTo::create(0.15f, 1.3f);
+	CCScaleTo *scaleSmall = CCScaleTo::create(0.15f, 0.8f);
+	CCScaleTo *scaleNormal = CCScaleTo::create(0.1f, 1.0f);
+	CCSequence *seq = CCSequence::create(scaleLarge, scaleSmall, scaleNormal, NULL);
+
+	runAction(seq);
+}

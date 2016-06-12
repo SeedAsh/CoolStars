@@ -12,6 +12,7 @@ public:
 protected:
 	TouchNode(int touchPriority = 0){}
 	virtual void onTouchBegan(){}
+	void runScale();
 private:
 	virtual void onEnter();
 	virtual void onExit();

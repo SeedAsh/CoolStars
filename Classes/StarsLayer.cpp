@@ -18,12 +18,15 @@ void StarsLayer::onEnter()
 {
 	CCLayer::onEnter();
 	StageModel::theModel()->addView(this);
+	StageLayersMgr::theMgr()->addLayers(this);
 }
 
 void StarsLayer::onExit()
 {
 	CCLayer::onExit();
 	StageModel::theModel()->removeView(this);
+	StageLayersMgr::theMgr()->addLayers(this);
+
 }
 
 bool StarsLayer::init()
@@ -48,6 +51,7 @@ void StarsLayer::initStars()
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	StarViewNode *pStarSprite = NULL;
 	float speed = visibleSize.height / 0.9f;
+	float maxDuration = 0;
 	for (int col = 0; col < COlUMNS_SIZE; ++col)
 	{
 		for (int row = 0; row < ROWS_SIZE; ++row) 
@@ -66,12 +70,14 @@ void StarsLayer::initStars()
 				m_starsSprite.push_back(pStarSprite);
 
 				float kDuration = (sourcePos.y - targetPos.y) / speed;
+				maxDuration = max(maxDuration, kDuration);
 				CCMoveTo *moveTo = CCMoveTo::create(kDuration, targetPos);
 				pStarSprite->runAction(moveTo);
 			}
 		}
 	}
-	runAction(CCCallFunc::create(this, callfunc_selector(StarsLayer::starInitDone)));
+	runAction(CCSequence::create(CCDelayTime::create(maxDuration)
+		, CCCallFunc::create(this, callfunc_selector(StarsLayer::starInitDone)),NULL));
 }
 
 void StarsLayer::starInitDone()
