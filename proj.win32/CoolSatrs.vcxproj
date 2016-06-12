@@ -172,7 +172,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StarsController.cpp" />
     <ClCompile Include="..\Classes\StarsLayer.cpp" />
     <ClCompile Include="..\Classes\StarViewNode.cpp" />
+    <ClCompile Include="..\Classes\TestScene.cpp" />
     <ClCompile Include="..\Classes\TouchNode.cpp" />
+    <ClCompile Include="..\Classes\UiLayout.cpp" />
     <ClCompile Include="..\Classes\UserInfo.cpp" />
     <ClCompile Include="..\Classes\VisibleRect.cpp" />
     <ClCompile Include="main.cpp" />
@@ -207,6 +209,10 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PropItemView.h" />
     <ClInclude Include="..\Classes\PropManager.h" />
     <ClInclude Include="..\Classes\QuickBuyScene.h" />
+    <ClInclude Include="..\Classes\rapidxml\rapidxml.hpp" />
+    <ClInclude Include="..\Classes\rapidxml\rapidxml_iterators.hpp" />
+    <ClInclude Include="..\Classes\rapidxml\rapidxml_print.hpp" />
+    <ClInclude Include="..\Classes\rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="..\Classes\ScaleDialog.h" />
     <ClInclude Include="..\Classes\ShopLayer.h" />
     <ClInclude Include="..\Classes\SoundMgr.h" />
@@ -224,7 +230,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StarsController.h" />
     <ClInclude Include="..\Classes\StarsLayer.h" />
     <ClInclude Include="..\Classes\StarViewNode.h" />
+    <ClInclude Include="..\Classes\TestScene.h" />
     <ClInclude Include="..\Classes\TouchNode.h" />
+    <ClInclude Include="..\Classes\UiLayout.h" />
     <ClInclude Include="..\Classes\UserInfo.h" />
     <ClInclude Include="..\Classes\VisibleRect.h" />
     <ClInclude Include="main.h" />

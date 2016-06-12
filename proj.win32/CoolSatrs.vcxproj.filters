@@ -34,6 +34,9 @@
     <Filter Include="Prop">
       <UniqueIdentifier>{24fbae7e-22b7-4713-8edf-2e5a058a8122}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils\rapidxml">
+      <UniqueIdentifier>{7b44a8f5-aa8e-453a-a084-f8948fa47d8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -170,6 +173,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\StageLayersMgr.cpp">
       <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UiLayout.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TestScene.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +331,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StageLayersMgr.h">
       <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UiLayout.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapidxml\rapidxml_print.hpp">
+      <Filter>Utils\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapidxml\rapidxml_utils.hpp">
+      <Filter>Utils\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapidxml\rapidxml.hpp">
+      <Filter>Utils\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapidxml\rapidxml_iterators.hpp">
+      <Filter>Utils\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TestScene.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

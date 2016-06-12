@@ -15,6 +15,7 @@
 #include "SqliteHelper.h"
 #include "StageModel.h"
 #include "StageOperator.h"
+#include "TestScene.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 //#include "MyPurchaseIOS.h"
 #endif
@@ -259,6 +260,9 @@ void MenuScene::shopClicked( CCObject* sender ){
 
 void MenuScene::helpClicked( CCObject* sender ){
 
+	CCDirector::sharedDirector()->replaceScene(getTansitionScene(TestScene::scene()));
+	return;
+	
 	if (m_pFishShop != NULL && m_pFishShop->isVisible()){
 		return;
 	}
