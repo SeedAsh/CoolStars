@@ -17,7 +17,7 @@ private:
 	void checkXml(rapidxml::xml_node<> *layout);
 private:
 	std::string m_path;
-	std::unordered_map<int, cocos2d::CCMenuItemSprite *> m_menuItems;
+	std::unordered_map<int, cocos2d::CCMenuItem *> m_menuItems;
 	cocos2d::CCMenu *m_menu;
 	
 };

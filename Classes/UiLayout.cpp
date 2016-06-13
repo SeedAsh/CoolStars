@@ -30,7 +30,7 @@ bool UiLayout::init()
 	setContentSize(size);
 	m_menu = CCMenu::create();
 	m_menu->setPosition(ccp(0, 0));
-	addChild(m_menu);
+	addChild(m_menu, 1);
 
 	for (auto node = layout->first_node(); node != NULL; node = node->next_sibling())
 	{
@@ -40,6 +40,7 @@ bool UiLayout::init()
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	setPosition(ccp(winSize.width * 0.5f, winSize.height * 0.5f));
 	setAnchorPoint(ccp(0.5f, 0.5f));
+
 	return true;
 }
 
@@ -81,18 +82,24 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 		string selectedPath = node->first_node("selected")->value();
 		string disabledPath = node->first_node("disabled")->value();
 
+		//选中状态直接使用放大的正常图片
+		auto normalSpr = CCSprite::create(normalPath.c_str());
+		auto selectedSpr = CCSprite::create(normalPath.c_str());
+		selectedSpr->setScale(1.2f);
+		CCMenuItemSprite* imageItem = CCMenuItemSprite::create(normalSpr, selectedSpr, this, NULL);
+
+		/*
 		CCMenuItemImage *imageItem = CCMenuItemImage::create(
 			normalPath.c_str(),
 			selectedPath.c_str(),
 			disabledPath.c_str(),
 			this,
 			NULL);
+			*/
 
 		m_menu->addChild(imageItem);
 		m_menuItems[id] = imageItem;
 		imageItem->setPosition(ccp(x, y));
-
-		
 	}
 	else if (widgetName == "image")
 	{

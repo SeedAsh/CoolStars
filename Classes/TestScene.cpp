@@ -18,7 +18,7 @@ bool TestScene::init()
 	{
 		return false;
 	}
-	
+	//*
 	auto layout = UiLayout::create("layout/default.xml");
 	addChild(layout);
 	
@@ -30,6 +30,7 @@ bool TestScene::init()
 
 	auto spr = dynamic_cast<CCSprite *>((layout->getChildById(1)));
 	spr->initWithFile("fish_title.png");
+	//*/
 
 
 
@@ -37,16 +38,17 @@ bool TestScene::init()
 
 
 	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-		"loginCancel.png",
-		"loginCancel.png",
+		"main_menu/zcd_anniu5.png",
+		"main_menu/zcd_anniu5.png",
 		this,
 		menu_selector(TestScene::closeCallback));
 
 	CCMenu *menu = CCMenu::create(pCloseItem, NULL);
+	menu->setPosition(ccp(0, 0));
 	addChild(menu);
 	auto size = CCDirector::sharedDirector()->getWinSize();
 	auto closeItemSize = pCloseItem->getContentSize();
-	menu->setPosition(size.width - closeItemSize.width  * 0.5f, size.height - closeItemSize.height  * 0.5f);
+	//menu->setPosition(size.width - closeItemSize.width  * 0.5f, size.height - closeItemSize.height  * 0.5f);
 
 	return true;
 }

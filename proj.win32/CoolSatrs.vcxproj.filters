@@ -37,6 +37,12 @@
     <Filter Include="Utils\rapidxml">
       <UniqueIdentifier>{7b44a8f5-aa8e-453a-a084-f8948fa47d8a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils\ui">
+      <UniqueIdentifier>{ebd14380-496e-4bd8-a030-7efd3a3f28a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\sqlite">
+      <UniqueIdentifier>{027dd256-d2b0-4393-aa17-f2571a06ce46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,12 +56,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\ShopLayer.cpp">
       <Filter>Shop</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\VisibleRect.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\sqlite3.c">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\MyPurchase.cpp">
       <Filter>Shop</Filter>
@@ -135,23 +135,14 @@
     <ClCompile Include="..\Classes\StageTarget.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ScaleDialog.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\PetScene.cpp">
       <Filter>Pet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SqliteHelper.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameDataPreLoader.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PetView.cpp">
       <Filter>Pet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\TouchNode.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\StageSavingHelper.cpp">
       <Filter>GameStage\StageModel</Filter>
@@ -174,11 +165,29 @@
     <ClCompile Include="..\Classes\StageLayersMgr.cpp">
       <Filter>GameStage\StageUi</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\EmptyBox.cpp">
+      <Filter>Utils\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ScaleDialog.cpp">
+      <Filter>Utils\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TouchNode.cpp">
+      <Filter>Utils\ui</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\UiLayout.cpp">
-      <Filter>Utils</Filter>
+      <Filter>Utils\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\VisibleRect.cpp">
+      <Filter>Utils\ui</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\TestScene.cpp">
-      <Filter>Utils</Filter>
+      <Filter>Utils\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sqlite3.c">
+      <Filter>Utils\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SqliteHelper.cpp">
+      <Filter>Utils\sqlite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,12 +208,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ShopLayer.h">
       <Filter>Shop</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\VisibleRect.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\sqlite3.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MyPurchase.h">
       <Filter>Shop</Filter>
@@ -287,14 +290,8 @@
     <ClInclude Include="..\Classes\StageTarget.h">
       <Filter>GameStage\StageModel</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ScaleDialog.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\PetScene.h">
       <Filter>Pet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SqliteHelper.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameDataPreLoader.h">
       <Filter>Classes</Filter>
@@ -304,9 +301,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PetView.h">
       <Filter>Pet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TouchNode.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StageSavingHelper.h">
       <Filter>GameStage\StageModel</Filter>
@@ -332,9 +326,6 @@
     <ClInclude Include="..\Classes\StageLayersMgr.h">
       <Filter>GameStage\StageUi</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UiLayout.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\rapidxml\rapidxml_print.hpp">
       <Filter>Utils\rapidxml</Filter>
     </ClInclude>
@@ -347,8 +338,29 @@
     <ClInclude Include="..\Classes\rapidxml\rapidxml_iterators.hpp">
       <Filter>Utils\rapidxml</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\EmptyBox.h">
+      <Filter>Utils\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScaleDialog.h">
+      <Filter>Utils\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TouchNode.h">
+      <Filter>Utils\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UiLayout.h">
+      <Filter>Utils\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\VisibleRect.h">
+      <Filter>Utils\ui</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\TestScene.h">
-      <Filter>Utils</Filter>
+      <Filter>Utils\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SqliteHelper.h">
+      <Filter>Utils\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite3.h">
+      <Filter>Utils\sqlite</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

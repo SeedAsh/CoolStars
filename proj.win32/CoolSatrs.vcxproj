@@ -137,6 +137,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\ConfirmLayer.cpp" />
     <ClCompile Include="..\Classes\DataCheck.cpp" />
     <ClCompile Include="..\Classes\DataManager.cpp" />
+    <ClCompile Include="..\Classes\EmptyBox.cpp" />
     <ClCompile Include="..\Classes\ExitLayer.cpp" />
     <ClCompile Include="..\Classes\GameData.cpp" />
     <ClCompile Include="..\Classes\GameDataPreLoader.cpp" />
@@ -190,6 +191,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\DataCheck.h" />
     <ClInclude Include="..\Classes\DataConfig.h" />
     <ClInclude Include="..\Classes\DataManager.h" />
+    <ClInclude Include="..\Classes\EmptyBox.h" />
     <ClInclude Include="..\Classes\ExitLayer.h" />
     <ClInclude Include="..\Classes\GameData.h" />
     <ClInclude Include="..\Classes\GameDataPreLoader.h" />
