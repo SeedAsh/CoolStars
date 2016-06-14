@@ -25,38 +25,38 @@
 	</image>
 	<image>
 		<id>5</id>
-		<x>235.67</x>
-		<y>617.88</y>
+		<x>239.68</x>
+		<y>660.09</y>
 		<path>main_menu/zcd_logo.png</path>
 	</image>
 	<button>
 		<id>6</id>
-		<x>237.76</x>
-		<y>364.02</y>
+		<x>241.98</x>
+		<y>442.95</y>
 		<normal>main_menu/zcd_anniu1.png</normal>
 		<selected>main_menu/zcd_anniu1.png</selected>
 		<disabled>main_menu/zcd_anniu1.png</disabled>
 	</button>
 	<button>
 		<id>7</id>
-		<x>241.14</x>
-		<y>234.65</y>
+		<x>248.10</x>
+		<y>319.49</y>
 		<normal>main_menu/zcd_anniu2.png</normal>
 		<selected>main_menu/zcd_anniu2.png</selected>
 		<disabled>main_menu/zcd_anniu2.png</disabled>
 	</button>
 	<button>
 		<id>8</id>
-		<x>170.43</x>
-		<y>109.70</y>
+		<x>182.20</x>
+		<y>202.29</y>
 		<normal>main_menu/zcd_anniu3.png</normal>
 		<selected>main_menu/zcd_anniu3.png</selected>
 		<disabled>main_menu/zcd_anniu3.png</disabled>
 	</button>
 	<button>
 		<id>9</id>
-		<x>314.58</x>
-		<y>110.11</y>
+		<x>316.36</x>
+		<y>202.69</y>
 		<normal>main_menu/zcd_anniu4.png</normal>
 		<selected>main_menu/zcd_anniu4.png</selected>
 		<disabled>main_menu/zcd_anniu4.png</disabled>

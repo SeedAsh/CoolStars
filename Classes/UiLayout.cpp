@@ -1,6 +1,7 @@
 #include "UiLayout.h"
 #include "rapidxml/rapidxml_utils.hpp"
 #include "rapidxml/rapidxml_print.hpp"
+#include "EmptyBox.h"
 USING_NS_CC;
 using namespace std;
 using namespace rapidxml;
@@ -84,10 +85,16 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 
 		//选中状态直接使用放大的正常图片
 		auto normalSpr = CCSprite::create(normalPath.c_str());
+		auto pt = normalSpr->getAnchorPoint();
+		CCLOG("%f, %f", pt.x, pt.y);
 		auto selectedSpr = CCSprite::create(normalPath.c_str());
-		selectedSpr->setScale(1.2f);
-		CCMenuItemSprite* imageItem = CCMenuItemSprite::create(normalSpr, selectedSpr, this, NULL);
+		CCLOG("%f, %f", pt.x, pt.y);
 
+		float scale = 1.1f;
+		selectedSpr->setScale(scale);
+		
+		CCMenuItemSprite* imageItem = CCMenuItemSprite::create(normalSpr, selectedSpr, this, NULL);
+		selectedSpr->setAnchorPoint(ccp((scale - 1.0f) / 2, (scale - 1.0f) / 2));
 		/*
 		CCMenuItemImage *imageItem = CCMenuItemImage::create(
 			normalPath.c_str(),
@@ -107,6 +114,12 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 		CCSprite *spr = CCSprite::create(path.c_str());
 		addChild(spr, 0, id);
 		spr->setPosition(ccp(x, y));
+	}
+	else if (widgetName == "emptyBox")
+	{
+		EmptyBox *node = EmptyBox::create();
+		addChild(node, 0, id);
+		node->setPosition(ccp(x, y));
 	}
 	else
 	{

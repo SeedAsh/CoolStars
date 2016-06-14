@@ -13,7 +13,7 @@ private:
 	virtual void onEnter();
 	virtual void onExit();
 	void initMainLayout();
-	void initSettingLayout();
+	void initBottomLayout();
 
 	void toNormalGame(cocos2d::CCObject* pSender);
 	void toTreasureGame(cocos2d::CCObject* pSender);
@@ -23,10 +23,13 @@ private:
 	void toSetting(cocos2d::CCObject* pSender);
 	void toMute(cocos2d::CCObject* pSender);
 	void toHelpPanel(cocos2d::CCObject* pSender);
+	void toRankPanel(cocos2d::CCObject* pSender);
+	void toPackagePanel(cocos2d::CCObject* pSender);
+	void toShopPanel(cocos2d::CCObject* pSender);
 
 private:
 	UiLayout *m_mainLayout;
-	UiLayout *m_settingLayout;
+	UiLayout *m_bottomLayout;
 	
 };
 

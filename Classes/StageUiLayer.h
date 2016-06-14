@@ -16,6 +16,8 @@ struct StageUiValue
 
 };
 
+class UiLayout;
+
 class StageUiLayer
     : public CCLayer
 	, public IStageView
@@ -25,12 +27,11 @@ public:
     StageUiLayer(void);
     ~StageUiLayer(void);
 
-    static StageUiLayer *create();
+	CREATE_FUNC(StageUiLayer);
     virtual bool init();
 	void initTopUi();
 	void initPets();
 	void initBottomUi();
-    virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
 public:
 	virtual void onStepsChanged();
 	virtual void onScoreChanged();
@@ -40,27 +41,18 @@ public:
 private:
 	virtual void onEnter();
 	virtual void onExit();
-	void onQuitGame();
 	void showGameOverHint();
 	void deliveryScore(const CCPoint &from, int totalScore, int count);
-	void setStageClear(bool clear);
 
 	void onPauseBtnClicked(CCObject *pSender);
 	void menuCallback(CCObject *pSender);
-	CCMenuItemSprite *getItemSprite(std::string fileName, SEL_MenuHandler selector);
 private:
-    CCLabelTTF *m_pScoreLabel;
-	CCLabelTTF *m_pStepLabel;
-    CCLabelTTF *m_pScoreHint;
-	CCLabelTTF *m_pCoins;
-
-	CCLabelTTF *m_pBombLabel;
-	CCLabelTTF *m_pPaintLabel;
-	CCLabelTTF *m_pReflashLabel;
 
 private:
 	static const int kZorder_Pet = 10;
 	static const int kZorder_Dialog = 20;
+	UiLayout *m_bottomUi;
+	UiLayout *m_topUi;
 
 };
 #endif // __PANELLLAYER_H__

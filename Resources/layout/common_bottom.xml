@@ -1,0 +1,11 @@
+<layout width="480.000000" height="90.000000">
+	<button>
+		<id>1</id>
+		<x>49.93</x>
+		<y>45.04</y>
+		<normal>common/back_home.png</normal>
+		<selected>common/back_home.png</selected>
+		<disabled>common/back_home.png</disabled>
+	</button>
+</layout>
+

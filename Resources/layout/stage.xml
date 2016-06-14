@@ -1,8 +1,8 @@
 <layout width="480.000000" height="864.000000">
 	<image>
 		<id>1</id>
-		<x>238.62</x>
-		<y>398.39</y>
+		<x>240.52</x>
+		<y>431.31</y>
 		<path>background/beij_di.png</path>
 	</image>
 	<image>
@@ -19,8 +19,8 @@
 	</image>
 	<emptyBox>
 		<id>4</id>
-		<x>94.88</x>
-		<y>167.74</y>
+		<x>40.00</x>
+		<y>143.68</y>
 	</emptyBox>
 </layout>
 

@@ -43,6 +43,12 @@
     <Filter Include="Utils\sqlite">
       <UniqueIdentifier>{027dd256-d2b0-4393-aa17-f2571a06ce46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ranking">
+      <UniqueIdentifier>{a5f4a296-213a-4040-bde4-811856abb004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Package">
+      <UniqueIdentifier>{2079a368-394a-498c-8091-cfc47a1e131d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -188,6 +194,18 @@
     </ClCompile>
     <ClCompile Include="..\Classes\SqliteHelper.cpp">
       <Filter>Utils\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PackageScene.cpp">
+      <Filter>Package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RankingScene.cpp">
+      <Filter>Ranking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ShopScene.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TitlePanel.cpp">
+      <Filter>MainMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +379,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\sqlite3.h">
       <Filter>Utils\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PackageScene.h">
+      <Filter>Package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RankingScene.h">
+      <Filter>Ranking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShopScene.h">
+      <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TitlePanel.h">
+      <Filter>MainMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

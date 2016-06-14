@@ -12,6 +12,7 @@
 #include "GameResultLayer.h"
 #include "PropManager.h"
 #include "PropItemView.h"
+#include "UiLayout.h"
 
 
 #define Z_ORDER_PROPS_BG 0
@@ -25,12 +26,6 @@
 USING_NS_CC;
 using namespace std;
 StageUiLayer::StageUiLayer(void)
-      :m_pScoreLabel(NULL),
-	  m_pStepLabel(NULL),
-      m_pScoreHint(NULL),
-	  m_pBombLabel(NULL),
-	  m_pPaintLabel(NULL),
-	  m_pReflashLabel(NULL)
 {
 }
 
@@ -52,23 +47,24 @@ void StageUiLayer::onExit()
 	StageLayersMgr::theMgr()->removeLayers(this);
 }
 
-StageUiLayer * StageUiLayer::create(){
-    StageUiLayer *pRet = new StageUiLayer();
-    if (pRet && pRet->init()){
-        pRet->autorelease();
-        return pRet;
-    }else{
-        CC_SAFE_DELETE(pRet);
-        return NULL;
-    }
-}
-
-bool StageUiLayer::init(){
-	if (!CCLayer::init()){
+bool StageUiLayer::init()
+{
+	if (!CCLayer::init())
+	{
 		return false;
 	}
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
 
-	this->setTouchEnabled(true);
+	m_topUi = UiLayout::create("layout/stage_top.xml");
+	m_topUi->setAnchorPoint(ccp(0, 1));
+	m_topUi->setPosition(ccp(0, winSize.height));
+	addChild(m_topUi);
+
+	m_bottomUi = UiLayout::create("layout/stage_bottom.xml");
+	m_bottomUi->setAnchorPoint(ccp(0, 0));
+	m_bottomUi->setPosition(ccp(0, 0));
+	addChild(m_bottomUi);
+
 
 	initTopUi();
 	initPets();
@@ -77,199 +73,21 @@ bool StageUiLayer::init(){
     return true;
 }
 
-
 void StageUiLayer::initTopUi()
 {
-	auto stageInfo = StageModel::theModel()->getStageInfo();
-	char str[100] = { 0 };
-	CCPoint top = VisibleRect::top();
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-	//hight score
-	CCDictionary *text = CCDictionary::createWithContentsOfFile(XML_DATA);
-	CCString *msg = (CCString*)text->objectForKey("hight");
-	CCLabelTTF* hightScore = CCLabelTTF::create(msg->getCString(), "Arial", 21);
-	hightScore->setColor(ccWHITE);
-	CCSize size = hightScore->getContentSize();
-	hightScore->setPosition(ccp(visibleSize.width * 0.6f, visibleSize.height - size.height));
-	this->addChild(hightScore, Z_ORDER_TITLE);
-
-	sprintf(str, "%d", UserInfo::getBestScore());
-	CCLabelTTF* bestSocre = CCLabelTTF::create(str, "Arial", 21);
-	bestSocre->setColor(ccWHITE);
-	bestSocre->setPosition(ccp(hightScore->getPositionX() + size.width / 2 + bestSocre->getContentSize().width,
-		hightScore->getPositionY()));
-	this->addChild(bestSocre, Z_ORDER_TITLE);
-	bestSocre->setString(CommonUtil::intToStr(stageInfo->getTopScore()));
-
-	//stage num
-	msg = (CCString*)text->objectForKey("lev");
-	CCLabelTTF* pStage = CCLabelTTF::create(msg->getCString(), "Arial", 21);
-	pStage->setColor(ccWHITE);
-	size = pStage->getContentSize();
-	pStage->setPosition(ccp(size.width / 2 + 10, hightScore->getPositionY() - hightScore->getContentSize().height - pStage->getContentSize().height));
-	this->addChild(pStage, Z_ORDER_TITLE);
-
-	CCLabelTTF *pStageLabel = CCLabelTTF::create("1", "Arial", 21);
-	pStageLabel->setColor((ccc3(255, 255, 255)));
-	pStageLabel->setPosition(ccp(pStage->getPositionX() + size.width + 10, pStage->getPositionY()));
-	this->addChild(pStageLabel, Z_ORDER_TITLE);
-	pStageLabel->setString(CommonUtil::intToStr(stageInfo->getCurStage()));
-
-	//taget
-	msg = (CCString*)text->objectForKey("tar");
-	CCLabelTTF *pTarget = CCLabelTTF::create(msg->getCString(), "Arial", 21);
-	pTarget->setColor(ccWHITE);
-	size = pTarget->getContentSize();
-	pTarget->setPosition(ccp(visibleSize.width * 2 / 5, pStage->getPositionY()));
-	this->addChild(pTarget, Z_ORDER_TITLE);
-
-	CCLabelTTF *pTargetLabel = CCLabelTTF::create("1000", "Arial", 21);
-	pTargetLabel->setColor(ccWHITE);
-	pTargetLabel->setPosition(ccp(pTarget->getPositionX() + size.width, pStage->getPositionY()));
-	this->addChild(pTargetLabel, Z_ORDER_TITLE);
-	//在onstepchaged 里面修改
-
-	//steps
-	msg = (CCString*)text->objectForKey("step");
-	CCLabelTTF *pStep = CCLabelTTF::create(msg->getCString(), "Arial", 21);
-	pStep->setColor(ccWHITE);
-	size = pStep->getContentSize();
-	pStep->setPosition(ccp(visibleSize.width * 0.15f, hightScore->getPositionY()));
-	this->addChild(pStep, Z_ORDER_TITLE);
-
-	m_pStepLabel = CCLabelTTF::create("10", "Arial", 21);
-	m_pStepLabel->setColor(ccWHITE);
-	m_pStepLabel->setPosition(ccp(pStep->getPositionX() + size.width, hightScore->getPositionY()));
-	this->addChild(m_pStepLabel, Z_ORDER_TITLE);
-	onStepsChanged();
-
-	//coins 
-	CCSprite* currentCoinBg = CCSprite::create("dialog_item.png");
-	currentCoinBg->setPosition(ccp(VisibleRect::right().x - currentCoinBg->getContentSize().width / 2 - 10, pTarget->getPositionY()));
-	this->addChild(currentCoinBg, Z_ORDER_PROPS_BG);
-	CCSprite* diamondSp = CCSprite::create("diamond.png");
-	diamondSp->setPosition(ccp(diamondSp->getContentSize().width / 4, currentCoinBg->getContentSize().height / 2));
-	currentCoinBg->addChild(diamondSp);
-
-	CCLabelTTF *m_pCoins = CCLabelTTF::create("0", "Arial", 21);
-	m_pCoins->setColor(ccWHITE);
-	m_pCoins->setPosition(currentCoinBg->getPosition());
-	addChild(m_pCoins, Z_ORDER_TITLE);
-
-	CCSprite *pBuyItemNormal = CCSprite::create("coin_add.png");
-	CCSprite *pBuyItemSelected = CCSprite::create("coin_add.png");
-	pBuyItemSelected->setScale(1.1f);
-	pBuyItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
-	CCMenuItem *pBuy = CCMenuItemSprite::create(pBuyItemNormal, pBuyItemSelected, this, menu_selector(StageUiLayer::menuCallback));
-	pBuy->setPosition(ccp(currentCoinBg->getPositionX() + currentCoinBg->getContentSize().width / 2 - pBuy->getContentSize().width / 2,
-		currentCoinBg->getPositionY()));
-
-	CCMenu *pMenu = CCMenu::create();
-	pMenu->setTouchPriority(1);
-	pMenu->setPosition(CCPointZero);
-	addChild(pMenu, Z_ORDER_PROPS);
-	pMenu->addChild(pBuy);
-
-}
-
-CCMenuItemSprite *StageUiLayer::getItemSprite(string fileName, SEL_MenuHandler selector)
-{
-	auto pItemNormal = CCSprite::create(fileName.c_str());
-	auto pItemSelected = CCSprite::create(fileName.c_str());
-	pItemSelected->setScale(1.2f);
-	pItemSelected->setAnchorPoint(ccp(0.5f, 0.5f));
-	return CCMenuItemSprite::create(pItemNormal, pItemSelected, this, selector);
+	//auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(4)));
 }
 
 void StageUiLayer::initPets()
 {
-	auto ids = PetManager::petMgr()->getCurPetIds();
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	CCPoint nextPos = CCPoint(winSize.width * 0.2f, winSize.height * 0.8f);
-	//已上场的宠物
-	for (size_t i = 0; i < ids.size(); ++i)
-	{
-		PetView *view = PetView::create(ids[i]);
-		CCSize size = view->getContentSize();
-		addChild(view, kZorder_Pet);
-		view->setPosition(nextPos);
-		nextPos.x += size.width;
-	}
-	//空置的宠物位位
-	int emptyAmount = MaxActivePetsAmount - ids.size();
-	for (int i = 0; i < emptyAmount; ++i)
-	{
-		PetEmptyView *view = PetEmptyView::create();
-		CCSize size = view->getContentSize();
-		addChild(view, kZorder_Pet);
-		view->setPosition(nextPos);
-		nextPos.x += size.width;
-	}
+	
 }
 
 void StageUiLayer::initBottomUi()
 {
-	char str[100] = { 0 };
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	auto closeBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(2)));
+	closeBtn->setTarget(this, menu_selector(StageUiLayer::onPauseBtnClicked));
 
-	//pause
-	CCSprite *pItemNormal = CCSprite::create("Item_pause.png");
-	CCSprite *pItemSelected = CCSprite::create("Item_pause.png");
-	CCMenuItem *pPause = CCMenuItemSprite::create(pItemNormal, pItemSelected, this, menu_selector(StageUiLayer::onPauseBtnClicked));
-	pItemSelected->setScale(1.1f);
-	pItemSelected->setAnchorPoint(ccp(0.05f, 0.05f));
-	CCSize size = pPause->getContentSize();
-	pPause->setPosition(ccp(size.width * 0.5f, size.height *0.5f));
-
-	//menu for ui buttons 
-	CCMenu *pMenu = CCMenu::create();
-	pMenu->setTouchPriority(1);
-	pMenu->setPosition(CCPointZero);
-	addChild(pMenu, Z_ORDER_PROPS);
-	pMenu->addChild(pPause);
-
-	//current score
-	m_pScoreLabel = CCLabelTTF::create("0", "Arial", 32);
-	m_pScoreLabel->setColor(ccWHITE);
-	m_pScoreLabel->setPosition(ccp(VisibleRect::center().x - 16 * 3, pPause->getPositionY()));
-	this->addChild(m_pScoreLabel, Z_ORDER_TITLE);
-	onScoreChanged();
-	/*
-	m_pScoreHint = CCLabelTTF::create("", "Arial", 21);
-	m_pScoreHint->setPosition(ccp(VisibleRect::center().x,
-		pTargetLabel->getPositionY() - size.height - m_pScoreHint->getContentSize().height - 80));
-	m_pScoreHint->setColor(ccWHITE);
-	this->addChild(m_pScoreHint, Z_ORDER_TITLE);
-	*/
-
-	//props
-	float leftX = VisibleRect::center().x;
-	float propsY = VisibleRect::rightBottom().y + 10;
-	float propsX = VisibleRect::rightBottom().x - 10;
-
-	auto propReorder = PropItemView::create(kPropReorder);
-	propReorder->setPosition(ccp(propsX, propsY));
-	propsX -= propReorder->getContentSize().width + 10;
-	addChild(propReorder);
-
-	auto propBrush = PropItemView::create(kPropBrush);
-	propBrush->setPosition(ccp(propsX, propsY));
-	propsX -= propBrush->getContentSize().width + 10;
-	addChild(propBrush);
-
-	auto propBomb = PropItemView::create(kPropBomb);
-	propBomb->setPosition(ccp(propsX, propsY));
-	propsX -= propBomb->getContentSize().width + 10;
-	addChild(propBomb);
-}
-
-void StageUiLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent){
-
-}
-
-void StageUiLayer::onQuitGame()
-{
-	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 }
 
 void StageUiLayer::showGameOverHint()
@@ -280,6 +98,8 @@ void StageUiLayer::showGameOverHint()
 }
 
 void StageUiLayer::deliveryScore( const CCPoint &from, int totalScore, int count ){
+
+	/*
     int delay = 0;
     int delta = totalScore / count;
     char *label = new char[16];
@@ -298,26 +118,6 @@ void StageUiLayer::deliveryScore( const CCPoint &from, int totalScore, int count
             NULL));
         delay++;
     }
-}
-
-void StageUiLayer::setStageClear( bool clear ){
-	/*
-    if (clear){
-        m_pStageClear->setScale(0.8f);
-        m_pStageClear->setPosition(VisibleRect::center());
-        m_pStageClear->setVisible(true);
-        m_pStageClear->runAction(CCSequence::create(
-            CCScaleTo::create(0.2f, 1.0, 1.0),
-            CCDelayTime::create(0.6f),
-            CCSpawn::create(
-                CCMoveTo::create(1.0f, m_obStageClearPosition),
-                CCScaleTo::create(1.0f, 0.25f, 0.25f),
-                NULL
-                ),
-            NULL));
-    }else{
-        m_pStageClear->setVisible(false);
-    }
 	*/
 }
 
@@ -330,7 +130,7 @@ void StageUiLayer::onStepsChanged()
 {
 	auto stageInfo = StageModel::theModel()->getStageInfo();
 	int leftStep = stageInfo->getLeftStep();
-	m_pStepLabel->setString(CommonUtil::intToStr(leftStep));
+	//m_pStepLabel->setString(CommonUtil::intToStr(leftStep));
 
 
 }
@@ -339,7 +139,7 @@ void StageUiLayer::onScoreChanged()
 {
 	auto stageInfo = StageModel::theModel()->getStageInfo();
 	int curScore = stageInfo->getCurScore();
-	m_pScoreLabel->setString(CommonUtil::intToStr(curScore));
+	//m_pScoreLabel->setString(CommonUtil::intToStr(curScore));
 }
 
 void StageUiLayer::onCoinsChanged()
@@ -365,6 +165,7 @@ void StageUiLayer::onGameOver(int isWon)
 
 void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 {
-	addChild(PauseLayer::create(), Z_ORDER_PAUSE);
-	//onQuitGame();
+	//addChild(PauseLayer::create(), Z_ORDER_PAUSE);
+	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+
 }

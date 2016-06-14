@@ -20,7 +20,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	
 	pDirector->setOpenGLView(pEGLView);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 )
-	pEGLView->setFrameSize(480, 800);
+	pEGLView->setFrameSize(480, 864);
 #endif
 	CCSize designSize = CCSizeMake(480, 800);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS )

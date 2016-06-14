@@ -16,8 +16,6 @@ public:
 	virtual bool init();
 	static StageScene* create();
 
-	void initBackground();
-	virtual void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
 private :
 };
 #endif

@@ -146,6 +146,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\LoginLayer.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
     <ClCompile Include="..\Classes\MyPurchase.cpp" />
+    <ClCompile Include="..\Classes\PackageScene.cpp" />
     <ClCompile Include="..\Classes\PauseLayer.cpp" />
     <ClCompile Include="..\Classes\PetEntity.cpp" />
     <ClCompile Include="..\Classes\PetManager.cpp" />
@@ -156,8 +157,10 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PropItemView.cpp" />
     <ClCompile Include="..\Classes\PropManager.cpp" />
     <ClCompile Include="..\Classes\QuickBuyScene.cpp" />
+    <ClCompile Include="..\Classes\RankingScene.cpp" />
     <ClCompile Include="..\Classes\ScaleDialog.cpp" />
     <ClCompile Include="..\Classes\ShopLayer.cpp" />
+    <ClCompile Include="..\Classes\ShopScene.cpp" />
     <ClCompile Include="..\Classes\SoundMgr.cpp" />
     <ClCompile Include="..\Classes\sqlite3.c" />
     <ClCompile Include="..\Classes\SqliteHelper.cpp" />
@@ -174,6 +177,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StarsLayer.cpp" />
     <ClCompile Include="..\Classes\StarViewNode.cpp" />
     <ClCompile Include="..\Classes\TestScene.cpp" />
+    <ClCompile Include="..\Classes\TitlePanel.cpp" />
     <ClCompile Include="..\Classes\TouchNode.cpp" />
     <ClCompile Include="..\Classes\UiLayout.cpp" />
     <ClCompile Include="..\Classes\UserInfo.cpp" />
@@ -200,6 +204,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\LoginLayer.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
     <ClInclude Include="..\Classes\MyPurchase.h" />
+    <ClInclude Include="..\Classes\PackageScene.h" />
     <ClInclude Include="..\Classes\PanelMacros.h" />
     <ClInclude Include="..\Classes\PauseLayer.h" />
     <ClInclude Include="..\Classes\PetEntity.h" />
@@ -211,12 +216,14 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PropItemView.h" />
     <ClInclude Include="..\Classes\PropManager.h" />
     <ClInclude Include="..\Classes\QuickBuyScene.h" />
+    <ClInclude Include="..\Classes\RankingScene.h" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml.hpp" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml_iterators.hpp" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="..\Classes\ScaleDialog.h" />
     <ClInclude Include="..\Classes\ShopLayer.h" />
+    <ClInclude Include="..\Classes\ShopScene.h" />
     <ClInclude Include="..\Classes\SoundMgr.h" />
     <ClInclude Include="..\Classes\sqlite3.h" />
     <ClInclude Include="..\Classes\SqliteHelper.h" />
@@ -233,6 +240,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StarsLayer.h" />
     <ClInclude Include="..\Classes\StarViewNode.h" />
     <ClInclude Include="..\Classes\TestScene.h" />
+    <ClInclude Include="..\Classes\TitlePanel.h" />
     <ClInclude Include="..\Classes\TouchNode.h" />
     <ClInclude Include="..\Classes\UiLayout.h" />
     <ClInclude Include="..\Classes\UserInfo.h" />

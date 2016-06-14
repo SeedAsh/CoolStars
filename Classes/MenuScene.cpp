@@ -1,5 +1,13 @@
 ﻿#include "MenuScene.h"
 #include "UiLayout.h"
+#include "StageModel.h"
+#include "SoundMgr.h"
+#include "StageScene.h"
+#include "PetScene.h"
+#include "RankingScene.h"
+#include "PackageScene.h"
+#include "ShopScene.h"
+
 USING_NS_CC;
 using namespace std;
 
@@ -31,13 +39,13 @@ bool MenuScene::init()
 	m_mainLayout = UiLayout::create("layout/main_menu.xml");
 	addChild(m_mainLayout);
 
-	m_settingLayout = UiLayout::create("layout/main_menu_setting.xml");
-	m_settingLayout->setAnchorPoint(ccp(0, 0));
-	m_settingLayout->setPosition(ccp(0, 0));
-	addChild(m_settingLayout);
+	m_bottomLayout = UiLayout::create("layout/main_menu_bottom.xml");
+	m_bottomLayout->setAnchorPoint(ccp(0, 0));
+	m_bottomLayout->setPosition(ccp(0, 0));
+	addChild(m_bottomLayout);
 
 	initMainLayout();
-	initSettingLayout();
+	initBottomLayout();
 	return true;
 }
 
@@ -56,23 +64,33 @@ void MenuScene::initMainLayout()
 	toPetBtn->setTarget(this, menu_selector(MenuScene::toPetPanel));
 }
 
-void MenuScene::initSettingLayout()
+void MenuScene::initBottomLayout()
 {
-	CCMenuItem *settingBtn = dynamic_cast<CCMenuItem *>((m_settingLayout->getChildById(1)));
+	CCMenuItem *settingBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(1)));
 	settingBtn->setTarget(this, menu_selector(MenuScene::toSetting));
 
-	CCMenuItem *muteBtn = dynamic_cast<CCMenuItem *>((m_settingLayout->getChildById(2)));
+	CCMenuItem *muteBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(2)));
 	muteBtn->setTarget(this, menu_selector(MenuScene::toMute));
 
-	CCMenuItem *helpBtn = dynamic_cast<CCMenuItem *>((m_settingLayout->getChildById(3)));
+	CCMenuItem *helpBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(3)));
 	helpBtn->setTarget(this, menu_selector(MenuScene::toHelpPanel));
 	
-	
+	CCMenuItem *rankBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(4)));
+	rankBtn->setTarget(this, menu_selector(MenuScene::toRankPanel));
+
+	CCMenuItem *packageBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(6)));
+	packageBtn->setTarget(this, menu_selector(MenuScene::toPackagePanel));
+
+	CCMenuItem *shopBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(5)));
+	shopBtn->setTarget(this, menu_selector(MenuScene::toShopPanel));
 }
 
 void MenuScene::toNormalGame(CCObject* pSender)
 {
-	CCMessageBox("toNormalGame", "title");
+	auto stageInfo = StageModel::theModel()->getStageInfo();
+	stageInfo->newGame();
+	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, StageScene::scene()));
 }
 
 void MenuScene::toTreasureGame(CCObject* pSender)
@@ -87,8 +105,8 @@ void MenuScene::drawLottery(cocos2d::CCObject* pSender)
 
 void MenuScene::toPetPanel(cocos2d::CCObject* pSender)
 {
-	CCMessageBox("toPetPanel", "title");
-
+	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, PetScene::scene()));
 }
 
 void MenuScene::toSetting(cocos2d::CCObject* pSender)
@@ -107,4 +125,22 @@ void MenuScene::toHelpPanel(cocos2d::CCObject* pSender)
 {
 	CCMessageBox("toHelpPanel", "title");
 
+}
+
+void MenuScene::toRankPanel(cocos2d::CCObject* pSender)
+{
+	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, RankingScene::scene()));
+}
+
+void MenuScene::toPackagePanel(cocos2d::CCObject* pSender)
+{
+	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, PackageScene::scene()));
+}
+
+void MenuScene::toShopPanel(cocos2d::CCObject* pSender)
+{
+	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, ShopScene::scene()));
 }

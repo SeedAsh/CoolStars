@@ -2,13 +2,13 @@
 	<image>
 		<id>1</id>
 		<x>238.62</x>
-		<y>398.39</y>
+		<y>431.30</y>
 		<path>background/beij_di.png</path>
 	</image>
 	<image>
 		<id>2</id>
-		<x>236.45</x>
-		<y>402.17</y>
+		<x>240.31</x>
+		<y>429.88</y>
 		<path>pet/cwjm_beij1.png</path>
 	</image>
 	<image>
@@ -25,19 +25,19 @@
 	</image>
 	<button>
 		<id>5</id>
-		<x>397.32</x>
-		<y>465.10</y>
-		<normal>pet/cwjm_jianhao.png</normal>
-		<selected>pet/cwjm_jianhao.png</selected>
-		<disabled>pet/cwjm_jianhao.png</disabled>
+		<x>401.33</x>
+		<y>449.06</y>
+		<normal>pet/cwjm_jianhao2.png</normal>
+		<selected>pet/cwjm_jianhao2.png</selected>
+		<disabled>pet/cwjm_jianhao2.png</disabled>
 	</button>
 	<button>
 		<id>6</id>
 		<x>61.96</x>
 		<y>456.25</y>
-		<normal>pet/cwjm_jianhao.png</normal>
-		<selected>pet/cwjm_jianhao.png</selected>
-		<disabled>pet/cwjm_jianhao.png</disabled>
+		<normal>pet/cwjm_jianhao1.png</normal>
+		<selected>pet/cwjm_jianhao1.png</selected>
+		<disabled>pet/cwjm_jianhao1.png</disabled>
 	</button>
 	<image>
 		<id>7</id>
@@ -47,8 +47,8 @@
 	</image>
 	<button>
 		<id>8</id>
-		<x>265.62</x>
-		<y>175.77</y>
+		<x>261.61</x>
+		<y>177.67</y>
 		<normal>pet/cwjm_anniu7.png</normal>
 		<selected>pet/cwjm_anniu7.png</selected>
 		<disabled>pet/cwjm_anniu7.png</disabled>
