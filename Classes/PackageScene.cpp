@@ -18,12 +18,12 @@ bool RankingScene::init()
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 
 	m_mainLayout = UiLayout::create("layout/pet_ui.xml");
-	addChild(m_mainLayout);
+	//addChild(m_mainLayout);
 
 	auto titlePanel = TitlePanel::create();
 	addChild(titlePanel);
 
-	initMainLayout();
+	//initMainLayout();
 	return true;
 }
 

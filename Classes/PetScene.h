@@ -30,6 +30,7 @@ private:
 
 private:
 	UiLayout *m_bottomLayout;
+	UiLayout *m_topLayout;
 	UiLayout *m_mainLayout;
 };
 #endif

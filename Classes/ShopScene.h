@@ -14,14 +14,14 @@ public:
 private:
 	ShopScene(){}
 	~ShopScene(){}
-	void initMainLayout();
+	void initPanel();
 
 	void onLeftPetBtnClicked(cocos2d::CCObject* pSender);
 	void onRigthPetBtnClicked(cocos2d::CCObject* pSender);
 	void onUpgradeBtnClicked(cocos2d::CCObject* pSender);
 private:
 
-	UiLayout *m_mainLayout;
+	UiLayout *m_layout;
 
 };
 #endif

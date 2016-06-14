@@ -1,70 +1,76 @@
-<layout width="480.000000" height="80.000000">
+<layout width="480.000000" height="124.000000">
+	<image>
+		<id>13</id>
+		<x>239.54</x>
+		<y>62.05</y>
+		<path>common/title_leaves_top.png</path>
+	</image>
 	<image>
 		<id>1</id>
 		<x>235.21</x>
-		<y>40.98</y>
+		<y>81.08</y>
 		<path>common/title_board.png</path>
 	</image>
 	<image>
 		<id>2</id>
-		<x>189.62</x>
-		<y>35.71</y>
+		<x>187.72</x>
+		<y>79.61</y>
 		<path>common/title_food.png</path>
 	</image>
 	<image>
 		<id>4</id>
-		<x>393.69</x>
-		<y>41.62</y>
+		<x>401.92</x>
+		<y>82.56</y>
 		<path>common/title_board.png</path>
 	</image>
 	<image>
 		<id>5</id>
-		<x>341.57</x>
-		<y>36.13</y>
+		<x>354.65</x>
+		<y>78.97</y>
 		<path>common/title_diamond.png</path>
 	</image>
 	<image>
 		<id>7</id>
-		<x>80.71</x>
-		<y>38.03</y>
+		<x>82.61</x>
+		<y>84.04</y>
 		<path>common/title_board.png</path>
 	</image>
 	<image>
 		<id>8</id>
-		<x>37.04</x>
-		<y>33.81</y>
+		<x>39.99</x>
+		<y>79.61</y>
 		<path>common/title_strength.png</path>
 	</image>
 	<label>
 		<id>10</id>
 		<x>89.69</x>
-		<y>35.03</y>
+		<y>83.99</y>
 		<text>text</text>
 	</label>
 	<label>
 		<id>11</id>
-		<x>401.41</x>
-		<y>40.94</y>
+		<x>411.33</x>
+		<y>82.94</y>
 		<text>text</text>
 	</label>
 	<label>
 		<id>12</id>
-		<x>243.55</x>
-		<y>39.04</y>
+		<x>249.46</x>
+		<y>78.08</y>
 		<text>text</text>
 	</label>
 	<button>
 		<id>9</id>
-		<x>136.75</x>
-		<y>35.03</y>
+		<x>139.92</x>
+		<y>82.09</y>
 		<normal>common/title_add.png</normal>
 		<selected>common/title_add.png</selected>
 		<disabled>common/title_add.png</disabled>
 	</button>
 	<button>
 		<id>3</id>
-		<x>294.41</x>
-		<y>36.93</y>
+		<x>293.35</x>
+		<y>80.83</y>
 		<normal>common/title_add.png</normal>
 		<selected>common/title_add.png</selected>
 		<disabled>common/title_add.png</disabled>
@@ -72,7 +78,7 @@
 	<button>
 		<id>6</id>
 		<x>458.19</x>
-		<y>36.93</y>
+		<y>81.88</y>
 		<normal>common/title_add.png</normal>
 		<selected>common/title_add.png</selected>
 		<disabled>common/title_add.png</disabled>

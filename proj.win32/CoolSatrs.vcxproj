@@ -132,6 +132,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\BackgroundLayer.cpp" />
+    <ClCompile Include="..\Classes\CCFunctionAction.cpp" />
     <ClCompile Include="..\Classes\CCUserDefaultEx.cpp" />
     <ClCompile Include="..\Classes\CommonUtil.cpp" />
     <ClCompile Include="..\Classes\ConfirmLayer.cpp" />
@@ -159,6 +161,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\QuickBuyScene.cpp" />
     <ClCompile Include="..\Classes\RankingScene.cpp" />
     <ClCompile Include="..\Classes\ScaleDialog.cpp" />
+    <ClCompile Include="..\Classes\SettingBtnsHelper.cpp" />
     <ClCompile Include="..\Classes\ShopLayer.cpp" />
     <ClCompile Include="..\Classes\ShopScene.cpp" />
     <ClCompile Include="..\Classes\SoundMgr.cpp" />
@@ -187,6 +190,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AppMacros.h" />
+    <ClInclude Include="..\Classes\BackgroundLayer.h" />
+    <ClInclude Include="..\Classes\CCFunctionAction.h" />
     <ClInclude Include="..\Classes\CCUserDefaultEx.h" />
     <ClInclude Include="..\Classes\CommonMacros.h" />
     <ClInclude Include="..\Classes\CommonUtil.h" />
@@ -222,6 +227,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="..\Classes\ScaleDialog.h" />
+    <ClInclude Include="..\Classes\SettingBtnsHelper.h" />
     <ClInclude Include="..\Classes\ShopLayer.h" />
     <ClInclude Include="..\Classes\ShopScene.h" />
     <ClInclude Include="..\Classes\SoundMgr.h" />

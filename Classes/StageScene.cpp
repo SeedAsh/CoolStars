@@ -4,6 +4,7 @@
 #include "VisibleRect.h"
 #include "UiLayout.h"
 #include "EmptyBox.h"
+#include "BackgroundLayer.h"
 using namespace cocos2d;
 
 StageScene::StageScene()
@@ -39,6 +40,9 @@ bool StageScene::init()
 {
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	
+	BackgroundLayer *bk = BackgroundLayer::create();
+	addChild(bk);
+
 	UiLayout *layout = UiLayout::create("layout/stage.xml");
 	addChild(layout);
 	auto node = dynamic_cast<EmptyBox *>((layout->getChildById(4)));

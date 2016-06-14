@@ -1,6 +1,7 @@
 ﻿#ifndef _MENUSCENE_H
 #define _MENUSCENE_H
 #include "cocos2d.h"
+#include "SettingBtnsHelper.h"
 
 class UiLayout;
 class MenuScene : public cocos2d::CCLayer 
@@ -30,7 +31,7 @@ private:
 private:
 	UiLayout *m_mainLayout;
 	UiLayout *m_bottomLayout;
-	
+	SettingBtnsHelper m_settingBtnsHelper;
 };
 
 #endif

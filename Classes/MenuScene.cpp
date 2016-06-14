@@ -7,6 +7,7 @@
 #include "RankingScene.h"
 #include "PackageScene.h"
 #include "ShopScene.h"
+#include "BackgroundLayer.h"
 
 USING_NS_CC;
 using namespace std;
@@ -35,6 +36,8 @@ bool MenuScene::init()
 	{
 		return false;
 	}
+	auto bk = BackgroundLayer::create();
+	addChild(bk);
 
 	m_mainLayout = UiLayout::create("layout/main_menu.xml");
 	addChild(m_mainLayout);
@@ -83,6 +86,11 @@ void MenuScene::initBottomLayout()
 
 	CCMenuItem *shopBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(5)));
 	shopBtn->setTarget(this, menu_selector(MenuScene::toShopPanel));
+
+
+	m_settingBtnsHelper.addPopupNodes(muteBtn);
+	m_settingBtnsHelper.addPopupNodes(helpBtn);
+	m_settingBtnsHelper.setTargetPos(settingBtn->getPosition());
 }
 
 void MenuScene::toNormalGame(CCObject* pSender)
@@ -111,8 +119,7 @@ void MenuScene::toPetPanel(cocos2d::CCObject* pSender)
 
 void MenuScene::toSetting(cocos2d::CCObject* pSender)
 {
-	CCMessageBox("toSetting", "title");
-
+	m_settingBtnsHelper.toggle();
 }
 
 void MenuScene::toMute(cocos2d::CCObject* pSender)

@@ -18,26 +18,28 @@ bool ShopScene::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 
-	m_mainLayout = UiLayout::create("layout/pet_ui.xml");
-	addChild(m_mainLayout);
-
 	auto titlePanel = TitlePanel::create();
 	addChild(titlePanel);
 
-	initMainLayout();
+	m_layout = UiLayout::create("layout/shop.xml");
+	addChild(m_layout);
+
+	initPanel();
 	return true;
 }
 
-void ShopScene::initMainLayout()
+void ShopScene::initPanel()
 {
-	CCMenuItem *leftPetBtn = dynamic_cast<CCMenuItem *>((m_mainLayout->getChildById(6)));
+	/*
+	CCMenuItem *leftPetBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(6)));
 	leftPetBtn->setTarget(this, menu_selector(ShopScene::onLeftPetBtnClicked));
 
-	CCMenuItem *rightPetBtn = dynamic_cast<CCMenuItem *>((m_mainLayout->getChildById(5)));
+	CCMenuItem *rightPetBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(5)));
 	rightPetBtn->setTarget(this, menu_selector(ShopScene::onRigthPetBtnClicked));
 
-	CCMenuItem *upgradeBtn = dynamic_cast<CCMenuItem *>((m_mainLayout->getChildById(8)));
+	CCMenuItem *upgradeBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(8)));
 	upgradeBtn->setTarget(this, menu_selector(ShopScene::onUpgradeBtnClicked));
+	*/
 }
 
 void ShopScene::onLeftPetBtnClicked(cocos2d::CCObject* pSender)

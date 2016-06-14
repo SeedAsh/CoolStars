@@ -207,6 +207,15 @@
     <ClCompile Include="..\Classes\TitlePanel.cpp">
       <Filter>MainMenu</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CCFunctionAction.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BackgroundLayer.cpp">
+      <Filter>MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SettingBtnsHelper.cpp">
+      <Filter>MainMenu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -390,6 +399,15 @@
       <Filter>Shop</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\TitlePanel.h">
+      <Filter>MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCFunctionAction.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BackgroundLayer.h">
+      <Filter>MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SettingBtnsHelper.h">
       <Filter>MainMenu</Filter>
     </ClInclude>
   </ItemGroup>

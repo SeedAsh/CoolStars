@@ -14,7 +14,6 @@
 #include "PropItemView.h"
 #include "UiLayout.h"
 
-
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
 #define Z_ORDER_TITLE_BG (Z_ORDER_PROPS + 1)

@@ -1,11 +1,16 @@
 #include "TitlePanel.h"
 #include "MenuScene.h"
 #include "UiLayout.h"
+#include "CCFunctionAction.h"
+#include "BackgroundLayer.h"
 USING_NS_CC;
 using namespace std;
 bool TitlePanel::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
+	
+	BackgroundLayer *bk = BackgroundLayer::create();
+	addChild(bk);
 
 	m_topLayout = UiLayout::create("layout/common_title.xml");
 	m_topLayout->setAnchorPoint(ccp(0, 1));
@@ -18,25 +23,25 @@ bool TitlePanel::init()
 	addChild(m_bottomLayout);
 
 	initTopLayout();
-	initButtonLayout();
+	initBottomLayout();
 	return true;
 }
 
 void TitlePanel::initTopLayout()
 {
-	CCMenuItem *addStrengthBtn = dynamic_cast<CCMenuItem *>((m_topLayout->getChildById(9)));
+	CCMenuItem *addStrengthBtn = dynamic_cast<CCMenuItem *>(m_topLayout->getChildById(9));
 	addStrengthBtn->setTarget(this, menu_selector(TitlePanel::onAddStrengthBtnClicked));
 
-	CCMenuItem *addFoodBtn = dynamic_cast<CCMenuItem *>((m_topLayout->getChildById(3)));
+	CCMenuItem *addFoodBtn = dynamic_cast<CCMenuItem *>(m_topLayout->getChildById(3));
 	addFoodBtn->setTarget(this, menu_selector(TitlePanel::onAddFoodBtnClicked));
 
-	CCMenuItem *addDiamondBtn = dynamic_cast<CCMenuItem *>((m_topLayout->getChildById(6)));
+	CCMenuItem *addDiamondBtn = dynamic_cast<CCMenuItem *>(m_topLayout->getChildById(6));
 	addDiamondBtn->setTarget(this, menu_selector(TitlePanel::onAddDiamondBtnClicked));
 }
 
-void TitlePanel::initButtonLayout()
+void TitlePanel::initBottomLayout()
 {
-	CCMenuItem *backHomeBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(1)));
+	CCMenuItem *backHomeBtn = dynamic_cast<CCMenuItem *>(m_bottomLayout->getChildById(2));
 	backHomeBtn->setTarget(this, menu_selector(TitlePanel::onBackHomeBtnClicked));
 }
 
@@ -89,3 +94,6 @@ void TitlePanel::setUiVisible(int who, bool isVisible)
 		break;
 	}
 }
+
+
+

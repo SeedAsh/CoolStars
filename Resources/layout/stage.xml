@@ -1,22 +1,4 @@
 <layout width="480.000000" height="864.000000">
-	<image>
-		<id>1</id>
-		<x>240.52</x>
-		<y>431.31</y>
-		<path>background/beij_di.png</path>
-	</image>
-	<image>
-		<id>2</id>
-		<x>80.97</x>
-		<y>368.21</y>
-		<path>background/beij_yun1.png</path>
-	</image>
-	<image>
-		<id>3</id>
-		<x>388.25</x>
-		<y>524.17</y>
-		<path>background/beij_yun2.png</path>
-	</image>
 	<emptyBox>
 		<id>4</id>
 		<x>40.00</x>

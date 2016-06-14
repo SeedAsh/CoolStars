@@ -22,14 +22,13 @@ public:
 private:
 	TitlePanel(){}
 	void initTopLayout();
-	void initButtonLayout();
+	void initBottomLayout();
 
 	void onAddStrengthBtnClicked(cocos2d::CCObject* pSender);
 	void onAddFoodBtnClicked(cocos2d::CCObject* pSender);
 	void onAddDiamondBtnClicked(cocos2d::CCObject* pSender);
 
 	void onBackHomeBtnClicked(cocos2d::CCObject* pSender);
-
 private:
 	UiLayout *m_topLayout;
 	UiLayout *m_bottomLayout;
