@@ -144,7 +144,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\GameData.cpp" />
     <ClCompile Include="..\Classes\GameDataPreLoader.cpp" />
     <ClCompile Include="..\Classes\GameResultLayer.cpp" />
-    <ClCompile Include="..\Classes\HelpLayer.cpp" />
+    <ClCompile Include="..\Classes\HelpPanel.cpp" />
     <ClCompile Include="..\Classes\LoginLayer.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
     <ClCompile Include="..\Classes\MyPurchase.cpp" />
@@ -156,13 +156,13 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PetScene.cpp" />
     <ClCompile Include="..\Classes\PetSkill.cpp" />
     <ClCompile Include="..\Classes\PetView.cpp" />
+    <ClCompile Include="..\Classes\PreStageScene.cpp" />
     <ClCompile Include="..\Classes\PropItemView.cpp" />
     <ClCompile Include="..\Classes\PropManager.cpp" />
     <ClCompile Include="..\Classes\QuickBuyScene.cpp" />
     <ClCompile Include="..\Classes\RankingScene.cpp" />
     <ClCompile Include="..\Classes\ScaleDialog.cpp" />
     <ClCompile Include="..\Classes\SettingBtnsHelper.cpp" />
-    <ClCompile Include="..\Classes\ShopLayer.cpp" />
     <ClCompile Include="..\Classes\ShopScene.cpp" />
     <ClCompile Include="..\Classes\SoundMgr.cpp" />
     <ClCompile Include="..\Classes\sqlite3.c" />
@@ -171,6 +171,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StageLayersMgr.cpp" />
     <ClCompile Include="..\Classes\StageModel.cpp" />
     <ClCompile Include="..\Classes\StageOperator.cpp" />
+    <ClCompile Include="..\Classes\StagePetNode.cpp" />
     <ClCompile Include="..\Classes\StageSavingHelper.cpp" />
     <ClCompile Include="..\Classes\StageScene.cpp" />
     <ClCompile Include="..\Classes\StageTarget.cpp" />
@@ -205,7 +206,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\GameData.h" />
     <ClInclude Include="..\Classes\GameDataPreLoader.h" />
     <ClInclude Include="..\Classes\GameResultLayer.h" />
-    <ClInclude Include="..\Classes\HelpLayer.h" />
+    <ClInclude Include="..\Classes\HelpPanel.h" />
     <ClInclude Include="..\Classes\LoginLayer.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
     <ClInclude Include="..\Classes\MyPurchase.h" />
@@ -218,6 +219,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PetScene.h" />
     <ClInclude Include="..\Classes\PetSkill.h" />
     <ClInclude Include="..\Classes\PetView.h" />
+    <ClInclude Include="..\Classes\PreStageScene.h" />
     <ClInclude Include="..\Classes\PropItemView.h" />
     <ClInclude Include="..\Classes\PropManager.h" />
     <ClInclude Include="..\Classes\QuickBuyScene.h" />
@@ -228,7 +230,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="..\Classes\ScaleDialog.h" />
     <ClInclude Include="..\Classes\SettingBtnsHelper.h" />
-    <ClInclude Include="..\Classes\ShopLayer.h" />
     <ClInclude Include="..\Classes\ShopScene.h" />
     <ClInclude Include="..\Classes\SoundMgr.h" />
     <ClInclude Include="..\Classes\sqlite3.h" />
@@ -237,6 +238,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StageLayersMgr.h" />
     <ClInclude Include="..\Classes\StageModel.h" />
     <ClInclude Include="..\Classes\StageOperator.h" />
+    <ClInclude Include="..\Classes\StagePetNode.h" />
     <ClInclude Include="..\Classes\StageSavingHelper.h" />
     <ClInclude Include="..\Classes\StageScene.h" />
     <ClInclude Include="..\Classes\StageTarget.h" />

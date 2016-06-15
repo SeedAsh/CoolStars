@@ -11,7 +11,7 @@ bool GameWinLayer::init()
 	CCSize size = bg->getContentSize();
 	setContentSize(size);
 	bg->setPosition(ccp(size.width * 0.5f, size.height * 0.5f));
-	ScaleDialog::init();
+	initDialog();
 	addChild(bg);
 
 	CCMenuItemImage *pToMainMenu = CCMenuItemImage::create(
@@ -66,7 +66,7 @@ bool GameFailLayer::init()
 	CCSize size = bg->getContentSize();
 	setContentSize(size);
 	bg->setPosition(ccp(size.width * 0.5f, size.height * 0.5f));
-	ScaleDialog::init();
+	initDialog();
 	addChild(bg);
 
 	CCMenuItemImage *pToMainMenu = CCMenuItemImage::create(

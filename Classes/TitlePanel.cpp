@@ -8,8 +8,10 @@ using namespace std;
 bool TitlePanel::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
-	
+	setContentSize(winSize);
+
 	BackgroundLayer *bk = BackgroundLayer::create();
+	bk->setPosition(ccpMult(winSize, 0.5f));
 	addChild(bk);
 
 	m_topLayout = UiLayout::create("layout/common_title.xml");

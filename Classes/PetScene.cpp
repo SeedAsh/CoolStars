@@ -17,6 +17,7 @@ CCScene* PetScene::scene()
 bool PetScene::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
+	setContentSize(winSize);
 
 	m_topLayout = UiLayout::create("layout/pet_ui_top.xml");
 	m_topLayout->setAnchorPoint(ccp(0, 1));
@@ -24,8 +25,6 @@ bool PetScene::init()
 	addChild(m_topLayout);
 
 	auto titlePanel = TitlePanel::create();
-	//titlePanel->setUiVisible(kTitlePanelBackHome, false);
-	//titlePanel->setUiVisible(kTitlePanelBackground, false);
 	addChild(titlePanel);
 
 	m_mainLayout = UiLayout::create("layout/pet_ui.xml");

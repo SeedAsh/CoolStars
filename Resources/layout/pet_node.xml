@@ -1,0 +1,15 @@
+<layout width="224.000000" height="250.000000">
+	<image>
+		<id>1</id>
+		<x>111.88</x>
+		<y>100.63</y>
+		<path>pet/cwjm_taizi.png</path>
+	</image>
+	<image>
+		<id>2</id>
+		<x>116.10</x>
+		<y>185.68</y>
+		<path>pet/cwjm_anniu1.png</path>
+	</image>
+</layout>
+

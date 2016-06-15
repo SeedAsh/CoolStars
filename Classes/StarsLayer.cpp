@@ -31,9 +31,26 @@ void StarsLayer::onExit()
 
 bool StarsLayer::init()
 {
+	addClippingNode();
 	StageModel::theModel()->initStarsData();
 	initStars();
 	return true;
+}
+
+void StarsLayer::addClippingNode()
+{
+	CCLayerColor *back = CCLayerColor::create(ccc4(125, 0, 0, 255));
+	CCSize size = CCSize(STAR_SIZE * COlUMNS_SIZE, STAR_SIZE * ROWS_SIZE);
+	back->setContentSize(size);
+	//addChild(back);
+	
+	CCSprite *sp = CCSprite::create("shop/sd_zuanshi2.png");
+	sp->setAnchorPoint(ccp(0, 0));
+	m_clippingNode = CCClippingNode::create();
+	m_clippingNode->setInverted(false);
+	m_clippingNode->setAlphaThreshold(1.0f);
+	m_clippingNode->setStencil(back);
+	addChild(m_clippingNode);
 }
 
 StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
@@ -48,9 +65,11 @@ StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
 
 void StarsLayer::initStars()
 {
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	StarViewNode *pStarSprite = NULL;
-	float speed = visibleSize.height / 0.9f;
+	float startHeight = STAR_SIZE * ROWS_SIZE;
+	float speed = startHeight / 0.5f;
+
 	float maxDuration = 0;
 	for (int col = 0; col < COlUMNS_SIZE; ++col)
 	{
@@ -64,9 +83,10 @@ void StarsLayer::initStars()
 				CCPoint targetPos = getPosByGrid(grid);
 				CCPoint sourcePos = targetPos;
 				//实现梅花间隔掉落
-				sourcePos.y = targetPos.y + visibleSize.height + grid.y * STAR_SIZE + (grid.x % 2) * STAR_SIZE;
+				sourcePos.y = targetPos.y + startHeight + grid.y * STAR_SIZE + (grid.x % 2) * STAR_SIZE;
 				pStarSprite->setPosition(sourcePos);
-				addChild(pStarSprite);
+				m_clippingNode->addChild(pStarSprite);
+				//addChild(pStarSprite);
 				m_starsSprite.push_back(pStarSprite);
 
 				float kDuration = (sourcePos.y - targetPos.y) / speed;
@@ -137,7 +157,8 @@ void StarsLayer::onCreateNewStar(StarNode *node)
 		pStarSprite->setAnchorPoint(ccp(0.5f, 0.5f));
 		CCPoint pos = getPosByGrid(grid);
 		pStarSprite->setPosition(pos);
-		addChild(pStarSprite);
+		m_clippingNode->addChild(pStarSprite);
+		//addChild(pStarSprite);
 		m_starsSprite.push_back(pStarSprite);
 	}
 }

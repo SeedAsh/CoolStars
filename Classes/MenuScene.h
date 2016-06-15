@@ -23,6 +23,7 @@ private:
 
 	void toSetting(cocos2d::CCObject* pSender);
 	void toMute(cocos2d::CCObject* pSender);
+	void toSound(cocos2d::CCObject* pSender);
 	void toHelpPanel(cocos2d::CCObject* pSender);
 	void toRankPanel(cocos2d::CCObject* pSender);
 	void toPackagePanel(cocos2d::CCObject* pSender);

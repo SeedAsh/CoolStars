@@ -7,12 +7,14 @@ using namespace std;
 bool BackgroundLayer::init()
 {
 	m_bkLayout = UiLayout::create("layout/common_background.xml");
+	m_bkLayout->setAnchorPoint(ccp(0.5f, 0.5f));
 	initLayout();
+	auto size = m_bkLayout->getContentSize();
+	m_bkLayout->setPosition(ccpMult(size, 0.5f));
 	addChild(m_bkLayout);
 
-	//auto winSize = CCDirector::sharedDirector()->getWinSize();
-	//setContentSize(winSize);
-	//setPosition(ccp(winSize.width * 0.5f, winSize.height * 0.5f));
+	setContentSize(size);
+	setAnchorPoint(ccp(0.5, 0.5));
 	return true;
 }
 

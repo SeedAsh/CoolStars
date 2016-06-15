@@ -6,13 +6,14 @@
 #include "MenuScene.h"
 #include "PauseLayer.h"
 #include "PetManager.h"
-#include "PetView.h"
 #include "StageOperator.h"
 #include "CommonUtil.h"
 #include "GameResultLayer.h"
 #include "PropManager.h"
 #include "PropItemView.h"
 #include "UiLayout.h"
+#include "EmptyBox.h"
+#include "StagePetNode.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -74,12 +75,20 @@ bool StageUiLayer::init()
 
 void StageUiLayer::initTopUi()
 {
-	//auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(4)));
+	auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(4)));
 }
 
 void StageUiLayer::initPets()
 {
-	
+	int uiIds[] = { 10, 11, 12, 13};
+	auto ids = PetManager::petMgr()->getCurPetIds();
+	assert(ids.size() <= 4);
+	for (size_t i = 0; i < ids.size(); ++i)
+	{
+		StagePetNode *petNode = StagePetNode::create(ids[i]);
+		auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(uiIds[i])));
+		node->setNode(petNode);
+	}
 }
 
 void StageUiLayer::initBottomUi()

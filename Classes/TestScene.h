@@ -13,6 +13,11 @@ public:
 private:
 	void closeCallback(cocos2d::CCObject* pSender);
 	void testCallback(cocos2d::CCObject* pSender);
+	void addClippingNode();
+	void layoutTest();
+
+private:
+	cocos2d::CCClippingNode *m_clippingNode;
 };
 
 

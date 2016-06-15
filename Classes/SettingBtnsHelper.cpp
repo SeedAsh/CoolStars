@@ -12,7 +12,10 @@ void SettingBtnsHelper::toggle()
 		for (auto iter = m_nodes.begin(); iter != m_nodes.end(); ++iter)
 		{
 			auto moveTo = CCMoveTo::create(kDuration, m_targetPos);
-			auto func = bind(&SettingBtnsHelper::setAllNodesVisible, this, false);
+			auto func = [=]()
+			{
+				iter->first->setVisible(false);
+			};
 			iter->first->runAction(CCSequence::create(CCEaseBackInOut::create(moveTo), CCFunctionAction::create(func), NULL));
 		}
 	}
@@ -20,36 +23,39 @@ void SettingBtnsHelper::toggle()
 	{
 		for (auto iter = m_nodes.begin(); iter != m_nodes.end(); ++iter)
 		{
-			setAllNodesVisible(true);
+			iter->first->setVisible(true);
 			auto moveTo = CCMoveTo::create(kDuration, iter->second);
 			iter->first->runAction(CCEaseBackInOut::create(moveTo));
 		}
 	}
-	
 
 	m_isVisible = !m_isVisible;
 }
 
 void SettingBtnsHelper::addPopupNodes(cocos2d::CCNode *node)
 {
-	m_nodes.insert(make_pair(node, node->getPosition()));
-}
-
-void SettingBtnsHelper::setTargetPos(cocos2d::CCPoint pt)
-{ 
-	m_targetPos = pt;
-
-	for (auto iter = m_nodes.begin(); iter != m_nodes.end(); ++iter)
+	if (m_nodes.find(node) == m_nodes.end())
 	{
-		iter->first->setPosition(pt);
-		iter->first->setVisible(false);
+		m_nodes.insert(make_pair(node, node->getPosition()));
 	}
 }
 
-void SettingBtnsHelper::setAllNodesVisible(bool isVisible)
+void SettingBtnsHelper::removePopupNodes(cocos2d::CCNode *node)
 {
+	auto iter = m_nodes.find(node);
+	if (iter != m_nodes.end())
+	{
+		m_nodes.erase(iter);
+	}
+}
+
+void SettingBtnsHelper::init(cocos2d::CCPoint targetPos)
+{ 
+	m_targetPos = targetPos;
+
 	for (auto iter = m_nodes.begin(); iter != m_nodes.end(); ++iter)
 	{
-		iter->first->setVisible(isVisible);
+		iter->first->setPosition(targetPos);
+		iter->first->setVisible(false);
 	}
 }

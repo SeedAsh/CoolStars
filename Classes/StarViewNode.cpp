@@ -82,8 +82,7 @@ void StarViewNode::runExplosion(){
 	pEmitter->setScale(1.2f);
 	pEmitter->setGravity(ccp(0, -200));
 
-    StarsLayer *layer = (StarsLayer *)getParent();
-    layer->addChild(pEmitter);
+    getParent()->addChild(pEmitter);
 }
 
 void StarViewNode::removeSelf(bool withExplosion)
@@ -92,6 +91,6 @@ void StarViewNode::removeSelf(bool withExplosion)
 	{
 		runExplosion();
 	}
-	StarsLayer *layer = (StarsLayer *)getParent();
+	StarsLayer *layer = dynamic_cast<StarsLayer *>(getParent()->getParent());
 	layer->removeStar(this);
 }

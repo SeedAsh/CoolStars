@@ -15,7 +15,7 @@
 		<selected>main_menu/zcd_anniu8.png</selected>
 		<disabled>main_menu/zcd_anniu8.png</disabled>
 	</button>
-		<button>
+	<button>
 		<id>1</id>
 		<x>37.88</x>
 		<y>41.53</y>
@@ -46,6 +46,14 @@
 		<normal>main_menu/zcd_logo3.png</normal>
 		<selected>main_menu/zcd_logo3.png</selected>
 		<disabled>main_menu/zcd_logo3.png</disabled>
+	</button>
+	<button>
+		<id>7</id>
+		<x>37.99</x>
+		<y>122.62</y>
+		<normal>main_menu/zcd_anniu7.png</normal>
+		<selected>main_menu/zcd_anniu7.png</selected>
+		<disabled>main_menu/zcd_anniu7.png</disabled>
 	</button>
 </layout>
 

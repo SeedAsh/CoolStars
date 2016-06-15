@@ -60,9 +60,6 @@
     <ClCompile Include="..\Classes\CCUserDefaultEx.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ShopLayer.cpp">
-      <Filter>Shop</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\MyPurchase.cpp">
       <Filter>Shop</Filter>
     </ClCompile>
@@ -94,9 +91,6 @@
       <Filter>GameStage\StageUi</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ExitLayer.cpp">
-      <Filter>MainMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelpLayer.cpp">
       <Filter>MainMenu</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\LoginLayer.cpp">
@@ -216,6 +210,15 @@
     <ClCompile Include="..\Classes\SettingBtnsHelper.cpp">
       <Filter>MainMenu</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\HelpPanel.cpp">
+      <Filter>MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PreStageScene.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StagePetNode.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -232,9 +235,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ConfData.h">
       <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ShopLayer.h">
-      <Filter>Shop</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MyPurchase.h">
       <Filter>Shop</Filter>
@@ -267,9 +267,6 @@
       <Filter>GameStage\StageUi</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ExitLayer.h">
-      <Filter>MainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelpLayer.h">
       <Filter>MainMenu</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\LoginLayer.h">
@@ -409,6 +406,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\SettingBtnsHelper.h">
       <Filter>MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelpPanel.h">
+      <Filter>MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PreStageScene.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StagePetNode.h">
+      <Filter>GameStage\StageUi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

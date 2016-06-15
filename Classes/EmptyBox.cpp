@@ -12,11 +12,17 @@ EmptyBox *EmptyBox::create()
 
 bool EmptyBox::init()
 {
+	m_maskNode = CCLayerColor::create(ccc4(255, 255, 0, 75));
+	m_maskNode->setContentSize(CCSize(50, 50));
+	addChild(m_maskNode);
+	m_maskNode->setVisible(false);
+
     return true;
 }
 
 EmptyBox::EmptyBox()
 :m_node(NULL)
+, m_maskNode(NULL)
 {
     
 }
@@ -25,7 +31,11 @@ void EmptyBox::setNode(cocos2d::CCNode* node)
 {
     removeNode();
     addChild(node);
-    setContentSize(node->getContentSize());
+	auto size = node->getContentSize();
+	auto anchorPt = node->getAnchorPoint();
+	setContentSize(size);
+
+	node->setPosition(ccp(size.width * anchorPt.x, size.height * anchorPt.y));
 }
 
 void EmptyBox::removeNode()
@@ -38,4 +48,9 @@ void EmptyBox::removeNode()
     }
 }
 
+void EmptyBox::setMaskVisible(bool isVisible)
+{
+	//m_maskNode->setContentSize(getContentSize());
+	m_maskNode->setVisible(isVisible);
+}
 

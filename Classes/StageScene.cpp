@@ -38,9 +38,10 @@ StageScene* StageScene::create()
 
 bool StageScene::init()
 {
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCSize winSize = CCDirector::sharedDirector()->getVisibleSize();
 	
 	BackgroundLayer *bk = BackgroundLayer::create();
+	bk->setPosition(ccpMult(winSize, 0.5f));
 	addChild(bk);
 
 	UiLayout *layout = UiLayout::create("layout/stage.xml");

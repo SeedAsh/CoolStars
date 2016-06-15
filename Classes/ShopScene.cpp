@@ -22,6 +22,8 @@ bool ShopScene::init()
 	addChild(titlePanel);
 
 	m_layout = UiLayout::create("layout/shop.xml");
+	m_layout->setAnchorPoint(ccp(0.5f, 0.5f));
+	m_layout->setPosition(ccpMult(winSize, 0.5f));
 	addChild(m_layout);
 
 	initPanel();

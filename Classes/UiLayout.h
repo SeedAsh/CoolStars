@@ -9,9 +9,10 @@ class UiLayout
 {
 public:
 	static UiLayout *create(const char *xmlPath);
+	void setMenuTouchPriority(int touchPriority);
 	cocos2d::CCNode *getChildById(int id);
 private:
-	UiLayout(const char *xmlPath) : m_path(xmlPath){}
+	UiLayout(const char *xmlPath);
 	virtual bool init();
 	void createWidget(rapidxml::xml_node<> *node);
 	void checkXml(rapidxml::xml_node<> *layout);
@@ -19,6 +20,7 @@ private:
 	std::string m_path;
 	std::unordered_map<int, cocos2d::CCMenuItem *> m_menuItems;
 	cocos2d::CCMenu *m_menu;
+	int m_menuTouchPriority;
 	
 };
 #endif

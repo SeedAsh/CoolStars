@@ -7,6 +7,15 @@ using namespace std;
 using namespace rapidxml;
 
 using namespace std;
+
+UiLayout::UiLayout(const char *xmlPath)
+: m_path(xmlPath)
+, m_menu(NULL)
+, m_menuTouchPriority(-128)
+{
+
+}
+
 UiLayout *UiLayout::create(const char *xmlPath)
 {
 	auto layout = new UiLayout(xmlPath);
@@ -38,11 +47,15 @@ bool UiLayout::init()
 		createWidget(node);
 	}
 
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	setPosition(ccp(winSize.width * 0.5f, winSize.height * 0.5f));
-	setAnchorPoint(ccp(0.5f, 0.5f));
-
 	return true;
+}
+
+void UiLayout::setMenuTouchPriority(int touchPriority)
+{
+	if (m_menu)
+	{
+		m_menu->setTouchPriority(touchPriority);
+	}
 }
 
 void UiLayout::checkXml(rapidxml::xml_node<> *layout)

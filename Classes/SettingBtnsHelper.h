@@ -10,9 +10,9 @@ public:
 	SettingBtnsHelper() :m_isVisible(false){}
 	void toggle();
 	void addPopupNodes(cocos2d::CCNode *node);
-	void setTargetPos(cocos2d::CCPoint pt);
+	void removePopupNodes(cocos2d::CCNode *node);
+	void init(cocos2d::CCPoint targetPos);
 private:
-	void setAllNodesVisible(bool isVisible);
 private:
 	std::unordered_map<cocos2d::CCNode *, cocos2d::CCPoint> m_nodes;
 	bool m_isVisible;

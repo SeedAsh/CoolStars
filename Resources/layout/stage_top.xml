@@ -30,12 +30,6 @@
 		<path>stage/ui/yxjm_fenshucao2.png</path>
 	</image>
 	<image>
-		<id>6</id>
-		<x>302.75</x>
-		<y>206.53</y>
-		<path>stage/ui/yxjm_xingxing.png</path>
-	</image>
-	<image>
 		<id>7</id>
 		<x>444.63</x>
 		<y>218.14</y>
@@ -49,29 +43,29 @@
 	</label>
 	<image>
 		<id>9</id>
-		<x>238.27</x>
+		<x>239.54</x>
 		<y>65.22</y>
 		<path>stage/ui/yxjm_taizi.png</path>
 	</image>
 	<emptyBox>
 		<id>10</id>
-		<x>399.22</x>
-		<y>86.91</y>
+		<x>28.71</x>
+		<y>49.55</y>
 	</emptyBox>
 	<emptyBox>
 		<id>11</id>
-		<x>270.05</x>
-		<y>82.91</y>
+		<x>127.39</x>
+		<y>46.82</y>
 	</emptyBox>
 	<emptyBox>
 		<id>12</id>
-		<x>158.83</x>
-		<y>84.59</y>
+		<x>236.71</x>
+		<y>48.08</y>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
-		<x>61.73</x>
-		<y>81.64</y>
+		<x>334.19</x>
+		<y>46.83</y>
 	</emptyBox>
 </layout>
 

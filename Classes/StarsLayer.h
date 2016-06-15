@@ -31,8 +31,10 @@ private:
 	virtual void onCreateNewStar(StarNode *node);
 	virtual void onEnter();
 	virtual void onExit();
+	void addClippingNode();
 private:
 	StarUtil *m_pStarUtil;
 	std::vector<StarViewNode *> m_starsSprite;
+	cocos2d::CCClippingNode *m_clippingNode;
 };
 #endif 
