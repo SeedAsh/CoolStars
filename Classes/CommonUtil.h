@@ -7,6 +7,8 @@ namespace CommonUtil
 	std::vector<int> parseStrToInts(std::string str);//将类似 1,2,3 的字符串分割返回为数字组
 
 	const char *intToStr(int value);
+
+	int getRandomValue(int begin, int end);
 }
 
 #endif

@@ -18,7 +18,7 @@ void StageOperator::eraseStars(vector<LogicGrid> &grids)
 		auto node = StageModel::theModel()->getStarNode(grids[i]);
 		if (node)
 		{
-			node->removeSelf();
+			node->doRemove();
 		}
 	}
 	StageModel::theModel()->moveStars();

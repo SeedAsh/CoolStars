@@ -1,6 +1,7 @@
 #include "StarNode.h"
 #include "StageModel.h"
 #include "StarViewNode.h"
+#include "CommonUtil.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -9,48 +10,27 @@ StarNode *StarNode::createNodeFatory(const StarAttr &attr)
 {
 	switch (attr.type)
 	{
-	case kRedStar:
-		return new ColorStar(attr ,kColorRed);
-	case kYellowStar:
-		return new ColorStar(attr, kColorYellow);
-	case kBlueStar:
-		return new ColorStar(attr, kColorBlue);
-	case kGreenStar:
-		return new ColorStar(attr, kColorGreen);
-	case kPurpleStar :
-		return new ColorStar(attr, kColorPurple);
-	case kStone:
-		return new StoneNode();
+	case kColorStar:
+		return new ColorStar(attr);
+	case kBounceBall:
+		return new BounceBallNode(attr);
 	case kDeadVine:
-		return new DeadVineNode();
+		return new DeadVineNode(attr);
 	case kLiveVine:
-		return new LiveVineNode();
-	case kIron:
-		return new IronNode();
-	case kdiamond:
-		return new diamondNode();
-	case kKey:
-		return new KeyNode();
+		return new LiveVineNode(attr);
+	case kStone:
+		return new StoneNode(attr);
 	case kBomb:
-		return new BombNode();
-	case kBounceRedBall:
-		return new BounceBallNode();
-	case kBounceYellowBall:
-		return new BounceBallNode();
-	case kBounceBlueBall:
-		return new BounceBallNode();
-	case kBounceGreenBall:
-		return new BounceBallNode();
-	case kBouncePurpleBall:
-		return new BounceBallNode();
-	case kRandomColorStar:
-		return new ColorStar(attr, kColorRandom);
-	case kRandomBounceBall:
-		return new BounceBallNode();
+		return new BombNode(attr);
+	case kIron:
+		return new IronNode(attr);
+	case kDiamond:
+		return new DiamondNode(attr);
+	case kKey:
+		return new KeyNode(attr);
 	default:
-		return NULL;
 		assert("no this node type!");
-		break;
+		return NULL;
 	}
 }
 StarNode::StarNode(const StarAttr &attr)
@@ -62,6 +42,26 @@ StarNode::StarNode(const StarAttr &attr)
 const StarsConfig &StarNode::getConfig()
 {
 	return DataManagerSelf->getStarsConfig(m_attr.type);
+}
+
+bool StarNode::canLink(int type, int color)
+{ 
+	auto linkTypes = getConfig().linkStarTypes;
+	if (find(linkTypes.begin(), linkTypes.end(), type) != linkTypes.end())
+	{
+		return m_attr.color == color;
+	}
+	return false;
+}
+
+string StarNode::getResPath()
+{
+	return getConfig().resPath;
+}
+
+string StarNode::getExplosionPath()
+{
+	return getConfig().explosionPath;
 }
 
 void StarNode::handleClick()
@@ -78,22 +78,38 @@ void StarNode::handleClick()
 	{
 		for (size_t j = 0; j < count; ++j)
 		{
-			connectedNodes[j]->removeSelf();
+			auto node = connectedNodes[j];
+			node->removeNeighbours();
+			node->doRemove();
 		}
 		StageModel::theModel()->moveOneStep();
 	}
 }
 
-void StarNode::removeSelf(bool withExplosion)
+void StarNode::doRemove(bool withExplosion)
 {
 	if (m_view)
 	{
 		int myScore = getConfig().score;
 		StageModel::theModel()->addScore(myScore);//±¬Õ¨Ôò¼Ó·Ö
 		m_view->removeSelf(withExplosion);
-		
 	}
+	onRemove();
 	StageModel::theModel()->removeStarNode(this);
+}
+
+void StarNode::removeNeighbours()
+{
+	auto neightbours = getNeighbours();
+	for (size_t i = 0; i < neightbours.size(); ++i)
+	{
+		auto node = neightbours[i];
+		auto eraseTypes = node->getConfig().eraseTypes;
+		if (find(eraseTypes.begin(), eraseTypes.end(), kNeightbourErase) != eraseTypes.end())
+		{
+			node->doRemove();
+		}
+	}
 }
 
 void StarNode::getConnectedStars(StarNode *node, std::vector<StarNode *> &connectedNodes)
@@ -106,7 +122,7 @@ void StarNode::getConnectedStars(StarNode *node, std::vector<StarNode *> &connec
 
 	connectedNodes.push_back(node);
     
-	auto neighbours = node->getNeighbours();
+	auto neighbours = node->getLinkNeighbours();
 	if (!neighbours.empty())
 	{
         for (size_t i = 0; i < neighbours.size(); ++i)
@@ -120,6 +136,26 @@ void StarNode::getConnectedStars(StarNode *node, std::vector<StarNode *> &connec
 	}
 }
 
+vector<StarNode *> StarNode::getLinkNeighbours()
+{
+	vector<StarNode *> linkNodes;
+	auto neighbours = getNeighbours();
+	for (size_t i = 0; i < neighbours.size(); ++i)
+	{
+
+		StarNode *neighbour = neighbours[i];
+
+		if (neighbour != NULL)
+		{
+			if (neighbour->canLink(m_attr.type, m_attr.color))
+			{
+				linkNodes.push_back(neighbour);
+			}
+		}
+	}
+	return linkNodes;
+}
+
 vector<StarNode *> StarNode::getNeighbours()
 {
 	vector<StarNode *> neighbours;
@@ -129,13 +165,9 @@ vector<StarNode *> StarNode::getNeighbours()
 	{
         auto temp = LogicGrid(grid.x + arr[i][0], grid.y + arr[i][1]);
 		StarNode *neighbour = StageModel::theModel()->getStarNode(temp);
-		
-		if (neighbour != NULL)
+		if (neighbour)
 		{
-			if (neighbour->isNeighbour(m_attr.type))
-			{
-				neighbours.push_back(neighbour);
-			}
+			neighbours.push_back(neighbour);
 		}
 	}
 	return neighbours;
@@ -150,9 +182,72 @@ void StarNode::moveTo(LogicGrid grid)
 	}
 }
 
-
-
-bool ColorStar::isNeighbour(int type)
-{
-	return m_attr.type == type;
+/////////////////////////////////////////////////////////////////////////////////
+ColorStar::ColorStar(const StarAttr &attr)
+: StarNode(attr)
+{ 
+	if (m_attr.color == kColorRandom)
+	{
+		m_attr.color = CommonUtil::getRandomValue(kColorRed, kColorPurple);
+	}
 }
+
+ColorStar::~ColorStar()
+{
+}
+
+
+std::string ColorStar::getResPath()
+{
+	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
+	return config.colorStarRes;
+}
+
+std::string ColorStar::getExplosionPath()
+{
+	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
+	return config.colorExplosionRes;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+BounceBallNode::BounceBallNode(const StarAttr &attr)
+: StarNode(attr)
+{
+	if (m_attr.color == kColorRandom)
+	{
+		m_attr.color = CommonUtil::getRandomValue(kColorRed, kColorPurple);
+	}
+}
+
+
+std::string BounceBallNode::getResPath()
+{
+	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
+	return config.bounceBallRes;
+}
+
+std::string BounceBallNode::getExplosionPath()
+{
+	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
+	return config.bounceBallExplosionRes;
+}
+/////////////////////////////////////////////////////////////////////////////////
+void DeadVineNode::onRemove()
+{
+	auto attr = m_attr;
+	attr.type = kColorStar;
+	StageModel::theModel()->replaceStar(attr);
+}
+/////////////////////////////////////////////////////////////////////////////////
+void LiveVineNode::onRemove()
+{
+	auto attr = m_attr;
+	attr.type = kColorStar;
+	StageModel::theModel()->replaceStar(attr);
+}
+/////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////

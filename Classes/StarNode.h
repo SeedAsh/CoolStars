@@ -8,30 +8,15 @@
 enum StarType
 {
 	kEmpty,
-
-	kRedStar,
-	kYellowStar,
-	kBlueStar,
-	kGreenStar,
-	kPurpleStar,
-
-	kStone,
+	kColorStar,
+	kBounceBall,
 	kDeadVine,
 	kLiveVine,
-
-	kIron,
-	kdiamond,
-	kKey,
+	kStone,
 	kBomb,
-
-	kBounceRedBall,
-	kBounceYellowBall,
-	kBounceBlueBall,
-	kBounceGreenBall,
-	kBouncePurpleBall,
-
-	kRandomColorStar,
-	kRandomBounceBall,
+	kIron,
+	kDiamond,
+	kKey,
 	
 	kStarTypeCount,
 };
@@ -55,6 +40,7 @@ struct LogicGrid
 struct StarAttr
 {
 	int type;
+	int color;
 	LogicGrid grid;
 };
 
@@ -70,59 +56,70 @@ public:
 
 	void handleClick();
 	std::vector<StarNode *> getNeighbours();
-	void removeSelf(bool withExplosion = true);
+	std::vector<StarNode *> getLinkNeighbours();
+	void doRemove(bool withExplosion = true);
+	void removeNeighbours();
     void moveTo(LogicGrid grid);
 
 	const StarsConfig &getConfig();
 
+	bool canLink(int type, int color);
 public:
-	virtual bool isNeighbour(int type){ return false; }
+	virtual std::string getResPath();
+	virtual std::string getExplosionPath();
+	virtual void onRemove(){}
 protected:
-	StarNode(){}
     StarNode(const StarAttr &attr);
 private:
 	void getConnectedStars(StarNode *node, std::vector<StarNode *> &connectedNodes);
 protected:
 	StarAttr m_attr;
 	StarViewNode *m_view;
+private:
 };
 
 class ColorStar : public StarNode
 {
 public:
-	ColorStar(const StarAttr &attr, int color) : StarNode(attr), m_color(color){}
-	~ColorStar(){}
-public:
-	virtual bool isNeighbour(int type);
-private:
-	int m_color;
+	ColorStar(const StarAttr &attr);
+	~ColorStar();
+	virtual std::string getResPath();
+	virtual std::string getExplosionPath();
 };
 
+class BounceBallNode : public StarNode
+{
+public:
+
+	BounceBallNode(const StarAttr &attr);
+	~BounceBallNode(){}
+	virtual std::string getResPath();
+	virtual std::string getExplosionPath();
+};
 
 class StoneNode : public StarNode
 {
 public:
 
-	StoneNode(){}
+	StoneNode(const StarAttr &attr) : StarNode(attr){}
 	~StoneNode(){}
 };
-
 
 
 class DeadVineNode : public StarNode
 {
 public:
-
-	DeadVineNode(){}
+	DeadVineNode(const StarAttr &attr) : StarNode(attr){}
 	~DeadVineNode(){}
+	virtual void onRemove();
 };
 
 class LiveVineNode : public StarNode
 {
 public:
-
-	LiveVineNode(){}
+	LiveVineNode(const StarAttr &attr) : StarNode(attr){}
 	~LiveVineNode(){}
+	virtual void onRemove();
 };
 
 
@@ -130,32 +127,23 @@ class IronNode : public StarNode
 {
 public:
 
-	IronNode(){}
+	IronNode(const StarAttr &attr) : StarNode(attr){}
 	~IronNode(){}
 };
 
-
-class BounceBallNode : public StarNode
+class DiamondNode : public StarNode
 {
 public:
 
-	BounceBallNode(){}
-	~BounceBallNode(){}
-};
-
-class diamondNode : public StarNode
-{
-public:
-
-	diamondNode(){}
-	~diamondNode(){}
+	DiamondNode(const StarAttr &attr) : StarNode(attr){}
+	~DiamondNode(){}
 };
 
 class KeyNode : public StarNode
 {
 public:
 
-	KeyNode(){}
+	KeyNode(const StarAttr &attr) : StarNode(attr){}
 	~KeyNode(){}
 };
 
@@ -163,7 +151,7 @@ class BombNode : public StarNode
 {
 public:
 
-	BombNode(){}
+	BombNode(const StarAttr &attr) : StarNode(attr){}
 	~BombNode(){}
 };
 

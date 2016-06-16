@@ -38,3 +38,10 @@ const char *CommonUtil::intToStr(int value)
 	sprintf(str, "%d", value);
 	return str;
 }
+
+//end ²»³¬¹ý1000
+int CommonUtil::getRandomValue(int begin, int end)
+{
+	assert(begin <= end);
+	return ((int)(CCRANDOM_0_1() * 1000)) % (end - begin + 1) + begin;
+}

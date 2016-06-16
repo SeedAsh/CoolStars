@@ -25,7 +25,7 @@ void StageModel::initStarsData()
 {
 	resetStarsData();
 	//返回的数据是保存行的
-	vector<vector<int>> stageVec;
+	vector<vector<stageStarInfo>> stageVec;
 	m_stageInfo.getStageStars(stageVec);
 	
 	for (int row = 0; row < ROWS_SIZE; ++row)
@@ -33,7 +33,8 @@ void StageModel::initStarsData()
 		for (int col = 0; col < COlUMNS_SIZE; ++col)
 		{
 			StarAttr attr;
-			attr.type = stageVec[col][row];
+			attr.type = stageVec[col][row].starType;
+			attr.color = stageVec[col][row].color;
 			attr.grid = LogicGrid(row, ROWS_SIZE - col - 1);
 			m_starNodes.push_back(StarNode::createNodeFatory(attr));
 		}
@@ -253,6 +254,7 @@ void StageModel::genNewStars()
 		StarAttr attr;
 		attr.grid = newGrid[i];
 		attr.type = startype;
+		attr.color = kColorRandom;
 		StarNode *node = StarNode::createNodeFatory(attr);
 		m_starNodes.push_back(node);
 		NOTIFY_VIEWS(onCreateNewStar, node);
@@ -306,7 +308,7 @@ void StageModel::replaceStar(const StarAttr &attr)
 	StarNode *node = getStarNode(grid);
 	if (!node) return;
 
-	node->removeSelf(false);
+	node->doRemove(false);
 	m_starNodes.push_back(StarNode::createNodeFatory(attr));
 	NOTIFY_VIEWS(onCreateNewStar, node);
 }

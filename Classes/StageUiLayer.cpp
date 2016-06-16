@@ -137,7 +137,7 @@ void StageUiLayer::menuCallback( CCObject *pSender )
 void StageUiLayer::onStepsChanged()
 {
 	auto stageInfo = StageModel::theModel()->getStageInfo();
-	int leftStep = stageInfo->getLeftStep();
+	int leftStep = stageInfo->getLeftSteps();
 	//m_pStepLabel->setString(CommonUtil::intToStr(leftStep));
 
 

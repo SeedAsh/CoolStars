@@ -110,8 +110,6 @@ void MenuScene::initBottomLayout()
 
 void MenuScene::toNormalGame(CCObject* pSender)
 {
-	auto stageInfo = StageModel::theModel()->getStageInfo();
-	stageInfo->newGame();
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, PreStageScene::scene()));
 }

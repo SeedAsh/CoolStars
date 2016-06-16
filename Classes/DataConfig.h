@@ -16,6 +16,8 @@ struct StarsConfig
 	string resPath;
 	int extra;
 	string explosionPath;
+	vector<int> linkStarTypes;
+	vector<int> eraseTypes;
 };
 
 struct PetsConfig
@@ -40,7 +42,23 @@ struct StageConfig
 
 struct SystemConfig
 {
+	int id;
 	int stageAmount;
 };
 
+struct StarsColorConfig
+{
+	int id;
+	std::string colorStarRes;
+	std::string colorExplosionRes;
+	std::string bounceBallRes;
+	std::string bounceBallExplosionRes;
+	std::string desc;
+};
+
+struct stageStarInfo
+{
+	int starType;
+	int color;
+};
 #endif

@@ -19,7 +19,7 @@ int StageBaseInfo::getCurDirection()
 	return dirs[index];
 }
 
-int StageBaseInfo::getLeftStep()
+int StageBaseInfo::getLeftSteps()
 {
 	auto config = DataManagerSelf->getStageConfig(m_curStage);
 	int leftStep = config.step - m_step;
@@ -34,22 +34,8 @@ void StageBaseInfo::reset()
 
 void StageBaseInfo::init()
 {
-	//初始化加载上次游戏
-	resumeGame();
-}
-
-void StageBaseInfo::resumeGame()
-{
 	reset();
-	m_isNewStage = false;
 	StageSavingHelper::LoadLastSavedStageData();
-}
-
-void StageBaseInfo::newGame()
-{
-	reset();
-	m_isNewStage = true;
-	m_curStage = 1;
 }
 
 void StageBaseInfo::toNextStage()
@@ -58,7 +44,6 @@ void StageBaseInfo::toNextStage()
 	if (!isTheLastStage())
 	{
 		m_curStage++;
-		m_isNewStage = true;
 	}
 }
 
@@ -78,26 +63,13 @@ bool StageBaseInfo::isTheLastStage()
 	return m_curStage >= config.stageAmount;
 }
 
-void StageBaseInfo::getStageStars(std::vector<std::vector<int>> &stars)
+void StageBaseInfo::getStageStars(std::vector<std::vector<stageStarInfo>> &stars)
 {
-	do
-	{
-		if (!m_isNewStage)
-		{
-			bool isSucceed = StageSavingHelper::getLastSavedStars(stars);
-			if (isSucceed) break;
-		}
-
-		DataManagerSelf->getNewStageStarsData(stars, m_curStage);
-
-	} while (0);
+	DataManagerSelf->getNewStageStarsData(stars, m_curStage);
 }
 
 void StageBaseInfo::doSave()
 {
-	if (m_isNewStage)
-	{
-		StageSavingHelper::saveCurStageData();
-		StageSavingHelper::saveCurStars();
-	}
+	StageSavingHelper::saveCurStageData();
+	StageSavingHelper::saveCurStars();
 }

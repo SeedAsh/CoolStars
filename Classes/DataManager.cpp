@@ -19,6 +19,7 @@ void DataManager::LoadData()
 	loadSystemConfig();
 	loadStageConfig();
 	loadStarsConfig();
+	loadStarsColorConfig();
 	loadCommonPetsConfig();
 }
 
@@ -29,14 +30,17 @@ void DataManager::loadStarsConfig()
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
 		StarsConfig config;
-		assert((*iter).size() == 6);
+		auto data = (*iter);
+		assert(data.size() == 8);
 
-		config.id = atoi((*iter)[0]);
-		config.desc = (*iter)[1];
-		config.score = atoi((*iter)[2]);
-		config.resPath = (*iter)[3];
-		config.extra = atoi((*iter)[4]); 
-		config.explosionPath = (*iter)[5];
+		config.id = atoi(data[0]);
+		config.desc = data[1];
+		config.score = atoi(data[2]);
+		config.resPath = data[3];
+		config.extra = atoi(data[4]); 
+		config.explosionPath = data[5];
+		config.linkStarTypes = CommonUtil::parseStrToInts(data[6]);
+		config.eraseTypes = CommonUtil::parseStrToInts(data[7]);
 
 		m_starsConfig.push_back(config);
 	}
@@ -116,11 +120,11 @@ void DataManager::loadStageConfig()
 
 const StageConfig &DataManager::getStageConfig(int stage)
 {
-	assert(stage > 0 && stage <= m_petsConfig.size());
+	assert(stage > 0 && stage <= (int)m_petsConfig.size());
 	return m_stagesConfig[stage - 1];
 }
 
-void DataManager::getNewStageStarsData(std::vector<std::vector<int>> &stars, int stageNum)
+void DataManager::getNewStageStarsData(std::vector<std::vector<stageStarInfo>> &stars, int stageNum)
 {
 	vector<StageConfig> m_stagesConfig;
 	SqliteHelper sqlHelper(DB_COOLSTAR);
@@ -134,14 +138,18 @@ void DataManager::getNewStageStarsData(std::vector<std::vector<int>> &stars, int
 	{
 		assert((*iter).size() == COlUMNS_SIZE);
 
-		vector<int> oneRow;
+		vector<stageStarInfo> oneRow;
 		for (size_t i = 0; i < (*iter).size(); ++i)
 		{
-			oneRow.push_back(atoi((*iter)[i]));
+			stageStarInfo info;
+			auto data = (*iter)[i];
+			auto reInts = CommonUtil::parseStrToInts(data);
+			info.starType = reInts[0];
+			info.color = reInts[1];
+			oneRow.push_back(info);
 		}
 		stars.push_back(oneRow);
 	}
-	
 }
 
 void DataManager::loadSystemConfig()
@@ -156,4 +164,31 @@ void DataManager::loadSystemConfig()
 const SystemConfig &DataManager::getSystemConfig()
 {
 	return m_systemConfig;
+}
+
+void DataManager::loadStarsColorConfig()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from stars_color");
+	assert(!result.empty());
+
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		StarsColorConfig config;
+		config.id = atoi(data[0]);
+		config.colorStarRes = data[1];
+		config.colorExplosionRes = data[2];
+		config.bounceBallRes = data[3];
+		config.bounceBallExplosionRes = data[4];
+		config.desc = data[5];
+
+		m_starsColorConfig.push_back(config);
+	}
+}
+
+const StarsColorConfig &DataManager::getStarsColorConfig(int color)
+{
+	assert(color > kColorRandom && color <= kColorPurple);
+	return m_starsColorConfig[color];
 }

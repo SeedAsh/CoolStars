@@ -16,6 +16,7 @@ public :
 	void doMove(LogicGrid targetGrid);
     cocos2d::CCPoint getPosByGrid(LogicGrid grid);
 	void removeSelf(bool withExplosion);
+
 private:
 	void runExplosion();
 protected:

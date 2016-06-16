@@ -84,7 +84,7 @@ bool StageTarget::isGameOver()
 	if (isReachTarget()) return true;
 
 	auto stageInfo = StageModel::theModel()->getStageInfo();
-	return stageInfo->getLeftStep() <= 0;
+	return stageInfo->getLeftSteps() <= 0;
 
 }
 
