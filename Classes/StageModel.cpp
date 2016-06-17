@@ -50,6 +50,7 @@ void StageModel::resetStarsData()
 	{
 		delete(*iter);
 	}
+	m_stageInfo.init();
 	m_starNodes.clear();
 	m_target.initTargets();
 }
@@ -309,6 +310,12 @@ void StageModel::replaceStar(const StarAttr &attr)
 	if (!node) return;
 
 	node->doRemove(false);
-	m_starNodes.push_back(StarNode::createNodeFatory(attr));
+	genStar(attr);
+}
+
+void StageModel::genStar(const StarAttr &attr)
+{
+	auto node = StarNode::createNodeFatory(attr);
+	m_starNodes.push_back(node);
 	NOTIFY_VIEWS(onCreateNewStar, node);
 }

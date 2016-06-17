@@ -38,6 +38,7 @@ public: //对星星的操作接口
 	void moveOneStep();
 	void addScore(int value);
 	void replaceStar(const StarAttr &attr);
+	void genStar(const StarAttr &attr);
 	
 public:
 	StageBaseInfo *getStageInfo(){ return &m_stageInfo; }

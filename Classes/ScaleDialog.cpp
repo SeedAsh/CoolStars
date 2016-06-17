@@ -26,6 +26,7 @@ void ScaleDialog::initDialog()
 
 	setAnchorPoint(ccp(0.5f, 0.5f));
 	ignoreAnchorPointForPosition(false);
+	setPosition(ccpMult(winSize, 0.5f));
 }
 
 void ScaleDialog::runScale()

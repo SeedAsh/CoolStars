@@ -36,9 +36,9 @@ void DataManager::loadStarsConfig()
 		config.id = atoi(data[0]);
 		config.desc = data[1];
 		config.score = atoi(data[2]);
-		config.resPath = data[3];
-		config.extra = atoi(data[4]); 
-		config.explosionPath = data[5];
+		config.bornAnimationRes = data[3];
+		config.resPath = data[4];
+		config.explosionRes = data[5];
 		config.linkStarTypes = CommonUtil::parseStrToInts(data[6]);
 		config.eraseTypes = CommonUtil::parseStrToInts(data[7]);
 

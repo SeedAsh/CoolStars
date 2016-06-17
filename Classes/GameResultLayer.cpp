@@ -7,7 +7,7 @@ USING_NS_CC;
 
 bool GameWinLayer::init()
 {
-	auto bg = CCSprite::create("game_win.png");
+	auto bg = CCSprite::create("stage/game_over/game_win.png");
 	CCSize size = bg->getContentSize();
 	setContentSize(size);
 	bg->setPosition(ccp(size.width * 0.5f, size.height * 0.5f));
@@ -15,13 +15,13 @@ bool GameWinLayer::init()
 	addChild(bg);
 
 	CCMenuItemImage *pToMainMenu = CCMenuItemImage::create(
-		"btn_mainMenu.png",
-		"btn_mainMenu.png",
+		"common/back_home.png",
+		"common/back_home.png",
 		this,
 		menu_selector(GameWinLayer::toMainMenu));
 	pToMainMenu->setPosition(size.width * 0.5f, size.height * 0.1f);
 
-
+	/*
 	CCMenuItemImage *pToNextStage = CCMenuItemImage::create(
 		"btn_nextStage.png",
 		"btn_nextStage.png",
@@ -29,9 +29,7 @@ bool GameWinLayer::init()
 		menu_selector(GameWinLayer::toNextStage));
 	pToNextStage->setPosition(size.width * 0.75f, size.height * 0.1f);
 
-	CCMenu *menu = CCMenu::create();
-	menu->addChild(pToMainMenu);
-	menu->setPosition(ccp(0, 0));
+	
 
 	auto info = StageModel::theModel()->getStageInfo();
 	bool isLastStage = info->isTheLastStage();
@@ -40,8 +38,13 @@ bool GameWinLayer::init()
 		pToMainMenu->setPosition(size.width * 0.25f, size.height * 0.1f);
 		menu->addChild(pToNextStage);
 	}
+	*/
+	CCMenu *menu = CCMenu::create();
+	menu->addChild(pToMainMenu);
+	menu->setPosition(ccp(0, 0));
 
 	addChild(menu);
+
 	
 	return true;
 }

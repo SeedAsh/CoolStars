@@ -31,6 +31,13 @@ bool StarViewNode::init()
 	setContentSize(size);
 	addChild(spr);
 
+	string bornAnimationPath = m_model->getBornAnimationPath();
+	if (!bornAnimationPath.empty())
+	{
+		CCSprite * bornSpr = CCSprite::create(bornAnimationPath.c_str());
+		bornSpr->setPosition(ccp(size.width * 0.5, size.height * 0.5f));
+		addChild(bornSpr);
+	}
 	return true;
 }
 

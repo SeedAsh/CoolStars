@@ -67,6 +67,7 @@ public:
 public:
 	virtual std::string getResPath();
 	virtual std::string getExplosionPath();
+	virtual std::string getBornAnimationPath();
 	virtual void onRemove(){}
 protected:
     StarNode(const StarAttr &attr);
@@ -109,16 +110,20 @@ public:
 class DeadVineNode : public StarNode
 {
 public:
-	DeadVineNode(const StarAttr &attr) : StarNode(attr){}
+	DeadVineNode(const StarAttr &attr);
 	~DeadVineNode(){}
+	virtual std::string getResPath();
+	virtual std::string getExplosionPath();
 	virtual void onRemove();
 };
 
 class LiveVineNode : public StarNode
 {
 public:
-	LiveVineNode(const StarAttr &attr) : StarNode(attr){}
+	LiveVineNode(const StarAttr &attr);
 	~LiveVineNode(){}
+	virtual std::string getResPath();
+	virtual std::string getExplosionPath();
 	virtual void onRemove();
 };
 

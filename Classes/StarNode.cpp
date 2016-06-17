@@ -61,7 +61,12 @@ string StarNode::getResPath()
 
 string StarNode::getExplosionPath()
 {
-	return getConfig().explosionPath;
+	return getConfig().explosionRes;
+}
+
+string StarNode::getBornAnimationPath()
+{
+	return getConfig().bornAnimationRes;
 }
 
 void StarNode::handleClick()
@@ -196,7 +201,6 @@ ColorStar::~ColorStar()
 {
 }
 
-
 std::string ColorStar::getResPath()
 {
 	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
@@ -219,7 +223,6 @@ BounceBallNode::BounceBallNode(const StarAttr &attr)
 	}
 }
 
-
 std::string BounceBallNode::getResPath()
 {
 	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
@@ -232,18 +235,60 @@ std::string BounceBallNode::getExplosionPath()
 	return config.bounceBallExplosionRes;
 }
 /////////////////////////////////////////////////////////////////////////////////
+DeadVineNode::DeadVineNode(const StarAttr &attr)
+: StarNode(attr)
+{
+	if (m_attr.color == kColorRandom)
+	{
+		m_attr.color = CommonUtil::getRandomValue(kColorRed, kColorPurple);
+	}
+}
+
 void DeadVineNode::onRemove()
 {
 	auto attr = m_attr;
 	attr.type = kColorStar;
-	StageModel::theModel()->replaceStar(attr);
+	StageModel::theModel()->genStar(attr);
+}
+
+std::string DeadVineNode::getResPath()
+{
+	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
+	return config.colorStarRes;
+}
+
+std::string DeadVineNode::getExplosionPath()
+{
+	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
+	return config.colorExplosionRes;
 }
 /////////////////////////////////////////////////////////////////////////////////
+LiveVineNode::LiveVineNode(const StarAttr &attr)
+: StarNode(attr)
+{
+	if (m_attr.color == kColorRandom)
+	{
+		m_attr.color = CommonUtil::getRandomValue(kColorRed, kColorPurple);
+	}
+}
+
 void LiveVineNode::onRemove()
 {
 	auto attr = m_attr;
 	attr.type = kColorStar;
-	StageModel::theModel()->replaceStar(attr);
+	StageModel::theModel()->genStar(attr);
+}
+
+std::string LiveVineNode::getResPath()
+{
+	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
+	return config.colorStarRes;
+}
+
+std::string LiveVineNode::getExplosionPath()
+{
+	auto config = DataManagerSelf->getStarsColorConfig(m_attr.color);
+	return config.colorExplosionRes;
 }
 /////////////////////////////////////////////////////////////////////////////////
 

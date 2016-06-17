@@ -82,11 +82,9 @@ void StageSavingHelper::saveCurStageData()
 
 	auto stageInfo = stageModel->getStageInfo();
 	int curStage = stageInfo->getCurStage();
-	int curScore = stageInfo->getCurScore();
 	int topScore = stageInfo->getTopScore();
-	int step = stageInfo->getCurStep();
-	sprintf(str, "replace into save_cur_stage values(1, %d,%d,%d,%d);"
-		, curStage, curScore, topScore, step);
+	sprintf(str, "replace into save_cur_stage values(1, %d,%d);"
+		, curStage, topScore);
 	
 	helper.insertRecordIntoSqlite(str);
 	helper.closeDB();
@@ -103,14 +101,10 @@ void StageSavingHelper::LoadLastSavedStageData()
 	assert(result.size() == 1);
 
 	int curStage = atoi(result[0][1]);
-	int curScore = atoi(result[0][2]);
-	int topScore = atoi(result[0][3]);
-	int step = atoi(result[0][4]);
+	int topScore = atoi(result[0][2]);
 
 	auto stageInfo = stageModel->getStageInfo();
 	stageInfo->setCurStage(curStage);
-	stageInfo->setCurScore(curScore);
 	stageInfo->setTopScore(topScore);
-	stageInfo->setCurStep(step);
 }
 

@@ -14,8 +14,8 @@ struct StarsConfig
 	string desc;
 	int score;
 	string resPath;
-	int extra;
-	string explosionPath;
+	string bornAnimationRes;
+	string explosionRes;
 	vector<int> linkStarTypes;
 	vector<int> eraseTypes;
 };
