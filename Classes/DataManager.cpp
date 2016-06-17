@@ -67,17 +67,20 @@ void DataManager::loadCommonPetsConfig()
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
 		PetsConfig config;
-		assert((*iter).size() == 7);
+		assert((*iter).size() == 8);
 
-		config.id = atoi((*iter)[0]);
-		config.skillId = atoi((*iter)[4]);
+		auto data = *iter;
+		config.id = atoi(data[0]);
+		config.skillId = atoi(data[4]);
 		/*
-		config.energy = (*iter)[1];
-		config.count = atoi((*iter)[2]);
-		config.upgrade = (*iter)[3];
-		config.desc = atoi((*iter)[4]);
+		config.energy = data[1];
+		config.count = atoi(data[2]);
+		config.upgrade = data[3];
+		config.desc = atoi(data[4]);
 		*/
-		const string path = (*iter)[5];
+		string path = data[5];
+		config.skillIcon = data[6];
+
 		char chars[10] = { 0 };
 		for (int i = kColorRed; i <= kColorPurple; ++i)
 		{
@@ -94,7 +97,7 @@ void DataManager::loadCommonPetsConfig()
 
 const PetsConfig &DataManager::getCommonPetsConfig(int petId)
 {
-	assert(petId > 0 && petId < CommonPetsAmount);
+	assert(petId > 0 && petId < COMMON_PETS_AMOUNT);
 	return m_petsConfig[petId - 1];
 }
 

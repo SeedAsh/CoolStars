@@ -13,7 +13,7 @@ public:
 
 private:
 	PetView(int petId);
-	virtual void onTouchBegan();
+	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
 private:
 	int m_petId;
 	const PetEntity *m_model;
@@ -27,7 +27,7 @@ public:
 	virtual bool init();
 private:
 	PetEmptyView(){}
-	virtual void onTouchBegan();
+	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
 
 };
 #endif

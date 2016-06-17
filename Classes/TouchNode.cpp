@@ -9,7 +9,7 @@ bool TouchNode::init()
 
 void TouchNode::onEnter(){
 	CCNode::onEnter();
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, m_touchPriority, true);
 }
 
 void TouchNode::onExit(){
@@ -22,12 +22,8 @@ bool TouchNode::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 	auto pos = convertToNodeSpace(pTouch->getLocation());
 	auto size = getContentSize();
 	CCRect rect(0, 0, size.width, size.height);
-	if (rect.containsPoint(pos))
-	{
-		onTouchBegan();
-		return true;
-	}
-	return false;
+	bool isInside = rect.containsPoint(pos);
+	return onTouchBegan(pTouch->getLocation(), isInside);
 }
 
 void TouchNode::runScale()

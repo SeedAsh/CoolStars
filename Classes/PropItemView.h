@@ -14,7 +14,7 @@ protected:
 	virtual bool init();
 
 private:
-	virtual void onTouchBegan();
+	virtual void onTouchBegan(cocos2d::CCPoint);
 	void runScale();
 	virtual void onClick() = 0;
 protected:

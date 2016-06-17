@@ -31,6 +31,7 @@ void StarsLayer::onExit()
 
 bool StarsLayer::init()
 {
+
 	addClippingNode();
 	StageModel::theModel()->initStarsData();
 	initStars();

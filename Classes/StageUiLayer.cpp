@@ -14,6 +14,7 @@
 #include "UiLayout.h"
 #include "EmptyBox.h"
 #include "StagePetNode.h"
+#include "StagePanelUtil.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -55,15 +56,17 @@ bool StageUiLayer::init()
 	}
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 
-	m_topUi = UiLayout::create("layout/stage_top.xml");
-	m_topUi->setAnchorPoint(ccp(0, 1));
-	m_topUi->setPosition(ccp(0, winSize.height));
-	addChild(m_topUi);
-
 	m_bottomUi = UiLayout::create("layout/stage_bottom.xml");
 	m_bottomUi->setAnchorPoint(ccp(0, 0));
 	m_bottomUi->setPosition(ccp(0, 0));
+	m_bottomUi->setMenuTouchPriority(kStageUiTouchPriority);
 	addChild(m_bottomUi);
+
+	m_topUi = UiLayout::create("layout/stage_top.xml");
+	m_topUi->setAnchorPoint(ccp(0, 1));
+	m_topUi->setPosition(ccp(0, winSize.height));
+	m_topUi->setMenuTouchPriority(kStageUiTouchPriority);
+	addChild(m_topUi);
 
 
 	initTopUi();
@@ -86,8 +89,10 @@ void StageUiLayer::initPets()
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
 		StagePetNode *petNode = StagePetNode::create(ids[i]);
+		petNode->setSkillScanHandle(bind(&StageUiLayer::showPetsSkillPanel, this));
 		auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(uiIds[i])));
 		node->setNode(petNode);
+		node->setAnchorPoint(ccp(0.5f, 0.5f));
 	}
 }
 
@@ -96,6 +101,14 @@ void StageUiLayer::initBottomUi()
 	auto closeBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(2)));
 	closeBtn->setTarget(this, menu_selector(StageUiLayer::onPauseBtnClicked));
 
+	auto reOrderBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(11)));
+	reOrderBtn->setTarget(this, menu_selector(StageUiLayer::onReOrderBtnClicked));
+
+	auto changeColorBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(10)));
+	changeColorBtn->setTarget(this, menu_selector(StageUiLayer::onChangeColorBtnClicked));
+
+	auto bombBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(9)));
+	bombBtn->setTarget(this, menu_selector(StageUiLayer::onBombBtnClicked));
 }
 
 void StageUiLayer::showGameOverHint()
@@ -103,6 +116,14 @@ void StageUiLayer::showGameOverHint()
 	//game over hint
 	CCSprite *sp = CCSprite::create("stage_clear.png");
 	this->addChild(sp);
+}
+
+void StageUiLayer::showPetsSkillPanel()
+{
+	StagePetSkillPanel *panel = StagePetSkillPanel::create(kStageUiTouchPriority - 1);
+	auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(14)));
+	node->setNode(panel);
+	node->setAnchorPoint(ccp(0, 1));
 }
 
 void StageUiLayer::deliveryScore( const CCPoint &from, int totalScore, int count ){
@@ -175,5 +196,25 @@ void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 {
 	//addChild(PauseLayer::create(), Z_ORDER_PAUSE);
 	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+
+}
+
+void StageUiLayer::onReOrderBtnClicked(CCObject *pSender)
+{
+	StageOp->reOrderStars();
+}
+
+void StageUiLayer::onChangeColorBtnClicked(CCObject *pSender)
+{
+	auto *panel = ChangeStarColorPanel::create(kStageUiTouchPriority - 1);
+	panel->setAnchorPoint(ccp(0.5f, 1));
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
+	panel->setPosition(ccpMult(winSize, 0.5f));
+
+	addChild(panel);
+}
+
+void StageUiLayer::onBombBtnClicked(CCObject *pSender)
+{
 
 }

@@ -1,6 +1,10 @@
 #ifndef __COMMONMACROS_H__
 #define __COMMONMACROS_H__
 
+#define MAX_ACTIVE_PETS_AMOUNT 4
+#define COMMON_PETS_AMOUNT 8
+#define COLOR_AMOUNT 5
+
 enum Colors
 {
 	kColorRandom,
@@ -10,16 +14,13 @@ enum Colors
 	kColorBlue,
 	kColorGreen,
 	kColorPurple,
-
-	kColorAmount,
 };
 
-#define MaxActivePetsAmount 4
-#define CommonPetsAmount 8
 
 enum TouchPriority
 {
 	kMainMenuTouchPriority = -10,
+	kStageUiTouchPriority = -20,
 	kDialogMenuTouchPriority = -50,
 };
 

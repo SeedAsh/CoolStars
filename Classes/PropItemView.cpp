@@ -60,7 +60,7 @@ void PropItemView::runScale()
 	runAction(seq);
 }
 
-void PropItemView::onTouchBegan()
+void PropItemView::onTouchBegan(cocos2d::CCPoint)
 {
 	runScale();
 

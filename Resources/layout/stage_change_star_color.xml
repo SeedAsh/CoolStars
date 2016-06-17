@@ -1,0 +1,28 @@
+<layout width="400.000000" height="100.000000">
+	<emptyBox>
+		<id>1</id>
+		<x>22.79</x>
+		<y>24.66</y>
+	</emptyBox>
+	<emptyBox>
+		<id>2</id>
+		<x>97.41</x>
+		<y>24.45</y>
+	</emptyBox>
+	<emptyBox>
+		<id>3</id>
+		<x>177.19</x>
+		<y>27.20</y>
+	</emptyBox>
+	<emptyBox>
+		<id>4</id>
+		<x>256.94</x>
+		<y>26.57</y>
+	</emptyBox>
+	<emptyBox>
+		<id>5</id>
+		<x>335.03</x>
+		<y>27.84</y>
+	</emptyBox>
+</layout>
+

@@ -42,9 +42,13 @@ private:
 	virtual void onEnter();
 	virtual void onExit();
 	void showGameOverHint();
+	void showPetsSkillPanel();
 	void deliveryScore(const CCPoint &from, int totalScore, int count);
 
 	void onPauseBtnClicked(CCObject *pSender);
+	void onReOrderBtnClicked(CCObject *pSender);
+	void onChangeColorBtnClicked(CCObject *pSender);
+	void onBombBtnClicked(CCObject *pSender);
 	void menuCallback(CCObject *pSender);
 private:
 

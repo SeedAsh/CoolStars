@@ -9,9 +9,10 @@ class TouchNode
 public:
 	virtual ~TouchNode(){}
 	virtual bool init();
+	void setTouchPriority(int touchPriority){ m_touchPriority = touchPriority; }
 protected:
-	TouchNode(int touchPriority = 0){}
-	virtual void onTouchBegan(){}
+	TouchNode(int touchPriority = 0): m_touchPriority(touchPriority){}
+	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside){ return true; }
 	void runScale();
 private:
 	virtual void onEnter();

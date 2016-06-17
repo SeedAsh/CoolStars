@@ -12,9 +12,19 @@ StagePetNode::StagePetNode(int petId)
 	assert(m_model);
 }
 
-void StagePetNode::onTouchBegan()
+bool StagePetNode::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 {
-	runScale();
+	if (isInside)
+	{
+		runScale();
+		if (m_skillScanHandle)
+		{
+			m_skillScanHandle();
+		}
+		return true;
+	}
+	return false;
+	
 }
 
 StagePetNode *StagePetNode::create(int petId)
@@ -29,7 +39,7 @@ bool StagePetNode::init()
 {
 	int color = m_model->getPetData().color;
 	auto commonData = m_model->getMyCommonPetData();
-	string iconPath = commonData.iconPath[color];
+	string iconPath = commonData.iconPath[color - 1];
 
 	m_layout = UiLayout::create("layout/stage_pet_node.xml");
 	auto size = m_layout->getContentSize();

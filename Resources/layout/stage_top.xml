@@ -48,24 +48,29 @@
 		<path>stage/ui/yxjm_taizi.png</path>
 	</image>
 	<emptyBox>
+		<id>14</id>
+		<x>0.00</x>
+		<y>24.06</y>
+	</emptyBox>
+	<emptyBox>
 		<id>10</id>
-		<x>28.71</x>
-		<y>49.55</y>
+		<x>84.84</x>
+		<y>137.56</y>
 	</emptyBox>
 	<emptyBox>
 		<id>11</id>
-		<x>127.39</x>
-		<y>46.82</y>
+		<x>193.23</x>
+		<y>137.57</y>
 	</emptyBox>
 	<emptyBox>
 		<id>12</id>
-		<x>236.71</x>
-		<y>48.08</y>
+		<x>312.89</x>
+		<y>140.95</y>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
-		<x>334.19</x>
-		<y>46.83</y>
+		<x>414.17</x>
+		<y>139.48</y>
 	</emptyBox>
 </layout>
 

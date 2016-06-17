@@ -36,6 +36,7 @@ void EmptyBox::setNode(cocos2d::CCNode* node)
 	setContentSize(size);
 
 	node->setPosition(ccp(size.width * anchorPt.x, size.height * anchorPt.y));
+	m_node = node;
 }
 
 void EmptyBox::removeNode()

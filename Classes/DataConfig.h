@@ -28,6 +28,7 @@ struct PetsConfig
 	vector<int> count;
 	vector<int> upgrade;
 	vector<string> iconPath;
+	string skillIcon;
 	string desc;
 };
 

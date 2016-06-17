@@ -219,6 +219,9 @@
     <ClCompile Include="..\Classes\StagePetNode.cpp">
       <Filter>GameStage\StageUi</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\StagePanelUtil.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -414,6 +417,9 @@
       <Filter>GameStage\StageUi</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StagePetNode.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StagePanelUtil.h">
       <Filter>GameStage\StageUi</Filter>
     </ClInclude>
   </ItemGroup>

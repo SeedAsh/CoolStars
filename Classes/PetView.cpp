@@ -11,9 +11,10 @@ PetView::PetView(int petId)
 	assert(m_model);
 }
 
-void PetView::onTouchBegan()
+bool PetView::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 {
 	runScale();
+	return true;
 	//CCMessageBox("click!", "click");
 }
 
@@ -84,7 +85,8 @@ bool PetEmptyView::init()
 	return true;
 }
 
-void PetEmptyView::onTouchBegan()
+bool PetEmptyView::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 {
 	runScale();
+	return true;
 }
