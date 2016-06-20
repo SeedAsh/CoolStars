@@ -4,6 +4,19 @@
 
 class UiLayout;
 
+class ShopNode
+	: public cocos2d::CCNode
+{
+public:
+	CREATE_FUNC(ShopNode);
+private:
+	void onBtnClicked(cocos2d::CCObject* pSender);
+	virtual bool init();
+private:
+	UiLayout *m_layout;
+};
+
+
 class ShopScene :
 	public cocos2d::CCLayer
 {
@@ -15,12 +28,7 @@ private:
 	ShopScene(){}
 	~ShopScene(){}
 	void initPanel();
-
-	void onLeftPetBtnClicked(cocos2d::CCObject* pSender);
-	void onRigthPetBtnClicked(cocos2d::CCObject* pSender);
-	void onUpgradeBtnClicked(cocos2d::CCObject* pSender);
 private:
-
 	UiLayout *m_layout;
 
 };

@@ -1,0 +1,35 @@
+<layout width="350.000000" height="80.000000">
+	<image>
+		<id>1</id>
+		<x>175.39</x>
+		<y>37.10</y>
+		<path>shop/sd_di2.png</path>
+	</image>
+	<image>
+		<id>2</id>
+		<x>35.89</x>
+		<y>32.04</y>
+		<path>shop/sd_zuanshi2.png</path>
+	</image>
+	<button>
+		<id>3</id>
+		<x>317.41</x>
+		<y>33.98</y>
+		<normal>shop/sd_goumai.png</normal>
+		<selected>shop/sd_goumai.png</selected>
+		<disabled>shop/sd_goumai.png</disabled>
+	</button>
+	<label>
+		<id>4</id>
+		<x>240.59</x>
+		<y>33.98</y>
+		<text>text</text>
+	</label>
+	<label>
+		<id>5</id>
+		<x>102.99</x>
+		<y>35.88</y>
+		<text>text</text>
+	</label>
+</layout>
+

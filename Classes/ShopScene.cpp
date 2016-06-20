@@ -2,9 +2,28 @@
 #include "UiLayout.h"
 #include "MenuScene.h"
 #include "TitlePanel.h"
+#include "ListView.h"
 
 USING_NS_CC;
 using namespace std;
+
+bool ShopNode::init()
+{
+	m_layout = UiLayout::create("layout/shop_node.xml");
+	addChild(m_layout);
+	setContentSize(m_layout->getContentSize());
+
+	CCMenuItem *buyBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(3)));
+	buyBtn->setTarget(this, menu_selector(ShopNode::onBtnClicked));
+
+	return true;
+}
+
+void ShopNode::onBtnClicked(cocos2d::CCObject* pSender)
+{
+	CCMessageBox("clicked", "title");
+}
+
 
 CCScene* ShopScene::scene()
 {
@@ -21,7 +40,7 @@ bool ShopScene::init()
 	auto titlePanel = TitlePanel::create();
 	addChild(titlePanel);
 
-	m_layout = UiLayout::create("layout/shop.xml");
+	m_layout = UiLayout::create("layout/shop_panel.xml");
 	m_layout->setAnchorPoint(ccp(0.5f, 0.5f));
 	m_layout->setPosition(ccpMult(winSize, 0.5f));
 	addChild(m_layout);
@@ -32,29 +51,15 @@ bool ShopScene::init()
 
 void ShopScene::initPanel()
 {
-	/*
-	CCMenuItem *leftPetBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(6)));
-	leftPetBtn->setTarget(this, menu_selector(ShopScene::onLeftPetBtnClicked));
+	auto pos = m_layout->getChildById(3)->getPosition();
+	ListView *rankList = ListView::create(ccp(350, 400));
+	addChild(rankList);
+	rankList->setAnchorPoint(ccp(0, 1));
+	rankList->setPosition(pos);
+	rankList->setSpacing(10);
 
-	CCMenuItem *rightPetBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(5)));
-	rightPetBtn->setTarget(this, menu_selector(ShopScene::onRigthPetBtnClicked));
-
-	CCMenuItem *upgradeBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(8)));
-	upgradeBtn->setTarget(this, menu_selector(ShopScene::onUpgradeBtnClicked));
-	*/
-}
-
-void ShopScene::onLeftPetBtnClicked(cocos2d::CCObject* pSender)
-{
-
-}
-
-void ShopScene::onRigthPetBtnClicked(cocos2d::CCObject* pSender)
-{
-
-}
-
-void ShopScene::onUpgradeBtnClicked(cocos2d::CCObject* pSender)
-{
-
+	for (int i = 0; i < 10; ++i)
+	{
+		rankList->addNode(ShopNode::create());
+	}
 }

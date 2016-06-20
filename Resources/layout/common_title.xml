@@ -74,14 +74,6 @@
 		<disabled>common/title_add.png</disabled>
 	</button>
 	<button>
-		<id>3</id>
-		<x>295.46</x>
-		<y>112.91</y>
-		<normal>common/title_add.png</normal>
-		<selected>common/title_add.png</selected>
-		<disabled>common/title_add.png</disabled>
-	</button>
-	<button>
 		<id>6</id>
 		<x>463.04</x>
 		<y>115.86</y>

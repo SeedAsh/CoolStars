@@ -4,6 +4,31 @@
 
 class UiLayout;
 
+enum PackageType
+{
+	kPackageStep,
+	kPackageProps,
+	kPackageStrength,
+	kPackageDiamond,
+	kPackPause,
+};
+
+class PackageView : public cocos2d::CCNode
+{
+public:
+	static PackageView *create(int type);
+	
+private:
+	PackageView(int type);
+	virtual bool init();
+	void initLayout();
+	void onCancelBtnClicked(cocos2d::CCObject* pSender);
+	void onBuyBtnClicked(cocos2d::CCObject* pSender);
+private:
+	UiLayout *m_layout;
+	int m_type;
+};
+
 class PackageScene :
 	public cocos2d::CCLayer
 {

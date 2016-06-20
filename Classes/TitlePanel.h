@@ -25,7 +25,6 @@ private:
 	void initBottomLayout();
 
 	void onAddStrengthBtnClicked(cocos2d::CCObject* pSender);
-	void onAddFoodBtnClicked(cocos2d::CCObject* pSender);
 	void onAddDiamondBtnClicked(cocos2d::CCObject* pSender);
 
 	void onBackHomeBtnClicked(cocos2d::CCObject* pSender);

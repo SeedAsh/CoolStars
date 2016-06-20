@@ -147,6 +147,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\HelpPanel.cpp" />
     <ClCompile Include="..\Classes\ListView.cpp" />
     <ClCompile Include="..\Classes\LoginLayer.cpp" />
+    <ClCompile Include="..\Classes\LotteryScene.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
     <ClCompile Include="..\Classes\MyPurchase.cpp" />
     <ClCompile Include="..\Classes\PackageScene.cpp" />
@@ -211,6 +212,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\HelpPanel.h" />
     <ClInclude Include="..\Classes\ListView.h" />
     <ClInclude Include="..\Classes\LoginLayer.h" />
+    <ClInclude Include="..\Classes\LotteryScene.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
     <ClInclude Include="..\Classes\MyPurchase.h" />
     <ClInclude Include="..\Classes\PackageScene.h" />

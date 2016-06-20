@@ -16,6 +16,7 @@ public:
 	int count(){ return m_nodes.size(); }
 	void setSpacing(float spacing){ m_spacing = spacing; }
 	void clear();
+	void doMove(cocos2d::CCPoint pt);
 private:
 	ListView(const cocos2d::CCSize &size);
 	virtual bool init();
@@ -24,7 +25,8 @@ private:
 	virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 	virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 	virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-
+	
+	void update(float dt);
 private:
 	cocos2d::CCNode *m_content;
 	cocos2d::CCClippingNode *m_clippingNode;
@@ -33,6 +35,8 @@ private:
 	int m_touchPriority;
 	float m_spacing;
 
-	cocos2d::CCPoint m_beganPt;
+	float m_speed;
+	float m_scrollTime;
+	float m_isTouching;
 };
 #endif

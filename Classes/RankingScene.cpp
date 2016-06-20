@@ -1,56 +1,60 @@
-#include "PackageScene.h"
+#include "RankingScene.h"
 #include "UiLayout.h"
-#include "MenuScene.h"
 #include "TitlePanel.h"
+#include "ListView.h"
 
 USING_NS_CC;
 using namespace std;
 
-CCScene* PackageScene::scene()
+bool rankingNode::init()
+{
+	m_layout = UiLayout::create("layout/ranking_node_common.xml");
+	addChild(m_layout);
+	setContentSize(m_layout->getContentSize());
+	return true;
+}
+
+
+CCScene* RankingScene::scene()
 {
 	CCScene *scene = CCScene::create();
-	PackageScene *layer = PackageScene::create();
+	RankingScene *layer = RankingScene::create();
 	scene->addChild(layer);
 	return scene;
 }
 
-bool PackageScene::init()
+bool RankingScene::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
-
-	m_mainLayout = UiLayout::create("layout/pet_ui.xml");
-	//addChild(m_mainLayout);
+	setContentSize(winSize);
 
 	auto titlePanel = TitlePanel::create();
 	addChild(titlePanel);
 
-	//initMainLayout();
+	m_layout = UiLayout::create("layout/ranking_panel.xml");
+	m_layout->setAnchorPoint(ccp(0.5f, 0.5f));
+	m_layout->setPosition(ccpMult(winSize, 0.5f));
+
+	addChild(m_layout);
+
+	initMainLayout();
 	return true;
 }
 
-void PackageScene::initMainLayout()
+void RankingScene::initMainLayout()
 {
-	CCMenuItem *leftPetBtn = dynamic_cast<CCMenuItem *>((m_mainLayout->getChildById(6)));
-	leftPetBtn->setTarget(this, menu_selector(PackageScene::onLeftPetBtnClicked));
+	auto pos = m_layout->getChildById(7)->getPosition();
+	ListView *rankList = ListView::create(ccp(350, 400));
+	addChild(rankList);
+	rankList->setAnchorPoint(ccp(0, 1));
+	rankList->setPosition(pos);
+	rankList->setSpacing(10);
 
-	CCMenuItem *rightPetBtn = dynamic_cast<CCMenuItem *>((m_mainLayout->getChildById(5)));
-	rightPetBtn->setTarget(this, menu_selector(PackageScene::onRigthPetBtnClicked));
-
-	CCMenuItem *upgradeBtn = dynamic_cast<CCMenuItem *>((m_mainLayout->getChildById(8)));
-	upgradeBtn->setTarget(this, menu_selector(PackageScene::onUpgradeBtnClicked));
+	for (int i = 0; i < 10; ++i)
+	{
+		rankList->addNode(rankingNode::create());
+	}
+	
 }
 
-void PackageScene::onLeftPetBtnClicked(cocos2d::CCObject* pSender)
-{
 
-}
-
-void PackageScene::onRigthPetBtnClicked(cocos2d::CCObject* pSender)
-{
-
-}
-
-void PackageScene::onUpgradeBtnClicked(cocos2d::CCObject* pSender)
-{
-
-}

@@ -1,34 +1,50 @@
 <layout width="410.000000" height="370.000000">
 	<image>
 		<id>1</id>
-		<x>204.52</x>
-		<y>151.71</y>
+		<x>204.92</x>
+		<y>152.59</y>
 		<path>package/lb_dikuang.png</path>
 	</image>
 	<image>
 		<id>2</id>
-		<x>207.68</x>
-		<y>281.50</y>
+		<x>212.10</x>
+		<y>298.57</y>
 		<path>package/lb_caidai.png</path>
 	</image>
 	<image>
-		<id>3</id>
-		<x>207.47</x>
-		<y>306.83</y>
-		<path>package/lb_logo2.png</path>
+		<id>7</id>
+		<x>204.53</x>
+		<y>318.43</y>
+		<path>package/lb_logo1.png</path>
 	</image>
 	<button>
+		<id>3</id>
+		<x>94.56</x>
+		<y>60.74</y>
+		<normal>package/lb_anniu.png</normal>
+		<selected>package/lb_anniu.png</selected>
+		<disabled>package/lb_anniu.png</disabled>
+	</button>
+	<button>
 		<id>4</id>
-		<x>137.81</x>
-		<y>71.76</y>
-		<normal>package/lb_anni3.png</normal>
-		<selected>package/lb_anni3.png</selected>
-		<disabled>package/lb_anni3.png</disabled>
+		<x>172.64</x>
+		<y>69.17</y>
+		<normal>main_menu/zcd_anniu6.png</normal>
+		<selected>main_menu/zcd_anniu6.png</selected>
+		<disabled>main_menu/zcd_anniu6.png</disabled>
 	</button>
 	<button>
 		<id>5</id>
-		<x>260.64</x>
-		<y>74.71</y>
+		<x>253.28</x>
+		<y>67.70</y>
+		<normal>package/lb_anniu1.png</normal>
+		<selected>package/lb_anniu1.png</selected>
+		<disabled>package/lb_anniu1.png</disabled>
+	</button>
+	<button>
+		<id>6</id>
+		<x>331.13</x>
+		<y>66.02</y>
 		<normal>shop/sd_goumai.png</normal>
 		<selected>shop/sd_goumai.png</selected>
 		<disabled>shop/sd_goumai.png</disabled>

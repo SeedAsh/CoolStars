@@ -4,8 +4,18 @@
 
 class UiLayout;
 
-class RankingScene :
-	public cocos2d::CCLayer
+class rankingNode
+	: public cocos2d::CCNode
+{
+public:
+	CREATE_FUNC(rankingNode);
+	virtual bool init();
+private:
+	UiLayout *m_layout;
+};
+
+class RankingScene 
+	: public cocos2d::CCLayer
 {
 public:
 	static cocos2d::CCScene* scene();
@@ -15,13 +25,8 @@ private:
 	RankingScene(){}
 	~RankingScene(){}
 	void initMainLayout();
-
-	void onLeftPetBtnClicked(cocos2d::CCObject* pSender);
-	void onRigthPetBtnClicked(cocos2d::CCObject* pSender);
-	void onUpgradeBtnClicked(cocos2d::CCObject* pSender);
 private:
-
-	UiLayout *m_mainLayout;
+	UiLayout *m_layout;
 
 };
 #endif

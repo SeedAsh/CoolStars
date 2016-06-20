@@ -34,9 +34,6 @@ void TitlePanel::initTopLayout()
 	CCMenuItem *addStrengthBtn = dynamic_cast<CCMenuItem *>(m_topLayout->getChildById(9));
 	addStrengthBtn->setTarget(this, menu_selector(TitlePanel::onAddStrengthBtnClicked));
 
-	CCMenuItem *addFoodBtn = dynamic_cast<CCMenuItem *>(m_topLayout->getChildById(3));
-	addFoodBtn->setTarget(this, menu_selector(TitlePanel::onAddFoodBtnClicked));
-
 	CCMenuItem *addDiamondBtn = dynamic_cast<CCMenuItem *>(m_topLayout->getChildById(6));
 	addDiamondBtn->setTarget(this, menu_selector(TitlePanel::onAddDiamondBtnClicked));
 }
@@ -48,11 +45,6 @@ void TitlePanel::initBottomLayout()
 }
 
 void TitlePanel::onAddStrengthBtnClicked(cocos2d::CCObject* pSender)
-{
-
-}
-
-void TitlePanel::onAddFoodBtnClicked(cocos2d::CCObject* pSender)
 {
 
 }
@@ -80,7 +72,6 @@ void TitlePanel::setUiVisible(int who, bool isVisible)
 	case kTitlePanelFood:
 		m_topLayout->getChildById(1)->setVisible(isVisible);
 		m_topLayout->getChildById(2)->setVisible(isVisible);
-		m_topLayout->getChildById(3)->setVisible(isVisible);
 		m_topLayout->getChildById(12)->setVisible(isVisible);
 		break;
 	case kTitlePanelDiamond:

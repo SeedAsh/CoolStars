@@ -27,13 +27,19 @@ bool TestScene::init()
 
 void TestScene::test()
 {
+	/*
+	m_spr = CCSprite::create("shop/sd_goumai.png");
+	addChild(m_spr);
+	m_spr->setPosition(ccp(200, 200));
+	return;
+	*/
 	auto size = CCSize(350, 500);
 	ListView *listView = ListView::create(CCSize(350, 500));
 	addChild(listView);
 	listView->setPosition(ccp(30, 100));
 	listView->setSpacing(20);
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 30; i++)
 	{
 		CCSprite *spr = CCSprite::create("shop/sd_di2.png");
 		spr->ignoreAnchorPointForPosition(false);
@@ -96,7 +102,9 @@ void TestScene::closeCallback(CCObject* pSender)
 
 void TestScene::testCallback(CCObject* pSender)
 {
-
+	m_spr->stopAllActions();
+	m_spr->runAction(CCEaseExponentialOut::create(CCMoveTo::create(1.0f, ccp(200, 600))));
+	//m_spr->runAction(CCMoveTo::create(0.5, ccp(300, 200)));
 }
 
 

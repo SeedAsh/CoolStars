@@ -49,6 +49,9 @@
     <Filter Include="Package">
       <UniqueIdentifier>{2079a368-394a-498c-8091-cfc47a1e131d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lottery">
+      <UniqueIdentifier>{b4bc3fc6-99bb-4e25-aa8c-8089144a181b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -224,6 +227,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\ListView.cpp">
       <Filter>Utils\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LotteryScene.cpp">
+      <Filter>Lottery</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +433,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ListView.h">
       <Filter>Utils\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LotteryScene.h">
+      <Filter>Lottery</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -26,8 +26,13 @@
 	<image>
 		<id>4</id>
 		<x>249.38</x>
-		<y>679.60</y>
+		<y>666.52</y>
 		<path>ranking/phb_logo.png</path>
 	</image>
+	<emptyBox>
+		<id>7</id>
+		<x>69.02</x>
+		<y>559.00</y>
+	</emptyBox>
 </layout>
 

@@ -11,6 +11,7 @@
 #include "HelpPanel.h"
 #include "CommonMacros.h"
 #include "PreStageScene.h"
+#include "LotteryScene.h"
 
 USING_NS_CC;
 using namespace std;
@@ -96,10 +97,10 @@ void MenuScene::initBottomLayout()
 	CCMenuItem *rankBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(4)));
 	rankBtn->setTarget(this, menu_selector(MenuScene::toRankPanel));
 
-	CCMenuItem *packageBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(6)));
+	CCMenuItem *packageBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(5)));
 	packageBtn->setTarget(this, menu_selector(MenuScene::toPackagePanel));
 
-	CCMenuItem *shopBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(5)));
+	CCMenuItem *shopBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(6)));
 	shopBtn->setTarget(this, menu_selector(MenuScene::toShopPanel));
 
 	toSoundBtn->setVisible(false);
@@ -121,7 +122,8 @@ void MenuScene::toTreasureGame(CCObject* pSender)
 
 void MenuScene::drawLottery(cocos2d::CCObject* pSender)
 {
-	CCMessageBox("drawLottery", "title");
+	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, LotteryScene::scene()));
 }
 
 void MenuScene::toPetPanel(cocos2d::CCObject* pSender)
