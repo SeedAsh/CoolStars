@@ -2,7 +2,6 @@
 #define __TESTSCENE_H__
 
 #include "cocos2d.h"
-
 class TestScene : public cocos2d::CCLayer
 {
 public:
@@ -14,7 +13,8 @@ private:
 	void closeCallback(cocos2d::CCObject* pSender);
 	void testCallback(cocos2d::CCObject* pSender);
 	void addClippingNode();
-	void layoutTest();
+	void initPanel();
+	void test();
 
 private:
 	cocos2d::CCClippingNode *m_clippingNode;

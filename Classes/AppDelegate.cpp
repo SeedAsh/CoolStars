@@ -41,9 +41,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pDirector->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
+#define TEST_SCENE
+#ifdef TEST_SCENE
+	CCScene *pScene = TestScene::scene();
+#else
 	CCScene *pScene = MenuScene::scene();
-	//CCScene *pScene = TestScene::scene();
+#endif	
 
+	pDirector->runWithScene(pScene);
     // run
     pDirector->runWithScene(pScene);
 

@@ -2,6 +2,7 @@
 #include "UiLayout.h"
 #include "MenuScene.h"
 #include "ConfData.h"
+#include "ListView.h"
 
 USING_NS_CC;
 
@@ -19,43 +20,48 @@ bool TestScene::init()
 	{
 		return false;
 	}
-	addClippingNode();
+	initPanel();
+	test();
 	return true;
 }
 
-void TestScene::layoutTest()
+void TestScene::test()
 {
-	auto layout = UiLayout::create("layout/default.xml");
-	addChild(layout);
+	auto size = CCSize(350, 500);
+	ListView *listView = ListView::create(CCSize(350, 500));
+	addChild(listView);
+	listView->setPosition(ccp(30, 100));
+	listView->setSpacing(20);
 
-	CCMenuItemImage *item = dynamic_cast<CCMenuItemImage *>((layout->getChildById(3)));
-	item->setTarget(this, menu_selector(TestScene::testCallback));
+	for (int i = 0; i < 10; i++)
+	{
+		CCSprite *spr = CCSprite::create("shop/sd_di2.png");
+		spr->ignoreAnchorPointForPosition(false);
+		spr->setAnchorPoint(ccp(0, 0));
+		listView->addNode(spr);
+		
+		char str[100] = { 0 };
+		sprintf(str, "%d", i + 1);
+		CCLabelTTF *label = CCLabelTTF::create(str, "Arial", 24);
+		label->setPosition(ccp(50, 50));
+		spr->addChild(label);
+		
+	}
+}
 
-	auto label = dynamic_cast<CCLabelTTF *>((layout->getChildById(2)));
-	label->setString("changed");
-
-	auto spr = dynamic_cast<CCSprite *>((layout->getChildById(1)));
-	spr->initWithFile("fish_title.png");
-	//*/
-
-
-
-
-
-
+void TestScene::initPanel()
+{
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
 		"main_menu/zcd_anniu5.png",
 		"main_menu/zcd_anniu5.png",
 		this,
-		menu_selector(TestScene::closeCallback));
+		menu_selector(TestScene::testCallback));
 
+	pCloseItem->setPosition(ccp(50, 50));
 	CCMenu *menu = CCMenu::create(pCloseItem, NULL);
 	menu->setPosition(ccp(0, 0));
 	addChild(menu);
-	auto size = CCDirector::sharedDirector()->getWinSize();
-	auto closeItemSize = pCloseItem->getContentSize();
-	//menu->setPosition(size.width - closeItemSize.width  * 0.5f, size.height - closeItemSize.height  * 0.5f);
-
 }
 
 void TestScene::addClippingNode()
@@ -70,8 +76,6 @@ void TestScene::addClippingNode()
 	m_clippingNode->setInverted(false);
 	m_clippingNode->setAlphaThreshold(0.0f);
 
-
-
 	CCSprite *sp = CCSprite::create("shop/sd_zuanshi2.png");
 	sp->setAnchorPoint(ccp(0, 0));
 	m_clippingNode->setStencil(back);
@@ -83,56 +87,6 @@ void TestScene::addClippingNode()
 	m_clippingNode->addChild(spr);
 
 	*/
-
-	///*
-	
-	
-	///*
-	auto winSize = CCDirector::sharedDirector()->getWinSize();
-	//auto spr = CCSprite::create("background/beij_di.png");
-
-	auto spr = CCSprite::create("stage/stars/yxjm_fangkuai1.png");
-	//spr->setPosition(ccpMult(winSize, 0.5f));
-	spr->setPosition(ccpMult(winSize, 0.2f));
-	addChild(spr);
-	//*/
-	
-
-	CCLayerColor *aa = CCLayerColor::create(ccc4(255, 255, 255, 255));
-	//size = CCSize(200, 200);
-	aa->setContentSize(winSize);
-	//addChild(aa);
-
-	CCLayerColor *back = CCLayerColor::create(ccc4(255, 255, 255, 255));
-	CCSize size = CCSize(200, 200);
-	back->setContentSize(size);
-
-	m_clippingNode = CCClippingNode::create();
-	m_clippingNode->setInverted(false);
-	m_clippingNode->setAlphaThreshold(1.0f);
-	addChild(m_clippingNode);
-
-	auto clound = CCSprite::create("test.png");
-	clound->setPosition(ccp(200, 200));
-	m_clippingNode->setStencil(back);
-
-	auto board = CCSprite::create("shop/sd_di.png");
-	board->setPosition(ccp(200, 200));
-	m_clippingNode->addChild(board);
-
-
-	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-		"main_menu/zcd_anniu5.png",
-		"main_menu/zcd_anniu5.png",
-		this,
-		menu_selector(TestScene::testCallback));
-
-	pCloseItem->setPosition(ccp(50, 50));
-	CCMenu *menu = CCMenu::create(pCloseItem, NULL);
-	menu->setPosition(ccp(0, 0));
-	addChild(menu);
-	//*/
-
 }
 
 void TestScene::closeCallback(CCObject* pSender)
@@ -142,9 +96,6 @@ void TestScene::closeCallback(CCObject* pSender)
 
 void TestScene::testCallback(CCObject* pSender)
 {
-	auto spr = CCSprite::create("shop/sd_zuanshi4.png");
-	m_clippingNode->addChild(spr);
-	spr->setPosition(ccp(200, 200));
 
 }
 
