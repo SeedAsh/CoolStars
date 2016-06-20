@@ -87,7 +87,7 @@ void DataManager::loadCommonPetsConfig()
 			sprintf(chars, "%d", i);
 			string str = path;
 			str.replace(str.find("*"), 1, chars);
-			config.iconPath.push_back(str);
+			config.iconPaths.push_back(str);
 		}
 
 		m_petsConfig.push_back(config);
@@ -97,7 +97,7 @@ void DataManager::loadCommonPetsConfig()
 
 const PetsConfig &DataManager::getCommonPetsConfig(int petId)
 {
-	assert(petId > 0 && petId < COMMON_PETS_AMOUNT);
+	assert(petId > 0 && petId <= COMMON_PETS_AMOUNT);
 	return m_petsConfig[petId - 1];
 }
 

@@ -1,20 +1,20 @@
-#include "ListView.h"
+#include "ListSlideView.h"
 USING_NS_CC;
 using namespace std;
 using namespace std::placeholders;
 
 
-ListView *ListView::create(const CCSize &size)
+ListSlideView *ListSlideView::create(const CCSize &size)
 {
-	ListView *view = new ListView(size);
+	ListSlideView *view = new ListSlideView(size);
 	view->init();
 	view->autorelease();
 	return view;
 }
 
 
-ListView::ListView(const CCSize &size)
-: m_size(size)
+ListSlideView::ListSlideView(const CCSize &size)
+: ListView(size)
 , m_touchPriority(0)
 , m_spacing(0)
 , m_speed(0)
@@ -24,7 +24,7 @@ ListView::ListView(const CCSize &size)
 	
 }
 
-bool ListView::init()
+bool ListSlideView::init()
 {
 	setContentSize(m_size);
 
@@ -47,7 +47,7 @@ bool ListView::init()
 	return true;
 }
 
-void ListView::update(float dt)
+void ListSlideView::update(float dt)
 {
 	static const float speedPrec = 1.0f;
 
@@ -63,7 +63,7 @@ void ListView::update(float dt)
 	}
 }
 
-int ListView::addNode(cocos2d::CCNode *node)
+int ListSlideView::addNode(cocos2d::CCNode *node)
 {
 	float contentHeight = m_content->getContentSize().height;
 	float contentWidth = m_content->getContentSize().width;
@@ -86,7 +86,7 @@ int ListView::addNode(cocos2d::CCNode *node)
 	return m_nodes.size() - 1;
 }
 
-void ListView::removeNode(int index)
+void ListSlideView::removeNode(int index)
 {
 	auto node = getNode(index);
 	if (node)
@@ -95,7 +95,7 @@ void ListView::removeNode(int index)
 	}
 }
 
-cocos2d::CCNode *ListView::getNode(int index)
+cocos2d::CCNode *ListSlideView::getNode(int index)
 {
 	int nodeAmount = count();
 	if (index < 0 || index > nodeAmount - 1) return NULL;
@@ -103,25 +103,25 @@ cocos2d::CCNode *ListView::getNode(int index)
 	return m_nodes[index];
 }
 
-void ListView::onEnter()
+void ListSlideView::onEnter()
 {
 	CCNode::onEnter();
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, m_touchPriority, true);
 }
 
-void ListView::onExit()
+void ListSlideView::onExit()
 {
 	CCNode::onExit();
 	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 }
 
-void ListView::clear()
+void ListSlideView::clear()
 {
 	m_content->removeAllChildren();	
 	m_nodes.clear();
 }
 
-void ListView::doMove(cocos2d::CCPoint pt)
+void ListSlideView::doMove(cocos2d::CCPoint pt)
 {
 	CCSize contentSize = m_content->getContentSize();
 	auto offSetY = pt.y;
@@ -133,7 +133,7 @@ void ListView::doMove(cocos2d::CCPoint pt)
 	m_content->setPosition(ccp(0, newY));
 }
 
-bool ListView::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+bool ListSlideView::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
 	auto localPos = convertToNodeSpace(pTouch->getLocation());
 	auto size = getContentSize();
@@ -146,7 +146,7 @@ bool ListView::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 }
 
 
-void ListView::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+void ListSlideView::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
 	CCSize contentSize = m_content->getContentSize();
 	if (contentSize.height < m_size.height) return;
@@ -157,7 +157,7 @@ void ListView::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 	doMove(ccpSub(curPos, prePos));
 }
 
-void ListView::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+void ListSlideView::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
 	static float maxSpeed = 1000;
 	static float minSpeed = 100;

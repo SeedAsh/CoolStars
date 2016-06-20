@@ -41,7 +41,7 @@ void StageOperator::changeColor(bool isRandom)
 void StageOperator::addPetEnergy(int petId, int value)
 {
 	//假定只改变以上场宠物的能量
-	auto pet = PetManager::petMgr()->getCurPetById(petId);
+	auto pet = PetManager::petMgr()->getPetById(petId);
 	if (!pet) return;
 	
 	auto data = pet->getPetData();

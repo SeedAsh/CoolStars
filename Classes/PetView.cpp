@@ -7,7 +7,7 @@ USING_NS_CC;
 PetView::PetView(int petId)
 	: m_petId(petId)
 {
-	m_model = PetManager::petMgr()->getCurPetById(petId);
+	m_model = PetManager::petMgr()->getPetById(petId);
 	assert(m_model);
 }
 
@@ -28,9 +28,7 @@ PetView *PetView::create(int petId)
 
 bool PetView::init()
 {
-	int color = m_model->getPetData().color;
-	auto commonData = m_model->getMyCommonPetData();
-	string iconPath = commonData.iconPath[color];
+	string iconPath = m_model->getPetData().path;
 
 	auto spr = CCSprite::create(iconPath.c_str());
 	CCSize size = spr->getContentSize();

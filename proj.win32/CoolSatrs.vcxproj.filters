@@ -231,6 +231,12 @@
     <ClCompile Include="..\Classes\LotteryScene.cpp">
       <Filter>Lottery</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\PreStagePetSlot.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ListSlideView.cpp">
+      <Filter>Utils\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -436,6 +442,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\LotteryScene.h">
       <Filter>Lottery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PreStagePetSlot.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ListSlideView.h">
+      <Filter>Utils\ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

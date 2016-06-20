@@ -8,7 +8,7 @@ USING_NS_CC;
 StagePetNode::StagePetNode(int petId)
 	: m_petId(petId)
 {
-	m_model = PetManager::petMgr()->getCurPetById(petId);
+	m_model = PetManager::petMgr()->getPetById(petId);
 	assert(m_model);
 }
 
@@ -37,9 +37,7 @@ StagePetNode *StagePetNode::create(int petId)
 
 bool StagePetNode::init()
 {
-	int color = m_model->getPetData().color;
-	auto commonData = m_model->getMyCommonPetData();
-	string iconPath = commonData.iconPath[color - 1];
+	string iconPath = m_model->getPetData().path;
 
 	m_layout = UiLayout::create("layout/stage_pet_node.xml");
 	auto size = m_layout->getContentSize();

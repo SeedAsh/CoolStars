@@ -27,7 +27,7 @@ struct PetsConfig
 	vector<int> energy;
 	vector<int> count;
 	vector<int> upgrade;
-	vector<string> iconPath;
+	vector<string> iconPaths;
 	string skillIcon;
 	string desc;
 };

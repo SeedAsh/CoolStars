@@ -1,0 +1,14 @@
+<layout width="88.000000" height="298.000000">
+	<image>
+		<id>1</id>
+		<x>42.23</x>
+		<y>148.33</y>
+		<path>pre_stage/zbjm_lun5.png</path>
+	</image>
+	<emptyBox>
+		<id>2</id>
+		<x>0.00</x>
+		<y>-0.21</y>
+	</emptyBox>
+</layout>
+

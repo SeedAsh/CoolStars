@@ -145,6 +145,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\GameDataPreLoader.cpp" />
     <ClCompile Include="..\Classes\GameResultLayer.cpp" />
     <ClCompile Include="..\Classes\HelpPanel.cpp" />
+    <ClCompile Include="..\Classes\ListSlideView.cpp" />
     <ClCompile Include="..\Classes\ListView.cpp" />
     <ClCompile Include="..\Classes\LoginLayer.cpp" />
     <ClCompile Include="..\Classes\LotteryScene.cpp" />
@@ -158,6 +159,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PetScene.cpp" />
     <ClCompile Include="..\Classes\PetSkill.cpp" />
     <ClCompile Include="..\Classes\PetView.cpp" />
+    <ClCompile Include="..\Classes\PreStagePetSlot.cpp" />
     <ClCompile Include="..\Classes\PreStageScene.cpp" />
     <ClCompile Include="..\Classes\PropItemView.cpp" />
     <ClCompile Include="..\Classes\PropManager.cpp" />
@@ -210,6 +212,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\GameDataPreLoader.h" />
     <ClInclude Include="..\Classes\GameResultLayer.h" />
     <ClInclude Include="..\Classes\HelpPanel.h" />
+    <ClInclude Include="..\Classes\ListSlideView.h" />
     <ClInclude Include="..\Classes\ListView.h" />
     <ClInclude Include="..\Classes\LoginLayer.h" />
     <ClInclude Include="..\Classes\LotteryScene.h" />
@@ -224,6 +227,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PetScene.h" />
     <ClInclude Include="..\Classes\PetSkill.h" />
     <ClInclude Include="..\Classes\PetView.h" />
+    <ClInclude Include="..\Classes\PreStagePetSlot.h" />
     <ClInclude Include="..\Classes\PreStageScene.h" />
     <ClInclude Include="..\Classes\PropItemView.h" />
     <ClInclude Include="..\Classes\PropManager.h" />

@@ -3,6 +3,8 @@
 #include "TitlePanel.h"
 #include "SoundMgr.h"
 #include "StageScene.h"
+#include "EmptyBox.h"
+#include "PreStagePetSlot.h"
 USING_NS_CC;
 using namespace std;
 
@@ -36,7 +38,13 @@ bool PreStageScene::init()
 
 void PreStageScene::initMainLayout()
 {
-	
+	int boxIds[] = { 11, 12, 13, 14 };
+	for (int i = 0; i < 4; ++i)
+	{
+		EmptyBox *box = dynamic_cast<EmptyBox *>((m_mainLayout->getChildById(boxIds[i])));
+		auto node = PreStagePetSlot::create();
+		box->setNode(node);
+	}
 }
 
 void PreStageScene::initBottomLayout()

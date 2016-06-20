@@ -13,6 +13,8 @@ struct PetData
 	int exp;
 	int skill;
 	int energy; 
+	std::string path;
+	std::string skillPath;
 };
 
 class PetEntity

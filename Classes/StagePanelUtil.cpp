@@ -25,7 +25,7 @@ bool StagePetSkillPanel::init()
 	auto ids = PetManager::petMgr()->getCurPetIds();
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
-		auto petModel = PetManager::petMgr()->getCurPetById(ids[i]);
+		auto petModel = PetManager::petMgr()->getPetById(ids[i]);
 		string skillIcon = petModel->getMyCommonPetData().skillIcon;
 		
 		CCSprite *skillSpr = CCSprite::create(skillIcon.c_str());
