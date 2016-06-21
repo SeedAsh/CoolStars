@@ -58,7 +58,7 @@ void GameWinLayer::toNextStage(CCObject *pSender)
 
 void GameWinLayer::toMainMenu(CCObject *pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
+	//CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
 }
 
 
@@ -103,5 +103,5 @@ void GameFailLayer::replay(CCObject *pSender)
 
 void GameFailLayer::toMainMenu(CCObject *pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
+	//CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
 }

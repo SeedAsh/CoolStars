@@ -32,7 +32,18 @@ enum EraseType
 	kScaleErase,    //区域消除：宠物技能，增益星星， 道具消除
 };
 
+enum PanelId
+{
+	kMainMenu,
+	kPetPanel,
+	kShopPanel,
+	kLotteryPanel,
+	kRankingPanel,
+	kPackagePanel,
+	kPreStagePanel, 
+	kStageView,
 
+};
 #define NOTIFY_VIEWS(_FUNC_ ,...)						\
 for (size_t index = 0; index < m_views.size(); ++index) \
 {														\

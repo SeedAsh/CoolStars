@@ -16,30 +16,8 @@
 USING_NS_CC;
 using namespace std;
 
-CCScene *MenuScene::scene()
-{
-	CCScene *scene = CCScene::create();
-	MenuScene *layer = MenuScene::create();
-	scene->addChild(layer);
-	return scene;
-}
-
-void MenuScene::onEnter()
-{
-	CCLayer::onEnter();
-}
-
-void MenuScene::onExit()
-{
-	CCLayer::onExit();
-}
-
 bool MenuScene::init()
 {
-	if (!CCLayer::init())
-	{
-		return false;
-	}
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 

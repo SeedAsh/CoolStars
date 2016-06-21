@@ -7,20 +7,13 @@
 USING_NS_CC;
 using namespace std;
 
+
 bool LotteryNode::init()
 {
 	m_layout = UiLayout::create("layout/lottery_node.xml");
 	addChild(m_layout);
 	setContentSize(m_layout->getContentSize());
 	return true;
-}
-
-CCScene* LotteryScene::scene()
-{
-	CCScene *scene = CCScene::create();
-	LotteryScene *layer = LotteryScene::create();
-	scene->addChild(layer);
-	return scene;
 }
 
 bool LotteryScene::init()
@@ -44,6 +37,15 @@ bool LotteryScene::init()
 
 	return true;
 }
+
+CCScene* LotteryScene::scene()
+{
+	CCScene *scene = CCScene::create();
+	LotteryNode *layer = LotteryNode::create();
+	scene->addChild(layer);
+	return scene;
+}
+
 
 void LotteryScene::initLayout()
 {

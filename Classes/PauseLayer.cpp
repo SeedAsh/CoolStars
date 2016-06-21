@@ -63,7 +63,7 @@ void PauseLayer::menuSaveCallback(CCObject* pSender){
 	StageSavingHelper::saveCurStars();
 	StageSavingHelper::saveCurStageData();
 
-	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+	//CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 }
 
 void PauseLayer::onEnter(){

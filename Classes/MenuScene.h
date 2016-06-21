@@ -2,17 +2,15 @@
 #define _MENUSCENE_H
 #include "cocos2d.h"
 #include "SettingBtnsHelper.h"
+#include "BasePanel.h"
 
 class UiLayout;
-class MenuScene : public cocos2d::CCLayer 
+class MenuScene : public BasePanel 
 {
 public:  
 	virtual bool init();  
-	static cocos2d::CCScene* scene();  
 	CREATE_FUNC(MenuScene); 
 private:
-	virtual void onEnter();
-	virtual void onExit();
 	void initMainLayout();
 	void initBottomLayout();
 

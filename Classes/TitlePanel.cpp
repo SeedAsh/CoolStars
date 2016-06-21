@@ -56,7 +56,7 @@ void TitlePanel::onAddDiamondBtnClicked(cocos2d::CCObject* pSender)
 
 void TitlePanel::onBackHomeBtnClicked(cocos2d::CCObject* pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+	////CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 }
 
 void TitlePanel::setUiVisible(int who, bool isVisible)

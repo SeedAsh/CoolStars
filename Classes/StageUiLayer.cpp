@@ -195,7 +195,7 @@ void StageUiLayer::onGameOver(int isWon)
 void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 {
 	//addChild(PauseLayer::create(), Z_ORDER_PAUSE);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+	//CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 
 }
 

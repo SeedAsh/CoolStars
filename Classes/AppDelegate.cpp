@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
-#include "MenuScene.h"
 #include "GameDataPreLoader.h"
 #include "TestScene.h"
+#include "MainScene.h"
 
 USING_NS_CC;
 
@@ -45,10 +45,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #ifdef TEST_SCENE
 	CCScene *pScene = TestScene::scene();
 #else
-	CCScene *pScene = MenuScene::scene();
+	CCScene *pScene = MainScene::theScene();
 #endif	
 
-	pDirector->runWithScene(pScene);
     // run
     pDirector->runWithScene(pScene);
 

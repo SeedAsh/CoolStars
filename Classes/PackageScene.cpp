@@ -49,13 +49,13 @@ void PackageView::initLayout()
 
 void PackageView::onCancelBtnClicked(cocos2d::CCObject* pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
+	//CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
 
 }
 
 void PackageView::onBuyBtnClicked(cocos2d::CCObject* pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
+	//CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
 
 }
 

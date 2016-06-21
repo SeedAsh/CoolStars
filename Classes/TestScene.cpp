@@ -99,7 +99,7 @@ void TestScene::addClippingNode()
 
 void TestScene::closeCallback(CCObject* pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+	//CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 }
 
 void TestScene::testCallback(CCObject* pSender)

@@ -90,7 +90,7 @@ void PetScene::onUpgradeBtnClicked(cocos2d::CCObject* pSender)
 
 void PetScene::onBackHomeBtnClicked(cocos2d::CCObject* pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+	//CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 }
 
 void PetScene::onGreenPetBtnClicked(cocos2d::CCObject* pSender)
