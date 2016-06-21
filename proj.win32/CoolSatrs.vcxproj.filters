@@ -240,6 +240,9 @@
     <ClCompile Include="..\Classes\ListPetView.cpp">
       <Filter>GameStage\StageUi</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\PreStageModel.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -453,6 +456,9 @@
       <Filter>Utils\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ListPetView.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PreStageModel.h">
       <Filter>GameStage\StageUi</Filter>
     </ClInclude>
   </ItemGroup>

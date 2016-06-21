@@ -1,6 +1,7 @@
 #ifndef __LISTPETVIEW_H__
 #define __LISTPETVIEW_H__
 #include "cocos2d.h"
+#include <functional>
 #include "ListView.h"
 
 class ListPetView
@@ -9,6 +10,8 @@ class ListPetView
 public:
 	static ListPetView *create(const cocos2d::CCSize &size);
 	int addNode(cocos2d::CCNode *node);
+	void setItemSelectedCallback(std::function<void(int)> handle){ m_itemSelectedHandle = handle; }
+	void setCurItem(int index);
 private:
 	ListPetView(const cocos2d::CCSize &size);
 	virtual bool init();
@@ -22,5 +25,6 @@ private:
 	void moveItemToCenter(int index);
 private:
 	int m_curItem;
+	std::function<void(int)> m_itemSelectedHandle;
 };
 #endif

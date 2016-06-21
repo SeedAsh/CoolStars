@@ -2,6 +2,7 @@
 #include "DataManager.h"
 #include "SqliteHelper.h"
 #include "StageSavingHelper.h"
+#include "CommonMacros.h"
 USING_NS_CC;
 using namespace std;
 StageModel::StageModel()

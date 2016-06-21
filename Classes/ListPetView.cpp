@@ -48,7 +48,6 @@ int ListPetView::addNode(cocos2d::CCNode *node)
 	m_container->setContentSize(ccp(containerSize.width, containerSize.height + offsetY));
 	m_container->addChild(node);
 	m_nodes.push_back(node);
-	moveItemToCenter(m_nodes.size() - 1);
 	
 	m_curItem = m_nodes.size() - 1;
 	return m_nodes.size() - 1;
@@ -77,12 +76,12 @@ void ListPetView::onTouchEnded(cocos2d::CCTouch *pTouch)
 	auto offset = ccpSub(curPos, startPos);
 	if (fabs(offset.y) < minYOffset)
 	{
-		moveItemToCenter(m_curItem);
+		setCurItem(m_curItem);
 	}
 	else
 	{
 		int nextIndex = offset.y > 0 ? m_curItem + 1 : m_curItem - 1;
-		moveItemToCenter(nextIndex);
+		setCurItem(nextIndex);
 	}
 }
 
@@ -99,17 +98,29 @@ void ListPetView::nextItem()
 void ListPetView::moveItemToCenter(int index)
 {
 	auto node = getNode(index);
-	if (!node) 
-	{
-		moveItemToCenter(m_curItem);
-		return;
-	}
-
+	if (!node) return;
+	
 	auto nodeSize = node->getContentSize();
 
 	float targetY = (m_size.height - nodeSize.height) * 0.5f - node->getPositionY();
 	m_container->setPosition(ccp(0, targetY));
 
 	//m_container->runAction(CCEaseBounceInOut::create(CCMoveTo::create(0.2f, ccp(0, targetY))));
-	m_curItem = index;
+	if (m_itemSelectedHandle)
+	{
+		m_itemSelectedHandle(m_curItem);
+	}
+}
+
+void ListPetView::setCurItem(int index)
+{
+	if (getNode(index))
+	{
+		m_curItem = index;
+	}
+	//如果list为空 那么初始化的m_cureItem也没有对应节点
+	if (getNode(m_curItem))
+	{
+		moveItemToCenter(m_curItem);
+	}
 }

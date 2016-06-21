@@ -31,4 +31,11 @@ enum EraseType
 	kNeightbourErase,		//连接消除的星星 附近消除
 	kScaleErase,    //区域消除：宠物技能，增益星星， 道具消除
 };
+
+
+#define NOTIFY_VIEWS(_FUNC_ ,...)						\
+for (size_t index = 0; index < m_views.size(); ++index) \
+{														\
+	m_views[index]->_FUNC_(__VA_ARGS__);				\
+}
 #endif
