@@ -237,6 +237,9 @@
     <ClCompile Include="..\Classes\ListSlideView.cpp">
       <Filter>Utils\ui</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\ListPetView.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -448,6 +451,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ListSlideView.h">
       <Filter>Utils\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ListPetView.h">
+      <Filter>GameStage\StageUi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

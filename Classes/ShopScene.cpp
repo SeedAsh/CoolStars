@@ -3,6 +3,7 @@
 #include "MenuScene.h"
 #include "TitlePanel.h"
 #include "ListView.h"
+#include "ListSlideView.h"
 
 USING_NS_CC;
 using namespace std;
@@ -52,7 +53,7 @@ bool ShopScene::init()
 void ShopScene::initPanel()
 {
 	auto pos = m_layout->getChildById(3)->getPosition();
-	ListView *rankList = ListView::create(ccp(350, 400));
+	ListSlideView *rankList = ListSlideView::create(ccp(350, 400));
 	addChild(rankList);
 	rankList->setAnchorPoint(ccp(0, 1));
 	rankList->setPosition(pos);

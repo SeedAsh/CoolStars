@@ -17,8 +17,6 @@ ListView::ListView(const CCSize &size)
 : m_size(size)
 , m_touchPriority(0)
 , m_spacing(0)
-, m_speed(0)
-, m_scrollTime(0)
 , m_isTouching(false)
 {
 	
@@ -40,35 +38,18 @@ bool ListView::init()
 	m_clippingNode->setStencil(back);
 	addChild(m_clippingNode);
 
-	m_content = CCNode::create();
-	m_clippingNode->addChild(m_content);
+	m_container = CCNode::create();
+	m_clippingNode->addChild(m_container);
 	
-	scheduleUpdate();
 	return true;
-}
-
-void ListView::update(float dt)
-{
-	static const float speedPrec = 1.0f;
-
-	if (m_isTouching)
-	{
-		m_scrollTime += dt;
-	}
-	else if (fabs(m_speed)>speedPrec)
-	{
-		m_speed -= dt * m_speed * 2;
-		CCPoint offset = ccp(0, m_speed * dt);
-		doMove(offset);
-	}
 }
 
 int ListView::addNode(cocos2d::CCNode *node)
 {
-	float contentHeight = m_content->getContentSize().height;
-	float contentWidth = m_content->getContentSize().width;
+	float contentHeight = m_container->getContentSize().height;
+	float contentWidth = m_container->getContentSize().width;
 
-	m_content->addChild(node);
+	m_container->addChild(node);
 	int height = contentHeight;
 	if (!m_nodes.empty())
 	{
@@ -79,10 +60,10 @@ int ListView::addNode(cocos2d::CCNode *node)
 	m_nodes.push_back(node);
 
 	float maxWidth = max(contentWidth, nodeSize.width);
-	float curHight = height + nodeSize.height;
-	m_content->setContentSize(CCSize(maxWidth, curHight));
+	float curHeight = height + nodeSize.height;
+	m_container->setContentSize(CCSize(maxWidth, curHeight));
 
-	m_content->setPosition(ccp(0, m_size.height - curHight));
+	m_container->setPosition(ccp(0, m_size.height - curHeight));
 	return m_nodes.size() - 1;
 }
 
@@ -117,20 +98,22 @@ void ListView::onExit()
 
 void ListView::clear()
 {
-	m_content->removeAllChildren();	
+	m_container->removeAllChildren();	
 	m_nodes.clear();
 }
 
-void ListView::doMove(cocos2d::CCPoint pt)
+void ListView::doMove(cocos2d::CCPoint offset)
 {
-	CCSize contentSize = m_content->getContentSize();
-	auto offSetY = pt.y;
-	CCPoint contentPos = m_content->getPosition();
+	CCSize contentSize = m_container->getContentSize();
+	CCPoint contentPos = m_container->getPosition();
+	/*
 	float maxY = 0;
 	float minY = m_size.height - contentSize.height;
-	float newY = min(max(contentPos.y + offSetY, minY), maxY);
-
-	m_content->setPosition(ccp(0, newY));
+	float newY = min(max(contentPos.y + offset.y, minY), maxY);
+	*/
+	float newY = contentPos.y + offset.y;
+	auto tarPos = ccp(0, newY);
+	m_container->setPosition(tarPos);
 }
 
 bool ListView::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
@@ -139,42 +122,74 @@ bool ListView::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 	auto size = getContentSize();
 	CCRect rect(0, 0, size.width, size.height);
 	if (!rect.containsPoint(localPos)) return false;
-	m_speed = 0;
-	m_scrollTime = 0;
+
 	m_isTouching = true;
+	onTouchBegan(pTouch);
 	return true;
 }
 
-
 void ListView::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
-	CCSize contentSize = m_content->getContentSize();
+	CCSize contentSize = m_container->getContentSize();
 	if (contentSize.height < m_size.height) return;
 
 	auto curPos = pTouch->getLocation();
 	auto prePos = pTouch->getPreviousLocation();
 
 	doMove(ccpSub(curPos, prePos));
+	onTouchMoved(pTouch);
 }
 
 void ListView::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
-	static float maxSpeed = 1000;
-	static float minSpeed = 100;
-
 	auto startPos = pTouch->getStartLocation();
 	auto prePos = pTouch->getPreviousLocation();
 	auto curPos = pTouch->getLocation();
-	
-	m_speed = (curPos.y - startPos.y) / m_scrollTime;
-	if (fabs(m_speed) > maxSpeed)
+	m_isTouching = false;
+
+	dragback();
+	onTouchEnded(pTouch);
+
+}
+
+bool ListView::isOutOfRange()
+{
+	auto containerSize = m_container->getContentSize();
+	auto curPos = m_container->getPosition();
+
+	float maxY = 0;
+	float minY = 0;
+	if (containerSize.height <= m_size.height)
 	{
-		m_speed = m_speed >0 ? maxSpeed : -maxSpeed;
+		maxY = containerSize.height;
+		minY = containerSize.height;
 	}
-	if (fabs(m_speed) < minSpeed)
+	else
 	{
-		m_speed = 0;
+		minY = m_size.height - containerSize.height;
+		maxY = 0;
 	}
 
-	m_isTouching = false;
+	return curPos.y < minY || curPos.y > maxY;
+}
+
+void ListView::dragback()
+{
+	auto containerSize = m_container->getContentSize();
+	auto curPos = m_container->getPosition();
+
+	float maxY = 0; 
+	float minY = 0;
+	if (containerSize.height <= m_size.height)
+	{
+		maxY = containerSize.height;
+		minY = containerSize.height;
+	}
+	else
+	{
+		minY = m_size.height - containerSize.height;
+		maxY = 0;
+	}
+	float newY = min(max(curPos.y, minY), maxY);
+	m_container->setPositionY(newY);
 }

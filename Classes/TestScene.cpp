@@ -3,6 +3,7 @@
 #include "MenuScene.h"
 #include "ConfData.h"
 #include "ListView.h"
+#include "ListPetView.h"
 
 USING_NS_CC;
 
@@ -34,7 +35,7 @@ void TestScene::test()
 	return;
 	*/
 	auto size = CCSize(350, 500);
-	ListView *listView = ListView::create(CCSize(350, 500));
+	ListPetView *listView = ListPetView::create(CCSize(350, 500));
 	addChild(listView);
 	listView->setPosition(ccp(30, 100));
 	listView->setSpacing(20);

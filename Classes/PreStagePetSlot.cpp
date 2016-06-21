@@ -3,6 +3,7 @@
 #include "EmptyBox.h"
 #include "ListView.h"
 #include "PetManager.h"
+#include "ListPetView.h"
 USING_NS_CC;
 using namespace std;
 
@@ -18,7 +19,7 @@ bool PreStagePetSlot::init()
 
 void PreStagePetSlot::initLayout()
 {
-	ListView *listview = ListView::create(getContentSize());
+	ListPetView *listview = ListPetView::create(getContentSize());
 	
 	auto petMgr = PetManager::petMgr();
 	auto ids = petMgr->getOwnedPetIds();

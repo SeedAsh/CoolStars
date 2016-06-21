@@ -45,3 +45,9 @@ int CommonUtil::getRandomValue(int begin, int end)
 	assert(begin <= end);
 	return ((int)(CCRANDOM_0_1() * 1000)) % (end - begin + 1) + begin;
 }
+
+
+bool CommonUtil::floatEqual(float v1, float v2)
+{
+	return (fabs(v1 - v2) < 0.000001);
+}

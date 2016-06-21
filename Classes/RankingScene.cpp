@@ -2,6 +2,7 @@
 #include "UiLayout.h"
 #include "TitlePanel.h"
 #include "ListView.h"
+#include "ListSlideView.h"
 
 USING_NS_CC;
 using namespace std;
@@ -44,7 +45,7 @@ bool RankingScene::init()
 void RankingScene::initMainLayout()
 {
 	auto pos = m_layout->getChildById(7)->getPosition();
-	ListView *rankList = ListView::create(ccp(350, 400));
+	ListSlideView *rankList = ListSlideView::create(ccp(350, 400));
 	addChild(rankList);
 	rankList->setAnchorPoint(ccp(0, 1));
 	rankList->setPosition(pos);
