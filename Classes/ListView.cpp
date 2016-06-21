@@ -28,7 +28,7 @@ bool ListView::init()
 
 	CCLayerColor *maskNode = CCLayerColor::create(ccc4(0, 255, 0, 75));
 	maskNode->setContentSize(m_size);
-	//addChild(maskNode);
+	addChild(maskNode);
 
 	CCLayerColor *back = CCLayerColor::create(ccc4(125, 0, 0, 255));
 	back->setContentSize(m_size);

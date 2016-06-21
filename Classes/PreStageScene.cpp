@@ -5,6 +5,7 @@
 #include "StageScene.h"
 #include "EmptyBox.h"
 #include "PreStagePetSlot.h"
+#include "PetManager.h"
 USING_NS_CC;
 using namespace std;
 
@@ -39,10 +40,17 @@ bool PreStageScene::init()
 void PreStageScene::initMainLayout()
 {
 	int boxIds[] = { 11, 12, 13, 14 };
+	auto temp = PetManager::petMgr()->getCurPetIds();
+	vector<int> ids(4);
+	for (size_t i = 0; i < temp.size(); ++i)
+	{
+		ids[i] = temp[i];
+	}
+	
 	for (int i = 0; i < 4; ++i)
 	{
 		EmptyBox *box = dynamic_cast<EmptyBox *>((m_mainLayout->getChildById(boxIds[i])));
-		auto node = PreStagePetSlot::create();
+		auto node = PreStagePetSlot::create(ids[i]);
 		box->setNode(node);
 	}
 }

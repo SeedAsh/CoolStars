@@ -11,11 +11,11 @@ class PreStagePetSlot
 	, public IPreStageView
 {
 public:
-	CREATE_FUNC(PreStagePetSlot);
+	static PreStagePetSlot *create(int petId);
 	virtual bool init();
 	
 private:
-	PreStagePetSlot(): m_curPetId(0){}
+	PreStagePetSlot(int petId): m_curPetId(petId){}
 	void initLayout();
 	void refresh();
 	void onSelectItemCallback(int index);

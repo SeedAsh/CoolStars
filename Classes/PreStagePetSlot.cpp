@@ -5,8 +5,17 @@
 #include "PetManager.h"
 #include "ListPetView.h"
 #include "PreStageModel.h"
+#define NOT_SELECT_PET 0
 USING_NS_CC;
 using namespace std;
+
+PreStagePetSlot *PreStagePetSlot::create(int petId)
+{
+	auto node = new PreStagePetSlot(petId);
+	node->init();
+	node->autorelease();
+	return node;
+}
 
 void PreStagePetSlot::onEnter()
 {
@@ -45,36 +54,46 @@ void PreStagePetSlot::refresh()
 	auto petMgr = PetManager::petMgr();
 	auto ids = PreStageModel::theModel()->getPetsCanSelect();
 	m_itemsIndex.clear();
+	
+	//没有宠物可选
+	if (m_curPetId == NOT_SELECT_PET)
+	{
+		m_itemsIndex.push_back(NOT_SELECT_PET);
+		CCSprite* icon = CCSprite::create("pets/black.png");
+		icon->ignoreAnchorPointForPosition(false);
+		icon->setAnchorPoint(ccp(0, 0));
+		m_listView->addNode(icon);
+		m_listView->setCurItem(0);
+		return;
+	}
 
-	int lastIndex = ids.size() - 1;
+	//有宠物可选
+	int curIndex = 0;
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
 		m_itemsIndex.push_back(ids[i]);
-		if (ids[i] == m_curPetId)
+		auto pet = petMgr->getPetById(ids[i]);
+		if (m_curPetId == pet->getPetData().petId)
 		{
-			lastIndex = i;
+			curIndex = i;
 		}
 
-		auto pet = petMgr->getPetById(ids[i]);
 		auto path = pet->getPetData().path;
 		CCSprite* icon = CCSprite::create(path.c_str());
 		icon->ignoreAnchorPointForPosition(false);
 		icon->setAnchorPoint(ccp(0, 0));
 		m_listView->addNode(icon);
 	}
-
-	if (!ids.empty())
-	{
-		m_listView->setCurItem(lastIndex);
-		onSelectItemCallback(lastIndex);
-	}
+	m_listView->setCurItem(curIndex);
+	onSelectItemCallback(curIndex);
 }
 
 void PreStagePetSlot::onSelectItemCallback(int index)
 {
 	assert(index >= 0 && index < (int)m_itemsIndex.size());
 	int petId = m_itemsIndex[index];
-	PreStageModel::theModel()->selectPet(petId);
+	
+	PreStageModel::theModel()->selectPet(petId, m_curPetId);
 	m_curPetId = petId;
 }
 

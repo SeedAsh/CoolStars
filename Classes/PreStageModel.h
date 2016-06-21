@@ -14,8 +14,10 @@ public:
 	void addView(IPreStageView *view);
 	void removeView(IPreStageView *view);
 
-	void selectPet(int petId);
+	void selectPet(int newPetId, int oldPetId);
 	std::vector<int> getPetsCanSelect();
+	
+	void confirmCurPets();
 
 private:
 	std::vector<int> m_selectedPets;

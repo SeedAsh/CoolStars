@@ -11,15 +11,22 @@ PreStageModel *PreStageModel::theModel()
 	return &model;
 }
 
-void PreStageModel::selectPet(int petId)
+void PreStageModel::selectPet(int newPetId, int oldPetId)
 {
 	auto petMgr = PetManager::petMgr();
-	auto iter = find(m_selectedPets.begin(), m_selectedPets.end(), petId);
-	if (iter == m_selectedPets.end() && petMgr->ownThisPet(petId))
+	auto iter = find(m_selectedPets.begin(), m_selectedPets.end(), oldPetId);
+	if (iter != m_selectedPets.end())
 	{
-		m_selectedPets.push_back(petId);
-		NOTIFY_VIEWS(onPetSelect);
+		m_selectedPets.erase(iter);
 	}
+
+	iter = find(m_selectedPets.begin(), m_selectedPets.end(), newPetId);
+	if (iter == m_selectedPets.end() && petMgr->ownThisPet(newPetId))
+	{
+		m_selectedPets.push_back(newPetId);
+	}
+
+	NOTIFY_VIEWS(onPetSelect);
 }
 
 std::vector<int> PreStageModel::getPetsCanSelect()
@@ -52,5 +59,9 @@ void PreStageModel::removeView(IPreStageView *view)
 	}
 }
 
+void PreStageModel::confirmCurPets()
+{
+	PetManager::petMgr()->setCurPets(m_selectedPets);
+}
 
 

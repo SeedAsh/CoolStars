@@ -59,6 +59,11 @@ PetEntity *PetManager::getPetById(int id)
 	{
 		return m_pets[id];
 	}
-	
 	return NULL;
+}
+
+void PetManager::setCurPets(std::vector<int> &ids)
+{ 
+	m_curPets = ids; 
+	PetSavingHelper::recordCurActivePets();
 }

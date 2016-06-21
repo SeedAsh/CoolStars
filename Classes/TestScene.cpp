@@ -54,6 +54,7 @@ void TestScene::test()
 		spr->addChild(label);
 		
 	}
+	listView->setCurItem(29);
 }
 
 void TestScene::initPanel()

@@ -26,6 +26,7 @@ bool ListPetView::init()
 	return true;
 }
 
+//新加入的node会在listview的底部
 int ListPetView::addNode(cocos2d::CCNode *node)
 {
 	auto containerSize = m_container->getContentSize();
@@ -36,7 +37,7 @@ int ListPetView::addNode(cocos2d::CCNode *node)
 		lastNodeHeight = m_nodes.back()->getContentSize().height;
 	}
 	
-	float offsetY = (m_size.height - lastNodeHeight + node->getContentSize().height) * 0.5f;
+	float offsetY = m_size.height + (node->getContentSize().height - lastNodeHeight) * 0.5f;
 
 	for (auto iter = m_nodes.rbegin(); iter != m_nodes.rend(); ++iter)
 	{
