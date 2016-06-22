@@ -183,6 +183,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StagePetNode.cpp" />
     <ClCompile Include="..\Classes\StageSavingHelper.cpp" />
     <ClCompile Include="..\Classes\StageScene.cpp" />
+    <ClCompile Include="..\Classes\StageSceneState.cpp" />
     <ClCompile Include="..\Classes\StageTarget.cpp" />
     <ClCompile Include="..\Classes\StageUiLayer.cpp" />
     <ClCompile Include="..\Classes\StarNode.cpp" />
@@ -220,6 +221,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\ListPetView.h" />
     <ClInclude Include="..\Classes\ListSlideView.h" />
     <ClInclude Include="..\Classes\ListView.h" />
+    <ClInclude Include="..\Classes\LogicGridUtil.h" />
     <ClInclude Include="..\Classes\LoginLayer.h" />
     <ClInclude Include="..\Classes\LotteryScene.h" />
     <ClInclude Include="..\Classes\MainScene.h" />
@@ -259,6 +261,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StagePetNode.h" />
     <ClInclude Include="..\Classes\StageSavingHelper.h" />
     <ClInclude Include="..\Classes\StageScene.h" />
+    <ClInclude Include="..\Classes\StageSceneState.h" />
     <ClInclude Include="..\Classes\StageTarget.h" />
     <ClInclude Include="..\Classes\StageUiLayer.h" />
     <ClInclude Include="..\Classes\StarNode.h" />

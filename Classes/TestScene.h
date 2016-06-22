@@ -15,6 +15,7 @@ private:
 	void addClippingNode();
 	void initPanel();
 	void test();
+	void listViewTest();
 
 private:
 	cocos2d::CCClippingNode *m_clippingNode;

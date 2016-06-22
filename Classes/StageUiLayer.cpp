@@ -16,6 +16,7 @@
 #include "StagePetNode.h"
 #include "StagePanelUtil.h"
 #include "MainScene.h"
+#include "StageSceneState.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -27,12 +28,21 @@
 #define SELECTED_SKILL_OFFSET 20
 USING_NS_CC;
 using namespace std;
-StageUiLayer::StageUiLayer(void)
+StageUiLayer::StageUiLayer(StageStateOwner *stateOwner)
+: m_stateOwner(stateOwner)
 {
 }
 
 StageUiLayer::~StageUiLayer(void)
 {
+}
+
+StageUiLayer *StageUiLayer::create(StageStateOwner *stateOwner)
+{
+	StageUiLayer* layer = new StageUiLayer(stateOwner);
+	layer->init();
+	layer->autorelease();
+	return layer;
 }
 
 void StageUiLayer::onEnter()
@@ -201,12 +211,23 @@ void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 
 void StageUiLayer::onReOrderBtnClicked(CCObject *pSender)
 {
-	StageOp->reOrderStars();
+	PropManager::propMgr()->usePropReorder();
 }
 
 void StageUiLayer::onChangeColorBtnClicked(CCObject *pSender)
 {
+	m_stateOwner->enterPropsClickState(kPropBrush);
+}
+
+void StageUiLayer::showChangeColorPanel(const LogicGrid &grid)
+{
 	auto *panel = ChangeStarColorPanel::create(kStageUiTouchPriority - 1);
+	panel->setCallback([=](int color)
+	{
+		PropManager::propMgr()->usePropBrush(grid, color);
+		m_stateOwner->enterNormalState();
+	});
+
 	panel->setAnchorPoint(ccp(0.5f, 1));
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	panel->setPosition(ccpMult(winSize, 0.5f));
@@ -216,5 +237,5 @@ void StageUiLayer::onChangeColorBtnClicked(CCObject *pSender)
 
 void StageUiLayer::onBombBtnClicked(CCObject *pSender)
 {
-
+	m_stateOwner->enterPropsClickState(kPropBomb);
 }

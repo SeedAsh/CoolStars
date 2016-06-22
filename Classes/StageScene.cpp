@@ -26,10 +26,15 @@ bool StageScene::init()
 	addChild(layout);
 	auto node = dynamic_cast<EmptyBox *>((layout->getChildById(4)));
 
-	StarsLayer *starsLayer = StarsLayer::create();
+	StarsLayer *starsLayer = StarsLayer::create(&m_stateOwner);
 	node->setNode(starsLayer);
 
-	StageUiLayer *uiLayer = StageUiLayer::create();
+	StageUiLayer *uiLayer = StageUiLayer::create(&m_stateOwner);
 	addChild(uiLayer);
+	
+	m_stateOwner.setStarsLayer(starsLayer);
+	m_stateOwner.setUiLayer(uiLayer);
+	m_stateOwner.init();
+
 	return true;
 }

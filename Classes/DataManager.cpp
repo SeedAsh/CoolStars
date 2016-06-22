@@ -67,19 +67,18 @@ void DataManager::loadCommonPetsConfig()
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
 		PetsConfig config;
-		assert((*iter).size() == 8);
+		assert((*iter).size() == 7);
 
 		auto data = *iter;
 		config.id = atoi(data[0]);
-		config.skillId = atoi(data[4]);
 		/*
 		config.energy = data[1];
 		config.count = atoi(data[2]);
 		config.upgrade = data[3];
 		config.desc = atoi(data[4]);
 		*/
-		string path = data[5];
-		config.skillIcon = data[6];
+		string path = data[4];
+		config.skillIcon = data[5];
 
 		char chars[10] = { 0 };
 		for (int i = kColorRed; i <= kColorPurple; ++i)

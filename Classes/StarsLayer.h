@@ -6,6 +6,7 @@
 #include "StageLayersMgr.h"
 USING_NS_CC;
 class StarUtil;
+class StageStateOwner;
 
 class StarsLayer
 	: public CCLayer
@@ -13,10 +14,10 @@ class StarsLayer
 	, public IStageLayer
 {
 public:
-	StarsLayer();
+	StarsLayer(StageStateOwner *stateOwner);
 	~StarsLayer();
 
-	CREATE_FUNC(StarsLayer);
+	static StarsLayer *create(StageStateOwner *stateOwner);
 	virtual bool init();
 
 	void initBackground();
@@ -36,5 +37,6 @@ private:
 	StarUtil *m_pStarUtil;
 	std::vector<StarViewNode *> m_starsSprite;
 	cocos2d::CCClippingNode *m_clippingNode;
+	StageStateOwner *m_stateOwner;
 };
 #endif 

@@ -249,6 +249,9 @@
     <ClCompile Include="..\Classes\BasePanel.cpp">
       <Filter>Utils\ui</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\StageSceneState.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -472,6 +475,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\BasePanel.h">
       <Filter>Utils\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StageSceneState.h">
+      <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LogicGridUtil.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -94,7 +94,11 @@ bool ChangeStarColorPanel::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 		auto localPos = convertToNodeSpace(pt);
 		if (node->boundingBox().containsPoint(localPos))
 		{
-			CCLOG("test");
+			if (m_callback)
+			{
+				int color = i + 1;
+				m_callback(color);
+			}
 		}
 	}
 	removeFromParent();

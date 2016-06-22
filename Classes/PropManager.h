@@ -1,6 +1,7 @@
 #ifndef __PROPMANAGER_H__
 #define __PROPMANAGER_H__
 #include "cocos2d.h"
+#include "StarNode.h"
 
 enum PropType
 {
@@ -21,6 +22,10 @@ public:
 	
 	int getPropItemAmount(int type);
 	void setPropItemAmount(int type, int amount);
+	
+	void usePropBomb(const LogicGrid &grid);
+	void usePropBrush(const LogicGrid &grid, int color);
+	void usePropReorder();
 private: 
 	PropManager(){}
 

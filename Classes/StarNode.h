@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 #include "DataManager.h"
 #include "CommonMacros.h"
+#include "LogicGridUtil.h"
 #define  CONNECT_COUNT 2
 
 enum StarType
@@ -21,21 +22,6 @@ enum StarType
 	kStarTypeCount,
 };
 //Âß¼­Íø¸ñ£¬×óÏÂ½ÇÎª[0,0]
-struct LogicGrid
-{
-	int x;
-	int y;
-	LogicGrid(int x = 0, int y = 0) : x(x), y(y){}
-	//*
-	bool operator == (const LogicGrid &grid)const
-	{
-		return grid.x == x && grid.y == y;
-	}
-	bool operator != (const LogicGrid &grid)const
-	{
-		return (x != grid.x || y != grid.y);
-	}
-};
 
 struct StarAttr
 {

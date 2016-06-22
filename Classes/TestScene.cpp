@@ -4,6 +4,8 @@
 #include "ConfData.h"
 #include "ListView.h"
 #include "ListPetView.h"
+#include "StageOperator.h"
+#include "StarNode.h"
 
 USING_NS_CC;
 
@@ -27,6 +29,12 @@ bool TestScene::init()
 }
 
 void TestScene::test()
+{
+	auto op = StageOperator::theOperator();
+
+}
+
+void TestScene::listViewTest()
 {
 	/*
 	m_spr = CCSprite::create("shop/sd_goumai.png");

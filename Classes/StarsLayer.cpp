@@ -1,17 +1,27 @@
 ﻿#include "StarsLayer.h"
 #include "StarViewNode.h"
 #include "StageModel.h"
+#include "StageSceneState.h"
 
 using namespace cocos2d;
 using namespace std;
-StarsLayer::StarsLayer()
+StarsLayer::StarsLayer(StageStateOwner *stateOwner)
 :m_starsSprite(NULL)
+, m_stateOwner(stateOwner)
 {
 	
 }
 
 StarsLayer::~StarsLayer()
 {
+}
+
+StarsLayer *StarsLayer::create(StageStateOwner *stateOwner)
+{
+	StarsLayer* layer = new StarsLayer(stateOwner);
+	layer->init();
+	layer->autorelease();
+	return layer;
 }
 
 void StarsLayer::onEnter()
@@ -126,8 +136,9 @@ void StarsLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	StarViewNode *star = getClickedStar(pos);
 	if (star == NULL) return;
 	
-	star->onClick();
-	StageModel::theModel()->genNewStars();
+	m_stateOwner->doTouch(star->getGrid());
+	//star->onClick();
+	//StageModel::theModel()->genNewStars();
 }
 
 //左下第一个grid为（0，0）

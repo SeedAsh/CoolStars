@@ -20,9 +20,9 @@ PetManager *PetManager::petMgr()
 
 void PetManager::init()
 {
-	for (int i = 1; i <= PETS_AMOUNT; ++i)
+	for (int petId = 1; petId <= PETS_AMOUNT; ++petId)
 	{
-		m_pets[i] = new PetEntity(i);
+		m_pets[petId] = PetEntity::PetFactory(petId);
 	}
 
 	m_curPets = PetSavingHelper::getCurActivePets();

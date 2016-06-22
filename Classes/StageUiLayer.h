@@ -17,17 +17,17 @@ struct StageUiValue
 };
 
 class UiLayout;
-
+class StageStateOwner;
 class StageUiLayer
     : public CCLayer
 	, public IStageView
 	, public IStageLayer
 {
 public:
-    StageUiLayer(void);
+	StageUiLayer(StageStateOwner *stateOwner);
     ~StageUiLayer(void);
 
-	CREATE_FUNC(StageUiLayer);
+	static StageUiLayer *create(StageStateOwner *stateOwner);
     virtual bool init();
 	void initTopUi();
 	void initPets();
@@ -37,7 +37,8 @@ public:
 	virtual void onScoreChanged();
 	virtual void onCoinsChanged();
 	virtual void onGameOver(int isWon);
-
+public:
+	void showChangeColorPanel(const LogicGrid &grid);
 private:
 	virtual void onEnter();
 	virtual void onExit();
@@ -57,6 +58,6 @@ private:
 	static const int kZorder_Dialog = 20;
 	UiLayout *m_bottomUi;
 	UiLayout *m_topUi;
-
+	StageStateOwner *m_stateOwner;
 };
 #endif // __PANELLLAYER_H__

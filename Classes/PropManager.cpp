@@ -1,6 +1,7 @@
 #include "PropManager.h"
 #include "SqliteHelper.h"
 #include "CommonUtil.h"
+#include "StageOperator.h"
 USING_NS_CC;
 using namespace std;
 using namespace CommonUtil;
@@ -56,3 +57,23 @@ PropManager *PropManager::propMgr()
 	return &mgr;
 }
 
+void PropManager::usePropBomb(const LogicGrid &grid)
+{
+	auto grids = getSquareGrids(grid, 1);
+	StageOp->eraseStars(grids);
+	StageModel::theModel()->genNewStars();
+}
+
+void PropManager::usePropBrush(const LogicGrid &grid, int color)
+{
+	StarNode *node = StageModel::theModel()->getStarNode(grid);
+	StageOperator *op = StageOperator::theOperator();
+	auto attr = node->getAttr();
+	attr.color = color;
+	op->changeColor(attr);
+}
+
+void PropManager::usePropReorder()
+{
+	StageOp->reOrderStars();
+}

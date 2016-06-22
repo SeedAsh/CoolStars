@@ -31,11 +31,9 @@ void StageOperator::addSteps(int amount)
 	stageInfo->setCurStep(curStep + amount);
 }
 
-void StageOperator::changeColor(bool isRandom)
+void StageOperator::changeColor(const StarAttr &targetStarAttr)
 {
-	StarAttr attr;
-	//init
-	StageModel::theModel()->replaceStar(attr);
+	StageModel::theModel()->replaceStar(targetStarAttr);
 }
 
 void StageOperator::addPetEnergy(int petId, int value)
@@ -80,6 +78,7 @@ static vector<int> buildRandomSequence(int length) {
 	
 	return seq;
 }
+
 
 void StageOperator::reOrderStars()
 {
