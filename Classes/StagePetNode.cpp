@@ -37,7 +37,7 @@ StagePetNode *StagePetNode::create(int petId)
 
 bool StagePetNode::init()
 {
-	string iconPath = m_model->getPetData().path;
+	string iconPath = m_model->getPetData().petResPath;
 
 	m_layout = UiLayout::create("layout/stage_pet_node.xml");
 	auto size = m_layout->getContentSize();

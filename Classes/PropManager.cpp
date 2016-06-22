@@ -24,7 +24,6 @@ void PropManager::save()
 	sqlHelper.insertRecordIntoSqlite(sql.c_str());
 }
 
-
 void PropManager::loadPropData()
 {
 	SqliteHelper sqlHelper(DB_SAVING);
@@ -67,10 +66,9 @@ void PropManager::usePropBomb(const LogicGrid &grid)
 void PropManager::usePropBrush(const LogicGrid &grid, int color)
 {
 	StarNode *node = StageModel::theModel()->getStarNode(grid);
-	StageOperator *op = StageOperator::theOperator();
 	auto attr = node->getAttr();
 	attr.color = color;
-	op->changeColor(attr);
+	StageOp->changeColor(attr);
 }
 
 void PropManager::usePropReorder()

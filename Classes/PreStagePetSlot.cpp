@@ -78,7 +78,7 @@ void PreStagePetSlot::refresh()
 			curIndex = i;
 		}
 
-		auto path = pet->getPetData().path;
+		auto path = pet->getPetData().petResPath;
 		CCSprite* icon = CCSprite::create(path.c_str());
 		icon->ignoreAnchorPointForPosition(false);
 		icon->setAnchorPoint(ccp(0, 0));

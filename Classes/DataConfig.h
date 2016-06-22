@@ -23,11 +23,11 @@ struct StarsConfig
 struct PetsConfig
 {
 	int id;
-	vector<int> energy;
-	vector<int> count;
-	vector<int> upgrade;
-	vector<string> iconPaths;
-	string skillIcon;
+	vector<int> maxEnergy;
+	vector<int> skillPower;
+	vector<int> foodToUpgrade;
+	vector<string> petResPaths;
+	string skillResPath;
 	string desc;
 };
 

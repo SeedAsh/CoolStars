@@ -10,9 +10,13 @@ struct PetData
 	int petId;
 	int commonid;
 	int color;
-	std::string path;
-	std::string skillPath;
-	 //可变
+	std::string petResPath;
+	std::string skillResPath;
+	//升级后变化
+	int maxEnergy;
+	int skillPower;
+	int foodToUpgrade;
+	//可变
 	int level;
 	int exp;
 	int energy; 
@@ -40,8 +44,6 @@ public:
 	virtual ~PetEntity();
 	//独立的数据，如红龙和黄龙
 	const PetData &getPetData()const{ return m_data; }
-	//同种宠物不同颜色的数据，如红龙和黄龙都是龙
-	const PetsConfig &getMyCommonPetData() const;
 	
 	void setEnergy(int energy){ m_data.energy = energy; }
 	void setExp(int exp){ m_data.exp = exp; }
@@ -50,6 +52,7 @@ public:
 	static PetEntity *PetFactory(int petId);
 protected:
 	PetEntity(int petId);
+	void refreshPetData();
 public:
 	virtual void useSkill() = 0;
 private:

@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "CommonUtil.h"
 
+using namespace CommonUtil;
 DataManager::DataManager(void)
 {
 
@@ -71,14 +72,15 @@ void DataManager::loadCommonPetsConfig()
 
 		auto data = *iter;
 		config.id = atoi(data[0]);
-		/*
-		config.energy = data[1];
-		config.count = atoi(data[2]);
-		config.upgrade = data[3];
-		config.desc = atoi(data[4]);
-		*/
+		config.maxEnergy = parseStrToInts(data[1]);
+		assert(config.maxEnergy.size() == MAX_PET_LEVEL);
+		config.skillPower = parseStrToInts(data[2]);
+		assert(config.skillPower.size() == MAX_PET_LEVEL);
+		config.foodToUpgrade = parseStrToInts(data[3]);
+		assert(config.foodToUpgrade.size() == MAX_PET_LEVEL);
 		string path = data[4];
-		config.skillIcon = data[5];
+		config.skillResPath = data[5];
+		config.desc = atoi(data[6]);
 
 		char chars[10] = { 0 };
 		for (int i = kColorRed; i <= kColorPurple; ++i)
@@ -86,7 +88,7 @@ void DataManager::loadCommonPetsConfig()
 			sprintf(chars, "%d", i);
 			string str = path;
 			str.replace(str.find("*"), 1, chars);
-			config.iconPaths.push_back(str);
+			config.petResPaths.push_back(str);
 		}
 
 		m_petsConfig.push_back(config);

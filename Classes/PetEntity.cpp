@@ -5,8 +5,8 @@ PetEntity::PetEntity(int petId)
 {
 	//上次保存的宠物数据
 	m_data = PetSavingHelper::getPetState(petId);
-	auto commonData = getMyCommonPetData();
-	m_data.path = commonData.iconPaths[m_data.color - 1];
+
+	refreshPetData();
 
 }
 
@@ -14,14 +14,17 @@ PetEntity::~PetEntity()
 {
 }
 
-void PetEntity::useSkill()
+void PetEntity::refreshPetData()
 {
-}
+	auto commonData = DataManagerSelf->getCommonPetsConfig(m_data.commonid);
 
-const PetsConfig &PetEntity::getMyCommonPetData() const
-{
-	int commonPetId = m_data.commonid;
-	return DataManagerSelf->getCommonPetsConfig(commonPetId);
+	m_data.petResPath = commonData.petResPaths[m_data.color - 1];
+	m_data.skillResPath = commonData.skillResPath;
+	
+	int level = m_data.level;
+	m_data.maxEnergy = (level > 0 ? commonData.maxEnergy[level - 1] : 0);
+	m_data.skillPower = (level > 0 ? commonData.skillPower[level - 1] : 0);
+	m_data.foodToUpgrade = (level > 0 ? commonData.foodToUpgrade[level - 1] : 0);
 }
 
 PetEntity *PetEntity::PetFactory(int petId)
@@ -63,7 +66,7 @@ PetEntity *PetEntity::PetFactory(int petId)
 //////////////////////////////////////////////////////////////////////////////
 void PetRat::useSkill()
 {
-
+	
 }
 
 void PetOx::useSkill()
