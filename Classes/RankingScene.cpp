@@ -15,24 +15,16 @@ bool rankingNode::init()
 	return true;
 }
 
-
-CCScene* RankingScene::scene()
-{
-	CCScene *scene = CCScene::create();
-	RankingScene *layer = RankingScene::create();
-	scene->addChild(layer);
-	return scene;
-}
-
 bool RankingScene::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
-	auto titlePanel = TitlePanel::create();
+	auto titlePanel = TitlePanel::create(m_touchPriority);
 	addChild(titlePanel);
 
 	m_layout = UiLayout::create("layout/ranking_panel.xml");
+	m_layout->setMenuTouchPriority(m_touchPriority);
 	m_layout->setAnchorPoint(ccp(0.5f, 0.5f));
 	m_layout->setPosition(ccpMult(winSize, 0.5f));
 

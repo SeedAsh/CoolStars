@@ -8,7 +8,6 @@ bool HelpPanel::init()
 	m_layout = UiLayout::create("layout/main_menu_bottom.xml");
 	auto size = m_layout->getContentSize();
 	setContentSize(size);
-	initDialog();
 
 	addChild(m_layout);
 

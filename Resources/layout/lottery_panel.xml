@@ -1,80 +1,86 @@
 <layout width="480.000000" height="800.000000">
 	<image>
 		<id>1</id>
-		<x>238.90</x>
-		<y>306.86</y>
-		<path>lottery/cjjm_shuzhuan.png</path>
+		<x>240.59</x>
+		<y>454.60</y>
+		<path>lottery/cjjm_di.png</path>
 	</image>
 	<image>
 		<id>2</id>
-		<x>196.35</x>
-		<y>650.56</y>
-		<path>lottery/cjjm_yaoshidi.png</path>
+		<x>275.64</x>
+		<y>620.01</y>
+		<path>lottery/cjjm_x.png</path>
 	</image>
 	<image>
 		<id>3</id>
-		<x>262.56</x>
-		<y>651.04</y>
-		<path>lottery/cjjm_x.png</path>
+		<x>198.82</x>
+		<y>622.98</y>
+		<path>lottery/cjjm_yaoshidi.png</path>
 	</image>
 	<image>
 		<id>4</id>
 		<x>199.66</x>
-		<y>649.77</y>
+		<y>619.18</y>
 		<path>lottery/cjjm_yaoshi.png</path>
 	</image>
+	<emptyBox>
+		<id>6</id>
+		<x>63.96</x>
+		<y>461.30</y>
+	</emptyBox>
+	<emptyBox>
+		<id>7</id>
+		<x>207.46</x>
+		<y>460.24</y>
+	</emptyBox>
+	<emptyBox>
+		<id>8</id>
+		<x>343.17</x>
+		<y>464.25</y>
+	</emptyBox>
+	<emptyBox>
+		<id>9</id>
+		<x>61.63</x>
+		<y>327.49</y>
+	</emptyBox>
+	<emptyBox>
+		<id>10</id>
+		<x>206.84</x>
+		<y>330.45</y>
+	</emptyBox>
+	<emptyBox>
+		<id>11</id>
+		<x>344.43</x>
+		<y>333.83</y>
+	</emptyBox>
+	<emptyBox>
+		<id>12</id>
+		<x>63.96</x>
+		<y>210.57</y>
+	</emptyBox>
+	<emptyBox>
+		<id>13</id>
+		<x>208.73</x>
+		<y>211.84</y>
+	</emptyBox>
+	<emptyBox>
+		<id>14</id>
+		<x>347.39</x>
+		<y>213.54</y>
+	</emptyBox>
+	<label>
+		<id>15</id>
+		<x>322.49</x>
+		<y>622.13</y>
+		<text>text</text>
+	</label>
 	<button>
-		<id>5</id>
-		<x>44.96</x>
-		<y>657.78</y>
+		<id>16</id>
+		<x>59.11</x>
+		<y>626.97</y>
 		<normal>main_menu/zcd_anniu4.png</normal>
 		<selected>main_menu/zcd_anniu4.png</selected>
 		<disabled>main_menu/zcd_anniu4.png</disabled>
 	</button>
-	<emptyBox>
-		<id>6</id>
-		<x>47.92</x>
-		<y>394.40</y>
-	</emptyBox>
-	<emptyBox>
-		<id>7</id>
-		<x>200.71</x>
-		<y>397.35</y>
-	</emptyBox>
-	<emptyBox>
-		<id>8</id>
-		<x>354.14</x>
-		<y>397.35</y>
-	</emptyBox>
-	<emptyBox>
-		<id>9</id>
-		<x>40.74</x>
-		<y>249.61</y>
-	</emptyBox>
-	<emptyBox>
-		<id>10</id>
-		<x>208.73</x>
-		<y>253.63</y>
-	</emptyBox>
-	<emptyBox>
-		<id>11</id>
-		<x>361.10</x>
-		<y>261.65</y>
-	</emptyBox>
-	<emptyBox>
-		<id>12</id>
-		<x>44.75</x>
-		<y>105.68</y>
-	</emptyBox>
-	<emptyBox>
-		<id>13</id>
-		<x>217.60</x>
-		<y>110.96</y>
-	</emptyBox>
-	<emptyBox>
-		<id>14</id>
-		<x>366.17</x>
-		<y>120.67</y>
-	</emptyBox>
 </layout>
 

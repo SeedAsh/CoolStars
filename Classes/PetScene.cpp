@@ -6,35 +6,24 @@
 USING_NS_CC;
 using namespace std;
 
-CCScene* PetScene::scene()
-{
-	CCScene *scene = CCScene::create();
-	PetScene *layer = PetScene::create();
-	scene->addChild(layer);
-	return scene;
-}
-
 bool PetScene::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
-	m_topLayout = UiLayout::create("layout/pet_ui_top.xml");
-	m_topLayout->setAnchorPoint(ccp(0, 1));
-	m_topLayout->setPosition(ccp(0, winSize.height));
-	addChild(m_topLayout);
-
-	auto titlePanel = TitlePanel::create();
-	addChild(titlePanel);
-
 	m_mainLayout = UiLayout::create("layout/pet_ui.xml");
+	m_mainLayout->setMenuTouchPriority(m_touchPriority);
 	addChild(m_mainLayout);
 
 	m_bottomLayout = UiLayout::create("layout/pet_ui_bottom.xml");
+	m_bottomLayout->setMenuTouchPriority(m_touchPriority);
 	m_bottomLayout->setAnchorPoint(ccp(0, 0));
 	m_bottomLayout->setPosition(ccp(0, 0));
 	addChild(m_bottomLayout);
 	
+	auto titlePanel = TitlePanel::create(m_touchPriority);
+	addChild(titlePanel);
+
 	initMainLayout();
 	initBottomLayout();
 	return true;

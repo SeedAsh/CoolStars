@@ -16,11 +16,11 @@ class TitlePanel
 	: public cocos2d::CCNode
 {
 public:
-	CREATE_FUNC(TitlePanel);
+	static TitlePanel *create(int touchPriority);
 	virtual bool init();
 	void setUiVisible(int who, bool isVisible);
 private:
-	TitlePanel(){}
+	TitlePanel(int touchPriority): m_touchPriority(touchPriority){}
 	void initTopLayout();
 	void initBottomLayout();
 
@@ -31,5 +31,6 @@ private:
 private:
 	UiLayout *m_topLayout;
 	UiLayout *m_bottomLayout;
+	int m_touchPriority;
 };
 #endif

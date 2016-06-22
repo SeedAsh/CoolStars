@@ -22,15 +22,16 @@ bool LotteryScene::init()
 	setContentSize(winSize);
 
 	m_layout = UiLayout::create("layout/lottery_panel.xml");
+	m_layout->setMenuTouchPriority(m_touchPriority);
 	m_layout->setAnchorPoint(ccp(0.5f, 0.5f));
 	m_layout->setPosition(ccpMult(winSize, 0.5f));
 	addChild(m_layout);
 
-	auto titlePanel = TitlePanel::create();
-	addChild(titlePanel);
-
 	m_bottomLayout = UiLayout::create("layout/pre_stage_bottom.xml");
 	addChild(m_bottomLayout);
+
+	auto titlePanel = TitlePanel::create(m_touchPriority);
+	addChild(titlePanel);
 
 	initLayout();
 	initBottomLayout();
@@ -38,19 +39,10 @@ bool LotteryScene::init()
 	return true;
 }
 
-CCScene* LotteryScene::scene()
-{
-	CCScene *scene = CCScene::create();
-	LotteryNode *layer = LotteryNode::create();
-	scene->addChild(layer);
-	return scene;
-}
-
-
 void LotteryScene::initLayout()
 {
-	CCMenuItem * normalBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(5)));
-	normalBtn->setTarget(this, menu_selector(LotteryScene::toPetScene));
+	CCMenuItem * toPetSceneBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(16)));
+	toPetSceneBtn->setTarget(this, menu_selector(LotteryScene::toPetScene));
 	
 	int boxIds[] = { 6, 7, 8, 9, 10, 11, 12, 13, 14 };
 	for (int i = 0; i < 9; ++i)

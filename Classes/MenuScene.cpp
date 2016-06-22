@@ -7,11 +7,11 @@
 #include "RankingScene.h"
 #include "PackageScene.h"
 #include "ShopScene.h"
-#include "BackgroundLayer.h"
 #include "HelpPanel.h"
 #include "CommonMacros.h"
 #include "PreStageScene.h"
 #include "LotteryScene.h"
+#include "MainScene.h"
 
 USING_NS_CC;
 using namespace std;
@@ -21,20 +21,16 @@ bool MenuScene::init()
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
-	auto bk = BackgroundLayer::create();
-	bk->setPosition(ccpMult(winSize, 0.5f));
-	addChild(bk);
-
 	m_mainLayout = UiLayout::create("layout/main_menu.xml");
 	m_mainLayout->setAnchorPoint(ccp(0.5f, 0.5f));
 	m_mainLayout->setPosition(ccpMult(winSize, 0.5f));
-	m_mainLayout->setMenuTouchPriority(kMainMenuTouchPriority);
+	m_mainLayout->setMenuTouchPriority(m_touchPriority);
 	addChild(m_mainLayout);
 
 	m_bottomLayout = UiLayout::create("layout/main_menu_bottom.xml");
 	m_bottomLayout->setAnchorPoint(ccp(0, 0));
 	m_bottomLayout->setPosition(ccp(0, 0));
-	m_bottomLayout->setMenuTouchPriority(kMainMenuTouchPriority);
+	m_bottomLayout->setMenuTouchPriority(m_touchPriority);
 	addChild(m_bottomLayout);
 
 	initMainLayout();
@@ -90,7 +86,7 @@ void MenuScene::initBottomLayout()
 void MenuScene::toNormalGame(CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, PreStageScene::scene()));
+	MainScene::theScene()->showPanel(kPreStagePanel);
 }
 
 void MenuScene::toTreasureGame(CCObject* pSender)
@@ -101,13 +97,13 @@ void MenuScene::toTreasureGame(CCObject* pSender)
 void MenuScene::drawLottery(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, LotteryScene::scene()));
+	MainScene::theScene()->showPanel(kLotteryPanel);
 }
 
 void MenuScene::toPetPanel(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, PetScene::scene()));
+	MainScene::theScene()->showPanel(kPetPanel);
 }
 
 void MenuScene::toSetting(cocos2d::CCObject* pSender)
@@ -145,17 +141,17 @@ void MenuScene::toHelpPanel(cocos2d::CCObject* pSender)
 void MenuScene::toRankPanel(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, RankingScene::scene()));
+	MainScene::theScene()->showPanel(kRankingPanel);
 }
 
 void MenuScene::toPackagePanel(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, PackageScene::scene()));
+	MainScene::theScene()->showPanel(kPackagePanel);
 }
 
 void MenuScene::toShopPanel(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, ShopScene::scene()));
+	MainScene::theScene()->showPanel(kShopPanel);
 }

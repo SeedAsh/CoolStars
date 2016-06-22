@@ -1,27 +1,9 @@
-<layout width="300.000000" height="300.000000">
-	<image>
-		<id>3</id>
-		<x>201.30</x>
-		<y>152.26</y>
-		<path>lottery/cjjm_men2.png</path>
-	</image>
-	<image>
-		<id>2</id>
-		<x>102.60</x>
-		<y>152.58</y>
-		<path>lottery/cjjm_men1.png</path>
-	</image>
+<layout width="98.000000" height="85.000000">
 	<image>
 		<id>1</id>
-		<x>148.90</x>
-		<y>149.30</y>
-		<path>lottery/cjjm_kuang.png</path>
-	</image>
-	<image>
-		<id>4</id>
-		<x>146.28</x>
-		<y>146.63</y>
-		<path>lottery/cjjm_suo.png</path>
+		<x>48.96</x>
+		<y>43.90</y>
+		<path>lottery/cjjm_baoxiang.png</path>
 	</image>
 </layout>
 

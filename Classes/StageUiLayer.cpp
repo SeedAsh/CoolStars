@@ -15,6 +15,7 @@
 #include "EmptyBox.h"
 #include "StagePetNode.h"
 #include "StagePanelUtil.h"
+#include "MainScene.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -194,8 +195,7 @@ void StageUiLayer::onGameOver(int isWon)
 
 void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 {
-	//addChild(PauseLayer::create(), Z_ORDER_PAUSE);
-	//CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+	MainScene::theScene()->showPanel(kMainMenu);
 
 }
 

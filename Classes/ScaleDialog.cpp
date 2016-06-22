@@ -2,31 +2,11 @@
 #include "CommonMacros.h"
 using namespace std;
 USING_NS_CC; 
-//子类设置了contentsize 之后调用即可
-void ScaleDialog::initDialog()
+ScaleDialog::ScaleDialog()
+: m_touchPriority(kDialogMenuTouchPriority)
+, m_isRunScale(true)
 {
-	auto winSize = CCDirector::sharedDirector()->getWinSize();
-	auto mask = getMaskLayer();
-	addChild(mask);
 
-	//*
-	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-		"common/title_add.png",
-		"common/title_add.png",
-		this,
-		menu_selector(ScaleDialog::closeCallback));
-	
-	CCMenu *menu = CCMenu::create(pCloseItem, NULL);
-	menu->setPosition(ccp(0, 0));
-	addChild(menu);
-	auto size = getContentSize();
-	auto closeItemSize = pCloseItem->getContentSize();
-	pCloseItem->setPosition(size.width - closeItemSize.width  * 0.5f, size.height - closeItemSize.height  * 0.5f);
-	//*/
-
-	setAnchorPoint(ccp(0.5f, 0.5f));
-	ignoreAnchorPointForPosition(false);
-	setPosition(ccpMult(winSize, 0.5f));
 }
 
 void ScaleDialog::runScale()
@@ -40,26 +20,25 @@ void ScaleDialog::runScale()
 	runAction(seq);
 }
 
-void ScaleDialog::closeCallback(CCObject *pSender)
+//使用前要设置contentSize
+void ScaleDialog::addMaskLayer()
 {
-	onClose();
-	removeFromParentAndCleanup(true);
-}
-
-CCNode *ScaleDialog::getMaskLayer()
-{
-	CCLayerColor *mask = CCLayerColor::create(ccc4(0, 0, 0, 125));
+	CCLayerColor *mask = CCLayerColor::create(ccc4(0, 0, 0, 175));
 	mask->ignoreAnchorPointForPosition(false);
 	auto size = getContentSize();
 	mask->setPosition(ccp(size.width * 0.5f, size.height * 0.5f));
-	return mask;
+	
+	addChild(mask, -1);
 }
 
 void ScaleDialog::onEnter()
 {
 	CCNode::onEnter();
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kDialogMenuTouchPriority, true);
-	runScale();
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kDialogMenuTouchPriority + 1, true);
+	if (m_isRunScale)
+	{
+		runScale();
+	}
 }
 
 void ScaleDialog::onExit()

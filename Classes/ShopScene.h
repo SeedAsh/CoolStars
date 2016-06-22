@@ -1,6 +1,7 @@
 #ifndef __SHOPSCENE_H__ 
 #define __SHOPSCENE_H__ 
 #include "cocos2d.h"
+#include "BasePanel.h"
 
 class UiLayout;
 
@@ -18,10 +19,9 @@ private:
 
 
 class ShopScene :
-	public cocos2d::CCLayer
+	public BasePanel
 {
 public:
-	static cocos2d::CCScene* scene();
 	CREATE_FUNC(ShopScene);
 	virtual bool init();
 private:

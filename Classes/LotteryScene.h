@@ -1,6 +1,7 @@
 #ifndef __LOTTERYSCENE_H__
 #define __LOTTERYSCENE_H__ 
 #include "cocos2d.h"
+#include "BasePanel.h"
 
 class UiLayout;
 
@@ -15,10 +16,9 @@ private:
 };
 
 class LotteryScene 
-	: public cocos2d::CCLayer
+	: public BasePanel
 {
 public:
-	static cocos2d::CCScene* scene();
 	CREATE_FUNC(LotteryScene);
 	virtual bool init();
 private:

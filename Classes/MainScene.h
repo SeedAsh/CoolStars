@@ -4,7 +4,7 @@
 #include <deque>
 
 class BasePanel;
-
+class ScaleDialog;
 struct PanelRecord
 {
 	int panelId;
@@ -15,19 +15,25 @@ class MainScene
 	: public cocos2d::CCScene
 {
 public:
-	static cocos2d::CCScene* theScene();
-	CREATE_FUNC(MainScene);
+	static MainScene* theScene();
 	bool init();
 
-	void addUiPanel(BasePanel *panel);
-	void showPanel(int panelId);
+	void showPanel(int panelId, bool closeBehind = true);
+	void addDialog(ScaleDialog *dialog);
 	void backPanel();
 private:
 	MainScene(){}
 	~MainScene(){}
-	void initMainLayout();
+	void addUiPanel(BasePanel *panel, bool closeBehind);
 private:
-	static cocos2d::CCScene *s_scene;
+	static MainScene *s_scene;
 	std::deque<PanelRecord> m_panelRecord;
+	std::vector<BasePanel *>m_panels;
+	
+	cocos2d::CCNode *m_bkLayer;
+	cocos2d::CCNode *m_uiLayer;
+	cocos2d::CCNode *m_dialogLayer;
+
 };
+
 #endif

@@ -6,30 +6,26 @@
 #include "EmptyBox.h"
 #include "PreStagePetSlot.h"
 #include "PetManager.h"
+#include "MainScene.h"
 USING_NS_CC;
 using namespace std;
-
-cocos2d::CCScene* PreStageScene::scene()
-{
-	CCScene *scene = CCScene::create();
-	PreStageScene *layer = PreStageScene::create();
-	scene->addChild(layer);
-	return scene;
-}
 
 bool PreStageScene::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
+	setContentSize(winSize);
 
-	TitlePanel * titilPanel = TitlePanel::create();
+	TitlePanel * titilPanel = TitlePanel::create(m_touchPriority);
 	addChild(titilPanel);
 
 	m_mainLayout = UiLayout::create("layout/pre_stage.xml");
+	m_mainLayout->setMenuTouchPriority(m_touchPriority);
 	m_mainLayout->setAnchorPoint(ccp(0.5f, 0.5f));
 	m_mainLayout->setPosition(ccpMult(winSize, 0.5f));
 	addChild(m_mainLayout);
 
 	m_bottomLayout = UiLayout::create("layout/pre_stage_bottom.xml");
+	m_bottomLayout->setMenuTouchPriority(m_touchPriority);
 	addChild(m_bottomLayout);
 
 	initMainLayout();
@@ -64,5 +60,5 @@ void PreStageScene::initBottomLayout()
 void PreStageScene::toStartGame(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, StageScene::scene()));
+	MainScene::theScene()->showPanel(kStageView);
 }

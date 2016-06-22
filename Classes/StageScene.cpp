@@ -17,32 +17,10 @@ StageScene::~StageScene()
 
 }
 
-CCScene* StageScene::scene()
-{
-	CCScene *scene = CCScene::create();
-
-	StageScene *layer = StageScene::create();
-
-	scene->addChild(layer);
-
-	return scene;
-}
-
-StageScene* StageScene::create()
-{
-	StageScene *node = new StageScene();
-	node->autorelease();
-	node->init();
-	return node;
-}
-
 bool StageScene::init()
 {
 	CCSize winSize = CCDirector::sharedDirector()->getVisibleSize();
-	
-	BackgroundLayer *bk = BackgroundLayer::create();
-	bk->setPosition(ccpMult(winSize, 0.5f));
-	addChild(bk);
+	setContentSize(winSize);
 
 	UiLayout *layout = UiLayout::create("layout/stage.xml");
 	addChild(layout);

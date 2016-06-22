@@ -25,26 +25,19 @@ void ShopNode::onBtnClicked(cocos2d::CCObject* pSender)
 	CCMessageBox("clicked", "title");
 }
 
-
-CCScene* ShopScene::scene()
-{
-	CCScene *scene = CCScene::create();
-	ShopScene *layer = ShopScene::create();
-	scene->addChild(layer);
-	return scene;
-}
-
 bool ShopScene::init()
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
-
-	auto titlePanel = TitlePanel::create();
-	addChild(titlePanel);
+	setContentSize(winSize);
 
 	m_layout = UiLayout::create("layout/shop_panel.xml");
+	m_layout->setMenuTouchPriority(m_touchPriority);
 	m_layout->setAnchorPoint(ccp(0.5f, 0.5f));
 	m_layout->setPosition(ccpMult(winSize, 0.5f));
 	addChild(m_layout);
+
+	auto titlePanel = TitlePanel::create(m_touchPriority);
+	addChild(titlePanel);
 
 	initPanel();
 	return true;

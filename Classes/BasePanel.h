@@ -9,8 +9,10 @@ public:
 	virtual bool init();
 	virtual ~BasePanel(){}
 protected:
-	BasePanel(){}
+	BasePanel();
+protected:
+	int m_touchPriority;
 private:
-
+	
 };
 #endif

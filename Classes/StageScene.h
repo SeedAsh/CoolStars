@@ -1,17 +1,16 @@
 #ifndef __STAGESCENE_H__
 #define __STAGESCENE_H__
 #include "cocos2d.h"
+#include "BasePanel.h"
 
 class StageScene :
-	public cocos2d::CCLayer
+	public BasePanel
 {
 public:
-	static cocos2d::CCScene* scene();
-
+	CREATE_FUNC(StageScene);
 	StageScene();
 	~StageScene();
 	virtual bool init();
-	static StageScene* create();
 
 private :
 };

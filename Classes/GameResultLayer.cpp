@@ -2,6 +2,7 @@
 #include "StageScene.h"
 #include "MenuScene.h"
 #include "StageModel.h"
+#include "MainScene.h"
 using namespace std;
 USING_NS_CC;
 
@@ -11,7 +12,6 @@ bool GameWinLayer::init()
 	CCSize size = bg->getContentSize();
 	setContentSize(size);
 	bg->setPosition(ccp(size.width * 0.5f, size.height * 0.5f));
-	initDialog();
 	addChild(bg);
 
 	CCMenuItemImage *pToMainMenu = CCMenuItemImage::create(
@@ -53,7 +53,7 @@ void GameWinLayer::toNextStage(CCObject *pSender)
 {
 	auto info = StageModel::theModel()->getStageInfo();
 	info->toNextStage();
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, StageScene::scene()));
+	MainScene::theScene()->showPanel(kStageView);
 }
 
 void GameWinLayer::toMainMenu(CCObject *pSender)
@@ -69,7 +69,6 @@ bool GameFailLayer::init()
 	CCSize size = bg->getContentSize();
 	setContentSize(size);
 	bg->setPosition(ccp(size.width * 0.5f, size.height * 0.5f));
-	initDialog();
 	addChild(bg);
 
 	CCMenuItemImage *pToMainMenu = CCMenuItemImage::create(
@@ -98,10 +97,10 @@ bool GameFailLayer::init()
 
 void GameFailLayer::replay(CCObject *pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, StageScene::scene()));
+	MainScene::theScene()->showPanel(kStageView);
 }
 
 void GameFailLayer::toMainMenu(CCObject *pSender)
 {
-	//CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(0.5f, MenuScene::scene()));
+	MainScene::theScene()->showPanel(kMainMenu);
 }

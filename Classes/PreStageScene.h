@@ -1,14 +1,14 @@
 #ifndef __PRESTAGESCENE_H__
 #define __PRESTAGESCENE_H__
 #include "cocos2d.h"
+#include "BasePanel.h"
 
 class UiLayout;
 
 class PreStageScene
-	: public cocos2d::CCNode
+	: public BasePanel
 {
 public:
-	static cocos2d::CCScene* scene();
 	CREATE_FUNC(PreStageScene);
 	virtual bool init();
 	

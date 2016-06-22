@@ -1,14 +1,14 @@
 #ifndef __PETSCENE_H__
 #define __PETSCENE_H__ 
 #include "cocos2d.h"
+#include "BasePanel.h"
 
 class UiLayout;
 
 class PetScene :
-	public cocos2d::CCLayer 
+	public BasePanel
 {
 public:
-	static cocos2d::CCScene* scene();
 	CREATE_FUNC(PetScene);
 	virtual bool init();
 private:
@@ -30,7 +30,6 @@ private:
 
 private:
 	UiLayout *m_bottomLayout;
-	UiLayout *m_topLayout;
 	UiLayout *m_mainLayout;
 };
 #endif
