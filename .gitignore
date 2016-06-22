@@ -7,6 +7,7 @@ proj.win32/*
 !CoolSatrs.vcxproj
 !CoolSatrs.vcxproj.filters
 !CoolSatrs.vcxproj.user
+!CoolSatrs.sln
 proj.winrt
 proj.wp8-xaml
 proj.wp8
