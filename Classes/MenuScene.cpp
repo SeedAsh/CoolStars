@@ -134,8 +134,7 @@ void MenuScene::toSound(cocos2d::CCObject* pSender)
 void MenuScene::toHelpPanel(cocos2d::CCObject* pSender)
 {
 	auto panel = HelpPanel::create();
-	panel->setPosition(ccpMult(getContentSize(), 0.5f));
-	addChild(panel);
+	MainScene::theScene()->addDialog(panel);
 }
 
 void MenuScene::toRankPanel(cocos2d::CCObject* pSender)

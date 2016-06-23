@@ -134,6 +134,16 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 		addChild(node, 0, id);
 		node->setPosition(ccp(x, y));
 	}
+	else if (widgetName == "imageNum")
+	{
+		string text = node->first_node("num")->value();
+		string path = node->first_node("path")->value();
+		auto size = CCSprite::create(path.c_str())->getContentSize();
+		auto pLabel = CCLabelAtlas::create(text.c_str(), path.c_str(), size.width/ 10, size.height, '0');
+
+		addChild(pLabel, 0, id);
+		pLabel->setPosition(ccp(x, y));
+	}
 	else
 	{
 		assert(false && "no this widget");

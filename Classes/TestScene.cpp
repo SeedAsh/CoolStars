@@ -30,8 +30,10 @@ bool TestScene::init()
 
 void TestScene::test()
 {
-	auto op = StageOperator::theOperator();
-
+	CCLabelAtlas* diceCount = CCLabelAtlas::create("100985", "pet/cwjm_shuzi6.png", 18, 23, '0');
+	diceCount->setPosition(ccp(100, 100));
+	diceCount->setString("6589");
+	addChild(diceCount);
 }
 
 void TestScene::listViewTest()

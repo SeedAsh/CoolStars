@@ -11,6 +11,9 @@ bool PetScene::init()
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
+	auto titlePanel = TitlePanel::create(m_touchPriority);
+	addChild(titlePanel);
+
 	m_mainLayout = UiLayout::create("layout/pet_ui.xml");
 	m_mainLayout->setMenuTouchPriority(m_touchPriority);
 	addChild(m_mainLayout);
@@ -21,9 +24,6 @@ bool PetScene::init()
 	m_bottomLayout->setPosition(ccp(0, 0));
 	addChild(m_bottomLayout);
 	
-	auto titlePanel = TitlePanel::create(m_touchPriority);
-	addChild(titlePanel);
-
 	initMainLayout();
 	initBottomLayout();
 	return true;
@@ -43,9 +43,6 @@ void PetScene::initMainLayout()
 
 void PetScene::initBottomLayout()
 {
-	CCMenuItem *backHomeBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(1)));
-	backHomeBtn->setTarget(this, menu_selector(PetScene::onBackHomeBtnClicked));
-
 	CCMenuItem *greenPetBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(2)));
 	greenPetBtn->setTarget(this, menu_selector(PetScene::onGreenPetBtnClicked));
 
@@ -75,11 +72,6 @@ void PetScene::onRigthPetBtnClicked(cocos2d::CCObject* pSender)
 void PetScene::onUpgradeBtnClicked(cocos2d::CCObject* pSender)
 {
 
-}
-
-void PetScene::onBackHomeBtnClicked(cocos2d::CCObject* pSender)
-{
-	//CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
 }
 
 void PetScene::onGreenPetBtnClicked(cocos2d::CCObject* pSender)

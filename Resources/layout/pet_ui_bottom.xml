@@ -1,18 +1,4 @@
 <layout width="480.000000" height="208.000000">
-	<image>
-		<id>7</id>
-		<x>240.59</x>
-		<y>104.68</y>
-		<path>common/title_leaves_bottom.png</path>
-	</image>
-	<button>
-		<id>1</id>
-		<x>49.93</x>
-		<y>45.04</y>
-		<normal>pet/cwjm_anniu1.png</normal>
-		<selected>pet/cwjm_anniu1.png</selected>
-		<disabled>pet/cwjm_anniu1.png</disabled>
-	</button>
 	<button>
 		<id>2</id>
 		<x>133.13</x>

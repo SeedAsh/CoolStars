@@ -2,14 +2,8 @@
 	<image>
 		<id>9</id>
 		<x>238.50</x>
-		<y>274.53</y>
-		<path>pre_stage/zbjm_shen.png</path>
-	</image>
-	<image>
-		<id>10</id>
-		<x>239.56</x>
-		<y>265.67</y>
-		<path>pre_stage/zbjm_mask.png</path>
+		<y>258.49</y>
+		<path>pre_stage/zbjm_di.png</path>
 	</image>
 	<image>
 		<id>2</id>
@@ -25,23 +19,29 @@
 	</image>
 	<emptyBox>
 		<id>11</id>
-		<x>64.79</x>
-		<y>140.71</y>
+		<x>58.67</x>
+		<y>106.73</y>
 	</emptyBox>
 	<emptyBox>
 		<id>12</id>
-		<x>139.73</x>
-		<y>140.09</y>
+		<x>152.60</x>
+		<y>108.43</y>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
-		<x>242.29</x>
-		<y>138.60</y>
+		<x>248.20</x>
+		<y>105.68</y>
 	</emptyBox>
 	<emptyBox>
 		<id>14</id>
-		<x>341.48</x>
-		<y>139.88</y>
+		<x>346.55</x>
+		<y>110.12</y>
 	</emptyBox>
+	<image>
+		<id>10</id>
+		<x>240.82</x>
+		<y>270.31</y>
+		<path>pre_stage/zbjm_shen.png</path>
+	</image>
 </layout>
 

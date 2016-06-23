@@ -5,10 +5,10 @@ using namespace std;
 
 bool HelpPanel::init()
 {
-	m_layout = UiLayout::create("layout/main_menu_bottom.xml");
+	m_layout = UiLayout::create("layout/about.xml");
 	auto size = m_layout->getContentSize();
 	setContentSize(size);
-
+	addMaskLayer();
 	addChild(m_layout);
 
 	initLayout();
@@ -17,13 +17,11 @@ bool HelpPanel::init()
 
 void HelpPanel::initLayout()
 {
-	/*
-	CCMenuItem *leftPetBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(6)));
-	leftPetBtn->setTarget(this, menu_selector(HelpPanel::onLeftPetBtnClicked));
-	*/
+	CCMenuItem *confirmBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(3)));
+	confirmBtn->setTarget(this, menu_selector(HelpPanel::onConfirmBtnClicked));
 }
 
-void HelpPanel::onLeftPetBtnClicked(cocos2d::CCObject* pSender)
+void HelpPanel::onConfirmBtnClicked(cocos2d::CCObject* pSender)
 {
-
+	removeFromParent();
 }

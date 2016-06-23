@@ -14,7 +14,7 @@ public:
 	
 private:
 	void initLayout();
-	void onLeftPetBtnClicked(cocos2d::CCObject* pSender);
+	void onConfirmBtnClicked(cocos2d::CCObject* pSender);
 private:
 	UiLayout *m_layout;
 };
