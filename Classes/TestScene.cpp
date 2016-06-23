@@ -30,9 +30,11 @@ bool TestScene::init()
 
 void TestScene::test()
 {
-	CCLabelAtlas* diceCount = CCLabelAtlas::create("100985", "pet/cwjm_shuzi6.png", 18, 23, '0');
+	CCLayerColor *layer = CCLayerColor::create(ccc4(150, 150, 150, 125));
+	addChild(layer);
+
+	CCLabelAtlas* diceCount = CCLabelAtlas::create("100:98;5", "pet/cwjm_shuzi7.png", 18, 23, '0');
 	diceCount->setPosition(ccp(100, 100));
-	diceCount->setString("6589");
 	addChild(diceCount);
 }
 

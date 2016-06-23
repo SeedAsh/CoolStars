@@ -138,8 +138,9 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 	{
 		string text = node->first_node("num")->value();
 		string path = node->first_node("path")->value();
+		int amount = atoi(node->first_node("amount")->value());
 		auto size = CCSprite::create(path.c_str())->getContentSize();
-		auto pLabel = CCLabelAtlas::create(text.c_str(), path.c_str(), size.width/ 10, size.height, '0');
+		auto pLabel = CCLabelAtlas::create(text.c_str(), path.c_str(), size.width / amount, size.height, '0');
 
 		addChild(pLabel, 0, id);
 		pLabel->setPosition(ccp(x, y));
