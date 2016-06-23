@@ -30,6 +30,7 @@ void StageBaseInfo::reset()
 {
 	m_step = 0;
 	m_curScore = 0;
+	m_curScoreBonus = 0;
 }
 
 void StageBaseInfo::init()
@@ -72,4 +73,11 @@ void StageBaseInfo::doSave()
 {
 	StageSavingHelper::saveCurStageData();
 	StageSavingHelper::saveCurStars();
+}
+
+void StageBaseInfo::addCurScore(int value)
+{ 
+	float score = m_curScore * (1 + m_curScoreBonus);
+	setCurScore(score + value);
+	m_curScoreBonus = 0;
 }

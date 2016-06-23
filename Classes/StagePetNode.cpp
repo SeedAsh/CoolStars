@@ -17,9 +17,9 @@ bool StagePetNode::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 	if (isInside)
 	{
 		runScale();
-		if (m_skillScanHandle)
+		if (m_touchHandle)
 		{
-			m_skillScanHandle();
+			m_touchHandle(m_petId);
 		}
 		return true;
 	}

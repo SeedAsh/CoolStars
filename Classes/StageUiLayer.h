@@ -42,6 +42,7 @@ public:
 private:
 	virtual void onEnter();
 	virtual void onExit();
+	void handlePetClicked(int petId);
 	void showGameOverHint();
 	void showPetsSkillPanel();
 	void deliveryScore(const CCPoint &from, int totalScore, int count);

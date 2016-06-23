@@ -9,8 +9,8 @@ namespace CommonUtil
 	const char *intToStr(int value);
 
 	int getRandomValue(int begin, int end);
-
 	bool floatEqual(float v1, float v2);
+	std::vector<int> buildRandomSequence(int length);
 }
 
 #endif

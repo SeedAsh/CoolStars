@@ -28,6 +28,7 @@ struct PetsConfig
 	vector<int> foodToUpgrade;
 	vector<string> petResPaths;
 	string skillResPath;
+	int skillTarget;
 	string desc;
 };
 

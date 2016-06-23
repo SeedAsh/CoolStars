@@ -51,3 +51,25 @@ bool CommonUtil::floatEqual(float v1, float v2)
 {
 	return (fabs(v1 - v2) < 0.000001);
 }
+
+
+//生成 [0 , length-1] 的随机序列
+vector<int> CommonUtil::buildRandomSequence(int length)
+{
+	vector<int> seq;
+	for (int i = 0; i < length; ++i)
+	{
+		seq.push_back(i);
+	}
+	int index = 0;
+	int tmp = 0;
+	for (int i = length - 1; i > 0; i--) {
+		index = (int(CCRANDOM_0_1() * 100)) % i;
+
+		tmp = seq[i];
+		seq[i] = seq[index];
+		seq[index] = tmp;
+	}
+
+	return seq;
+}

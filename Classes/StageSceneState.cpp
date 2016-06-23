@@ -4,6 +4,7 @@
 #include "StarsLayer.h"
 #include "StageOperator.h"
 #include "PropManager.h"
+#include "PetManager.h"
 USING_NS_CC;
 using namespace std;
 StageStateOwner::StageStateOwner()
@@ -15,18 +16,26 @@ void StageStateOwner::init()
 {
 	m_normalState = new StageNormalState(this);
 	m_propsState = new StagePropsClickState(this);
+	m_petSkillState = new StagePetSkillState(this);
 
 	enterNormalState();
 }
 
 StageStateOwner::~StageStateOwner()
 {
+	delete m_normalState;
 	delete m_propsState;
+	delete m_petSkillState;
 }
 
-void StageStateOwner::doTouch(const LogicGrid &grid)
+void StageStateOwner::clickStar(const LogicGrid &grid)
 {
-	m_curState->doTouch(grid);
+	m_curState->clickStar(grid);
+}
+
+void StageStateOwner::clickPet(int petId)
+{
+	m_curState->clickPet(petId);
 }
 
 void StageStateOwner::enterNormalState()
@@ -39,14 +48,21 @@ void StageStateOwner::enterPropsClickState(int propType)
 	m_propsState->setCurProp(propType);
 	m_curState = m_propsState;
 }
+
+void StageStateOwner::enterPetSkillState(int petId)
+{
+	m_petSkillState->setCurPet(petId);
+	m_curState = m_petSkillState;
+}
 ////////////////////////////////////////////////////////////////////////////////////
 StageSceneState::StageSceneState(StageStateOwner *owner)
 {
+	m_owner = owner;
 	m_starsLayer = owner->getStarsLayer();
 	m_uiLayer = owner->getUiLayer();
 }
 ////////////////////////////////////////////////////////////////////////////////////
-void StageNormalState::doTouch(const LogicGrid &grid)
+void StageNormalState::clickStar(const LogicGrid &grid)
 {
 	StarNode *node = StageModel::theModel()->getStarNode(grid);
 	if (node)
@@ -55,8 +71,23 @@ void StageNormalState::doTouch(const LogicGrid &grid)
 	}
 	StageModel::theModel()->genNewStars();
 }
+
+void StageNormalState::clickPet(int petId)
+{
+	auto pet = PetManager::petMgr()->getPetById(petId);
+	if (!pet) return;
+	int targetType = pet->getPetData().skillTarget;
+	if (targetType == kNoTarget)
+	{
+		pet->noTargetSkill();
+	}
+	else
+	{
+		m_owner->enterPetSkillState(petId);
+	}
+}
 ////////////////////////////////////////////////////////////////////////////////////
-void StagePropsClickState::doTouch(const LogicGrid &grid)
+void StagePropsClickState::clickStar(const LogicGrid &grid)
 {
 	StarNode *node = StageModel::theModel()->getStarNode(grid);
 	if (!node) return;
@@ -71,4 +102,28 @@ void StagePropsClickState::doTouch(const LogicGrid &grid)
 	}
 	
 }
+
+void StagePropsClickState::clickPet(int petId)
+{
+
+}
 ////////////////////////////////////////////////////////////////////////////////////
+void StagePetSkillState::clickStar(const LogicGrid &grid)
+{
+	auto pet = PetManager::petMgr()->getPetById(m_curPetId);
+	if (pet)
+	{
+		pet->toStarSkill(grid);
+		m_owner->enterNormalState();
+	}
+}
+
+void StagePetSkillState::clickPet(int petId)
+{
+	auto pet = PetManager::petMgr()->getPetById(m_curPetId);
+	if (pet)
+	{
+		pet->toPetSkill(petId);
+		m_owner->enterNormalState();
+	}
+}

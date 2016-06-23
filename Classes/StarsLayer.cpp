@@ -136,9 +136,7 @@ void StarsLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	StarViewNode *star = getClickedStar(pos);
 	if (star == NULL) return;
 	
-	m_stateOwner->doTouch(star->getGrid());
-	//star->onClick();
-	//StageModel::theModel()->genNewStars();
+	m_stateOwner->clickStar(star->getGrid());
 }
 
 //左下第一个grid为（0，0）

@@ -68,7 +68,7 @@ void DataManager::loadCommonPetsConfig()
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
 		PetsConfig config;
-		assert((*iter).size() == 7);
+		assert((*iter).size() == 8);
 
 		auto data = *iter;
 		config.id = atoi(data[0]);
@@ -80,7 +80,8 @@ void DataManager::loadCommonPetsConfig()
 		assert(config.foodToUpgrade.size() == MAX_PET_LEVEL);
 		string path = data[4];
 		config.skillResPath = data[5];
-		config.desc = atoi(data[6]);
+		config.skillTarget = atoi(data[6]);
+		config.desc = atoi(data[7]);
 
 		char chars[10] = { 0 };
 		for (int i = kColorRed; i <= kColorPurple; ++i)

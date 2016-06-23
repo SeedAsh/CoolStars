@@ -12,8 +12,16 @@ public:
 	~StageOperator(){}
 public:
 	void eraseStars(std::vector<LogicGrid> &grids);
+	void eraseSameColorStars(const LogicGrid &centerGrids, int distance);
+	void randomErase(int num);
+
 	void addSteps(int amount);
-	void changeColor(const StarAttr &targetStarAttr);
+
+	void changeColor(const StarAttr &attr);
+	void randomChangeColor(int color, int num);
+	void randomReplaceToDiamond(int num);
+	void randomReplaceToKey(int num);
+
 	void addPetEnergy(int petId, int value);
 	void removePetDebuff(int who);
 	void chageStarType(int type);

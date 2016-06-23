@@ -9,7 +9,8 @@ class StageStateOwner;
 class StageSceneState
 {
 public:
-	virtual void doTouch(const LogicGrid &gird) = 0;
+	virtual void clickStar(const LogicGrid &gird){}
+	virtual void clickPet(int petId){}
 
 protected:
 	StageSceneState(StageStateOwner *owner);
@@ -24,7 +25,8 @@ class StageNormalState : public StageSceneState
 public:
 	StageNormalState(StageStateOwner *owner) : StageSceneState(owner){}
 public:
-	void doTouch(const LogicGrid &grid);
+	void clickStar(const LogicGrid &grid);
+	void clickPet(int petId);
 };
 
 
@@ -34,8 +36,20 @@ public:
 	StagePropsClickState(StageStateOwner *owner) : StageSceneState(owner){}
 	void setCurProp(int propType){ m_curType = propType; }
 public:
-	void doTouch(const LogicGrid &grid);
+	void clickStar(const LogicGrid &grid);
+	void clickPet(int petId);
 	int m_curType;
+};
+
+class StagePetSkillState : public StageSceneState
+{
+public:
+	StagePetSkillState(StageStateOwner *owner) : StageSceneState(owner){}
+	void setCurPet(int petId){ m_curPetId = petId; }
+public:
+	void clickStar(const LogicGrid &grid);
+	void clickPet(int petId);
+	int m_curPetId;
 };
 
 /*owner*/
@@ -52,8 +66,10 @@ public:
 public:
 	void enterNormalState();
 	void enterPropsClickState(int propType);
+	void enterPetSkillState(int petId);
 public:
-	void doTouch(const LogicGrid &grid);
+	void clickStar(const LogicGrid &grid);
+	void clickPet(int petId);
 private:
 	StarsLayer *m_starsLayer;
 	StageUiLayer *m_uiLayer;
@@ -61,5 +77,6 @@ private:
 private:
 	StagePropsClickState *m_propsState;
 	StageNormalState *m_normalState;
+	StagePetSkillState *m_petSkillState;
 };
 #endif

@@ -13,7 +13,8 @@ public: //基本信息存取
 	void addStep() {m_step++; }
 
 	int getCurScore(){ return m_curScore; }
-	void addCurScore(int value){ setCurScore(m_curScore + value); }
+	void setNextScoreBonus(int bonus){ m_curScoreBonus = bonus; }
+	void addCurScore(int value);
 	void setCurScore(int score);
 
 	int getTopScore(){ return m_topScore; }
@@ -37,5 +38,6 @@ private:
 	int m_step;
 	int m_curScore;
 	int m_topScore;
+	float m_curScoreBonus;
 };
 #endif

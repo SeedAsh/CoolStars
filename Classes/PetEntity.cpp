@@ -1,6 +1,7 @@
 #include "PetEntity.h"
 #include "PetSkill.h"
 #include "PetSavingHelper.h"
+#include "StageOperator.h"
 PetEntity::PetEntity(int petId)
 {
 	//上次保存的宠物数据
@@ -20,7 +21,8 @@ void PetEntity::refreshPetData()
 
 	m_data.petResPath = commonData.petResPaths[m_data.color - 1];
 	m_data.skillResPath = commonData.skillResPath;
-	
+	m_data.skillTarget = commonData.skillTarget;
+
 	int level = m_data.level;
 	m_data.maxEnergy = (level > 0 ? commonData.maxEnergy[level - 1] : 0);
 	m_data.skillPower = (level > 0 ? commonData.skillPower[level - 1] : 0);
@@ -64,63 +66,65 @@ PetEntity *PetEntity::PetFactory(int petId)
 	}
 }
 //////////////////////////////////////////////////////////////////////////////
-void PetRat::useSkill()
+
+void PetRat::toStarSkill(const LogicGrid &grid)
 {
-	
+	StageOp->eraseStars(getStarsOnRow(grid, m_data.skillPower));
 }
 
-void PetOx::useSkill()
+void PetOx::toStarSkill(const LogicGrid &grid)
 {
-
+	StageOp->eraseStars(getStarsOnColumn(grid, m_data.skillPower));
 }
 
-void PetTiger::useSkill()
+void PetTiger::noTargetSkill()
 {
-
+	StageOp->addSteps(m_data.skillPower);
 }
 
-void PetRabbit::useSkill()
+void PetRabbit::noTargetSkill()
 {
-
+	StageOp->randomChangeColor(m_data.color, m_data.skillPower);
 }
 
-void PetDragon::useSkill()
+void PetDragon::noTargetSkill()
 {
-
+	auto info = StageModel::theModel()->getStageInfo();
+	info->setNextScoreBonus(m_data.skillPower);
 }
 
-void PetSnake::useSkill()
+void PetSnake::toStarSkill(const LogicGrid &grid)
 {
-
+	StageOp->eraseSameColorStars(grid, m_data.skillPower);
 }
 
-void PetHorse::useSkill()
+void PetHorse::noTargetSkill()
 {
-
+	StageOp->randomReplaceToDiamond(m_data.skillPower);
 }
 
-void PetGoat::useSkill()
+void PetGoat::noTargetSkill()
 {
-
+	StageOp->randomErase(m_data.skillPower);
 }
 
-void PetMonkey::useSkill()
+void PetMonkey::toPetSkill(int petId)
 {
-
+	StageOp->addPetEnergy(petId, m_data.skillPower);
 }
 
-void PetRooster::useSkill()
-{
-
-}
-
-void PetDog::useSkill()
+void PetRooster::noTargetSkill()
 {
 
 }
 
-void PetPig::useSkill()
+void PetDog::toPetSkill(int petId)
 {
 
+}
+
+void PetPig::noTargetSkill()
+{
+	StageOp->randomReplaceToKey(m_data.skillPower);
 }
 

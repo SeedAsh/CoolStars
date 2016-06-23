@@ -18,33 +18,10 @@ struct LogicGrid
 	}
 };
 
-static bool isValidGrid(const LogicGrid &grid)
-{
-	bool isValidX = grid.x >= 0 && grid.x < COlUMNS_SIZE;
-	bool isValidY = grid.y >= 0 && grid.y < ROWS_SIZE;
-	return isValidX && isValidY;
-}
-
-static std::vector<LogicGrid> getSquareGrids(const LogicGrid& grid, int distance)
-{
-	std::vector<LogicGrid> grids;
-	int minX = grid.x - distance;
-	int maxX = grid.x + distance;
-	int minY = grid.y - distance;
-	int maxY = grid.y + distance;
-	for (int i = minX; i <= maxX; ++i)
-	{
-		for (int j = minY; j <= maxY; ++j)
-		{
-			auto temp = LogicGrid(i, j);
-			if (isValidGrid(temp))
-			{
-				grids.push_back(temp);
-			}
-		}
-	}
-
-	return grids;
-}
+bool isValidGrid(const LogicGrid &grid);
+std::vector<LogicGrid> getSquareGrids(const LogicGrid& grid, int distance);
+std::vector<LogicGrid> getStarsOnRow(const LogicGrid &grid, int num);
+std::vector<LogicGrid> getStarsOnColumn(const LogicGrid &grid, int num);
+std::vector<LogicGrid> getRandomGrids(const std::vector<LogicGrid> &range, int num);
 
 #endif

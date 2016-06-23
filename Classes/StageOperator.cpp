@@ -1,7 +1,10 @@
 #include "StageOperator.h"
 #include "PetManager.h"
 #include "PetEntity.h"
+#include "CommonUtil.h"
+#include "LogicGridUtil.h"
 using namespace std;
+using namespace CommonUtil;
 USING_NS_CC; 
 
 //道具和宠物对stars的操作
@@ -21,7 +24,40 @@ void StageOperator::eraseStars(vector<LogicGrid> &grids)
 			node->doRemove();
 		}
 	}
-	StageModel::theModel()->moveStars();
+	StageModel::theModel()->genNewStars();
+}
+
+void StageOperator::eraseSameColorStars(const LogicGrid &centerGrids, int distance)
+{
+	auto centerNode = StageModel::theModel()->getStarNode(centerGrids);
+	auto grids = getSquareGrids(centerGrids, distance);
+
+	vector<LogicGrid> targetGrids;
+	for (size_t i = 0; i < grids.size(); ++i)
+	{
+		auto node = StageModel::theModel()->getStarNode(grids[i]);
+		if (node && node->getAttr().color == centerNode->getAttr().color)
+		{
+			targetGrids.push_back(grids[i]);
+		}
+	}
+
+	eraseStars(targetGrids);
+}
+
+void StageOperator::randomErase(int num)
+{
+	vector<LogicGrid> grids;
+	for (size_t i = 0; i < ROWS_SIZE; ++i)
+	{
+		for (int j = 0; j < COlUMNS_SIZE; ++j)
+		{
+			grids.push_back(LogicGrid(j, i));
+		}
+	}
+
+	auto targetGrids = getRandomGrids(grids, num);
+	eraseStars(targetGrids);
 }
 
 void StageOperator::addSteps(int amount)
@@ -31,20 +67,53 @@ void StageOperator::addSteps(int amount)
 	stageInfo->setCurStep(curStep + amount);
 }
 
-void StageOperator::changeColor(const StarAttr &targetStarAttr)
+void StageOperator::changeColor(const StarAttr &attr)
 {
-	StageModel::theModel()->replaceStar(targetStarAttr);
+	StageModel::theModel()->replaceStar(attr);
+}
+
+void StageOperator::randomChangeColor(int color, int num)
+{
+	auto stars = StageModel::theModel()->getStarNodes();
+	vector<LogicGrid> grids;
+	for (size_t i = 0; i < stars.size(); ++i)
+	{
+		auto star = stars[i];
+		auto attr = star->getAttr();
+		if (attr.type == kColorStar && attr.color != color)
+		{
+			grids.push_back(attr.grid);
+		}
+	}
+
+	auto targetGrids = getRandomGrids(grids, num);
+	for (size_t i = 0; i < targetGrids.size(); ++i)
+	{
+		auto star = StageModel::theModel()->getStarNode(targetGrids[i]);
+		if (star)
+		{
+			StarAttr targetStarAttr = star->getAttr();
+			targetStarAttr.color = color;
+			StageModel::theModel()->replaceStar(targetStarAttr);
+		}
+	}
+
 }
 
 void StageOperator::addPetEnergy(int petId, int value)
 {
-	//假定只改变以上场宠物的能量
-	auto pet = PetManager::petMgr()->getPetById(petId);
-	if (!pet) return;
-	
-	auto data = pet->getPetData();
-	pet->setEnergy(data.energy + value);
+	auto petMgr = PetManager::petMgr();
+	auto curPetIds = petMgr->getCurPetIds();
+	auto iter = find(curPetIds.begin(), curPetIds.end(), petId);
+	assert(iter != curPetIds.end());
+	if (iter == curPetIds.end()) return;
 
+	auto pet = petMgr->getPetById(petId);
+	if (pet)
+	{
+		auto data = pet->getPetData();
+		pet->setEnergy(data.energy + value);
+	}
 }
 
 void StageOperator::removePetDebuff(int who)
@@ -58,27 +127,6 @@ void StageOperator::chageStarType(int type)
 	//init
 	StageModel::theModel()->replaceStar(attr);
 }
-
-//生成 [0 , length-1] 的随机序列
-static vector<int> buildRandomSequence(int length) {
-	vector<int> seq;
-	for (int i = 0; i < length; ++i)
-	{
-		seq.push_back(i);
-	}
-	int index = 0;
-	int tmp = 0;
-	for (int i = length - 1; i > 0; i--) {
-		index = (int(CCRANDOM_0_1() * 100)) % i;
-
-		tmp = seq[i];
-		seq[i] = seq[index];
-		seq[index] = tmp;
-	}
-	
-	return seq;
-}
-
 
 void StageOperator::reOrderStars()
 {
@@ -100,7 +148,61 @@ void StageOperator::reOrderStars()
 		node->moveTo(targetGrid);
 		node->setLogicGrid(targetGrid);
 	}
-
 }
 
+void StageOperator::randomReplaceToDiamond(int num)
+{
+	auto stars = StageModel::theModel()->getStarNodes();
+	vector<LogicGrid> grids;
+	for (size_t i = 0; i < stars.size(); ++i)
+	{
+		auto star = stars[i];
+		auto attr = star->getAttr();
+		if (attr.type == kColorStar)
+		{
+			grids.push_back(attr.grid);
+		}
+	}
+
+	auto targetGrids = getRandomGrids(grids, num);
+	for (size_t i = 0; i < targetGrids.size(); ++i)
+	{
+		auto star = StageModel::theModel()->getStarNode(targetGrids[i]);
+		if (star)
+		{
+			StarAttr targetStarAttr = star->getAttr();
+			targetStarAttr.color = 0;
+			targetStarAttr.type = kDiamond;
+			StageModel::theModel()->replaceStar(targetStarAttr);
+		}
+	}
+}
+
+void StageOperator::randomReplaceToKey(int num)
+{
+	auto stars = StageModel::theModel()->getStarNodes();
+	vector<LogicGrid> grids;
+	for (size_t i = 0; i < stars.size(); ++i)
+	{
+		auto star = stars[i];
+		auto attr = star->getAttr();
+		if (attr.type == kColorStar)
+		{
+			grids.push_back(attr.grid);
+		}
+	}
+
+	auto targetGrids = getRandomGrids(grids, num);
+	for (size_t i = 0; i < targetGrids.size(); ++i)
+	{
+		auto star = StageModel::theModel()->getStarNode(targetGrids[i]);
+		if (star)
+		{
+			StarAttr targetStarAttr = star->getAttr();
+			targetStarAttr.color = 0;
+			targetStarAttr.type = kKey;
+			StageModel::theModel()->replaceStar(targetStarAttr);
+		}
+	}
+}
 

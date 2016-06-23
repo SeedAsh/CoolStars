@@ -100,7 +100,7 @@ void StageUiLayer::initPets()
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
 		StagePetNode *petNode = StagePetNode::create(ids[i]);
-		petNode->setSkillScanHandle(bind(&StageUiLayer::showPetsSkillPanel, this));
+		petNode->setTouchHandle(bind(&StageUiLayer::handlePetClicked, this, placeholders::_1));
 		auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(uiIds[i])));
 		node->setNode(petNode);
 		node->setAnchorPoint(ccp(0.5f, 0.5f));
@@ -127,6 +127,11 @@ void StageUiLayer::showGameOverHint()
 	//game over hint
 	CCSprite *sp = CCSprite::create("stage_clear.png");
 	this->addChild(sp);
+}
+
+void StageUiLayer::handlePetClicked(int petId)
+{
+	m_stateOwner->clickPet(petId);
 }
 
 void StageUiLayer::showPetsSkillPanel()
