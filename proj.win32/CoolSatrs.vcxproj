@@ -149,6 +149,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\ListPetView.cpp" />
     <ClCompile Include="..\Classes\ListSlideView.cpp" />
     <ClCompile Include="..\Classes\ListView.cpp" />
+    <ClCompile Include="..\Classes\LogicGridUtil.cpp" />
     <ClCompile Include="..\Classes\LoginLayer.cpp" />
     <ClCompile Include="..\Classes\LotteryScene.cpp" />
     <ClCompile Include="..\Classes\MainScene.cpp" />
