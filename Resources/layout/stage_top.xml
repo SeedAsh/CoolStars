@@ -35,12 +35,6 @@
 		<y>218.14</y>
 		<path>stage/ui/yxjm_bushukuan.png</path>
 	</image>
-	<label>
-		<id>8</id>
-		<x>441.36</x>
-		<y>224.01</y>
-		<text>text</text>
-	</label>
 	<image>
 		<id>9</id>
 		<x>239.54</x>
@@ -72,5 +66,29 @@
 		<x>414.17</x>
 		<y>139.48</y>
 	</emptyBox>
+	<imageNum>
+		<id>15</id>
+		<x>197.54</x>
+		<y>202.61</y>
+		<amount>10</amount>
+		<num>10</num>
+		<path>stage/yxjm_shuzi1.png</path>
+	</imageNum>
+	<imageNum>
+		<id>16</id>
+		<x>281.53</x>
+		<y>205.35</y>
+		<amount>10</amount>
+		<num>10</num>
+		<path>stage/yxjm_shuzi1.png</path>
+	</imageNum>
+	<imageNum>
+		<id>17</id>
+		<x>410.28</x>
+		<y>195.43</y>
+		<amount>10</amount>
+		<num>10</num>
+		<path>stage/yxjm_shuzi1.png</path>
+	</imageNum>
 </layout>
 

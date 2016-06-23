@@ -18,16 +18,18 @@
 		<path>ranking/phb_jinditiao.png</path>
 	</image>
 	<label>
-		<id>4</id>
-		<x>139.71</x>
-		<y>34.82</y>
-		<text>name</text>
-	</label>
-	<label>
 		<id>5</id>
 		<x>42.84</x>
 		<y>31.66</y>
 		<text>stage</text>
 	</label>
+	<imageNum>
+		<id>6</id>
+		<x>85.90</x>
+		<y>18.15</y>
+		<amount>10</amount>
+		<num>1234</num>
+		<path>stage/yxjm_shuzi1.png</path>
+	</imageNum>
 </layout>
 

@@ -47,24 +47,6 @@
 		<y>112.74</y>
 		<path>common/title_strength.png</path>
 	</image>
-	<label>
-		<id>10</id>
-		<x>89.90</x>
-		<y>114.80</y>
-		<text>text</text>
-	</label>
-	<label>
-		<id>11</id>
-		<x>420.19</x>
-		<y>116.92</y>
-		<text>text</text>
-	</label>
-	<label>
-		<id>12</id>
-		<x>245.66</x>
-		<y>118.81</y>
-		<text>text</text>
-	</label>
 	<button>
 		<id>9</id>
 		<x>136.97</x>
@@ -81,5 +63,29 @@
 		<selected>common/title_add.png</selected>
 		<disabled>common/title_add.png</disabled>
 	</button>
+	<imageNum>
+		<id>16</id>
+		<x>60.99</x>
+		<y>107.85</y>
+		<amount>10</amount>
+		<num>12</num>
+		<path>common/cwjm_shuzi7.png</path>
+	</imageNum>
+	<imageNum>
+		<id>17</id>
+		<x>220.54</x>
+		<y>109.54</y>
+		<amount>10</amount>
+		<num>12</num>
+		<path>common/cwjm_shuzi7.png</path>
+	</imageNum>
+	<imageNum>
+		<id>18</id>
+		<x>386.42</x>
+		<y>109.96</y>
+		<amount>10</amount>
+		<num>12</num>
+		<path>common/cwjm_shuzi7.png</path>
+	</imageNum>
 </layout>
 

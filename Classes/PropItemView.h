@@ -3,27 +3,27 @@
 #include "cocos2d.h"
 #include "TouchNode.h"
 
-
+class UiLayout;
 class PropItemView : public TouchNode
 {
 public:
 	static PropItemView *create(int type);
 	virtual ~PropItemView(){}
 protected:
-	PropItemView();
+	PropItemView(int type);
 	virtual bool init();
 
 private:
 	virtual void onTouchBegan(cocos2d::CCPoint);
 	void runScale();
-	virtual void onClick() = 0;
+	//virtual void onClick() = 0;
 protected:
 	std::string m_iconPath;
 	int m_type;
 private:
-	cocos2d::CCLabelTTF *m_label;
+	UiLayout *m_layout;
 };
-
+/*
 class PropItemViewBomb : public PropItemView
 {
 public:
@@ -49,6 +49,6 @@ public:
 	virtual bool init();
 	virtual void onClick();
 };
-
+*/
 
 #endif

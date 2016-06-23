@@ -27,7 +27,7 @@ public: //基本信息存取
 	int getCurDirection();
 
 	void toNextStage();
-	void getStageStars(std::vector<std::vector<stageStarInfo>> &stars);
+	void getStageStars(std::vector<std::vector<StageStarInfo>> &stars);
 	void init();
 	void doSave();
 private:

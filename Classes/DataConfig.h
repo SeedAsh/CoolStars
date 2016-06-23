@@ -57,9 +57,15 @@ struct StarsColorConfig
 	std::string desc;
 };
 
-struct stageStarInfo
+struct StageStarInfo
 {
 	int starType;
 	int color;
+};
+
+struct PropsConfig
+{
+	int id;
+	std::string resPath;
 };
 #endif

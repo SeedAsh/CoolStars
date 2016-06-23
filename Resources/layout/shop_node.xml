@@ -19,17 +19,21 @@
 		<selected>shop/sd_goumai.png</selected>
 		<disabled>shop/sd_goumai.png</disabled>
 	</button>
-	<label>
-		<id>4</id>
-		<x>240.59</x>
-		<y>33.98</y>
-		<text>text</text>
-	</label>
-	<label>
-		<id>5</id>
-		<x>102.99</x>
-		<y>35.88</y>
-		<text>text</text>
-	</label>
+	<imageNum>
+		<id>6</id>
+		<x>74.92</x>
+		<y>23.00</y>
+		<amount>10</amount>
+		<num>12</num>
+		<path>stage/yxjm_shuzi1.png</path>
+	</imageNum>
+	<imageNum>
+		<id>7</id>
+		<x>192.69</x>
+		<y>24.06</y>
+		<amount>10</amount>
+		<num>12</num>
+		<path>stage/yxjm_shuzi1.png</path>
+	</imageNum>
 </layout>
 

@@ -2,12 +2,19 @@
 #include "PropManager.h"
 #include "CommonUtil.h"
 #include "StageOperator.h"
+#include "UiLayout.h"
 using namespace cocos2d;
 using namespace std;
 using namespace CommonUtil;
 
 PropItemView *PropItemView::create(int type)
 {
+	PropItemView *view = new PropItemView(type);
+	view->init();
+	view->autorelease();
+	return view;
+
+	/*
 	switch (type)
 	{
 	case kPropBomb:
@@ -22,31 +29,25 @@ PropItemView *PropItemView::create(int type)
 	default:
 		return NULL;
 	}
+	*/
 }
 
-PropItemView::PropItemView()
-: m_label(NULL)
-, m_type(0)
+PropItemView::PropItemView(int type)
+: m_type(type)
 {
 
 }
 
 bool PropItemView::init()
 {
-	CCSprite *spr = CCSprite::create(m_iconPath.c_str());
-	CCSize size = spr->getContentSize();
-	spr->setPosition(ccp(size.width * 0.5f, size.height * 0.5f));
-	addChild(spr);
+	UiLayout *m_layout = UiLayout::create("layout/props_item.xml");
 
-	setContentSize(size);
-
-	auto mgr = PropManager::propMgr();
-	int amount = mgr->getPropItemAmount(m_type);
-	m_label = CCLabelTTF::create(intToStr(amount), "Arial", 18);
-	m_label->setPosition(ccp(size.width * 0.5f, size.height * 0.05f));
-	addChild(m_label);
+	auto path = DataManagerSelf->getPropsConfig(m_type).resPath;
+	auto icon = dynamic_cast<CCSprite *>(m_layout->getChildById(3));
+	icon->initWithFile(path.c_str());
 	
-	setAnchorPoint(ccp(1, 0));
+	setContentSize(m_layout->getContentSize());
+	addChild(m_layout);
 	return true;
 }
 
@@ -69,12 +70,11 @@ void PropItemView::onTouchBegan(cocos2d::CCPoint)
 	if (amount > 0)
 	{
 		mgr->setPropItemAmount(m_type, amount - 1);
-		m_label->setString(CommonUtil::intToStr(amount - 1));
 
-		onClick();
+		//onClick();
 	}
 }
-
+/*
 bool PropItemViewBomb::init()
 {
 	m_iconPath = "Props_Bomb.png";
@@ -116,3 +116,4 @@ void PropItemViewReOrder::onClick()
 	StageOp->reOrderStars();
 
 }
+*/

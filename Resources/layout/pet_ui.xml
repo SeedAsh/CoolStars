@@ -62,11 +62,21 @@
 		<y>594.87</y>
 		<path>pet/red/cwjm_mingzihong1.png</path>
 	</image>
-	<label>
-		<id>15</id>
-		<x>225.94</x>
-		<y>594.90</y>
-		<text>10</text>
-	</label>
+	<imageNum>
+		<id>16</id>
+		<x>212.71</x>
+		<y>580.14</y>
+		<amount>10</amount>
+		<num>3</num>
+		<path>pet/red/cwjm_shuzi.png</path>
+	</imageNum>
+	<imageNum>
+		<id>17</id>
+		<x>277.31</x>
+		<y>105.70</y>
+		<amount>10</amount>
+		<num>10</num>
+		<path>pet/cwjm_shuzi6.png</path>
+	</imageNum>
 </layout>
 

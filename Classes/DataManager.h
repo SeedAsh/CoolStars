@@ -30,7 +30,7 @@ public:
 	void loadStageConfig();
 	const StageConfig &getStageConfig(int stage);
 
-	void getNewStageStarsData(std::vector<std::vector<stageStarInfo>> &stars, int stageNum);
+	void getNewStageStarsData(std::vector<std::vector<StageStarInfo>> &stars, int stageNum);
 
 	void loadStarsConfig();
 	const StarsConfig &getStarsConfig(int starType);
@@ -43,12 +43,16 @@ public:
 
 	void loadSystemConfig();
 	const SystemConfig &getSystemConfig();
+
+	void loadPropsConfig();
+	const PropsConfig &getPropsConfig(int propsId);
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
 	vector<PetsConfig> m_petsConfig;
 	vector<StarsColorConfig> m_starsColorConfig;
 	SystemConfig m_systemConfig;
+	vector<PropsConfig> m_propsConfig;
 };
 
 #endif

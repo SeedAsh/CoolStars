@@ -3,6 +3,7 @@
 #include "StarNode.h"
 #include "cocos2d.h"
 #include "CommonUtil.h"
+#include "PropManager.h"
 
 using namespace CommonUtil;
 DataManager::DataManager(void)
@@ -22,6 +23,7 @@ void DataManager::LoadData()
 	loadStarsConfig();
 	loadStarsColorConfig();
 	loadCommonPetsConfig();
+	loadPropsConfig();
 }
 
 void DataManager::loadStarsConfig()
@@ -129,7 +131,7 @@ const StageConfig &DataManager::getStageConfig(int stage)
 	return m_stagesConfig[stage - 1];
 }
 
-void DataManager::getNewStageStarsData(std::vector<std::vector<stageStarInfo>> &stars, int stageNum)
+void DataManager::getNewStageStarsData(std::vector<std::vector<StageStarInfo>> &stars, int stageNum)
 {
 	vector<StageConfig> m_stagesConfig;
 	SqliteHelper sqlHelper(DB_COOLSTAR);
@@ -143,10 +145,10 @@ void DataManager::getNewStageStarsData(std::vector<std::vector<stageStarInfo>> &
 	{
 		assert((*iter).size() == COlUMNS_SIZE);
 
-		vector<stageStarInfo> oneRow;
+		vector<StageStarInfo> oneRow;
 		for (size_t i = 0; i < (*iter).size(); ++i)
 		{
-			stageStarInfo info;
+			StageStarInfo info;
 			auto data = (*iter)[i];
 			auto reInts = CommonUtil::parseStrToInts(data);
 			info.starType = reInts[0];
@@ -196,4 +198,24 @@ const StarsColorConfig &DataManager::getStarsColorConfig(int color)
 {
 	assert(color > kColorRandom && color <= kColorPurple);
 	return m_starsColorConfig[color];
+}
+
+void DataManager::loadPropsConfig()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from props");
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		PropsConfig config;
+		config.id = atoi(data[0]);
+		config.resPath = data[1];
+		m_propsConfig.push_back(config);
+	}
+}
+
+const PropsConfig &DataManager::getPropsConfig(int propsId)
+{
+	assert(0 <= propsId && propsId < kPorpTypeAmount);
+	return m_propsConfig[propsId];
 }

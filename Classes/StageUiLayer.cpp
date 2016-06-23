@@ -112,14 +112,12 @@ void StageUiLayer::initBottomUi()
 	auto closeBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(2)));
 	closeBtn->setTarget(this, menu_selector(StageUiLayer::onPauseBtnClicked));
 
-	auto reOrderBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(11)));
-	reOrderBtn->setTarget(this, menu_selector(StageUiLayer::onReOrderBtnClicked));
-
-	auto changeColorBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(10)));
-	changeColorBtn->setTarget(this, menu_selector(StageUiLayer::onChangeColorBtnClicked));
-
-	auto bombBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(9)));
-	bombBtn->setTarget(this, menu_selector(StageUiLayer::onBombBtnClicked));
+	for (int i = kPropBomb; i < kPorpTypeAmount; i++)
+	{
+		auto box = dynamic_cast<EmptyBox *>((m_bottomUi->getChildById(12 + i)));
+		auto node = PropItemView::create(i);
+		box->setNode(node);
+	}
 }
 
 void StageUiLayer::showGameOverHint()

@@ -26,7 +26,7 @@ void StageModel::initStarsData()
 {
 	resetStarsData();
 	//返回的数据是保存行的
-	vector<vector<stageStarInfo>> stageVec;
+	vector<vector<StageStarInfo>> stageVec;
 	m_stageInfo.getStageStars(stageVec);
 	
 	for (int row = 0; row < ROWS_SIZE; ++row)

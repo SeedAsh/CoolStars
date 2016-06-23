@@ -64,7 +64,7 @@ bool StageBaseInfo::isTheLastStage()
 	return m_curStage >= config.stageAmount;
 }
 
-void StageBaseInfo::getStageStars(std::vector<std::vector<stageStarInfo>> &stars)
+void StageBaseInfo::getStageStars(std::vector<std::vector<StageStarInfo>> &stars)
 {
 	DataManagerSelf->getNewStageStarsData(stars, m_curStage);
 }

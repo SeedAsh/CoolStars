@@ -43,5 +43,21 @@
 		<y>270.31</y>
 		<path>pre_stage/zbjm_shen.png</path>
 	</image>
+	<imageNum>
+		<id>15</id>
+		<x>276.68</x>
+		<y>643.01</y>
+		<amount>10</amount>
+		<num>5</num>
+		<path>stage/yxjm_shuzi1.png</path>
+	</imageNum>
+	<imageNum>
+		<id>17</id>
+		<x>321.42</x>
+		<y>510.05</y>
+		<amount>10</amount>
+		<num>20</num>
+		<path>stage/yxjm_shuzi1.png</path>
+	</imageNum>
 </layout>
 
