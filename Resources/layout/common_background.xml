@@ -3,18 +3,27 @@
 		<id>1</id>
 		<x>238.62</x>
 		<y>398.39</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>background/beij_di.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>80.97</x>
 		<y>368.21</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>background/beij_yun1.png</path>
 	</image>
 	<image>
 		<id>3</id>
 		<x>388.25</x>
 		<y>524.17</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>background/beij_yun2.png</path>
 	</image>
 </layout>

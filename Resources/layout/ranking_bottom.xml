@@ -3,6 +3,9 @@
 		<id>1</id>
 		<x>428.02</x>
 		<y>53.78</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>ranking/phb_libao.png</path>
 	</image>
 </layout>

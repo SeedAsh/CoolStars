@@ -3,12 +3,18 @@
 		<id>1</id>
 		<x>111.88</x>
 		<y>100.63</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/cwjm_taizi.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>116.10</x>
 		<y>185.68</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/cwjm_anniu1.png</path>
 	</image>
 </layout>

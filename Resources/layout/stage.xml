@@ -3,6 +3,9 @@
 		<id>4</id>
 		<x>40.00</x>
 		<y>143.68</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 </layout>
 

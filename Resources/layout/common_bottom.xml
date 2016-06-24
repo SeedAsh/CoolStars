@@ -3,12 +3,18 @@
 		<id>1</id>
 		<x>239.54</x>
 		<y>104.89</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_leaves_bottom.png</path>
 	</image>
 	<button>
 		<id>2</id>
 		<x>46.98</x>
 		<y>42.09</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>common/back_home.png</normal>
 		<selected>common/back_home.png</selected>
 		<disabled>common/back_home.png</disabled>

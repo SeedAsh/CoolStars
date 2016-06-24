@@ -3,54 +3,81 @@
 		<id>13</id>
 		<x>237.64</x>
 		<y>92.02</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_leaves_top.png</path>
 	</image>
 	<image>
 		<id>14</id>
 		<x>237.85</x>
 		<y>76.19</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_vine.png</path>
 	</image>
 	<image>
 		<id>1</id>
 		<x>235.21</x>
 		<y>119.07</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_board.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>190.89</x>
 		<y>114.64</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_food.png</path>
 	</image>
 	<image>
 		<id>4</id>
 		<x>404.03</x>
 		<y>119.49</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_board.png</path>
 	</image>
 	<image>
 		<id>5</id>
 		<x>355.71</x>
 		<y>114.85</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_diamond.png</path>
 	</image>
 	<image>
 		<id>7</id>
 		<x>78.81</x>
 		<y>118.02</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_board.png</path>
 	</image>
 	<image>
 		<id>8</id>
 		<x>35.98</x>
 		<y>112.74</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>common/title_strength.png</path>
 	</image>
 	<button>
 		<id>9</id>
 		<x>136.97</x>
 		<y>113.11</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>common/title_add.png</normal>
 		<selected>common/title_add.png</selected>
 		<disabled>common/title_add.png</disabled>
@@ -59,6 +86,9 @@
 		<id>6</id>
 		<x>463.04</x>
 		<y>115.86</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>common/title_add.png</normal>
 		<selected>common/title_add.png</selected>
 		<disabled>common/title_add.png</disabled>
@@ -67,6 +97,9 @@
 		<id>16</id>
 		<x>60.99</x>
 		<y>107.85</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>12</num>
 		<path>common/cwjm_shuzi7.png</path>
@@ -75,6 +108,9 @@
 		<id>17</id>
 		<x>220.54</x>
 		<y>109.54</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>12</num>
 		<path>common/cwjm_shuzi7.png</path>
@@ -83,6 +119,9 @@
 		<id>18</id>
 		<x>386.42</x>
 		<y>109.96</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>12</num>
 		<path>common/cwjm_shuzi7.png</path>

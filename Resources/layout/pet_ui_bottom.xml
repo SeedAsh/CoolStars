@@ -3,6 +3,9 @@
 		<id>2</id>
 		<x>133.13</x>
 		<y>32.60</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>pet/cwjm_anniu6.png</normal>
 		<selected>pet/cwjm_anniu6.png</selected>
 		<disabled>pet/cwjm_anniu6.png</disabled>
@@ -11,6 +14,9 @@
 		<id>3</id>
 		<x>345.73</x>
 		<y>32.60</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>pet/cwjm_anniu5.png</normal>
 		<selected>pet/cwjm_anniu5.png</selected>
 		<disabled>pet/cwjm_anniu5.png</disabled>
@@ -19,6 +25,9 @@
 		<id>4</id>
 		<x>420.26</x>
 		<y>32.39</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>pet/cwjm_anniu4.png</normal>
 		<selected>pet/cwjm_anniu4.png</selected>
 		<disabled>pet/cwjm_anniu4.png</disabled>
@@ -27,6 +36,9 @@
 		<id>5</id>
 		<x>272.67</x>
 		<y>32.17</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>pet/cwjm_anniu3.png</normal>
 		<selected>pet/cwjm_anniu3.png</selected>
 		<disabled>pet/cwjm_anniu3.png</disabled>
@@ -35,6 +47,9 @@
 		<id>6</id>
 		<x>202.59</x>
 		<y>32.37</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>pet/cwjm_anniu2.png</normal>
 		<selected>pet/cwjm_anniu2.png</selected>
 		<disabled>pet/cwjm_anniu2.png</disabled>

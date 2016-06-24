@@ -3,6 +3,9 @@
 		<id>5</id>
 		<x>401.33</x>
 		<y>449.06</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>pet/cwjm_jianhao2.png</normal>
 		<selected>pet/cwjm_jianhao2.png</selected>
 		<disabled>pet/cwjm_jianhao2.png</disabled>
@@ -11,6 +14,9 @@
 		<id>6</id>
 		<x>61.96</x>
 		<y>456.25</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>pet/cwjm_jianhao1.png</normal>
 		<selected>pet/cwjm_jianhao1.png</selected>
 		<disabled>pet/cwjm_jianhao1.png</disabled>
@@ -19,12 +25,18 @@
 		<id>7</id>
 		<x>266.26</x>
 		<y>266.48</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/cwjm_jinengjieshaodikuang.png</path>
 	</image>
 	<button>
 		<id>8</id>
 		<x>261.61</x>
 		<y>177.67</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>pet/cwjm_anniu7.png</normal>
 		<selected>pet/cwjm_anniu7.png</selected>
 		<disabled>pet/cwjm_anniu7.png</disabled>
@@ -33,39 +45,60 @@
 		<id>9</id>
 		<x>251.07</x>
 		<y>118.54</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/ty_zuanshi.png</path>
 	</image>
 	<emptyBox>
 		<id>10</id>
 		<x>250.64</x>
 		<y>435.14</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>11</id>
 		<x>128.86</x>
 		<y>523.15</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>12</id>
 		<x>376.42</x>
 		<y>528.21</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<image>
 		<id>13</id>
 		<x>185.65</x>
 		<y>595.72</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/red/cwjm_jishu.png</path>
 	</image>
 	<image>
 		<id>14</id>
 		<x>279.14</x>
 		<y>594.87</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/red/cwjm_mingzihong1.png</path>
 	</image>
 	<imageNum>
 		<id>16</id>
 		<x>212.71</x>
 		<y>580.14</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>3</num>
 		<path>pet/red/cwjm_shuzi.png</path>
@@ -74,6 +107,9 @@
 		<id>17</id>
 		<x>277.31</x>
 		<y>105.70</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>10</num>
 		<path>pet/cwjm_shuzi6.png</path>

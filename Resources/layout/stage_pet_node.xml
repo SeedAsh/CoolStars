@@ -3,18 +3,27 @@
 		<id>1</id>
 		<x>58.89</x>
 		<y>21.92</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/pets/yxjm_guangdi2.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>63.33</x>
 		<y>75.73</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>main_menu/zcd_logo2.png</path>
 	</image>
 	<image>
 		<id>3</id>
 		<x>48.50</x>
 		<y>126.10</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/pets/yxjm_tishi1.png</path>
 	</image>
 </layout>

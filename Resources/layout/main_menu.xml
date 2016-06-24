@@ -3,18 +3,27 @@
 		<id>4</id>
 		<x>238.67</x>
 		<y>225.49</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>main_menu/zcd_beijing1.png</path>
 	</image>
 	<image>
 		<id>5</id>
 		<x>239.68</x>
 		<y>660.09</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>main_menu/zcd_logo.png</path>
 	</image>
 	<button>
 		<id>6</id>
 		<x>241.98</x>
 		<y>442.95</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu1.png</normal>
 		<selected>main_menu/zcd_anniu1.png</selected>
 		<disabled>main_menu/zcd_anniu1.png</disabled>
@@ -23,6 +32,9 @@
 		<id>7</id>
 		<x>248.10</x>
 		<y>319.49</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu2.png</normal>
 		<selected>main_menu/zcd_anniu2.png</selected>
 		<disabled>main_menu/zcd_anniu2.png</disabled>
@@ -31,6 +43,9 @@
 		<id>8</id>
 		<x>182.20</x>
 		<y>202.29</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu3.png</normal>
 		<selected>main_menu/zcd_anniu3.png</selected>
 		<disabled>main_menu/zcd_anniu3.png</disabled>
@@ -39,6 +54,9 @@
 		<id>9</id>
 		<x>316.36</x>
 		<y>202.69</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu4.png</normal>
 		<selected>main_menu/zcd_anniu4.png</selected>
 		<disabled>main_menu/zcd_anniu4.png</disabled>

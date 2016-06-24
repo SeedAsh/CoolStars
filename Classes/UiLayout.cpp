@@ -2,10 +2,11 @@
 #include "rapidxml/rapidxml_utils.hpp"
 #include "rapidxml/rapidxml_print.hpp"
 #include "EmptyBox.h"
+#include "cocos-ext.h"
 USING_NS_CC;
 using namespace std;
 using namespace rapidxml;
-
+using namespace extension;
 using namespace std;
 
 UiLayout::UiLayout(const char *xmlPath)
@@ -81,6 +82,9 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 	int id = atoi(node->first_node("id")->value());
 	float x = atof(node->first_node("x")->value());
 	float y = atof(node->first_node("y")->value());
+	float anchorPtX = atof(node->first_node("anchorPtX")->value());
+	float anchorPtY = atof(node->first_node("anchorPtY")->value());
+	float scale = atof(node->first_node("scale")->value());
 
 	string widgetName = node->name();
 	if (widgetName == "label")
@@ -127,6 +131,7 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 		CCSprite *spr = CCSprite::create(path.c_str());
 		addChild(spr, 0, id);
 		spr->setPosition(ccp(x, y));
+		spr->setScale(scale);
 	}
 	else if (widgetName == "emptyBox")
 	{
@@ -144,6 +149,27 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 
 		addChild(pLabel, 0, id);
 		pLabel->setPosition(ccp(x, y));
+	}
+	else if (widgetName == "animation")
+	{
+		string path = node->first_node("path")->value();
+		CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo(path.c_str());
+		int pos1 = path.rfind("/");
+		int pos2 = path.rfind(".");
+		string armatureName = path.substr(pos1 + 1, pos2 - pos1 - 1);
+		auto armature = CCArmature::create(armatureName.c_str());
+		string movementName = node->first_node("movement")->value();
+		if (movementName == "0")
+		{
+			armature->getAnimation()->playWithIndex(0);
+		}
+		else
+		{
+			armature->getAnimation()->play(movementName.c_str());
+		}
+		addChild(armature, 0, id);
+		armature->setPosition(ccp(x, y));
+		armature->setScale(scale);
 	}
 	else
 	{

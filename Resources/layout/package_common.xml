@@ -3,24 +3,36 @@
 		<id>1</id>
 		<x>204.52</x>
 		<y>151.71</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>package/lb_dikuang.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>207.68</x>
 		<y>281.50</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>package/lb_caidai.png</path>
 	</image>
 	<image>
 		<id>3</id>
 		<x>207.47</x>
 		<y>306.83</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>package/lb_logo2.png</path>
 	</image>
 	<button>
 		<id>4</id>
 		<x>137.81</x>
 		<y>71.76</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>package/lb_anni3.png</normal>
 		<selected>package/lb_anni3.png</selected>
 		<disabled>package/lb_anni3.png</disabled>
@@ -29,6 +41,9 @@
 		<id>5</id>
 		<x>260.64</x>
 		<y>74.71</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>shop/sd_goumai.png</normal>
 		<selected>shop/sd_goumai.png</selected>
 		<disabled>shop/sd_goumai.png</disabled>

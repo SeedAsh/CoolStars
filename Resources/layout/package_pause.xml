@@ -3,24 +3,36 @@
 		<id>1</id>
 		<x>204.92</x>
 		<y>152.59</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>package/lb_dikuang.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>212.10</x>
 		<y>298.57</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>package/lb_caidai.png</path>
 	</image>
 	<image>
 		<id>7</id>
 		<x>204.53</x>
 		<y>318.43</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>package/lb_logo1.png</path>
 	</image>
 	<button>
 		<id>3</id>
 		<x>94.56</x>
 		<y>60.74</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>package/lb_anniu.png</normal>
 		<selected>package/lb_anniu.png</selected>
 		<disabled>package/lb_anniu.png</disabled>
@@ -29,6 +41,9 @@
 		<id>4</id>
 		<x>172.64</x>
 		<y>69.17</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu6.png</normal>
 		<selected>main_menu/zcd_anniu6.png</selected>
 		<disabled>main_menu/zcd_anniu6.png</disabled>
@@ -37,6 +52,9 @@
 		<id>5</id>
 		<x>253.28</x>
 		<y>67.70</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>package/lb_anniu1.png</normal>
 		<selected>package/lb_anniu1.png</selected>
 		<disabled>package/lb_anniu1.png</disabled>
@@ -45,6 +63,9 @@
 		<id>6</id>
 		<x>331.13</x>
 		<y>66.02</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>shop/sd_goumai.png</normal>
 		<selected>shop/sd_goumai.png</selected>
 		<disabled>shop/sd_goumai.png</disabled>

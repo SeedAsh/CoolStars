@@ -3,18 +3,27 @@
 		<id>1</id>
 		<x>175.39</x>
 		<y>37.10</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>shop/sd_di2.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>35.89</x>
 		<y>32.04</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>shop/sd_zuanshi2.png</path>
 	</image>
 	<button>
 		<id>3</id>
 		<x>317.41</x>
 		<y>33.98</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>shop/sd_goumai.png</normal>
 		<selected>shop/sd_goumai.png</selected>
 		<disabled>shop/sd_goumai.png</disabled>
@@ -23,6 +32,9 @@
 		<id>6</id>
 		<x>74.92</x>
 		<y>23.00</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>12</num>
 		<path>stage/yxjm_shuzi1.png</path>
@@ -31,6 +43,9 @@
 		<id>7</id>
 		<x>192.69</x>
 		<y>24.06</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>12</num>
 		<path>stage/yxjm_shuzi1.png</path>

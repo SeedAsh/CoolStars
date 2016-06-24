@@ -3,50 +3,77 @@
 		<id>9</id>
 		<x>238.50</x>
 		<y>258.49</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pre_stage/zbjm_di.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>200.69</x>
 		<y>657.80</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pre_stage/zbjm_guanqa.png</path>
 	</image>
 	<image>
 		<id>8</id>
 		<x>249.89</x>
 		<y>541.10</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pre_stage/zbjm_renwu.png</path>
 	</image>
 	<emptyBox>
 		<id>11</id>
 		<x>58.67</x>
 		<y>106.73</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>12</id>
 		<x>152.60</x>
 		<y>108.43</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
 		<x>248.20</x>
 		<y>105.68</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>14</id>
 		<x>346.55</x>
 		<y>110.12</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<image>
 		<id>10</id>
 		<x>240.82</x>
 		<y>270.31</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pre_stage/zbjm_shen.png</path>
 	</image>
 	<imageNum>
 		<id>15</id>
 		<x>276.68</x>
 		<y>643.01</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>5</num>
 		<path>stage/yxjm_shuzi1.png</path>
@@ -55,6 +82,9 @@
 		<id>17</id>
 		<x>321.42</x>
 		<y>510.05</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>20</num>
 		<path>stage/yxjm_shuzi1.png</path>

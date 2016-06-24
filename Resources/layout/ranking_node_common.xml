@@ -3,30 +3,45 @@
 		<id>1</id>
 		<x>177.50</x>
 		<y>35.63</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>ranking/phb_bieren.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>284.29</x>
 		<y>33.73</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>ranking/phb_putongjinditiaodi.png</path>
 	</image>
 	<image>
 		<id>3</id>
 		<x>282.18</x>
 		<y>33.73</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>ranking/phb_jinditiao.png</path>
 	</image>
 	<label>
 		<id>5</id>
 		<x>42.84</x>
 		<y>31.66</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<text>stage</text>
 	</label>
 	<imageNum>
 		<id>6</id>
 		<x>85.90</x>
 		<y>18.15</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>1234</num>
 		<path>stage/yxjm_shuzi1.png</path>

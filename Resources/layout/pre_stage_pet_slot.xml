@@ -3,12 +3,18 @@
 		<id>1</id>
 		<x>42.23</x>
 		<y>148.33</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pre_stage/zbjm_lun5.png</path>
 	</image>
 	<emptyBox>
 		<id>2</id>
 		<x>0.00</x>
 		<y>-0.21</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 </layout>
 

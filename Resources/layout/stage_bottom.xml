@@ -3,12 +3,18 @@
 		<id>1</id>
 		<x>258.69</x>
 		<y>32.39</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/ui/yxjm_beij1.png</path>
 	</image>
 	<button>
 		<id>2</id>
 		<x>42.13</x>
 		<y>39.98</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>stage/ui/yxjm_anniu.png</normal>
 		<selected>stage/ui/yxjm_anniu.png</selected>
 		<disabled>stage/ui/yxjm_anniu.png</disabled>
@@ -17,16 +23,25 @@
 		<id>12</id>
 		<x>241.44</x>
 		<y>-0.84</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
 		<x>324.38</x>
 		<y>0.00</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>14</id>
 		<x>408.16</x>
 		<y>2.11</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 </layout>
 

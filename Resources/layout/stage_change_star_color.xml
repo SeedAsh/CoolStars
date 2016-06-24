@@ -3,26 +3,41 @@
 		<id>1</id>
 		<x>22.79</x>
 		<y>24.66</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>2</id>
 		<x>97.41</x>
 		<y>24.45</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>3</id>
 		<x>177.19</x>
 		<y>27.20</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>4</id>
 		<x>256.94</x>
 		<y>26.57</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>5</id>
 		<x>335.03</x>
 		<y>27.84</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 	</emptyBox>
 </layout>
 

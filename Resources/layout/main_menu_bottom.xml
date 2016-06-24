@@ -3,6 +3,9 @@
 		<id>2</id>
 		<x>36.84</x>
 		<y>123.63</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu6.png</normal>
 		<selected>main_menu/zcd_anniu6.png</selected>
 		<disabled>main_menu/zcd_anniu6.png</disabled>
@@ -11,6 +14,9 @@
 		<id>3</id>
 		<x>36.07</x>
 		<y>204.81</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu8.png</normal>
 		<selected>main_menu/zcd_anniu8.png</selected>
 		<disabled>main_menu/zcd_anniu8.png</disabled>
@@ -19,6 +25,9 @@
 		<id>1</id>
 		<x>37.88</x>
 		<y>41.53</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu5.png</normal>
 		<selected>main_menu/zcd_anniu5.png</selected>
 		<disabled>main_menu/zcd_anniu5.png</disabled>
@@ -27,6 +36,9 @@
 		<id>4</id>
 		<x>187.86</x>
 		<y>44.07</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_logo1.png</normal>
 		<selected>main_menu/zcd_logo1.png</selected>
 		<disabled>main_menu/zcd_logo1.png</disabled>
@@ -35,6 +47,9 @@
 		<id>5</id>
 		<x>420.04</x>
 		<y>44.71</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_logo2.png</normal>
 		<selected>main_menu/zcd_logo2.png</selected>
 		<disabled>main_menu/zcd_logo2.png</disabled>
@@ -43,6 +58,9 @@
 		<id>6</id>
 		<x>303.84</x>
 		<y>45.83</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_logo3.png</normal>
 		<selected>main_menu/zcd_logo3.png</selected>
 		<disabled>main_menu/zcd_logo3.png</disabled>
@@ -51,6 +69,9 @@
 		<id>7</id>
 		<x>37.99</x>
 		<y>122.62</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>main_menu/zcd_anniu7.png</normal>
 		<selected>main_menu/zcd_anniu7.png</selected>
 		<disabled>main_menu/zcd_anniu7.png</disabled>

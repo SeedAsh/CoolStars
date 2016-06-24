@@ -3,102 +3,153 @@
 		<id>1</id>
 		<x>239.75</x>
 		<y>433.28</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_fail/sbjm_bj.png</path>
 	</image>
 	<image>
 		<id>2</id>
 		<x>239.75</x>
 		<y>433.28</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_fail/sbjm_bj.png</path>
 	</image>
 	<image>
 		<id>3</id>
 		<x>239.75</x>
 		<y>433.28</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_fail/sbjm_bj.png</path>
 	</image>
 	<image>
 		<id>4</id>
 		<x>233.63</x>
 		<y>188.68</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_teng.png</path>
 	</image>
 	<image>
 		<id>5</id>
 		<x>351.39</x>
 		<y>197.75</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_guanxiao3.png</path>
 	</image>
 	<image>
 		<id>6</id>
 		<x>367.22</x>
 		<y>190.58</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_baoxiang.png</path>
 	</image>
 	<image>
 		<id>7</id>
 		<x>237.85</x>
 		<y>708.06</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_fail/sbjm_logo.png</path>
 	</image>
 	<image>
 		<id>8</id>
 		<x>94.13</x>
 		<y>522.98</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_fail/sbjm_tishi.png</path>
 	</image>
 	<image>
 		<id>9</id>
 		<x>256.63</x>
 		<y>421.25</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_jiangli.png</path>
 	</image>
 	<image>
 		<id>10</id>
 		<x>233.84</x>
 		<y>271.41</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_fail/sbjm_kuang.png</path>
 	</image>
 	<image>
 		<id>11</id>
 		<x>343.37</x>
 		<y>341.47</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_fail/sbjm_kuang.png</path>
 	</image>
 	<image>
 		<id>12</id>
 		<x>140.77</x>
 		<y>343.16</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_fail/sbjm_kuang.png</path>
 	</image>
 	<image>
 		<id>13</id>
 		<x>292.51</x>
 		<y>475.91</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/blue/cwjm_mingzilan1.png</path>
 	</image>
 	<image>
 		<id>14</id>
 		<x>213.79</x>
 		<y>472.95</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/blue/cwjm_mingzilan1.png</path>
 	</image>
 	<image>
 		<id>15</id>
 		<x>131.69</x>
 		<y>474.01</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/blue/cwjm_mingzilan1.png</path>
 	</image>
 	<image>
 		<id>16</id>
 		<x>54.87</x>
 		<y>473.80</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>pet/blue/cwjm_mingzilan1.png</path>
 	</image>
 	<button>
 		<id>18</id>
 		<x>222.46</x>
 		<y>82.91</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>stage/game_fail/sbjm_goumai.png</normal>
 		<selected>stage/game_fail/sbjm_goumai.png</selected>
 		<disabled>stage/game_fail/sbjm_goumai.png</disabled>
@@ -107,6 +158,9 @@
 		<id>19</id>
 		<x>422.12</x>
 		<y>482.21</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<normal>stage/game_fail/sbjm_goumai.png</normal>
 		<selected>stage/game_fail/sbjm_goumai.png</selected>
 		<disabled>stage/game_fail/sbjm_goumai.png</disabled>
@@ -115,36 +169,54 @@
 		<id>20</id>
 		<x>203.68</x>
 		<y>621.93</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_guanqia.png</path>
 	</image>
 	<image>
 		<id>21</id>
 		<x>275.43</x>
 		<y>179.78</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_guozi.png</path>
 	</image>
 	<image>
 		<id>22</id>
 		<x>231.53</x>
 		<y>166.70</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_guozi.png</path>
 	</image>
 	<image>
 		<id>23</id>
 		<x>185.54</x>
 		<y>162.49</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_guozi.png</path>
 	</image>
 	<image>
 		<id>24</id>
 		<x>137.41</x>
 		<y>165.01</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_guozi.png</path>
 	</image>
 	<image>
 		<id>25</id>
 		<x>92.87</x>
 		<y>171.77</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
 		<path>stage/game_win/sljm_guozi.png</path>
 	</image>
 </layout>
