@@ -7,48 +7,41 @@ using namespace cocos2d;
 using namespace std;
 using namespace CommonUtil;
 
-PropItemView *PropItemView::create(int type)
+PropItemView *PropItemView::create(int type, int touchPriority)
 {
-	PropItemView *view = new PropItemView(type);
+	PropItemView *view = new PropItemView(type, touchPriority);
 	view->init();
 	view->autorelease();
 	return view;
-
-	/*
-	switch (type)
-	{
-	case kPropBomb:
-		return PropItemViewBomb::create();
-
-	case kPropBrush:
-		return PropItemViewBrush::create();
-
-	case kPropReorder:
-		return PropItemViewReOrder::create();
-
-	default:
-		return NULL;
-	}
-	*/
 }
 
-PropItemView::PropItemView(int type)
-: m_type(type)
+PropItemView::PropItemView(int type, int touchPriority)
+: TouchNode(touchPriority)
+, m_type(type)
 {
 
 }
 
 bool PropItemView::init()
 {
-	UiLayout *m_layout = UiLayout::create("layout/props_item.xml");
+	m_layout = UiLayout::create("layout/props_item.xml");
 
 	auto path = DataManagerSelf->getPropsConfig(m_type).resPath;
 	auto icon = dynamic_cast<CCSprite *>(m_layout->getChildById(3));
 	icon->initWithFile(path.c_str());
-	
+	refreshItemNum();
+
 	setContentSize(m_layout->getContentSize());
 	addChild(m_layout);
 	return true;
+}
+
+void PropItemView::refreshItemNum()
+{
+	CCLabelAtlas *num = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(2));
+	auto mgr = PropManager::propMgr();
+	int amount = mgr->getPropItemAmount(m_type);
+	num->setString(intToStr(amount));
 }
 
 void PropItemView::runScale()
@@ -61,59 +54,25 @@ void PropItemView::runScale()
 	runAction(seq);
 }
 
-void PropItemView::onTouchBegan(cocos2d::CCPoint)
+bool PropItemView::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 {
-	runScale();
-
-	auto mgr = PropManager::propMgr();
-	int amount = mgr->getPropItemAmount(m_type);
-	if (amount > 0)
+	if (isInside)
 	{
-		mgr->setPropItemAmount(m_type, amount - 1);
+		runScale();
 
-		//onClick();
+		auto mgr = PropManager::propMgr();
+		int amount = mgr->getPropItemAmount(m_type);
+		if (amount > 0)
+		{
+			mgr->setPropItemAmount(m_type, amount - 1);
+			refreshItemNum();
+			if (m_touchHandle)
+			{
+				m_touchHandle(m_type);
+			}
+
+		}
 	}
-}
-/*
-bool PropItemViewBomb::init()
-{
-	m_iconPath = "Props_Bomb.png";
-	m_type = kPropBomb;
-	PropItemView::init();
-	return true;
+	return isInside;
 }
 
-void PropItemViewBomb::onClick()
-{
-	//auto grids
-	//StageOp->eraseStars();
-}
-
-bool PropItemViewBrush::init()
-{
-	m_iconPath = "Props_Paint.png";
-	m_type = kPropBrush;
-	PropItemView::init();
-	return true;
-}
-
-void PropItemViewBrush::onClick()
-{
-	//CCMessageBox("brush", "brush");
-
-}
-
-bool PropItemViewReOrder::init()
-{
-	m_iconPath = "Props_Rainbow.png";
-	m_type = kPropReorder;
-	PropItemView::init();
-	return true;
-}
-
-void PropItemViewReOrder::onClick()
-{
-	StageOp->reOrderStars();
-
-}
-*/

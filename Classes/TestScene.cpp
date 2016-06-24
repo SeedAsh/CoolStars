@@ -30,9 +30,31 @@ bool TestScene::init()
 
 void TestScene::test()
 {
-	CCLayerColor *layer = CCLayerColor::create(ccc4(150, 150, 150, 125));
-	addChild(layer);
+	/*
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("test/chuangguanchenggong.ExportJson");
+	auto ani = CCArmature::create("chuangguanchenggong");
+	ani->getAnimation()->play("tg_xing3");
+	//ani->getAnimation()->playWithIndex(0, -1, -1, 0);
+	ani->setPosition(ccp(100, 100));
+	addChild(ani, 10);
+	*/
 
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("Dragon.png", "Dragon.plist", "Dragon.xml");
+
+	cocos2d::extension::CCArmature *armature = NULL;
+	armature = cocos2d::extension::CCArmature::create("Dragon");
+	auto data = armature->getAnimation()->getAnimationData()->getMovementNames();
+
+	armature->getAnimation()->play("walk");
+	//armature->getAnimation()->playWithIndex(0);
+	armature->getAnimation()->setSpeedScale(0.4f);
+	armature->setPosition(ccp(200, 200));
+	armature->setScale(0.6f);
+	addChild(armature);
+}
+
+void TestScene::imageNumtest()
+{
 	CCLabelAtlas* diceCount = CCLabelAtlas::create("100:98;5", "pet/cwjm_shuzi7.png", 18, 23, '0');
 	diceCount->setPosition(ccp(100, 100));
 	addChild(diceCount);

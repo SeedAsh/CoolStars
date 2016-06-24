@@ -99,7 +99,7 @@ void StageUiLayer::initPets()
 	assert(ids.size() <= 4);
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
-		StagePetNode *petNode = StagePetNode::create(ids[i]);
+		StagePetNode *petNode = StagePetNode::create(ids[i], kStageUiTouchPriority);
 		petNode->setTouchHandle(bind(&StageUiLayer::handlePetClicked, this, placeholders::_1));
 		auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(uiIds[i])));
 		node->setNode(petNode);
@@ -112,10 +112,12 @@ void StageUiLayer::initBottomUi()
 	auto closeBtn = dynamic_cast<CCMenuItem *>((m_bottomUi->getChildById(2)));
 	closeBtn->setTarget(this, menu_selector(StageUiLayer::onPauseBtnClicked));
 
-	for (int i = kPropBomb; i < kPorpTypeAmount; i++)
+	for (int i = kPropReorder; i < kPorpTypeAmount; i++)
 	{
 		auto box = dynamic_cast<EmptyBox *>((m_bottomUi->getChildById(12 + i)));
-		auto node = PropItemView::create(i);
+		auto node = PropItemView::create(i, kStageUiTouchPriority);
+		node->setTouchHandle(bind(&StageUiLayer::handlePropsItemClicked, this, placeholders::_1));
+		node->setAnchorPoint(ccp(0.5f, 0.5f));
 		box->setNode(node);
 	}
 }
@@ -212,16 +214,6 @@ void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 
 }
 
-void StageUiLayer::onReOrderBtnClicked(CCObject *pSender)
-{
-	PropManager::propMgr()->usePropReorder();
-}
-
-void StageUiLayer::onChangeColorBtnClicked(CCObject *pSender)
-{
-	m_stateOwner->enterPropsClickState(kPropBrush);
-}
-
 void StageUiLayer::showChangeColorPanel(const LogicGrid &grid)
 {
 	auto *panel = ChangeStarColorPanel::create(kStageUiTouchPriority - 1);
@@ -238,7 +230,14 @@ void StageUiLayer::showChangeColorPanel(const LogicGrid &grid)
 	addChild(panel);
 }
 
-void StageUiLayer::onBombBtnClicked(CCObject *pSender)
+void StageUiLayer::handlePropsItemClicked(int type)
 {
-	m_stateOwner->enterPropsClickState(kPropBomb);
+	if (type == kPropReorder)
+	{
+		PropManager::propMgr()->usePropReorder();
+	}
+	else
+	{
+		m_stateOwner->enterPropsClickState(type);
+	}
 }

@@ -14,6 +14,7 @@ private:
 	void testCallback(cocos2d::CCObject* pSender);
 	void addClippingNode();
 	void initPanel();
+	void imageNumtest();
 	void test();
 	void listViewTest();
 

@@ -2,53 +2,25 @@
 #define __PropItemView_H__
 #include "cocos2d.h"
 #include "TouchNode.h"
+#include <functional>
 
 class UiLayout;
 class PropItemView : public TouchNode
 {
 public:
-	static PropItemView *create(int type);
+	static PropItemView *create(int type, int touchPriority);
 	virtual ~PropItemView(){}
-protected:
-	PropItemView(int type);
-	virtual bool init();
-
+	void setTouchHandle(std::function<void(int)> handle){ m_touchHandle = handle; }
 private:
-	virtual void onTouchBegan(cocos2d::CCPoint);
+	PropItemView(int type, int touchPriority);
+	virtual bool init();
+	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
 	void runScale();
-	//virtual void onClick() = 0;
-protected:
+	void refreshItemNum();
+private:
 	std::string m_iconPath;
 	int m_type;
-private:
 	UiLayout *m_layout;
+	std::function<void(int)> m_touchHandle;
 };
-/*
-class PropItemViewBomb : public PropItemView
-{
-public:
-	CREATE_FUNC(PropItemViewBomb);
-private:
-	virtual bool init();
-	virtual void onClick();
-};
-
-
-class PropItemViewBrush : public PropItemView
-{
-public:
-	CREATE_FUNC(PropItemViewBrush);
-	virtual bool init();
-	virtual void onClick();
-};
-
-class PropItemViewReOrder : public PropItemView
-{
-public:
-	CREATE_FUNC(PropItemViewReOrder);
-	virtual bool init();
-	virtual void onClick();
-};
-*/
-
 #endif

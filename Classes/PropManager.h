@@ -5,9 +5,9 @@
 
 enum PropType
 {
-	kPropBomb,
-	kPropBrush,
 	kPropReorder,
+	kPropBrush,
+	kPropBomb,
 
 	kPorpTypeAmount,
 };

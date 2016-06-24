@@ -5,8 +5,9 @@
 using namespace std;
 USING_NS_CC;
 
-StagePetNode::StagePetNode(int petId)
-	: m_petId(petId)
+StagePetNode::StagePetNode(int petId, int touchPriority)
+: TouchNode(touchPriority)
+, m_petId(petId)
 {
 	m_model = PetManager::petMgr()->getPetById(petId);
 	assert(m_model);
@@ -27,9 +28,9 @@ bool StagePetNode::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 	
 }
 
-StagePetNode *StagePetNode::create(int petId)
+StagePetNode *StagePetNode::create(int petId, int touchPriority)
 {
-	auto view = new StagePetNode(petId);
+	auto view = new StagePetNode(petId, touchPriority);
 	view->init();
 	view->autorelease();
 	return view;
@@ -54,5 +55,6 @@ bool StagePetNode::init()
 	CCLayerColor *mask = CCLayerColor::create(ccc4(255, 0, 0, 75));
 	mask->setContentSize(size);
 	//addChild(mask);
+
 	return true;
 }
