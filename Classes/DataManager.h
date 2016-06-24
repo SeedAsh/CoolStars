@@ -46,6 +46,9 @@ public:
 
 	void loadPropsConfig();
 	const PropsConfig &getPropsConfig(int propsId);
+
+	void loadRankingConfig();
+	const RankingConfig &getRankingConfig(int rank);
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
@@ -53,6 +56,7 @@ private:
 	vector<StarsColorConfig> m_starsColorConfig;
 	SystemConfig m_systemConfig;
 	vector<PropsConfig> m_propsConfig;
+	vector<RankingConfig> m_rankingConfig;
 };
 
 #endif

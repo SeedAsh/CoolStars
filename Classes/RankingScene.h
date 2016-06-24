@@ -5,15 +5,6 @@
 
 class UiLayout;
 
-class rankingNode
-	: public cocos2d::CCNode
-{
-public:
-	CREATE_FUNC(rankingNode);
-	virtual bool init();
-private:
-	UiLayout *m_layout;
-};
 
 class RankingScene 
 	: public BasePanel

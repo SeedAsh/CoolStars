@@ -24,6 +24,7 @@ void DataManager::LoadData()
 	loadStarsColorConfig();
 	loadCommonPetsConfig();
 	loadPropsConfig();
+	loadRankingConfig();
 }
 
 void DataManager::loadStarsConfig()
@@ -218,4 +219,26 @@ const PropsConfig &DataManager::getPropsConfig(int propsId)
 {
 	assert(0 <= propsId && propsId < kPorpTypeAmount);
 	return m_propsConfig[propsId];
+}
+
+void DataManager::loadRankingConfig()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from ranking");
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		RankingConfig config;
+		config.id = atoi(data[0]);
+		config.name = data[1];
+		config.score = atoi(data[2]);
+		config.ownPetPercent = atoi(data[3]);
+		m_rankingConfig.push_back(config);
+	}
+}
+
+const RankingConfig &DataManager::getRankingConfig(int rank)
+{
+	assert(rank >= 0 && rank < m_rankingConfig.size());
+	return m_rankingConfig[rank];
 }

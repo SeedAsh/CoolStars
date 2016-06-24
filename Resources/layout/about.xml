@@ -28,15 +28,5 @@
 		<selected>about/gy_anniu.png</selected>
 		<disabled>about/gy_anniu.png</disabled>
 	</button>
-	<animation>
-		<id>4</id>
-		<x>140.98</x>
-		<y>135.70</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>0.50</scale>
-		<path>animation/Cowboy.ExportJson</path>
-		<movement>Fire</movement>
-	</animation>
 </layout>
 

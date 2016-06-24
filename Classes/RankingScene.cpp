@@ -3,17 +3,10 @@
 #include "TitlePanel.h"
 #include "ListView.h"
 #include "ListSlideView.h"
+#include "RankingPanelUtil.h"
 
 USING_NS_CC;
 using namespace std;
-
-bool rankingNode::init()
-{
-	m_layout = UiLayout::create("layout/ranking_node_common.xml");
-	addChild(m_layout);
-	setContentSize(m_layout->getContentSize());
-	return true;
-}
 
 bool RankingScene::init()
 {
@@ -45,7 +38,7 @@ void RankingScene::initMainLayout()
 
 	for (int i = 0; i < 10; ++i)
 	{
-		rankList->addNode(rankingNode::create());
+		rankList->addNode(RankingNode::create(i));
 	}
 	
 }

@@ -255,6 +255,15 @@
     <ClCompile Include="..\Classes\LogicGridUtil.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\TimeUti.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RankingModel.cpp">
+      <Filter>Ranking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RankingPanelUtil.cpp">
+      <Filter>Ranking</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -484,6 +493,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\LogicGridUtil.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TimeUtil.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RankingModel.h">
+      <Filter>Ranking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RankingPanelUtil.h">
+      <Filter>Ranking</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

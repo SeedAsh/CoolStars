@@ -169,6 +169,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PropItemView.cpp" />
     <ClCompile Include="..\Classes\PropManager.cpp" />
     <ClCompile Include="..\Classes\QuickBuyScene.cpp" />
+    <ClCompile Include="..\Classes\RankingModel.cpp" />
+    <ClCompile Include="..\Classes\RankingPanelUtil.cpp" />
     <ClCompile Include="..\Classes\RankingScene.cpp" />
     <ClCompile Include="..\Classes\ScaleDialog.cpp" />
     <ClCompile Include="..\Classes\SettingBtnsHelper.cpp" />
@@ -192,6 +194,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StarsLayer.cpp" />
     <ClCompile Include="..\Classes\StarViewNode.cpp" />
     <ClCompile Include="..\Classes\TestScene.cpp" />
+    <ClCompile Include="..\Classes\TimeUti.cpp" />
     <ClCompile Include="..\Classes\TitlePanel.cpp" />
     <ClCompile Include="..\Classes\TouchNode.cpp" />
     <ClCompile Include="..\Classes\UiLayout.cpp" />
@@ -243,6 +246,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PropItemView.h" />
     <ClInclude Include="..\Classes\PropManager.h" />
     <ClInclude Include="..\Classes\QuickBuyScene.h" />
+    <ClInclude Include="..\Classes\RankingModel.h" />
+    <ClInclude Include="..\Classes\RankingPanelUtil.h" />
     <ClInclude Include="..\Classes\RankingScene.h" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml.hpp" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml_iterators.hpp" />
@@ -270,6 +275,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StarsLayer.h" />
     <ClInclude Include="..\Classes\StarViewNode.h" />
     <ClInclude Include="..\Classes\TestScene.h" />
+    <ClInclude Include="..\Classes\TimeUtil.h" />
     <ClInclude Include="..\Classes\TitlePanel.h" />
     <ClInclude Include="..\Classes\TouchNode.h" />
     <ClInclude Include="..\Classes\UiLayout.h" />

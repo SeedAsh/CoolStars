@@ -12,6 +12,7 @@
 #include "PreStageScene.h"
 #include "LotteryScene.h"
 #include "MainScene.h"
+#include "RankingPanelUtil.h"
 
 USING_NS_CC;
 using namespace std;

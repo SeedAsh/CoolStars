@@ -68,4 +68,12 @@ struct PropsConfig
 	int id;
 	std::string resPath;
 };
+
+struct RankingConfig
+{
+	int id;
+	std::string name;
+	int score;
+	int ownPetPercent;
+};
 #endif
