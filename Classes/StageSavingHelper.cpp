@@ -35,7 +35,7 @@ void StageSavingHelper::saveCurStars()
 		}
 		sql = sql.substr(0, sql.length() - 1); //去掉最后一个逗号
 		sql += ");";
-		helper.insertRecordIntoSqlite(sql.c_str());
+		helper.executeSql(sql.c_str());
 	}
 	helper.openTransaction(false);
 	helper.closeDB();
@@ -86,7 +86,7 @@ void StageSavingHelper::saveCurStageData()
 	sprintf(str, "replace into save_cur_stage values(1, %d,%d);"
 		, curStage, topScore);
 	
-	helper.insertRecordIntoSqlite(str);
+	helper.executeSql(str);
 	helper.closeDB();
 }
 

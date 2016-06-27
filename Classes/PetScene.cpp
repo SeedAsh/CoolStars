@@ -2,16 +2,21 @@
 #include "UiLayout.h"
 #include "MenuScene.h"
 #include "TitlePanel.h"
+#include "CommonMacros.h"
+#include "MainScene.h"
 
 USING_NS_CC;
 using namespace std;
 
 bool PetScene::init()
 {
+	setPanelId(kPetPanel);
+
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
 	auto titlePanel = TitlePanel::create(m_touchPriority);
+	titlePanel->setUiVisible(kTitlePanelBackHome, false);
 	addChild(titlePanel);
 
 	m_mainLayout = UiLayout::create("layout/pet_ui.xml");
@@ -43,6 +48,9 @@ void PetScene::initMainLayout()
 
 void PetScene::initBottomLayout()
 {
+	CCMenuItem *backBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(1)));
+	backBtn->setTarget(this, menu_selector(PetScene::onBackBtnClicked));
+
 	CCMenuItem *greenPetBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(2)));
 	greenPetBtn->setTarget(this, menu_selector(PetScene::onGreenPetBtnClicked));
 
@@ -99,3 +107,7 @@ void PetScene::onYellowPetBtnClicked(cocos2d::CCObject* pSender)
 
 }
 
+void PetScene::onBackBtnClicked(cocos2d::CCObject* pSender)
+{
+	MainScene::theScene()->backPanel();
+}

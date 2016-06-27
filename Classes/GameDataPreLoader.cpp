@@ -17,7 +17,6 @@ void GameDataPreLoader::initGameData()
 
 void GameDataPreLoader::LoadGameConfigs()
 {
-	MyPurchase::sharedPurchase()->loadIAPPlugin();
 	//GameData::getInstance()->preloadData();
 
 	//对数据库数据进行数据校验 正式版本着取消校验
@@ -30,7 +29,7 @@ void GameDataPreLoader::LoadGameConfigs()
 
 void GameDataPreLoader::intModels()
 {
-	UserInfo::init();
+	UserInfo::theInfo()->loadUserInfo();
 	SoundMgr::init();
 
 	StageModel::theModel()->getStageInfo()->init();

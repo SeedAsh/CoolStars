@@ -1,4 +1,7 @@
 #include "MyPurchase.h"
+/*
+
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && PAY_NO_PAY == 0) 
 #include "PluginManager.h"
 #endif
@@ -41,7 +44,7 @@ void MyPurchase::loadIAPPlugin(){
 	}
 }
 
-void MyPurchase::payForProducts(CCObject *target, MyPayProducts product, SEL_CallFuncN3I selector /* = NULL */){
+void MyPurchase::payForProducts(CCObject *target, MyPayProducts product, SEL_CallFuncN3I selector ){
 	s_pRetListener->setCallback(target, selector, product);
 	CCLOG("payForProducts product = %d", product);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || PAY_NO_PAY == 1)
@@ -265,4 +268,4 @@ void MyPurchaseResult::setCallback(CCObject *target, SEL_CallFuncN3I selector, i
 	m_pCallback = selector;
 	m_nCurrentPayType = payType;
 }
-
+*/

@@ -21,6 +21,7 @@ private:
 	void onRigthPetBtnClicked(cocos2d::CCObject* pSender);
 	void onUpgradeBtnClicked(cocos2d::CCObject* pSender);
 
+	void onBackBtnClicked(cocos2d::CCObject* pSender);
 	void onGreenPetBtnClicked(cocos2d::CCObject* pSender);
 	void onPurplePetBtnClicked(cocos2d::CCObject* pSender);
 	void onRedPetBtnClicked(cocos2d::CCObject* pSender);

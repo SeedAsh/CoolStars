@@ -20,7 +20,6 @@ public:
 	static StarsLayer *create(StageStateOwner *stateOwner);
 	virtual bool init();
 
-	void initBackground();
 	void initStars();
 	void starInitDone();
 	StarViewNode *getClickedStar(CCPoint pos);

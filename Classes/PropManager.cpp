@@ -21,7 +21,7 @@ void PropManager::save()
 		sql = sql.substr(0, sql.length() - 1);
 	}
 	sql += "\");";
-	sqlHelper.insertRecordIntoSqlite(sql.c_str());
+	sqlHelper.executeSql(sql.c_str());
 }
 
 void PropManager::loadPropData()

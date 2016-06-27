@@ -76,4 +76,20 @@ struct RankingConfig
 	int score;
 	int ownPetPercent;
 };
+
+struct ShopConfig
+{
+	int id;
+	int cost;
+	int diamond;
+	std::string iconPath;
+};
+
+struct PackageConfig
+{
+	int id;
+	int cost;
+	int award;
+	std::string titlePath;
+};
 #endif

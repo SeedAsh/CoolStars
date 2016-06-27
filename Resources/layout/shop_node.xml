@@ -1,8 +1,8 @@
-<layout width="350.000000" height="80.000000">
+<layout width="350.000000" height="62.000000">
 	<image>
 		<id>1</id>
 		<x>175.39</x>
-		<y>37.10</y>
+		<y>30.98</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -11,7 +11,7 @@
 	<image>
 		<id>2</id>
 		<x>35.89</x>
-		<y>32.04</y>
+		<y>28.03</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -20,7 +20,7 @@
 	<button>
 		<id>3</id>
 		<x>317.41</x>
-		<y>33.98</y>
+		<y>29.13</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -30,10 +30,10 @@
 	</button>
 	<imageNum>
 		<id>6</id>
-		<x>74.92</x>
-		<y>23.00</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<x>75.76</x>
+		<y>14.98</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>12</num>
@@ -42,9 +42,9 @@
 	<imageNum>
 		<id>7</id>
 		<x>192.69</x>
-		<y>24.06</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<y>14.98</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>12</num>

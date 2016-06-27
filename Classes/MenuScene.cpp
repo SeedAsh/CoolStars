@@ -19,6 +19,7 @@ using namespace std;
 
 bool MenuScene::init()
 {
+	setPanelId(kMainMenu);
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
@@ -135,7 +136,7 @@ void MenuScene::toSound(cocos2d::CCObject* pSender)
 void MenuScene::toHelpPanel(cocos2d::CCObject* pSender)
 {
 	auto panel = HelpPanel::create();
-	MainScene::theScene()->addDialog(panel);
+	MainScene::theScene()->showDialog(panel);
 }
 
 void MenuScene::toRankPanel(cocos2d::CCObject* pSender)

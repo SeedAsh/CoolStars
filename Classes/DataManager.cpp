@@ -25,6 +25,8 @@ void DataManager::LoadData()
 	loadCommonPetsConfig();
 	loadPropsConfig();
 	loadRankingConfig();
+	loadShopConfig();
+	loadPackageConfig();
 }
 
 void DataManager::loadStarsConfig()
@@ -239,6 +241,49 @@ void DataManager::loadRankingConfig()
 
 const RankingConfig &DataManager::getRankingConfig(int rank)
 {
-	assert(rank >= 0 && rank < m_rankingConfig.size());
+	assert(rank >= 0 && rank < (int)m_rankingConfig.size());
 	return m_rankingConfig[rank];
+}
+
+void DataManager::loadShopConfig()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from shop");
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		ShopConfig config;
+		config.id = atoi(data[0]);
+		config.cost = atoi(data[1]);
+		config.diamond = atoi(data[2]);
+		config.iconPath = atoi(data[3]);
+		m_shopConfig.push_back(config);
+	}
+}
+
+const vector<ShopConfig> &DataManager::getShopConfig()
+{
+	return m_shopConfig;
+}
+
+void DataManager::loadPackageConfig()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from package");
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		PackageConfig config;
+		config.id = atoi(data[0]);
+		config.cost = atoi(data[1]);
+		config.award = atoi(data[2]);
+		config.titlePath = data[3];
+		m_packageConfig.push_back(config);
+	}
+}
+
+const PackageConfig &DataManager::getPackageConfig(int type)
+{
+	assert(type >= 0 && type < (int)m_packageConfig.size());
+	return m_packageConfig[type];
 }

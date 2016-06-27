@@ -9,15 +9,6 @@
 		<path>lottery/cjjm_di.png</path>
 	</image>
 	<image>
-		<id>2</id>
-		<x>275.64</x>
-		<y>620.01</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-		<path>lottery/cjjm_x.png</path>
-	</image>
-	<image>
 		<id>3</id>
 		<x>198.82</x>
 		<y>622.98</y>
@@ -39,83 +30,74 @@
 		<id>6</id>
 		<x>63.96</x>
 		<y>461.30</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>7</id>
 		<x>207.46</x>
 		<y>460.24</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>8</id>
 		<x>343.17</x>
 		<y>464.25</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>9</id>
 		<x>61.63</x>
 		<y>327.49</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>10</id>
 		<x>206.84</x>
 		<y>330.45</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>11</id>
 		<x>344.43</x>
 		<y>333.83</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>12</id>
 		<x>63.96</x>
 		<y>210.57</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
 		<x>208.73</x>
 		<y>211.84</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>14</id>
 		<x>347.39</x>
 		<y>213.54</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
-	<label>
-		<id>15</id>
-		<x>322.49</x>
-		<y>622.13</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-		<text>text</text>
-	</label>
 	<button>
 		<id>16</id>
 		<x>59.11</x>
@@ -127,5 +109,16 @@
 		<selected>main_menu/zcd_anniu4.png</selected>
 		<disabled>main_menu/zcd_anniu4.png</disabled>
 	</button>
+	<imageNum>
+		<id>17</id>
+		<x>251.77</x>
+		<y>610.09</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+		<amount>11</amount>
+		<num>:5</num>
+		<path>lottery/cjjm_shuzi.png</path>
+	</imageNum>
 </layout>
 

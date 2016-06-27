@@ -21,7 +21,7 @@ public:
 
 	void openDB(const char* dbPath);
 	void createTable(const char *sql_str);
-	void insertRecordIntoSqlite(const char *sql_str);
+	void executeSql(const char *sql_str);
 	std::vector<std::vector<char *>> readRecord(const char *sql_str);
 	void clearTable(const char *tabelName);
 	void closeDB();

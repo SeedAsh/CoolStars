@@ -80,7 +80,7 @@ void SqliteHelper::createTable(const char *sql_str)
 	}
 }
 
-void SqliteHelper::insertRecordIntoSqlite(const char *sql_str)
+void SqliteHelper::executeSql(const char *sql_str)
 {
 	char *perrMsg = 0;
 	int info = sqlite3_exec(m_pGameDataBase,

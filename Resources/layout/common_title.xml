@@ -100,7 +100,7 @@
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
-		<amount>10</amount>
+		<amount>11</amount>
 		<num>12</num>
 		<path>common/cwjm_shuzi7.png</path>
 	</imageNum>
@@ -111,7 +111,7 @@
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
-		<amount>10</amount>
+		<amount>11</amount>
 		<num>12</num>
 		<path>common/cwjm_shuzi7.png</path>
 	</imageNum>
@@ -122,7 +122,7 @@
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
-		<amount>10</amount>
+		<amount>11</amount>
 		<num>12</num>
 		<path>common/cwjm_shuzi7.png</path>
 	</imageNum>

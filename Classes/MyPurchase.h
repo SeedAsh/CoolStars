@@ -1,6 +1,7 @@
 #ifndef __MY_PURCHASE_H__
 #define __MY_PURCHASE_H__
 
+/*
 #include "cocos2d.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) 
 #include <jni.h> 
@@ -42,5 +43,5 @@ private:
 	virtual ~MyPurchase();
 	static MyPurchase* s_pPurchase;
 };
-
+*/
 #endif

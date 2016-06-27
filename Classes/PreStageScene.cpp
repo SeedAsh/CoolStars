@@ -12,6 +12,8 @@ using namespace std;
 
 bool PreStageScene::init()
 {
+	setPanelId(kPreStagePanel);
+
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
@@ -61,4 +63,5 @@ void PreStageScene::toStartGame(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 	MainScene::theScene()->showPanel(kStageView);
+	MainScene::theScene()->clearPanelRecord();
 }

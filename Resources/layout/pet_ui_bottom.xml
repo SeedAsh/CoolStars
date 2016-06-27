@@ -1,5 +1,16 @@
 <layout width="480.000000" height="208.000000">
 	<button>
+		<id>1</id>
+		<x>46.98</x>
+		<y>42.09</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
+		<normal>common/back_home.png</normal>
+		<selected>common/back_home.png</selected>
+		<disabled>common/back_home.png</disabled>
+	</button>
+	<button>
 		<id>2</id>
 		<x>133.13</x>
 		<y>32.60</y>

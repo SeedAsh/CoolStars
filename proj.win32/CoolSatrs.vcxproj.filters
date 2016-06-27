@@ -69,9 +69,6 @@
     <ClCompile Include="..\Classes\SoundMgr.cpp">
       <Filter>GameModel</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\QuickBuyScene.cpp">
-      <Filter>Shop</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\DataManager.cpp">
       <Filter>GameModel</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
     <ClCompile Include="..\Classes\UserInfo.cpp">
       <Filter>GameModel</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ConfirmLayer.cpp">
-      <Filter>Shop</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\MenuScene.cpp">
       <Filter>MainMenu</Filter>
     </ClCompile>
@@ -92,12 +86,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\StageScene.cpp">
       <Filter>GameStage\StageUi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ExitLayer.cpp">
-      <Filter>MainMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\LoginLayer.cpp">
-      <Filter>MainMenu</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\StageUiLayer.cpp">
       <Filter>GameStage\StageUi</Filter>
@@ -287,9 +275,6 @@
     <ClInclude Include="..\Classes\SoundMgr.h">
       <Filter>GameModel</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\QuickBuyScene.h">
-      <Filter>Shop</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\DataManager.h">
       <Filter>GameModel</Filter>
     </ClInclude>
@@ -299,9 +284,6 @@
     <ClInclude Include="..\Classes\UserInfo.h">
       <Filter>GameModel</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ConfirmLayer.h">
-      <Filter>Shop</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\MenuScene.h">
       <Filter>MainMenu</Filter>
     </ClInclude>
@@ -310,12 +292,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StageScene.h">
       <Filter>GameStage\StageUi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ExitLayer.h">
-      <Filter>MainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoginLayer.h">
-      <Filter>MainMenu</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StageUiLayer.h">
       <Filter>GameStage\StageUi</Filter>

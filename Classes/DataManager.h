@@ -49,6 +49,12 @@ public:
 
 	void loadRankingConfig();
 	const RankingConfig &getRankingConfig(int rank);
+
+	void loadShopConfig();
+	const std::vector<ShopConfig> &getShopConfig();
+
+	void loadPackageConfig();
+	const PackageConfig &getPackageConfig(int type);
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
@@ -57,6 +63,8 @@ private:
 	SystemConfig m_systemConfig;
 	vector<PropsConfig> m_propsConfig;
 	vector<RankingConfig> m_rankingConfig;
+	vector<ShopConfig> m_shopConfig;
+	vector<PackageConfig> m_packageConfig;
 };
 
 #endif

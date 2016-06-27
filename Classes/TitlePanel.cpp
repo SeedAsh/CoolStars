@@ -5,14 +5,30 @@
 #include "MainScene.h"
 #include "CommonMacros.h"
 #include "PackageScene.h"
+#include "UserInfo.h"
+#include "CommonUtil.h"
 USING_NS_CC;
 using namespace std;
+using namespace CommonUtil;
+
 TitlePanel *TitlePanel::create(int touchPriority)
 {
 	auto panel = new TitlePanel(touchPriority);
 	panel->init();
 	panel->autorelease();
 	return panel;
+}
+
+void TitlePanel::onEnter()
+{
+	CCNode::onEnter();
+	UserInfo::theInfo()->addView(this);
+}
+
+void TitlePanel::onExit()
+{
+	CCNode::onExit();
+	UserInfo::theInfo()->addView(this);
 }
 
 bool TitlePanel::init()
@@ -44,6 +60,17 @@ void TitlePanel::initTopLayout()
 
 	CCMenuItem *addDiamondBtn = dynamic_cast<CCMenuItem *>(m_topLayout->getChildById(6));
 	addDiamondBtn->setTarget(this, menu_selector(TitlePanel::onAddDiamondBtnClicked));
+
+	auto theInfo = UserInfo::theInfo();
+	CCLabelAtlas *strengthNum = dynamic_cast<CCLabelAtlas *>(m_topLayout->getChildById(16));
+	strengthNum->setString(intToStr(theInfo->getStrength()));
+
+	CCLabelAtlas *foodNum = dynamic_cast<CCLabelAtlas *>(m_topLayout->getChildById(17));
+	foodNum->setString(intToStr(theInfo->getFood()));
+
+	CCLabelAtlas *diamondNum = dynamic_cast<CCLabelAtlas *>(m_topLayout->getChildById(18));
+	diamondNum->setString(intToStr(theInfo->getDiamond()));
+
 }
 
 void TitlePanel::initBottomLayout()
@@ -55,17 +82,18 @@ void TitlePanel::initBottomLayout()
 void TitlePanel::onAddStrengthBtnClicked(cocos2d::CCObject* pSender)
 {
 	auto dialog = PackageDialog::create(kPackageStrength);
-	MainScene::theScene()->addDialog(dialog);
+	MainScene::theScene()->showDialog(dialog);
 }
 
 void TitlePanel::onAddDiamondBtnClicked(cocos2d::CCObject* pSender)
 {
 	auto dialog = PackageDialog::create(kPackageDiamond);
-	MainScene::theScene()->addDialog(dialog);
+	MainScene::theScene()->showDialog(dialog);
 }
 
 void TitlePanel::onBackHomeBtnClicked(cocos2d::CCObject* pSender)
 {
+	MainScene::theScene()->clearPanelRecord();
 	MainScene::theScene()->showPanel(kMainMenu);
 }
 
@@ -98,5 +126,35 @@ void TitlePanel::setUiVisible(int who, bool isVisible)
 	}
 }
 
+void TitlePanel::onDiamondChanged()
+{
+	CCLabelAtlas *diamondNum = dynamic_cast<CCLabelAtlas *>(m_topLayout->getChildById(18));
+	diamondNum->setString(intToStr(UserInfo::theInfo()->getDiamond()));
+	diamondNum->runAction(getScaleAction());
+}
+
+void TitlePanel::onFoodChanged()
+{
+	CCLabelAtlas *foodNum = dynamic_cast<CCLabelAtlas *>(m_topLayout->getChildById(17));
+	foodNum->setString(intToStr(UserInfo::theInfo()->getFood()));
+	foodNum->runAction(getScaleAction());
+
+}
+
+void TitlePanel::onStrengthChanged()
+{
+	CCLabelAtlas *strengthNum = dynamic_cast<CCLabelAtlas *>(m_topLayout->getChildById(16));
+	strengthNum->setString(intToStr(UserInfo::theInfo()->getStrength()));
+	strengthNum->runAction(getScaleAction());
+}
+
+CCAction *TitlePanel::getScaleAction()
+{
+	CCScaleTo *scaleLarge = CCScaleTo::create(0.15f, 1.5f);
+	CCScaleTo *scaleSmall = CCScaleTo::create(0.25f, 0.8f);
+	CCScaleTo *scaleNormal = CCScaleTo::create(0.1f, 1.0f);
+	CCSequence *seq = CCSequence::create(scaleLarge, scaleSmall, scaleNormal, NULL);
+	return seq;
+}
 
 

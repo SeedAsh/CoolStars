@@ -3,10 +3,11 @@
 #include "TitlePanel.h"
 #include "ListView.h"
 #include "EmptyBox.h"
+#include "CommonMacros.h"
+#include "MainScene.h"
 
 USING_NS_CC;
 using namespace std;
-
 
 bool LotteryNode::init()
 {
@@ -16,8 +17,23 @@ bool LotteryNode::init()
 	return true;
 }
 
+
+void LotteryScene::onEnter()
+{
+	BasePanel::onEnter();
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, m_touchPriority, true);
+}
+
+void LotteryScene::onExit()
+{
+	BasePanel::onExit();
+	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+}
+
 bool LotteryScene::init()
 {
+	setPanelId(kLotteryPanel);
+
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
@@ -61,7 +77,7 @@ void LotteryScene::initBottomLayout()
 
 void LotteryScene::toPetScene(CCObject* pSender)
 {
-
+	MainScene::theScene()->showPanel(kPetPanel);
 }
 
 void LotteryScene::startLottery(CCObject* pSender)
@@ -69,3 +85,7 @@ void LotteryScene::startLottery(CCObject* pSender)
 
 }
 
+bool LotteryScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+{
+	return true;
+}

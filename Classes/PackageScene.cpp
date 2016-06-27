@@ -2,6 +2,9 @@
 #include "UiLayout.h"
 #include "MenuScene.h"
 #include "TitlePanel.h"
+#include "DataManager.h"
+#include "UserInfo.h"
+#include "CommonMacros.h"
 
 USING_NS_CC;
 using namespace std;
@@ -39,6 +42,12 @@ void PackageView::initLayout()
 
 	CCMenuItem *buyBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(5)));
 	buyBtn->setTarget(this, menu_selector(PackageView::onBuyBtnClicked));
+	
+	auto config = DataManagerSelf->getPackageConfig(m_type);
+	CCSprite *title = dynamic_cast<CCSprite *>((m_layout->getChildById(3)));
+	title->initWithFile(config.titlePath.c_str());
+
+
 }
 
 void PackageView::onCancelBtnClicked(cocos2d::CCObject* pSender)
@@ -51,6 +60,7 @@ void PackageView::onCancelBtnClicked(cocos2d::CCObject* pSender)
 
 void PackageView::onBuyBtnClicked(cocos2d::CCObject* pSender)
 {
+	UserInfo::theInfo()->setDiamond(200);
 	if (m_handle)
 	{
 		m_handle();
@@ -60,6 +70,8 @@ void PackageView::onBuyBtnClicked(cocos2d::CCObject* pSender)
 
 bool PackageScene::init()
 {
+	setPanelId(kPackagePanel);
+
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 

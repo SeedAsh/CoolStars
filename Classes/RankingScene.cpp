@@ -4,12 +4,15 @@
 #include "ListView.h"
 #include "ListSlideView.h"
 #include "RankingPanelUtil.h"
+#include "CommonMacros.h"
 
 USING_NS_CC;
 using namespace std;
 
 bool RankingScene::init()
 {
+	setPanelId(kRankingPanel);
+
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
@@ -35,8 +38,13 @@ void RankingScene::initMainLayout()
 	rankList->setAnchorPoint(ccp(0, 1));
 	rankList->setPosition(pos);
 	rankList->setSpacing(10);
-
-	for (int i = 0; i < 10; ++i)
+	/*
+	sort(configs.begin(), configs.end(), [=](ShopConfig config1, ShopConfig config2)->bool
+	{
+		return config1.diamond > config2.diamond;
+	});
+	*/
+	for (int i = 10; i >= 0; --i)
 	{
 		rankList->addNode(RankingNode::create(i));
 	}

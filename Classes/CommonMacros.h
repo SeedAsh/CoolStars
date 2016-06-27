@@ -34,6 +34,7 @@ enum EraseType
 
 enum PanelId
 {
+	kDefaultPanel,
 	kMainMenu,
 	kPetPanel,
 	kShopPanel,

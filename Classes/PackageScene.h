@@ -9,11 +9,11 @@ class UiLayout;
 
 enum PackageType
 {
+	kPackPause,
+	kPackageStrength,
 	kPackageStep,
 	kPackageProps,
-	kPackageStrength,
 	kPackageDiamond,
-	kPackPause,
 };
 
 class PackageView: public cocos2d::CCNode

@@ -137,11 +137,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\CCFunctionAction.cpp" />
     <ClCompile Include="..\Classes\CCUserDefaultEx.cpp" />
     <ClCompile Include="..\Classes\CommonUtil.cpp" />
-    <ClCompile Include="..\Classes\ConfirmLayer.cpp" />
     <ClCompile Include="..\Classes\DataCheck.cpp" />
     <ClCompile Include="..\Classes\DataManager.cpp" />
     <ClCompile Include="..\Classes\EmptyBox.cpp" />
-    <ClCompile Include="..\Classes\ExitLayer.cpp" />
     <ClCompile Include="..\Classes\GameData.cpp" />
     <ClCompile Include="..\Classes\GameDataPreLoader.cpp" />
     <ClCompile Include="..\Classes\GameResultLayer.cpp" />
@@ -150,7 +148,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\ListSlideView.cpp" />
     <ClCompile Include="..\Classes\ListView.cpp" />
     <ClCompile Include="..\Classes\LogicGridUtil.cpp" />
-    <ClCompile Include="..\Classes\LoginLayer.cpp" />
     <ClCompile Include="..\Classes\LotteryScene.cpp" />
     <ClCompile Include="..\Classes\MainScene.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
@@ -168,7 +165,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PreStageScene.cpp" />
     <ClCompile Include="..\Classes\PropItemView.cpp" />
     <ClCompile Include="..\Classes\PropManager.cpp" />
-    <ClCompile Include="..\Classes\QuickBuyScene.cpp" />
     <ClCompile Include="..\Classes\RankingModel.cpp" />
     <ClCompile Include="..\Classes\RankingPanelUtil.cpp" />
     <ClCompile Include="..\Classes\RankingScene.cpp" />
@@ -212,12 +208,10 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\CommonMacros.h" />
     <ClInclude Include="..\Classes\CommonUtil.h" />
     <ClInclude Include="..\Classes\ConfData.h" />
-    <ClInclude Include="..\Classes\ConfirmLayer.h" />
     <ClInclude Include="..\Classes\DataCheck.h" />
     <ClInclude Include="..\Classes\DataConfig.h" />
     <ClInclude Include="..\Classes\DataManager.h" />
     <ClInclude Include="..\Classes\EmptyBox.h" />
-    <ClInclude Include="..\Classes\ExitLayer.h" />
     <ClInclude Include="..\Classes\GameData.h" />
     <ClInclude Include="..\Classes\GameDataPreLoader.h" />
     <ClInclude Include="..\Classes\GameResultLayer.h" />
@@ -226,7 +220,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\ListSlideView.h" />
     <ClInclude Include="..\Classes\ListView.h" />
     <ClInclude Include="..\Classes\LogicGridUtil.h" />
-    <ClInclude Include="..\Classes\LoginLayer.h" />
     <ClInclude Include="..\Classes\LotteryScene.h" />
     <ClInclude Include="..\Classes\MainScene.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
@@ -245,7 +238,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PreStageScene.h" />
     <ClInclude Include="..\Classes\PropItemView.h" />
     <ClInclude Include="..\Classes\PropManager.h" />
-    <ClInclude Include="..\Classes\QuickBuyScene.h" />
     <ClInclude Include="..\Classes\RankingModel.h" />
     <ClInclude Include="..\Classes\RankingPanelUtil.h" />
     <ClInclude Include="..\Classes\RankingScene.h" />

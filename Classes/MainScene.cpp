@@ -54,6 +54,7 @@ void MainScene::addUiPanel(BasePanel *panel, bool closeBehind)
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	if (panel != NULL)
 	{
+		recordPanel(panel->getPanelId(), panel->getUsage());
 		if (closeBehind)
 		{
 			m_uiLayer->removeAllChildrenWithCleanup(true);
@@ -63,6 +64,37 @@ void MainScene::addUiPanel(BasePanel *panel, bool closeBehind)
 		panel->setPosition(ccpMult(winSize, 0.5f));
 		m_uiLayer->addChild(panel);
 	}
+}
+
+void MainScene::backPanel()
+{
+	if (!m_panelRecord.empty())
+	{
+		m_panelRecord.pop_back();
+	}
+
+	if (!m_panelRecord.empty())
+	{
+		auto record = m_panelRecord.back();
+		showPanel(record.panelId);
+	}
+}
+
+void MainScene::recordPanel(int panelId, int usage)
+{
+	if (panelId == kDefaultPanel) return;
+	for (auto iter = m_panelRecord.begin(); iter != m_panelRecord.end(); ++iter)
+	{
+		if (iter->panelId == panelId && iter->usage == usage)
+		{
+			return;
+		}
+	}
+
+	PanelRecord record;
+	record.panelId = panelId;
+	record.usage = usage;
+	m_panelRecord.push_back(record);
 }
 
 void MainScene::showPanel(int panelId, bool closeBehind)
@@ -102,7 +134,7 @@ void MainScene::showPanel(int panelId, bool closeBehind)
 	addUiPanel(panel, closeBehind);
 }
 
-void MainScene::addDialog(ScaleDialog *dialog)
+void MainScene::showDialog(ScaleDialog *dialog)
 {
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	dialog->setAnchorPoint(ccp(0.5f, 0.5f));
@@ -110,7 +142,3 @@ void MainScene::addDialog(ScaleDialog *dialog)
 	m_dialogLayer->addChild(dialog);
 }
 
-void MainScene::backPanel()
-{
-
-}

@@ -17,18 +17,21 @@ private:
 
 class LotteryScene 
 	: public BasePanel
+	, cocos2d::CCTouchDelegate
 {
 public:
 	CREATE_FUNC(LotteryScene);
 	virtual bool init();
 private:
+	virtual void onEnter();
+	virtual void onExit();
 	LotteryScene(){}
 	~LotteryScene(){}
 	void initLayout();
 	void initBottomLayout();
 	void toPetScene(cocos2d::CCObject* pSender);
 	void startLottery(cocos2d::CCObject* pSender);
-
+	bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 private:
 	UiLayout *m_layout;
 	UiLayout *m_bottomLayout;

@@ -8,10 +8,16 @@ class BasePanel
 public:
 	virtual bool init();
 	virtual ~BasePanel(){}
+	int getPanelId(){ return m_panelId; }
+	int getUsage(){ return m_usage; }
 protected:
 	BasePanel();
+	void setPanelId(int panelId){ m_panelId = panelId; }
+	void setUsage(int usage){ m_usage = usage; }
 protected:
 	int m_touchPriority;
+	int m_panelId;
+	int m_usage;
 private:
 	
 };

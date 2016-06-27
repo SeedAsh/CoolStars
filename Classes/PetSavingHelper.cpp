@@ -42,7 +42,7 @@ void PetSavingHelper::recordCurActivePets()
 	}
 	sql += ");";
 
-	sqlHelper.insertRecordIntoSqlite(sql.c_str());
+	sqlHelper.executeSql(sql.c_str());
 }
 
 vector<int> PetSavingHelper::getCurActivePets()

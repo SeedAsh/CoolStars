@@ -19,12 +19,14 @@ public:
 	bool init();
 
 	void showPanel(int panelId, bool closeBehind = true);
-	void addDialog(ScaleDialog *dialog);
+	void showDialog(ScaleDialog *dialog);
 	void backPanel();
+	void clearPanelRecord(){ m_panelRecord.clear(); }
 private:
 	MainScene(){}
 	~MainScene(){}
 	void addUiPanel(BasePanel *panel, bool closeBehind);
+	void recordPanel(int panelId, int usage);
 private:
 	static MainScene *s_scene;
 	std::deque<PanelRecord> m_panelRecord;
