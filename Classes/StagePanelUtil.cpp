@@ -26,7 +26,7 @@ bool StagePetSkillPanel::init()
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
 		auto petModel = PetManager::petMgr()->getPetById(ids[i]);
-		string skillIcon = petModel->getPetData().skillResPath;
+		string skillIcon = petModel->getPetData().petSkillRes;
 		
 		CCSprite *skillSpr = CCSprite::create(skillIcon.c_str());
 		auto node = dynamic_cast<EmptyBox *>((m_layout->getChildById(uiIds[i])));

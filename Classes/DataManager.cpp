@@ -22,7 +22,8 @@ void DataManager::LoadData()
 	loadStageConfig();
 	loadStarsConfig();
 	loadStarsColorConfig();
-	loadCommonPetsConfig();
+	loadPetCommonConfig();
+	loadPetResConfig();
 	loadPropsConfig();
 	loadRankingConfig();
 	loadShopConfig();
@@ -65,15 +66,14 @@ const StarsConfig &DataManager::getStarsConfig(int starType)
 	}
 }
 
-void DataManager::loadCommonPetsConfig()
+void DataManager::loadPetCommonConfig()
 {
 	SqliteHelper helper(DB_COOLSTAR);
-	auto result = helper.readRecord("select * from common_pets");
+	auto result = helper.readRecord("select * from pets_common");
 
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
-		PetsConfig config;
-		assert((*iter).size() == 8);
+		PetCommonConfig config;
 
 		auto data = *iter;
 		config.id = atoi(data[0]);
@@ -83,29 +83,42 @@ void DataManager::loadCommonPetsConfig()
 		assert(config.skillPower.size() == MAX_PET_LEVEL);
 		config.foodToUpgrade = parseStrToInts(data[3]);
 		assert(config.foodToUpgrade.size() == MAX_PET_LEVEL);
-		string path = data[4];
-		config.skillResPath = data[5];
-		config.skillTarget = atoi(data[6]);
-		config.desc = atoi(data[7]);
-
-		char chars[10] = { 0 };
-		for (int i = kColorRed; i <= kColorPurple; ++i)
-		{
-			sprintf(chars, "%d", i);
-			string str = path;
-			str.replace(str.find("*"), 1, chars);
-			config.petResPaths.push_back(str);
-		}
-
-		m_petsConfig.push_back(config);
-
+		config.skillTarget = atoi(data[4]);
+		config.desc = atoi(data[5]);
+		m_petCommonConfig.push_back(config);
 	}
 }
 
-const PetsConfig &DataManager::getCommonPetsConfig(int petId)
+const PetCommonConfig &DataManager::getPetCommonConfig(int petCommonId)
 {
-	assert(petId > 0 && petId <= COMMON_PETS_AMOUNT);
-	return m_petsConfig[petId - 1];
+	assert(petCommonId > 0 && petCommonId <= COMMON_PETS_AMOUNT);
+	return m_petCommonConfig[petCommonId - 1];
+}
+
+void DataManager::loadPetResConfig()
+{
+	SqliteHelper helper(DB_COOLSTAR);
+	auto result = helper.readRecord("select * from pets_res");
+
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		PetResConfig config;
+
+		auto data = *iter;
+		config.id = atoi(data[0]);
+		config.commonId = atoi(data[1]);
+		config.color = atoi(data[2]);
+		config.petImgRes = data[3];
+		config.skillRes = data[4];
+		config.petAnimationRes = data[5];
+		m_petResConfig.push_back(config);
+	}
+}
+
+const PetResConfig &DataManager::getPetResConfig(int petId)
+{
+	assert(petId > 0 && petId <= PETS_AMOUNT);
+	return m_petResConfig[petId - 1];
 }
 
 void DataManager::loadStageConfig()
@@ -130,7 +143,7 @@ void DataManager::loadStageConfig()
 
 const StageConfig &DataManager::getStageConfig(int stage)
 {
-	assert(stage > 0 && stage <= (int)m_petsConfig.size());
+	assert(stage > 0 && stage <= (int)m_stagesConfig.size());
 	return m_stagesConfig[stage - 1];
 }
 

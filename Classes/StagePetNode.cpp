@@ -38,7 +38,7 @@ StagePetNode *StagePetNode::create(int petId, int touchPriority)
 
 bool StagePetNode::init()
 {
-	string iconPath = m_model->getPetData().petResPath;
+	string iconPath = m_model->getPetData().petImgRes;
 
 	m_layout = UiLayout::create("layout/stage_pet_node.xml");
 	auto size = m_layout->getContentSize();

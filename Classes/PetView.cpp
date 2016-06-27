@@ -28,7 +28,7 @@ PetView *PetView::create(int petId)
 
 bool PetView::init()
 {
-	string iconPath = m_model->getPetData().petResPath;
+	string iconPath = m_model->getPetData().petImgRes;
 
 	auto spr = CCSprite::create(iconPath.c_str());
 	CCSize size = spr->getContentSize();

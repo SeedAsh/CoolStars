@@ -17,16 +17,17 @@ PetEntity::~PetEntity()
 
 void PetEntity::refreshPetData()
 {
-	auto commonData = DataManagerSelf->getCommonPetsConfig(m_data.commonid);
+	auto petRes = DataManagerSelf->getPetResConfig(m_data.petId);
+	m_data.petImgRes = petRes.petImgRes;
+	m_data.petSkillRes = petRes.skillRes;
+	m_data.petAnimationRes = petRes.petAnimationRes;
 
-	m_data.petResPath = commonData.petResPaths[m_data.color - 1];
-	m_data.skillResPath = commonData.skillResPath;
-	m_data.skillTarget = commonData.skillTarget;
-
+	auto commonData = DataManagerSelf->getPetCommonConfig(m_data.commonid);
 	int level = m_data.level;
 	m_data.maxEnergy = (level > 0 ? commonData.maxEnergy[level - 1] : 0);
 	m_data.skillPower = (level > 0 ? commonData.skillPower[level - 1] : 0);
 	m_data.foodToUpgrade = (level > 0 ? commonData.foodToUpgrade[level - 1] : 0);
+	m_data.skillTarget = commonData.skillTarget;
 }
 
 PetEntity *PetEntity::PetFactory(int petId)

@@ -9,6 +9,14 @@
 USING_NS_CC;
 using namespace std;
 
+LotteryNode *LotteryNode::create(int touchPriority)
+{
+	auto node = new LotteryNode(touchPriority);
+	node->init();
+	node->autorelease();
+	return node;
+}
+
 bool LotteryNode::init()
 {
 	m_layout = UiLayout::create("layout/lottery_node.xml");
@@ -16,18 +24,24 @@ bool LotteryNode::init()
 	setContentSize(m_layout->getContentSize());
 	return true;
 }
+bool LotteryNode::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
+{
+	if (isInside)
+	{
+		CCMessageBox("test", "title");
+	}
+	return isInside;
+}
 
-
+////////////////////////////////////////////////////////////////
 void LotteryScene::onEnter()
 {
 	BasePanel::onEnter();
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, m_touchPriority, true);
 }
 
 void LotteryScene::onExit()
 {
 	BasePanel::onExit();
-	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 }
 
 bool LotteryScene::init()
@@ -64,7 +78,7 @@ void LotteryScene::initLayout()
 	for (int i = 0; i < 9; ++i)
 	{
 		EmptyBox *box = dynamic_cast<EmptyBox *>((m_layout->getChildById(boxIds[i])));
-		auto node = LotteryNode::create();
+		auto node = LotteryNode::create(m_touchPriority);
 		box->setNode(node);
 	}
 }
@@ -83,9 +97,4 @@ void LotteryScene::toPetScene(CCObject* pSender)
 void LotteryScene::startLottery(CCObject* pSender)
 {
 
-}
-
-bool LotteryScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
-{
-	return true;
 }

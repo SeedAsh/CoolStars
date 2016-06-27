@@ -11,8 +11,9 @@ struct PetData
 	int petId;
 	int commonid;
 	int color;
-	std::string petResPath;
-	std::string skillResPath;
+	std::string petImgRes;
+	std::string petSkillRes;
+	std::string petAnimationRes;
 	int skillTarget;
 	//升级后变化
 	int maxEnergy;

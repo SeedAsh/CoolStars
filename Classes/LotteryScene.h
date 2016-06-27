@@ -2,22 +2,25 @@
 #define __LOTTERYSCENE_H__ 
 #include "cocos2d.h"
 #include "BasePanel.h"
+#include "TouchNode.h"
 
 class UiLayout;
 
 class LotteryNode
-	: public cocos2d::CCNode
+	: public TouchNode
 {
 public:
-	CREATE_FUNC(LotteryNode);
+	static LotteryNode *create(int touchPriority);
 	virtual bool init();
+private:
+	LotteryNode(int touchPriority):TouchNode(touchPriority){}
+	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
 private:
 	UiLayout *m_layout;
 };
 
 class LotteryScene 
 	: public BasePanel
-	, cocos2d::CCTouchDelegate
 {
 public:
 	CREATE_FUNC(LotteryScene);
@@ -31,10 +34,8 @@ private:
 	void initBottomLayout();
 	void toPetScene(cocos2d::CCObject* pSender);
 	void startLottery(cocos2d::CCObject* pSender);
-	bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 private:
 	UiLayout *m_layout;
 	UiLayout *m_bottomLayout;
-
 };
 #endif

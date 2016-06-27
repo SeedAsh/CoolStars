@@ -38,8 +38,11 @@ public:
 	void loadStarsColorConfig();
 	const StarsColorConfig &getStarsColorConfig(int color);
 
-	void loadCommonPetsConfig();
-	const PetsConfig &getCommonPetsConfig(int petId);
+	void loadPetCommonConfig();
+	const PetCommonConfig &getPetCommonConfig(int petCommonId);
+
+	void loadPetResConfig();
+	const PetResConfig &getPetResConfig(int petId);
 
 	void loadSystemConfig();
 	const SystemConfig &getSystemConfig();
@@ -58,7 +61,8 @@ public:
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
-	vector<PetsConfig> m_petsConfig;
+	vector<PetCommonConfig> m_petCommonConfig;
+	vector<PetResConfig> m_petResConfig;
 	vector<StarsColorConfig> m_starsColorConfig;
 	SystemConfig m_systemConfig;
 	vector<PropsConfig> m_propsConfig;

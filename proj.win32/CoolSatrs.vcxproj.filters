@@ -252,6 +252,9 @@
     <ClCompile Include="..\Classes\RankingPanelUtil.cpp">
       <Filter>Ranking</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\LotteryModel.cpp">
+      <Filter>Lottery</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -478,6 +481,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\RankingPanelUtil.h">
       <Filter>Ranking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LotteryModel.h">
+      <Filter>Lottery</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

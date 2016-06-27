@@ -20,16 +20,24 @@ struct StarsConfig
 	vector<int> eraseTypes;
 };
 
-struct PetsConfig
+struct PetCommonConfig
 {
 	int id;
 	vector<int> maxEnergy;
 	vector<int> skillPower;
 	vector<int> foodToUpgrade;
-	vector<string> petResPaths;
-	string skillResPath;
 	int skillTarget;
 	string desc;
+};
+
+struct PetResConfig
+{
+	int id;
+	int commonId;
+	int color;
+	string petImgRes;
+	string skillRes;
+	string petAnimationRes;
 };
 
 struct StageConfig
