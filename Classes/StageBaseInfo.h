@@ -2,6 +2,8 @@
 #define __STAGEBASEINFO_H__
 #include "cocos2d.h"
 #include "DataConfig.h"
+#include "CommonMacros.h"
+
 class StageBaseInfo
 {
 public:
@@ -23,6 +25,9 @@ public: //基本信息存取
 	int getCurStage(){ return m_curStage; }
 	void setCurStage(int stage){ m_curStage = stage; }
 	bool isTheLastStage();
+	//当前可挑战的最大关卡
+	int getTopStage(){ return m_topStage; }
+	void setTopStage(int stage){ m_topStage = stage; }
 
 	int getCurDirection();
 
@@ -30,11 +35,13 @@ public: //基本信息存取
 	void getStageStars(std::vector<std::vector<StageStarInfo>> &stars);
 	void init();
 	void doSave();
+	void reset(int gameType = kNormalType);
 private:
-	void reset();
+
 
 private:
 	int m_curStage;
+	int m_topStage;
 	int m_step;
 	int m_curScore;
 	int m_topScore;

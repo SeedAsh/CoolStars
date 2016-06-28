@@ -47,6 +47,12 @@ enum PanelId
 	kStageWinPanel,
 
 };
+
+enum GameType
+{
+	kNormalType,
+	kTreasureType,
+};
 #define NOTIFY_VIEWS(_FUNC_ ,...)						\
 for (size_t index = 0; index < m_views.size(); ++index) \
 {														\

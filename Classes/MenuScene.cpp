@@ -88,13 +88,15 @@ void MenuScene::initBottomLayout()
 void MenuScene::toNormalGame(CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	StageModel::theModel()->resetStage();
+	StageModel::theModel()->resetStage(kNormalType);
 	MainScene::theScene()->showPanel(kPreStagePanel);
 }
 
 void MenuScene::toTreasureGame(CCObject* pSender)
 {
-	CCMessageBox("toTreasureGame", "title");
+	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	StageModel::theModel()->resetStage(kTreasureType);
+	MainScene::theScene()->showPanel(kPreStagePanel);;
 }
 
 void MenuScene::drawLottery(cocos2d::CCObject* pSender)

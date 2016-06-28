@@ -7,8 +7,6 @@ USING_NS_CC;
 using namespace std;
 StageModel::StageModel()
 {
-	m_stageInfo.init();
-	resetStage();
 }
 
 StageModel::~StageModel()
@@ -43,14 +41,14 @@ void StageModel::initStarsData()
 	m_stageInfo.doSave();
 }
 
-void StageModel::resetStage()
+void StageModel::resetStage(int gameType)
 {
 	//reset nodes
 	for (auto iter = m_starNodes.begin(); iter != m_starNodes.end(); ++iter)
 	{
 		delete(*iter);
 	}
-	m_stageInfo.init();
+	m_stageInfo.reset(gameType);
 	m_starNodes.clear();
 	m_target.init();
 	m_starsLoader.init();

@@ -1,10 +1,10 @@
 #include "StageBaseInfo.h"
 #include "DataManager.h"
 #include "StageSavingHelper.h"
+#include "CommonUtil.h"
 
 StageBaseInfo::StageBaseInfo()
 {
-	reset();
 }
 
 int StageBaseInfo::getCurDirection()
@@ -26,17 +26,26 @@ int StageBaseInfo::getLeftSteps()
 	return max(leftStep, 0);
 }
 
-void StageBaseInfo::reset()
+void StageBaseInfo::reset(int gameType)
 {
 	m_step = 0;
 	m_curScore = 0;
 	m_curScoreBonus = 0;
+
+	if (gameType == kNormalType)
+	{
+		m_curStage = m_topStage;
+	}
+	else if (gameType == kTreasureType && m_topStage > 1)
+	{
+		m_curStage = CommonUtil::getRandomValue(1, m_topStage - 1);
+	}
 }
 
 void StageBaseInfo::init()
 {
-	reset();
 	StageSavingHelper::LoadLastSavedStageData();
+	reset();
 }
 
 void StageBaseInfo::toNextStage()

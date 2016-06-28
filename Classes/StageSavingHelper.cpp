@@ -104,7 +104,7 @@ void StageSavingHelper::LoadLastSavedStageData()
 	int topScore = atoi(result[0][2]);
 
 	auto stageInfo = stageModel->getStageInfo();
-	stageInfo->setCurStage(curStage);
+	stageInfo->setTopStage(curStage);
 	stageInfo->setTopScore(topScore);
 }
 
