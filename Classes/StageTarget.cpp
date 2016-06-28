@@ -36,7 +36,7 @@ void StageTarget::init()
 	auto info = StageModel::theModel()->getStageInfo();
 	auto config = DataManagerSelf->getStageConfig(info->getCurStage());
 	m_winType = config.tagetType;
-	m_erasedStarscore = config.targetScore;
+	m_targetScore = config.targetScore;
 	auto param = config.targetParam;
 
 	switch (m_winType)
@@ -72,7 +72,7 @@ void StageTarget::reset()
 {
 	m_winType = kEraseStars;
 
-	m_erasedStarscore = 0;
+	m_targetScore = 0;
 	m_targetGrid.x = 0; 
 	m_targetGrid.y = 0;
 
@@ -104,7 +104,7 @@ bool StageTarget::isReachTarget()
 bool StageTarget::isGetEnoughScore()
 {
 	auto stageInfo = StageModel::theModel()->getStageInfo();
-	return stageInfo->getCurScore() >= m_erasedStarscore;
+	return stageInfo->getCurScore() >= m_targetScore;
 }
 
 bool StageTarget::isErasedEnoughStars()

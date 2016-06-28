@@ -22,6 +22,7 @@ public:
 	bool isReachTarget();
 	void starErased(int starType, int color);
 	std::vector<EraseStarsData> getEraseStarsLeft();
+	int getTargetScore(){ return m_targetScore; }
 private:
 	void reset();
 
@@ -36,7 +37,7 @@ private:
 	};
 private:
 	int m_winType;
-	int m_erasedStarscore;
+	int m_targetScore;
 	std::vector<EraseStarsData> m_eraseStars;
 	LogicGrid m_targetGrid;
 };

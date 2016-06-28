@@ -70,7 +70,7 @@ void StageTargetView::onStepsChanged()
 	auto leftTarget = target->getEraseStarsLeft();
 	auto iter = find_if(leftTarget.begin(), leftTarget.end(), [=](EraseStarsData data)->bool
 	{
-		return data.starType == m_targetData.starType;
+		return data.starType == m_targetData.starType && data.color == m_targetData.color;
 	});
 
 	assert(iter != leftTarget.end());
