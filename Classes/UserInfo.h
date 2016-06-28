@@ -7,6 +7,7 @@ struct IUserInfoView
 	virtual void onFoodChanged(){}
 	virtual void onStrengthChanged(){}
 	virtual void onRuneStoneChanged(){}
+	virtual void onKeyChanged(){}
 };
 class UserInfo
 {
@@ -29,6 +30,9 @@ public:
 	void setRuneStone(int value);
 	int getRuneStone(){ return m_runeStone; }
 	
+	void setKey(int value);
+	int getKey(){ return m_key; }
+
 private:
 	UserInfo(){}
 private:
@@ -36,6 +40,7 @@ private:
 	int m_food;
 	int m_strength;
 	int m_runeStone; //符石
+	int m_key;
 	std::vector<IUserInfoView *>m_views;
 
 };

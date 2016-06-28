@@ -58,6 +58,13 @@ public:
 
 	void loadPackageConfig();
 	const PackageConfig &getPackageConfig(int type);
+
+	void loadLotteryPet();
+	const std::vector<LotteryPetConfig> &getLotteryPetConfig();
+	const LotteryPetConfig *getLotteryPetConfigByStage(int stage);
+
+	void loadLotteryOutput();
+	const std::vector<LotteryOutputConfig> &getLotteryOutputConfig();
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
@@ -69,6 +76,8 @@ private:
 	vector<RankingConfig> m_rankingConfig;
 	vector<ShopConfig> m_shopConfig;
 	vector<PackageConfig> m_packageConfig;
+	vector<LotteryPetConfig> m_lotteryPetConfig;
+	vector<LotteryOutputConfig> m_lotteryOutputConfig;
 };
 
 #endif

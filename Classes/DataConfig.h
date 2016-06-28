@@ -100,4 +100,19 @@ struct PackageConfig
 	int award;
 	std::string titlePath;
 };
+
+struct LotteryPetConfig
+{
+	int id;
+	int stage;
+	int petId;
+};
+
+struct LotteryOutputConfig
+{
+	int id;
+	int amount;
+	float percent;
+	std::string desc;
+};
 #endif

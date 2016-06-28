@@ -73,6 +73,18 @@ void UserInfo::setRuneStone(int value)
 	NOTIFY_VIEWS(onRuneStoneChanged);
 }
 
+void UserInfo::setKey(int value)
+{
+	m_key = value;
+
+	SqliteHelper sqlHelper(DB_SAVING);
+	char str[100] = { 0 };
+	sprintf(str, "update save_user_info set %s = '%d' where id = 1;", "key", m_key);
+	sqlHelper.executeSql(str);
+
+	NOTIFY_VIEWS(onKeyChanged);
+}
+
 void UserInfo::addView(IUserInfoView *view)
 {
 	auto iter = find(m_views.begin(), m_views.end(), view);

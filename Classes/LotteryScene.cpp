@@ -5,6 +5,7 @@
 #include "EmptyBox.h"
 #include "CommonMacros.h"
 #include "MainScene.h"
+#include "LotteryModel.h"
 
 USING_NS_CC;
 using namespace std;
@@ -28,7 +29,8 @@ bool LotteryNode::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 {
 	if (isInside)
 	{
-		CCMessageBox("test", "title");
+		auto data = LotteryModel::theModel()->doLottery();
+		CCLog("type = \"%d\", param = \"%d\"", data.type, data.param);
 	}
 	return isInside;
 }

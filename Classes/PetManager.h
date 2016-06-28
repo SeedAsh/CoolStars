@@ -12,6 +12,7 @@ public:
 	void init();
 	PetEntity *getPetById(int id);
 	std::vector<int> getOwnedPetIds();
+	std::vector<int> getNotOwnedPetIds();
 	bool ownThisPet(int id);
 
 	//当前选中的宠物 ，将在关卡里出现

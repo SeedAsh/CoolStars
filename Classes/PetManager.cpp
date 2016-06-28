@@ -46,6 +46,20 @@ vector<int> PetManager::getOwnedPetIds()
 	return ids;
 }
 
+vector<int> PetManager::getNotOwnedPetIds()
+{
+	vector<int> ids;
+	for (auto iter = m_pets.begin(); iter != m_pets.end(); ++iter)
+	{
+		int petId = iter->first;
+		if (!ownThisPet(petId))
+		{
+			ids.push_back(iter->first);
+		}
+	}
+	return ids;
+}
+
 bool PetManager::ownThisPet(int id)
 {
 	auto pet = getPetById(id);

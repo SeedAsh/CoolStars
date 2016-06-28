@@ -1,4 +1,5 @@
 #include "CommonUtil.h"
+#include <algorithm>
 using namespace cocos2d;
 using namespace std;
 vector<string> CommonUtil::split(string str, string pattern)
@@ -39,13 +40,29 @@ const char *CommonUtil::intToStr(int value)
 	return str;
 }
 
-//end 不超过1000
+//end 不超过10000
 int CommonUtil::getRandomValue(int begin, int end)
 {
 	assert(begin <= end);
-	return ((int)(CCRANDOM_0_1() * 1000)) % (end - begin + 1) + begin;
+	return ((int)(CCRANDOM_0_1() * 10000)) % (end - begin + 1) + begin;
 }
 
+int CommonUtil::getResultByPercent(const std::vector<float> &percents)
+{
+	assert(!percents.empty());
+	float result = getRandomValue(1, 10000) / 100;
+	float curPercent = 0;
+	for (int i = 0; i < percents.size(); ++i)
+	{
+		curPercent += percents[i];
+		if (curPercent >= result)
+		{
+			return i;
+		}
+	}
+
+	return 0; 
+}
 
 bool CommonUtil::floatEqual(float v1, float v2)
 {
@@ -72,4 +89,12 @@ vector<int> CommonUtil::buildRandomSequence(int length)
 	}
 
 	return seq;
+}
+
+vector<int> CommonUtil::getDifference(const std::vector<int> &v1, const std::vector<int> &v2)
+{
+	vector<int> result(v1.size());
+	auto iter = set_difference(v1.begin(), v1.end(), v2.begin(), v2.end(), result.begin());
+
+	return vector<int>(result.begin(), iter);
 }

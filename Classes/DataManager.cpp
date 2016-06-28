@@ -28,6 +28,8 @@ void DataManager::LoadData()
 	loadRankingConfig();
 	loadShopConfig();
 	loadPackageConfig();
+	loadLotteryPet();
+	loadLotteryOutput();
 }
 
 void DataManager::loadStarsConfig()
@@ -299,4 +301,63 @@ const PackageConfig &DataManager::getPackageConfig(int type)
 {
 	assert(type >= 0 && type < (int)m_packageConfig.size());
 	return m_packageConfig[type];
+}
+
+void DataManager::loadLotteryPet()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from lottery_pet");
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		LotteryPetConfig config;
+		config.id = atoi(data[0]);
+		config.stage = atoi(data[1]);
+		config.petId = atoi(data[2]);
+
+		m_lotteryPetConfig.push_back(config);
+	}
+	sort(m_lotteryPetConfig.begin(), m_lotteryPetConfig.end(), [=](LotteryPetConfig config1, LotteryPetConfig config2)->bool
+	{
+		return config1.stage < config2.stage;
+	});
+}
+
+const LotteryPetConfig *DataManager::getLotteryPetConfigByStage(int stage)
+{
+	for (auto iter = m_lotteryPetConfig.begin(); iter != m_lotteryPetConfig.end(); ++iter)
+	{
+		if (iter->stage == stage)
+		{
+			return &(*iter);
+		}
+	}
+	return NULL;
+}
+
+const std::vector<LotteryPetConfig> &DataManager::getLotteryPetConfig()
+{
+	return m_lotteryPetConfig;
+}
+
+void DataManager::loadLotteryOutput()
+{
+	SqliteHelper sqlHelper(DB_COOLSTAR);
+	auto result = sqlHelper.readRecord("select * from lottery_output");
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		LotteryOutputConfig config;
+		config.id = atoi(data[0]);
+		config.amount = atoi(data[1]);
+		config.percent = atof(data[2]);
+		config.desc = data[3];
+
+		m_lotteryOutputConfig.push_back(config);
+	}
+}
+
+const vector<LotteryOutputConfig> &DataManager::getLotteryOutputConfig()
+{
+	return m_lotteryOutputConfig;
 }

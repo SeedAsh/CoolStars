@@ -11,6 +11,9 @@ namespace CommonUtil
 	int getRandomValue(int begin, int end);
 	bool floatEqual(float v1, float v2);
 	std::vector<int> buildRandomSequence(int length);
+	int getResultByPercent(const std::vector<float> &percents);
+
+	std::vector<int> getDifference(const std::vector<int> &v1, const std::vector<int> &v2);
 }
 
 #endif
