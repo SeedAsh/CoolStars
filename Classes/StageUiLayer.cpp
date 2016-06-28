@@ -28,6 +28,7 @@
 #define SELECTED_SKILL_OFFSET 20
 USING_NS_CC;
 using namespace std;
+using namespace CommonUtil;
 StageUiLayer::StageUiLayer(StageStateOwner *stateOwner)
 : m_stateOwner(stateOwner)
 {
@@ -90,6 +91,8 @@ bool StageUiLayer::init()
 void StageUiLayer::initTopUi()
 {
 	auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(4)));
+	onStepsChanged();
+	onScoreChanged();
 }
 
 void StageUiLayer::initPets()
@@ -175,16 +178,16 @@ void StageUiLayer::onStepsChanged()
 {
 	auto stageInfo = StageModel::theModel()->getStageInfo();
 	int leftStep = stageInfo->getLeftSteps();
-	//m_pStepLabel->setString(CommonUtil::intToStr(leftStep));
-
-
+	CCLabelAtlas *stepLabel = dynamic_cast<CCLabelAtlas *>(m_topUi->getChildById(17));
+	stepLabel->setString(intToStr(leftStep));
 }
 
 void StageUiLayer::onScoreChanged()
 {
 	auto stageInfo = StageModel::theModel()->getStageInfo();
 	int curScore = stageInfo->getCurScore();
-	//m_pScoreLabel->setString(CommonUtil::intToStr(curScore));
+	CCLabelAtlas * curScoreLabel = dynamic_cast<CCLabelAtlas *>(m_topUi->getChildById(15));
+	curScoreLabel->setString(intToStr(curScore));
 }
 
 void StageUiLayer::onCoinsChanged()

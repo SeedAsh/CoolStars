@@ -34,7 +34,7 @@ void DataManager::LoadData()
 
 void DataManager::loadStarsConfig()
 {
-	SqliteHelper helper(DB_COOLSTAR);
+	SqliteHelper helper(DB_CONFIG);
 	auto result = helper.readRecord("select * from stars");
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
@@ -70,7 +70,7 @@ const StarsConfig &DataManager::getStarsConfig(int starType)
 
 void DataManager::loadPetCommonConfig()
 {
-	SqliteHelper helper(DB_COOLSTAR);
+	SqliteHelper helper(DB_CONFIG);
 	auto result = helper.readRecord("select * from pets_common");
 
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
@@ -99,7 +99,7 @@ const PetCommonConfig &DataManager::getPetCommonConfig(int petCommonId)
 
 void DataManager::loadPetResConfig()
 {
-	SqliteHelper helper(DB_COOLSTAR);
+	SqliteHelper helper(DB_CONFIG);
 	auto result = helper.readRecord("select * from pets_res");
 
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
@@ -125,7 +125,7 @@ const PetResConfig &DataManager::getPetResConfig(int petId)
 
 void DataManager::loadStageConfig()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_STAGE);
 	auto result = sqlHelper.readRecord("select * from stages");
 	assert(!result.empty());
 
@@ -152,10 +152,10 @@ const StageConfig &DataManager::getStageConfig(int stage)
 void DataManager::getNewStageStarsData(std::vector<std::vector<StageStarInfo>> &stars, int stageNum)
 {
 	vector<StageConfig> m_stagesConfig;
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_STAGE);
 	
 	char str[100] = { 0 };
-	sprintf(str, "select * from stage%d", stageNum);
+	sprintf(str, "select * from stage%d_stars", stageNum);
 	auto result = sqlHelper.readRecord(str);
 
 	assert(result.size() == ROWS_SIZE);
@@ -179,7 +179,7 @@ void DataManager::getNewStageStarsData(std::vector<std::vector<StageStarInfo>> &
 
 void DataManager::loadSystemConfig()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_CONFIG);
 	auto result = sqlHelper.readRecord("select * from system");
 	assert(result.size() == 1);
 
@@ -193,7 +193,7 @@ const SystemConfig &DataManager::getSystemConfig()
 
 void DataManager::loadStarsColorConfig()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_CONFIG);
 	auto result = sqlHelper.readRecord("select * from stars_color");
 	assert(!result.empty());
 
@@ -220,7 +220,7 @@ const StarsColorConfig &DataManager::getStarsColorConfig(int color)
 
 void DataManager::loadPropsConfig()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_CONFIG);
 	auto result = sqlHelper.readRecord("select * from props");
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
@@ -240,7 +240,7 @@ const PropsConfig &DataManager::getPropsConfig(int propsId)
 
 void DataManager::loadRankingConfig()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_CONFIG);
 	auto result = sqlHelper.readRecord("select * from ranking");
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
@@ -262,7 +262,7 @@ const RankingConfig &DataManager::getRankingConfig(int rank)
 
 void DataManager::loadShopConfig()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_CONFIG);
 	auto result = sqlHelper.readRecord("select * from shop");
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
@@ -283,7 +283,7 @@ const vector<ShopConfig> &DataManager::getShopConfig()
 
 void DataManager::loadPackageConfig()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_CONFIG);
 	auto result = sqlHelper.readRecord("select * from package");
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
@@ -305,7 +305,7 @@ const PackageConfig &DataManager::getPackageConfig(int type)
 
 void DataManager::loadLotteryPet()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_CONFIG);
 	auto result = sqlHelper.readRecord("select * from lottery_pet");
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
@@ -342,7 +342,7 @@ const std::vector<LotteryPetConfig> &DataManager::getLotteryPetConfig()
 
 void DataManager::loadLotteryOutput()
 {
-	SqliteHelper sqlHelper(DB_COOLSTAR);
+	SqliteHelper sqlHelper(DB_CONFIG);
 	auto result = sqlHelper.readRecord("select * from lottery_output");
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{

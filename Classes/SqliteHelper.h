@@ -8,8 +8,9 @@
 #define DB_NAME "coolstar.db"
 #define DB_FILE_PATH "data/coolstar.db"
 */
-#define DB_COOLSTAR "data/coolstar.db"
+#define DB_CONFIG "data/config.db"
 #define DB_SAVING "data/saving.db"
+#define DB_STAGE "data/stage.db"
 
 //对于同一个数据库， 尽量保持只有一个
 
