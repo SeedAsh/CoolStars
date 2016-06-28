@@ -30,6 +30,7 @@ void DataManager::LoadData()
 	loadPackageConfig();
 	loadLotteryPet();
 	loadLotteryOutput();
+	loadStarsLoaderConfig();
 }
 
 void DataManager::loadStarsConfig()
@@ -126,7 +127,7 @@ const PetResConfig &DataManager::getPetResConfig(int petId)
 void DataManager::loadStageConfig()
 {
 	SqliteHelper sqlHelper(DB_STAGE);
-	auto result = sqlHelper.readRecord("select * from stages");
+	auto result = sqlHelper.readRecord("select * from stages_config");
 	assert(!result.empty());
 
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
@@ -135,9 +136,10 @@ void DataManager::loadStageConfig()
 		StageConfig stage;
 		stage.id = atoi(rowData[0]);
 		stage.tagetType = atoi(rowData[1]);
-		stage.targetParam = CommonUtil::parseStrToInts(rowData[2]);
-		stage.step= atoi(rowData[3]);
-		stage.direction = CommonUtil::parseStrToInts(rowData[4]);
+		stage.targetScore = atoi(rowData[2]);
+		stage.targetParam = CommonUtil::parseStrToInts(rowData[3]);
+		stage.step= atoi(rowData[4]);
+		stage.direction = CommonUtil::parseStrToInts(rowData[5]);
 
 		m_stagesConfig.push_back(stage);
 	}
@@ -147,6 +149,39 @@ const StageConfig &DataManager::getStageConfig(int stage)
 {
 	assert(stage > 0 && stage <= (int)m_stagesConfig.size());
 	return m_stagesConfig[stage - 1];
+}
+
+void DataManager::loadStarsLoaderConfig()
+{
+	SqliteHelper sqlHelper(DB_STAGE);
+	auto result = sqlHelper.readRecord("select * from stars_loader");
+
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		StarsLoaderConfig config;
+		config.id = atoi(data[0]);
+		config.stageId = atoi(data[1]);
+		config.starType = atoi(data[2]);
+		config.score = atoi(data[3]);
+		config.percent = atoi(data[4]);
+		config.num = atoi(data[5]);
+	
+		m_starsLoaderConfig.push_back(config);
+	}
+}
+
+const vector<StarsLoaderConfig> DataManager::getStarsLoaderConfig(int stage)
+{
+	vector<StarsLoaderConfig> datas;
+	for (size_t i = 0; i < m_starsLoaderConfig.size(); ++i)
+	{
+		if (m_starsLoaderConfig[i].stageId == stage)
+		{
+			datas.push_back(m_starsLoaderConfig[i]);
+		}
+	}
+	return datas;
 }
 
 void DataManager::getNewStageStarsData(std::vector<std::vector<StageStarInfo>> &stars, int stageNum)

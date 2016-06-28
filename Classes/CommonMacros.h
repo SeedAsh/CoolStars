@@ -43,6 +43,8 @@ enum PanelId
 	kPackagePanel,
 	kPreStagePanel, 
 	kStageView,
+	kStageFailPanel,
+	kStageWinPanel,
 
 };
 #define NOTIFY_VIEWS(_FUNC_ ,...)						\

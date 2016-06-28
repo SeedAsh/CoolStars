@@ -17,6 +17,9 @@
 #include "StagePanelUtil.h"
 #include "MainScene.h"
 #include "StageSceneState.h"
+#include "StageTarget.h"
+#include "StageTargetView.h"
+#include "CommonMacros.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -90,7 +93,17 @@ bool StageUiLayer::init()
 
 void StageUiLayer::initTopUi()
 {
-	auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(4)));
+	int targetBoxIds[] = { 18, 19, 20 };
+	auto target = StageModel::theModel()->getStageTarget();
+	auto leftTarget = target->getEraseStarsLeft();
+	assert(leftTarget.size() <= 3);
+	for (size_t i = 0; i < leftTarget.size(); ++i)
+	{
+		StageTargetView *view = StageTargetView::create(leftTarget[i]);
+		auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(targetBoxIds[i])));
+		node->setNode(view);
+	}
+	
 	onStepsChanged();
 	onScoreChanged();
 }
@@ -200,15 +213,14 @@ void StageUiLayer::onGameOver(int isWon)
 	CCNode *node = NULL;
 	if (isWon)
 	{
-		node = GameWinLayer::create();
+		MainScene::theScene()->showPanel(kStageWinPanel);
 	}
 	else
 	{
-		//GameFailLayer
-		node = GameWinLayer::create();
+		MainScene::theScene()->showPanel(kStageFailPanel);
+
 	}
 	
-	addChild(node, kZorder_Dialog);
 }
 
 void StageUiLayer::onPauseBtnClicked(CCObject *pSender)

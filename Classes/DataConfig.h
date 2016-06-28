@@ -40,13 +40,25 @@ struct PetResConfig
 	string petAnimationRes;
 };
 
+
 struct StageConfig
 {
 	int id;
 	int tagetType;
+	int targetScore;
 	vector<int> targetParam;
 	int step;
 	vector<int> direction;
+};
+
+struct StarsLoaderConfig
+{
+	int id;
+	int stageId;
+	int starType;
+	int score;
+	int percent;
+	int num;
 };
 
 struct SystemConfig

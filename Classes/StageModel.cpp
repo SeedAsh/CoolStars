@@ -8,7 +8,7 @@ using namespace std;
 StageModel::StageModel()
 {
 	m_stageInfo.init();
-	resetStarsData();
+	resetStage();
 }
 
 StageModel::~StageModel()
@@ -24,7 +24,6 @@ StageModel *StageModel::theModel()
 
 void StageModel::initStarsData()
 {
-	resetStarsData();
 	//返回的数据是保存行的
 	vector<vector<StageStarInfo>> stageVec;
 	m_stageInfo.getStageStars(stageVec);
@@ -44,7 +43,7 @@ void StageModel::initStarsData()
 	m_stageInfo.doSave();
 }
 
-void StageModel::resetStarsData()
+void StageModel::resetStage()
 {
 	//reset nodes
 	for (auto iter = m_starNodes.begin(); iter != m_starNodes.end(); ++iter)
@@ -53,7 +52,8 @@ void StageModel::resetStarsData()
 	}
 	m_stageInfo.init();
 	m_starNodes.clear();
-	m_target.initTargets();
+	m_target.init();
+	m_starsLoader.init();
 }
 
 StarNode *StageModel::getStarNode(const LogicGrid &grid)
@@ -163,7 +163,8 @@ void StageModel::removeStarNode(StarNode *node)
 	auto iter = find(m_starNodes.begin(), m_starNodes.end(), node);
 	if (iter != m_starNodes.end())
 	{
-		m_target.recordErasedStars((*iter)->getAttr().type);
+		auto attr = (*iter)->getAttr();
+		m_target.starErased(attr.type, attr.color);
 
 		delete *iter;
 		m_starNodes.erase(iter);
@@ -251,12 +252,15 @@ void StageModel::genNewStars()
 	}
 	for (size_t i = 0; i < newGrid.size(); ++i)
 	{
+		/*
 		//当前只测试 彩色星星 5种
 		int startype = ((int)(CCRANDOM_0_1() * 100)) % 5 + 1;
 		StarAttr attr;
 		attr.grid = newGrid[i];
 		attr.type = startype;
 		attr.color = kColorRandom;
+		*/
+		auto attr = m_starsLoader.genNewStars(newGrid[i]);
 		StarNode *node = StarNode::createNodeFatory(attr);
 		m_starNodes.push_back(node);
 		NOTIFY_VIEWS(onCreateNewStar, node);

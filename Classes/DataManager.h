@@ -30,6 +30,9 @@ public:
 	void loadStageConfig();
 	const StageConfig &getStageConfig(int stage);
 
+	void loadStarsLoaderConfig();
+	const std::vector<StarsLoaderConfig> getStarsLoaderConfig(int stage);
+
 	void getNewStageStarsData(std::vector<std::vector<StageStarInfo>> &stars, int stageNum);
 
 	void loadStarsConfig();
@@ -68,6 +71,7 @@ public:
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
+	vector<StarsLoaderConfig> m_starsLoaderConfig;
 	vector<PetCommonConfig> m_petCommonConfig;
 	vector<PetResConfig> m_petResConfig;
 	vector<StarsColorConfig> m_starsColorConfig;

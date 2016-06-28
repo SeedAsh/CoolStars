@@ -47,8 +47,6 @@ public:
 	void removeNeighbours();
     void moveTo(LogicGrid grid);
 
-	const StarsConfig &getConfig();
-
 	bool canLink(int type, int color);
 public:
 	virtual std::string getResPath();
@@ -58,6 +56,8 @@ public:
 protected:
     StarNode(const StarAttr &attr);
 private:
+
+	const StarsConfig &getConfig();
 	void getConnectedStars(StarNode *node, std::vector<StarNode *> &connectedNodes);
 protected:
 	StarAttr m_attr;

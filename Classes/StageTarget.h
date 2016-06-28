@@ -4,37 +4,40 @@
 #include <unordered_map>
 #include "StarNode.h"
 
+struct EraseStarsData
+{
+	int starType;
+	int color;
+	int num;
+};
+
 class StageTarget
 {
 public:
 	StageTarget();
 	~StageTarget();
 	
-	void initTargets();
+	void init();
 	bool isGameOver();
 	bool isReachTarget();
-	void recordErasedStars(int starIndex);
-	void resetData();
-	void getCurTarget();
+	void starErased(int starType, int color);
+	std::vector<EraseStarsData> getEraseStarsLeft();
 private:
+	void reset();
+
 	bool isGetEnoughScore();
 	bool isErasedEnoughStars();
 	bool isReachTargetGrid();
 private:
 	enum winType
 	{
-		kScore,		//分数
-		kStarAmount,//消除特定数目的星星
+		kEraseStars,//消除特定数目的星星
 		kTargetGrid,//护送指定对象到指定位置
 	};
 private:
 	int m_winType;
-
-	int m_targetScore;
-
-	std::unordered_map<int, int> m_records;
-	std::vector<std::tuple<int, int>> m_targets;
-
+	int m_erasedStarscore;
+	std::vector<EraseStarsData> m_eraseStars;
 	LogicGrid m_targetGrid;
 };
 #endif

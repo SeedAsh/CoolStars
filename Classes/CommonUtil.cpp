@@ -98,3 +98,8 @@ vector<int> CommonUtil::getDifference(const std::vector<int> &v1, const std::vec
 
 	return vector<int>(result.begin(), iter);
 }
+
+bool CommonUtil::isSelected(int percent)
+{
+	return getRandomValue(0, 100) <= percent;
+}

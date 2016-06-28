@@ -1,32 +1,5 @@
 <layout width="480.000000" height="250.000000">
 	<image>
-		<id>1</id>
-		<x>113.98</x>
-		<y>220.68</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-		<path>stage/ui/yxjm_daoju1.png</path>
-	</image>
-	<image>
-		<id>2</id>
-		<x>68.80</x>
-		<y>220.68</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-		<path>stage/ui/yxjm_daoju1.png</path>
-	</image>
-	<image>
-		<id>3</id>
-		<x>25.53</x>
-		<y>222.37</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-		<path>stage/ui/yxjm_daoju1.png</path>
-	</image>
-	<image>
 		<id>4</id>
 		<x>276.34</x>
 		<y>222.78</y>
@@ -66,48 +39,48 @@
 		<id>14</id>
 		<x>0.00</x>
 		<y>24.06</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>10</id>
 		<x>84.84</x>
 		<y>137.56</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>11</id>
 		<x>193.23</x>
 		<y>137.57</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>12</id>
 		<x>312.89</x>
 		<y>140.95</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
 		<x>414.17</x>
 		<y>139.48</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<imageNum>
 		<id>15</id>
 		<x>197.54</x>
 		<y>202.61</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>10</num>
@@ -117,8 +90,8 @@
 		<id>16</id>
 		<x>281.53</x>
 		<y>205.35</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>10</num>
@@ -128,12 +101,36 @@
 		<id>17</id>
 		<x>410.28</x>
 		<y>195.43</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>10</num>
 		<path>stage/yxjm_shuzi1.png</path>
 	</imageNum>
+	<emptyBox>
+		<id>18</id>
+		<x>2.11</x>
+		<y>201.76</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+	</emptyBox>
+	<emptyBox>
+		<id>19</id>
+		<x>53.18</x>
+		<y>200.92</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+	</emptyBox>
+	<emptyBox>
+		<id>20</id>
+		<x>102.36</x>
+		<y>201.76</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+	</emptyBox>
 </layout>
 

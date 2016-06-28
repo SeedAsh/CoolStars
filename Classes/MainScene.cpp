@@ -12,6 +12,7 @@
 #include "PreStageScene.h"
 #include "StageScene.h"
 #include "ScaleDialog.h"
+#include "GameResultLayer.h"
 
 USING_NS_CC;
 using namespace std;
@@ -125,6 +126,12 @@ void MainScene::showPanel(int panelId, bool closeBehind)
 		break;
 	case kStageView:
 		panel = StageScene::create();
+		break;
+	case kStageFailPanel:
+		panel = GameFailLayer::create();
+		break;
+	case kStageWinPanel:
+		panel = GameWinLayer::create();
 		break;
 	default:
 		assert(false && "no this panelId");

@@ -88,6 +88,7 @@ void MenuScene::initBottomLayout()
 void MenuScene::toNormalGame(CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
+	StageModel::theModel()->resetStage();
 	MainScene::theScene()->showPanel(kPreStagePanel);
 }
 

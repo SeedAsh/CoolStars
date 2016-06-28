@@ -7,6 +7,7 @@
 #include "DataManager.h"
 #include "StageTarget.h"
 #include "StageBaseInfo.h"
+#include "StarsLoader.h"
 
 struct IStageView
 {
@@ -33,7 +34,7 @@ public: //对星星的操作接口
 	void addScore(int value);
 	void replaceStar(const StarAttr &attr);
 	void genStar(const StarAttr &attr);
-	
+	void resetStage();
 public:
 	StageBaseInfo *getStageInfo(){ return &m_stageInfo; }
 	StageTarget *getStageTarget(){ return &m_target; }
@@ -46,7 +47,6 @@ private:
 	StageModel();
 	~StageModel();
 
-	void resetStarsData();
     void moveStar(StarNode *node);
 	bool isGridEmpty(const LogicGrid &grid);
 private:
@@ -54,6 +54,7 @@ private:
 	std::vector<StarNode *> m_starNodes;
 	std::vector<IStageView *> m_views;
 	StageTarget m_target;
+	StarsLoader m_starsLoader;
 private:
 	enum Direction
 	{

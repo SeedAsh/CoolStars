@@ -12,6 +12,7 @@ namespace CommonUtil
 	bool floatEqual(float v1, float v2);
 	std::vector<int> buildRandomSequence(int length);
 	int getResultByPercent(const std::vector<float> &percents);
+	bool isSelected(int percent);
 
 	std::vector<int> getDifference(const std::vector<int> &v1, const std::vector<int> &v2);
 }

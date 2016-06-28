@@ -184,6 +184,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StageSavingHelper.cpp" />
     <ClCompile Include="..\Classes\StageScene.cpp" />
     <ClCompile Include="..\Classes\StageSceneState.cpp" />
+    <ClCompile Include="..\Classes\StageTargetView.cpp" />
+    <ClCompile Include="..\Classes\StarsLoader.cpp" />
     <ClCompile Include="..\Classes\StageTarget.cpp" />
     <ClCompile Include="..\Classes\StageUiLayer.cpp" />
     <ClCompile Include="..\Classes\StarNode.cpp" />
@@ -262,6 +264,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StageSavingHelper.h" />
     <ClInclude Include="..\Classes\StageScene.h" />
     <ClInclude Include="..\Classes\StageSceneState.h" />
+    <ClInclude Include="..\Classes\StageTargetView.h" />
+    <ClInclude Include="..\Classes\StarsLoader.h" />
     <ClInclude Include="..\Classes\StageTarget.h" />
     <ClInclude Include="..\Classes\StageUiLayer.h" />
     <ClInclude Include="..\Classes\StarNode.h" />
