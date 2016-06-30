@@ -64,4 +64,7 @@ void PreStageModel::confirmCurPets()
 	PetManager::petMgr()->setCurPets(m_selectedPets);
 }
 
-
+void PreStageModel::init()
+{
+	m_selectedPets.clear();
+}

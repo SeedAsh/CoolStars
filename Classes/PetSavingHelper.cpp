@@ -1,9 +1,11 @@
 #include "PetSavingHelper.h"
 #include "SqliteHelper.h"
 #include "PetManager.h"
+#include "CommonUtil.h"
 
 USING_NS_CC;
 using namespace std;
+using namespace CommonUtil;
 
 void PetSavingHelper::setPetState(int petId)
 {
@@ -32,17 +34,11 @@ void PetSavingHelper::recordCurActivePets()
 {
 	SqliteHelper sqlHelper(DB_SAVING);
 
-	string sql = "replace into save_cur_pets values(1;";
 	char str[100] = { 0 };
 	vector<int> curPets = PetManager::petMgr()->getCurPetIds();
-	for (size_t i = 0; i < curPets.size(); ++i)
-	{
-		sprintf(str, ",%d", curPets[i]);
-		sql += str;
-	}
-	sql += ");";
+	sprintf(str, "replace into save_cur_pets values(1, \"%s\")", parseIntsToStr(curPets).c_str());
 
-	sqlHelper.executeSql(sql.c_str());
+	sqlHelper.executeSql(str);
 }
 
 vector<int> PetSavingHelper::getCurActivePets()

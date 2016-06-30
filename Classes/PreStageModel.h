@@ -18,7 +18,7 @@ public:
 	std::vector<int> getPetsCanSelect();
 	
 	void confirmCurPets();
-
+	void init();
 private:
 	std::vector<int> m_selectedPets;
 	std::vector<IPreStageView *>m_views;
