@@ -117,6 +117,10 @@ void DataManager::loadPetResConfig()
 		config.petAnimationRes = data[5];
 		m_petResConfig.push_back(config);
 	}
+	sort(m_petResConfig.begin(), m_petResConfig.end(), [=](PetResConfig config1, PetResConfig config2)->bool
+	{
+		return config1.id < config2.id;
+	});
 }
 
 const PetResConfig &DataManager::getPetResConfig(int petId)
@@ -242,7 +246,8 @@ void DataManager::loadStarsColorConfig()
 		config.colorExplosionRes = data[2];
 		config.bounceBallRes = data[3];
 		config.bounceBallExplosionRes = data[4];
-		config.desc = data[5];
+		config.preStageSlotBg = data[5];
+		config.desc = data[6];
 
 		m_starsColorConfig.push_back(config);
 	}

@@ -5,7 +5,7 @@
 #include "PetManager.h"
 #include "ListPetView.h"
 #include "PreStageModel.h"
-#define NOT_SELECT_PET 0
+#define NOT_SELECT_PET_ID 0
 USING_NS_CC;
 using namespace std;
 
@@ -49,59 +49,75 @@ void PreStagePetSlot::initLayout()
 	refresh();
 }
 
+CCNode *PreStagePetSlot::getPetNode(const char* resPath)
+{
+	CCSprite* icon = CCSprite::create(resPath);
+
+	icon->ignoreAnchorPointForPosition(false);
+	icon->setAnchorPoint(ccp(0, 0));
+
+	return icon;
+}
+
 void PreStagePetSlot::refresh()
 {
+	//这里处理不好  需要重构； listview 添加sort功能 应对添加和删减节点
 	auto petMgr = PetManager::petMgr();
 	auto ids = PreStageModel::theModel()->getPetsCanSelect();
-	m_itemsIndex.clear();
-	
-	//没有宠物可选
-	if (m_curPetId == NOT_SELECT_PET)
+	if (m_curPetId != NOT_SELECT_PET_ID)
 	{
-		m_itemsIndex.push_back(NOT_SELECT_PET);
-		CCSprite* icon = CCSprite::create("pets/black.png");
-		icon->ignoreAnchorPointForPosition(false);
-		icon->setAnchorPoint(ccp(0, 0));
-		m_listView->addNode(icon);
-		m_listView->setCurItem(0);
-		return;
+		ids.push_back(m_curPetId);
 	}
+	sort(ids.begin(), ids.end());
+	m_petIdInList.clear();
+	m_listView->clear();
+	
+	//list里至少有一个空的node,即没宠物可选
+	//故list的数量为 宠物可选数量+1 
+	CCNode *emptyNode = CCNode::create();
+	m_listView->addNode(emptyNode);
+	m_petIdInList.push_back(NOT_SELECT_PET_ID);
 
-	//有宠物可选
 	int curIndex = 0;
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
-		m_itemsIndex.push_back(ids[i]);
+		m_petIdInList.push_back(ids[i]);
 		auto pet = petMgr->getPetById(ids[i]);
 		if (m_curPetId == pet->getPetData().petId)
 		{
-			curIndex = i;
+			curIndex = i + 1;
 		}
 
 		auto path = pet->getPetData().petImgRes;
-		CCSprite* icon = CCSprite::create(path.c_str());
-		icon->setScale(STAR_SIZE * 2 / icon->getContentSize().width);
-
-		icon->ignoreAnchorPointForPosition(false);
-		icon->setAnchorPoint(ccp(0, 0));
-		m_listView->addNode(icon);
+		m_listView->addNode(getPetNode(path.c_str()));
 	}
 	m_listView->setCurItem(curIndex);
-	onSelectItemCallback(curIndex);
 }
 
 void PreStagePetSlot::onSelectItemCallback(int index)
 {
-	assert(index >= 0 && index < (int)m_itemsIndex.size());
-	int petId = m_itemsIndex[index];
+	assert(index >= 0 && index <= (int)m_petIdInList.size());
+	int petId = m_petIdInList[index];
 	
-	PreStageModel::theModel()->selectPet(petId, m_curPetId);
-	m_curPetId = petId;
+	if (m_curPetId != petId)
+	{
+		int oldPetId = m_curPetId;
+		m_curPetId = petId;
+		PreStageModel::theModel()->selectPet(petId, oldPetId);
+
+		auto pet = PetManager::petMgr()->getPetById(petId);
+		if (pet)
+		{
+			CCSprite *slotBg = dynamic_cast<CCSprite *>(m_layout->getChildById(1));
+			int color = pet->getPetData().color;
+			auto path = DataManagerSelf->getStarsColorConfig(color).preStageSlotBg;
+			slotBg->initWithFile(path.c_str());
+		}
+	}
 }
 
-void PreStagePetSlot::onPetSelect()
+void PreStagePetSlot::onPetSelect(int oldPetId)
 {
-//	refresh();
-	
+	refresh();
 }
 

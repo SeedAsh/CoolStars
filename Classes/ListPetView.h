@@ -12,6 +12,7 @@ public:
 	int addNode(cocos2d::CCNode *node);
 	void setItemSelectedCallback(std::function<void(int)> handle){ m_itemSelectedHandle = handle; }
 	void setCurItem(int index);
+	virtual void clear();
 private:
 	ListPetView(const cocos2d::CCSize &size);
 	virtual bool init();

@@ -74,6 +74,7 @@ struct StarsColorConfig
 	std::string colorExplosionRes;
 	std::string bounceBallRes;
 	std::string bounceBallExplosionRes;
+	std::string preStageSlotBg;
 	std::string desc;
 };
 

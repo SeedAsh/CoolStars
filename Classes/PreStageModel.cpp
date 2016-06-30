@@ -26,7 +26,7 @@ void PreStageModel::selectPet(int newPetId, int oldPetId)
 		m_selectedPets.push_back(newPetId);
 	}
 
-	NOTIFY_VIEWS(onPetSelect);
+	NOTIFY_VIEWS(onPetSelect, oldPetId);
 }
 
 std::vector<int> PreStageModel::getPetsCanSelect()

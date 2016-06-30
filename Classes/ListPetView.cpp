@@ -125,3 +125,9 @@ void ListPetView::setCurItem(int index)
 		moveItemToCenter(m_curItem);
 	}
 }
+
+void ListPetView::clear()
+{
+	ListView::clear();
+	m_curItem = 0;
+}

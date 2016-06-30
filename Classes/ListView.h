@@ -14,7 +14,7 @@ public:
 	cocos2d::CCNode *getNode(int index);
 	int count(){ return m_nodes.size(); }
 	void setSpacing(float spacing){ m_spacing = spacing; }
-	void clear();
+	virtual void clear();
 	virtual int addNode(cocos2d::CCNode *node);
 protected:
 	ListView(const cocos2d::CCSize &size);

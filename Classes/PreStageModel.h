@@ -4,7 +4,7 @@
 
 struct IPreStageView
 {
-	virtual void onPetSelect(){}
+	virtual void onPetSelect(int oldPetId){}
 };
 
 class PreStageModel
