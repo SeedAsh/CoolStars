@@ -23,6 +23,7 @@ enum TouchPriority
 	kMainMenuTouchPriority = -10,
 	kStageUiTouchPriority = -20,
 	kDialogMenuTouchPriority = -50,
+	kGuideTouchPriority = -70,
 };
 
 enum EraseType

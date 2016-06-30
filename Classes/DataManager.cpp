@@ -31,6 +31,7 @@ void DataManager::LoadData()
 	loadLotteryPet();
 	loadLotteryOutput();
 	loadStarsLoaderConfig();
+	loadGuideConfig();
 }
 
 void DataManager::loadStarsConfig()
@@ -386,6 +387,7 @@ void DataManager::loadLotteryOutput()
 		config.id = atoi(data[0]);
 		config.amount = atoi(data[1]);
 		config.percent = atof(data[2]);
+
 		config.desc = data[3];
 
 		m_lotteryOutputConfig.push_back(config);
@@ -395,4 +397,48 @@ void DataManager::loadLotteryOutput()
 const vector<LotteryOutputConfig> &DataManager::getLotteryOutputConfig()
 {
 	return m_lotteryOutputConfig;
+}
+
+void DataManager::loadGuideConfig()
+{
+	SqliteHelper sqlHelper(DB_CONFIG);
+	auto result = sqlHelper.readRecord("select * from guide");
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		GuideConfig config;
+		config.id = atoi(data[0]);
+		config.stage = atoi(data[1]);
+		config.startAction = atoi(data[2]);
+		config.endAction = atoi(data[3]);
+		config.showGuideView = atoi(data[4]) == 1;
+
+		auto rectVec = parseStrToFloats(data[5]);
+		assert(rectVec.size() == 4 || rectVec.empty());
+		config.targetRect = rectVec;
+
+		config.showMask = atoi(data[6]) == 1;
+		config.showFinger = atoi(data[7]) == 1;
+		config.showTextDialog = atoi(data[8]) == 1;
+		config.dialogText = data[9];
+		config.desc = data[10];
+
+		m_guideConfig.push_back(config);
+	}
+}
+
+const vector<GuideConfig> &DataManager::getGuideConfig()
+{
+	return m_guideConfig;
+}
+
+const GuideConfig *DataManager::getGuideConfigById(int guideId)
+{
+	auto iter = find_if(m_guideConfig.begin(), m_guideConfig.end(), [=](GuideConfig data)
+	{
+		return data.id == guideId;
+	});
+	assert(iter != m_guideConfig.end());
+
+	return iter != m_guideConfig.end() ? &(*iter) : NULL;
 }

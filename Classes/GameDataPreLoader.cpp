@@ -8,6 +8,7 @@
 #include "PetManager.h"
 #include "PropManager.h"
 #include "StageModel.h"
+#include "GuideMgr.h"
 
 void GameDataPreLoader::initGameData()
 {
@@ -35,4 +36,5 @@ void GameDataPreLoader::intModels()
 	StageModel::theModel()->getStageInfo()->init();
 	PropManager::propMgr()->loadPropData();
 	PetManager::petMgr()->init();
+	GuideMgr::theMgr()->init();
 }

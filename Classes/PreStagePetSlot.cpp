@@ -80,6 +80,8 @@ void PreStagePetSlot::refresh()
 
 		auto path = pet->getPetData().petImgRes;
 		CCSprite* icon = CCSprite::create(path.c_str());
+		icon->setScale(STAR_SIZE * 2 / icon->getContentSize().width);
+
 		icon->ignoreAnchorPointForPosition(false);
 		icon->setAnchorPoint(ccp(0, 0));
 		m_listView->addNode(icon);
@@ -102,3 +104,4 @@ void PreStagePetSlot::onPetSelect()
 //	refresh();
 	
 }
+

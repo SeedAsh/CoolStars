@@ -127,4 +127,19 @@ struct LotteryOutputConfig
 	float percent;
 	std::string desc;
 };
+
+struct GuideConfig
+{
+	int id;
+	int stage;
+	int startAction;
+	int endAction;
+	bool showGuideView;
+	std::vector<float>targetRect;
+	bool showMask;
+	bool showFinger;
+	std::string dialogText;
+	bool showTextDialog;
+	std::string desc;
+};
 #endif

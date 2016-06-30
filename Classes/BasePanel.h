@@ -12,6 +12,7 @@ public:
 	int getUsage(){ return m_usage; }
 protected:
 	BasePanel();
+	virtual void onEnter();
 	void setPanelId(int panelId){ m_panelId = panelId; }
 	void setUsage(int usage){ m_usage = usage; }
 protected:

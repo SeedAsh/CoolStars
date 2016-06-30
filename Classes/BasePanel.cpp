@@ -12,6 +12,11 @@ BasePanel::BasePanel()
 
 }
 
+void BasePanel::onEnter()
+{
+	CCNode::onEnter();
+}
+
 bool BasePanel::init()
 {
 	return true;

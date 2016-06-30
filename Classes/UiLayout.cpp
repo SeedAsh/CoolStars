@@ -102,10 +102,7 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 
 		//选中状态直接使用放大的正常图片
 		auto normalSpr = CCSprite::create(normalPath.c_str());
-		auto pt = normalSpr->getAnchorPoint();
-		CCLOG("%f, %f", pt.x, pt.y);
 		auto selectedSpr = CCSprite::create(normalPath.c_str());
-		CCLOG("%f, %f", pt.x, pt.y);
 
 		float scale = 1.1f;
 		selectedSpr->setScale(scale);

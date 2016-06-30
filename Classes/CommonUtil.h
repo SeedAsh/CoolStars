@@ -5,6 +5,8 @@ namespace CommonUtil
 {	
 	std::vector<std::string> split(std::string str, std::string pattern);
 	std::vector<int> parseStrToInts(std::string str);//将类似 1,2,3 的字符串分割返回为数字组
+	std::string parseIntsToStr(const std::vector<int> &values);
+	std::vector<float> parseStrToFloats(std::string str);
 
 	const char *intToStr(int value);
 
@@ -15,6 +17,10 @@ namespace CommonUtil
 	bool isSelected(int percent);
 
 	std::vector<int> getDifference(const std::vector<int> &v1, const std::vector<int> &v2);
+	
+	cocos2d::CCAnimate *getFrameAnimation(std::string pathFormat, int num, float duration);
+	cocos2d::CCMenuItemSprite *getScaleMenuItemSpr(std::string path);
+
 }
 
 #endif

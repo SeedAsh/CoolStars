@@ -13,6 +13,9 @@
 #include "StageScene.h"
 #include "ScaleDialog.h"
 #include "GameResultLayer.h"
+#include "GuideView.h"
+#include "GuideEditLayer.h"
+#include "CommonUtil.h"
 
 USING_NS_CC;
 using namespace std;
@@ -26,9 +29,11 @@ bool MainScene::init()
 	m_bkLayer = CCNode::create();
 	m_uiLayer = CCNode::create();
 	m_dialogLayer = CCNode::create();
+	m_guideLayer = CCNode::create();
 	addChild(m_bkLayer);
 	addChild(m_uiLayer);
 	addChild(m_dialogLayer);
+	addChild(m_guideLayer);
 
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	auto bk = BackgroundLayer::create();
@@ -36,6 +41,8 @@ bool MainScene::init()
 	m_bkLayer->addChild(bk);
 	
 	showPanel(kMainMenu);
+
+	addGuideEditBtn();
 	return true;
 }
 
@@ -149,3 +156,26 @@ void MainScene::showDialog(ScaleDialog *dialog)
 	m_dialogLayer->addChild(dialog);
 }
 
+void MainScene::showGuideView(int guideId)
+{
+	auto view = GuideView::create(guideId);
+	m_guideLayer->addChild(view);
+}
+
+void MainScene::addGuideEditBtn()
+{
+	string path = "guide_edit/open.png";
+	auto imageItem = CommonUtil::getScaleMenuItemSpr(path);
+	imageItem->setTarget(this, menu_selector(MainScene::onGuideBtnClicked));
+
+	auto menu = CCMenu::create(imageItem, NULL);
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
+	imageItem->setPosition(ccp(-winSize.width * 0.45f, winSize.height * 0.3f));
+	addChild(menu);	
+}
+
+void MainScene::onGuideBtnClicked(cocos2d::CCObject* pSender)
+{
+	auto layer = GuideEditLayer::create();
+	addChild(layer);
+}

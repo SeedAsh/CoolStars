@@ -3,9 +3,11 @@
 #include "cocos2d.h"
 #include "SettingBtnsHelper.h"
 #include "BasePanel.h"
+#include "GuideDelegate.h"
 
 class UiLayout;
-class MenuScene : public BasePanel 
+class MenuScene
+	: public BasePanel 
 {
 public:  
 	virtual bool init();  
@@ -26,7 +28,8 @@ private:
 	void toRankPanel(cocos2d::CCObject* pSender);
 	void toPackagePanel(cocos2d::CCObject* pSender);
 	void toShopPanel(cocos2d::CCObject* pSender);
-
+private:
+	void justShowNormalGameBtn();
 private:
 	UiLayout *m_mainLayout;
 	UiLayout *m_bottomLayout;

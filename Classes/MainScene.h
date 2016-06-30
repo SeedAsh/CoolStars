@@ -20,6 +20,7 @@ public:
 
 	void showPanel(int panelId, bool closeBehind = true);
 	void showDialog(ScaleDialog *dialog);
+	void showGuideView(int guideId);
 	void backPanel();
 	void clearPanelRecord(){ m_panelRecord.clear(); }
 private:
@@ -27,6 +28,9 @@ private:
 	~MainScene(){}
 	void addUiPanel(BasePanel *panel, bool closeBehind);
 	void recordPanel(int panelId, int usage);
+	
+	void addGuideEditBtn();
+	void onGuideBtnClicked(cocos2d::CCObject* pSender);
 private:
 	static MainScene *s_scene;
 	std::deque<PanelRecord> m_panelRecord;
@@ -35,6 +39,7 @@ private:
 	cocos2d::CCNode *m_bkLayer;
 	cocos2d::CCNode *m_uiLayer;
 	cocos2d::CCNode *m_dialogLayer;
+	cocos2d::CCNode *m_guideLayer;
 
 };
 

@@ -52,6 +52,12 @@
     <Filter Include="Lottery">
       <UniqueIdentifier>{b4bc3fc6-99bb-4e25-aa8c-8089144a181b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Guide">
+      <UniqueIdentifier>{16e499d2-f6a1-4a73-a623-de20db9e7aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\guide">
+      <UniqueIdentifier>{b9b8ac4e-49d7-46e2-9203-4300be4f16c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -260,6 +266,21 @@
     </ClCompile>
     <ClCompile Include="..\Classes\StageTargetView.cpp">
       <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GuideMgr.cpp">
+      <Filter>Guide</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GuideDelegate.cpp">
+      <Filter>Guide</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GuideDialog.cpp">
+      <Filter>Guide</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GuideView.cpp">
+      <Filter>Guide</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GuideEditLayer.cpp">
+      <Filter>Utils\ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -496,6 +517,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StageTargetView.h">
       <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GuideMacros.h">
+      <Filter>Guide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GuideMgr.h">
+      <Filter>Guide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GuideDelegate.h">
+      <Filter>Guide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GuideView.h">
+      <Filter>Guide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GuideDialog.h">
+      <Filter>Guide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GuideEditLayer.h">
+      <Filter>Utils\ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

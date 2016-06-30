@@ -119,7 +119,7 @@ void TitlePanel::setUiVisible(int who, bool isVisible)
 		m_topLayout->getChildById(11)->setVisible(isVisible);
 		break;
 	case kTitlePanelBackHome:
-		m_bottomLayout->getChildById(1)->setVisible(isVisible);
+		m_bottomLayout->getChildById(2)->setVisible(isVisible);
 		break;
 	default:
 		break;

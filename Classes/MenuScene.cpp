@@ -13,6 +13,8 @@
 #include "LotteryScene.h"
 #include "MainScene.h"
 #include "RankingPanelUtil.h"
+#include "GuideMacros.h"
+#include "GuideMgr.h"
 
 USING_NS_CC;
 using namespace std;
@@ -37,6 +39,9 @@ bool MenuScene::init()
 
 	initMainLayout();
 	initBottomLayout();
+
+	GuideMgr::theMgr()->startGuide(kGuideStart_mainMenu_in, bind(&MenuScene::justShowNormalGameBtn, this));
+	GuideMgr::theMgr()->endGuide(kGuideEnd_mainMenu_in);
 
 	return true;
 }
@@ -158,4 +163,12 @@ void MenuScene::toShopPanel(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 	MainScene::theScene()->showPanel(kShopPanel);
+}
+
+void MenuScene::justShowNormalGameBtn()
+{
+	m_bottomLayout->setVisible(false);
+	m_mainLayout->getChildById(7)->setVisible(false);
+	m_mainLayout->getChildById(8)->setVisible(false);
+	m_mainLayout->getChildById(9)->setVisible(false);
 }

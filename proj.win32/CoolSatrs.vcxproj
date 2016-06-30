@@ -143,6 +143,11 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\GameData.cpp" />
     <ClCompile Include="..\Classes\GameDataPreLoader.cpp" />
     <ClCompile Include="..\Classes\GameResultLayer.cpp" />
+    <ClCompile Include="..\Classes\GuideDelegate.cpp" />
+    <ClCompile Include="..\Classes\GuideDialog.cpp" />
+    <ClCompile Include="..\Classes\GuideEditLayer.cpp" />
+    <ClCompile Include="..\Classes\GuideMgr.cpp" />
+    <ClCompile Include="..\Classes\GuideView.cpp" />
     <ClCompile Include="..\Classes\HelpPanel.cpp" />
     <ClCompile Include="..\Classes\ListPetView.cpp" />
     <ClCompile Include="..\Classes\ListSlideView.cpp" />
@@ -218,6 +223,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\GameData.h" />
     <ClInclude Include="..\Classes\GameDataPreLoader.h" />
     <ClInclude Include="..\Classes\GameResultLayer.h" />
+    <ClInclude Include="..\Classes\GuideDelegate.h" />
+    <ClInclude Include="..\Classes\GuideDialog.h" />
+    <ClInclude Include="..\Classes\GuideEditLayer.h" />
+    <ClInclude Include="..\Classes\GuideMacros.h" />
+    <ClInclude Include="..\Classes\GuideMgr.h" />
+    <ClInclude Include="..\Classes\GuideView.h" />
     <ClInclude Include="..\Classes\HelpPanel.h" />
     <ClInclude Include="..\Classes\ListPetView.h" />
     <ClInclude Include="..\Classes\ListSlideView.h" />

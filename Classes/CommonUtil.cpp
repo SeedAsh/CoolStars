@@ -25,12 +25,43 @@ vector<string> CommonUtil::split(string str, string pattern)
 vector<int> CommonUtil::parseStrToInts(string str)
 {
 	vector<int> ints;
-	auto strs = split(str, ",");
-	for (size_t i = 0; i < strs.size(); ++i)
+	if (!str.empty())
 	{
-		ints.push_back(atoi(strs[i].c_str()));
+		auto strs = split(str, ",");
+		for (size_t i = 0; i < strs.size(); ++i)
+		{
+			ints.push_back(atoi(strs[i].c_str()));
+		}
 	}
 	return ints;
+}
+
+vector<float> CommonUtil::parseStrToFloats(string str)
+{
+	vector<float> floats;
+	if (!str.empty())
+	{
+		auto strs = split(str, ",");
+		for (size_t i = 0; i < strs.size(); ++i)
+		{
+			floats.push_back(atof(strs[i].c_str()));
+		}
+	}
+	return floats;
+}
+
+string CommonUtil::parseIntsToStr(const vector<int> &values)
+{
+	string str;
+	for (size_t i = 0; i < values.size(); ++i)
+	{
+		str += intToStr(values[i]);
+		if (i < values.size() - 1)
+		{
+			str += ",";
+		}
+	}
+	return str;
 }
 
 const char *CommonUtil::intToStr(int value)
@@ -102,4 +133,32 @@ vector<int> CommonUtil::getDifference(const std::vector<int> &v1, const std::vec
 bool CommonUtil::isSelected(int percent)
 {
 	return getRandomValue(0, 100) <= percent;
+}
+
+CCAnimate *CommonUtil::getFrameAnimation(string pathFormat, int num, float duration)
+{
+	CCAnimation *animation = CCAnimation::create();
+	for (int i = 0; i < num; i++)
+	{
+		char szImageFileName[100] = { 0 };
+		sprintf(szImageFileName, pathFormat.c_str(), i);
+		animation->addSpriteFrameWithFileName(szImageFileName);
+	}
+	animation->setDelayPerUnit(duration / num); // 这个动画包含14帧，将会持续2.8秒.  
+	//animation->setRestoreOriginalFrame(true); // 14帧播放完之后返回到第一帧  
+
+	CCAnimate *action = CCAnimate::create(animation);
+	return action;
+}
+
+CCMenuItemSprite *CommonUtil::getScaleMenuItemSpr(string path)
+{
+	auto normalSpr = CCSprite::create(path.c_str());
+	auto selectedSpr = CCSprite::create(path.c_str());
+	float scale = 1.1f;
+	selectedSpr->setScale(scale);
+
+	CCMenuItemSprite* imageItem = CCMenuItemSprite::create(normalSpr, selectedSpr, NULL, NULL);
+	selectedSpr->setAnchorPoint(ccp((scale - 1.0f) / 2, (scale - 1.0f) / 2));
+	return imageItem;
 }

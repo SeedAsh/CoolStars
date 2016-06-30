@@ -68,6 +68,11 @@ public:
 
 	void loadLotteryOutput();
 	const std::vector<LotteryOutputConfig> &getLotteryOutputConfig();
+
+	void loadGuideConfig();
+	const std::vector<GuideConfig> &getGuideConfig();
+	const GuideConfig *getGuideConfigById(int guideId);
+
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
@@ -82,6 +87,7 @@ private:
 	vector<PackageConfig> m_packageConfig;
 	vector<LotteryPetConfig> m_lotteryPetConfig;
 	vector<LotteryOutputConfig> m_lotteryOutputConfig;
+	vector<GuideConfig> m_guideConfig;
 };
 
 #endif

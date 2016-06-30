@@ -11,6 +11,7 @@
 #include "StageTarget.h"
 #include "StageTargetView.h"
 #include "CommonUtil.h"
+#include "GuideMgr.h"
 USING_NS_CC;
 using namespace std;
 using namespace CommonUtil;
@@ -22,8 +23,8 @@ bool PreStageScene::init()
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
-	TitlePanel * titilPanel = TitlePanel::create(m_touchPriority);
-	addChild(titilPanel);
+	m_titlePanel = TitlePanel::create(m_touchPriority);
+	addChild(m_titlePanel);
 
 	m_mainLayout = UiLayout::create("layout/pre_stage.xml");
 	m_mainLayout->setMenuTouchPriority(m_touchPriority);
@@ -37,6 +38,10 @@ bool PreStageScene::init()
 
 	initMainLayout();
 	initBottomLayout();
+
+	GuideMgr::theMgr()->startGuide(kGuideStart_preStage_in, bind(&PreStageScene::hideHomeBackBtn, this));
+	GuideMgr::theMgr()->endGuide(kGuideEnd_preStage_in);
+
 	return true;
 }
 
@@ -90,4 +95,9 @@ void PreStageScene::toStartGame(cocos2d::CCObject* pSender)
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 	MainScene::theScene()->showPanel(kStageView);
 	MainScene::theScene()->clearPanelRecord();
+}
+
+void PreStageScene::hideHomeBackBtn()
+{
+	m_titlePanel->setUiVisible(kTitlePanelBackHome, false);
 }

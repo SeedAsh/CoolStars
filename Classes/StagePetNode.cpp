@@ -47,6 +47,7 @@ bool StagePetNode::init()
 	auto bottomSpr = dynamic_cast<CCSprite *>(m_layout->getChildById(1));
 	auto petSpr = dynamic_cast<CCSprite *>(m_layout->getChildById(2));
 	petSpr->initWithFile(iconPath.c_str());
+	petSpr->setScale(size.width / petSpr->getContentSize().width);
 	m_layout->getChildById(3)->setVisible(false);
 
 	setContentSize(size);
