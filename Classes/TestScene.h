@@ -17,7 +17,7 @@ private:
 	void imageNumtest();
 	void test();
 	void listViewTest();
-
+	void printDBInfos();
 private:
 	cocos2d::CCClippingNode *m_clippingNode;
 	cocos2d::CCSprite *m_spr;

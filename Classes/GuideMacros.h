@@ -10,7 +10,8 @@ enum GuideStartAction
 
 	kGuideStart_preStage_in = 20,
 
-	kGuideStart_stage_initStarsFinished = 30,
+	kGuideStart_stage_in = 30,
+	kGuideStart_stage_initStarsFinished,
 	kGuideStart_stage_petFullPower,
 	kGuideStart_stage_gameOver,
 
@@ -25,8 +26,9 @@ enum GuideEndAction
 
 	kGuideEnd_preStage_in = 20,
 
-
-	kGuideEnd_stage_initStarsFinished = 30,
+	kGuideEnd_stage_in = 30,
+	kGuideEnd_star_clicked,
+	kGuideEnd_pet_clicked,
 	kGuideEnd_stage_petFullPower,
 	kGuideEnd_stage_gameOver,
 

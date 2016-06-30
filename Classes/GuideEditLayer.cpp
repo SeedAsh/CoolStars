@@ -105,3 +105,5 @@ void GuideEditLayer::onSaveBtnClicked(cocos2d::CCObject* pSender)
 	}
 }
 
+
+

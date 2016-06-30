@@ -6,6 +6,8 @@
 #include "ListPetView.h"
 #include "StageOperator.h"
 #include "StarNode.h"
+#include "SqliteHelper.h"
+#include <fstream>
 
 USING_NS_CC;
 
@@ -24,7 +26,7 @@ bool TestScene::init()
 		return false;
 	}
 	initPanel();
-	test();
+	printDBInfos();
 	return true;
 }
 
@@ -134,6 +136,34 @@ void TestScene::addClippingNode()
 void TestScene::closeCallback(CCObject* pSender)
 {
 	//CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, MenuScene::scene()));
+}
+
+void TestScene::printDBInfos()
+{
+	SqliteHelper helper;
+
+	string dbName[] = { DB_SAVING, DB_STAGE, DB_CONFIG };
+	for (int i = 0; i < 3; ++i)
+	{
+		string outName = dbName[i].substr(dbName[i].rfind("/") + 1) + ".txt";
+		ofstream out(outName.c_str());
+
+		out << "db Name: " << dbName[i] << endl<<endl;
+		helper.openDB(dbName[i].c_str());
+		auto info = helper.getDBInfo();
+		for (auto iter = info.begin(); iter != info.end(); ++iter)
+		{
+			out << "---------------------------------" << endl;
+			out << "table Name: "<<iter->first << endl;
+			auto colNames = iter->second;
+			for (size_t j = 0; j < colNames.size(); ++j)
+			{
+				out << colNames[j] << endl;
+			}
+			out << endl;
+		}
+		//out << "/////////////////////////////////" << endl;
+	}
 }
 
 void TestScene::testCallback(CCObject* pSender)

@@ -10,14 +10,16 @@ public:
 	GuideMgr();
 	void init();
 
-	void startGuide(int startAction, std::function<void()> callback);
+	void startGuide(int startAction, std::function<void()> callback = NULL);
 	void endGuide(int endAction);
 
+	void setGuideEnable(bool enable);
 private:
 	void finishGuide();
-
+	void onSave();
 public:
 	std::vector<int> m_finishedGuides;
 	int m_curGuideId;
+	bool m_guideEnable;
 };
 #endif

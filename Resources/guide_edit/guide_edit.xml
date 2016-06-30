@@ -30,5 +30,14 @@
 		<selected>guide_edit/save.png</selected>
 		<disabled>guide_edit/save.png</disabled>
 	</button>
+	<label>
+		<id>6</id>
+		<x>230.62</x>
+		<y>773.51</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
+		<text>guide edit</text>
+	</label>
 </layout>
 

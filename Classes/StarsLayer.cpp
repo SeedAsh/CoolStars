@@ -2,6 +2,7 @@
 #include "StarViewNode.h"
 #include "StageModel.h"
 #include "StageSceneState.h"
+#include "GuideMgr.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -113,6 +114,7 @@ void StarsLayer::initStars()
 void StarsLayer::starInitDone()
 {
 	setTouchEnabled(true);
+	GuideMgr::theMgr()->startGuide(kGuideStart_stage_initStarsFinished);
 }
 
 StarViewNode *StarsLayer::getClickedStar(CCPoint pos)

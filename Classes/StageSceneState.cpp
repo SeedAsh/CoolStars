@@ -5,6 +5,7 @@
 #include "StageOperator.h"
 #include "PropManager.h"
 #include "PetManager.h"
+#include "GuideMgr.h"
 USING_NS_CC;
 using namespace std;
 StageStateOwner::StageStateOwner()
@@ -30,11 +31,13 @@ StageStateOwner::~StageStateOwner()
 
 void StageStateOwner::clickStar(const LogicGrid &grid)
 {
+	GuideMgr::theMgr()->endGuide(kGuideEnd_star_clicked);
 	m_curState->clickStar(grid);
 }
 
 void StageStateOwner::clickPet(int petId)
 {
+	GuideMgr::theMgr()->endGuide(kGuideEnd_pet_clicked);
 	m_curState->clickPet(petId);
 }
 

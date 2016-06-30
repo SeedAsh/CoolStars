@@ -24,7 +24,7 @@ vector<vector<char *>> SqliteHelper::readRecord(const char *sql_str)
 {
 	//对于大数据，有性能瓶颈
 	vector<vector<char *>> record;
-		char * errMsg = NULL;//错误信息
+	char * errMsg = NULL;//错误信息
 	int result;//sqlite3_exec返回值
 	char **dbResult; //是 char ** 类型，两个*号
 	int nRow, nColumn;
@@ -149,6 +149,71 @@ void SqliteHelper::openTransaction(bool open)
 		sqlite3_exec(m_pGameDataBase, "commit;", 0, 0, 0);
 	}
 }
+
+unordered_map<string, vector<string>> SqliteHelper::getDBInfo()
+{
+	vector<string> vecTable;
+	GetTablesName(vecTable);
+
+	unordered_map<string, vector<string>> info;
+	for (auto iter = vecTable.begin(); iter != vecTable.end(); ++iter)
+	{
+		auto tableName = *iter;
+		GetColName(info[tableName], tableName.c_str());
+	}
+
+	return info;
+}
+
+
+void SqliteHelper::GetTablesName(vector<string>& vecTable)
+{
+	char *szError = new char[256];
+	sqlite3_stmt *stmt = NULL;
+	sqlite3_prepare((sqlite3*)m_pGameDataBase, "select name,sql from sqlite_master where type='table'  order by name", -1, &stmt, 0);
+	vector<string> vecTables;
+	if (stmt)
+	{
+		while (sqlite3_step(stmt) == SQLITE_ROW)
+		{
+			auto tbName = (char *)sqlite3_column_text(stmt, 0);
+			vecTable.push_back(tbName);
+		}
+		sqlite3_finalize(stmt);
+		stmt = NULL;
+	}
+}
+
+//获取列名
+bool SqliteHelper::GetColName(vector<string>& vecColName, string strTableName)
+{
+	sqlite3_stmt *stmt = NULL;
+	char sql[200];
+	sprintf(sql, "SELECT * FROM %s limit 0,1", strTableName.c_str());
+	char **pRes = NULL;
+	int nRow = 0, nCol = 0;
+	char *pErr = NULL;
+
+	//第一行是列名称
+	sqlite3_get_table((sqlite3*)m_pGameDataBase, sql, &pRes, &nRow, &nCol, &pErr);
+	for (int i = 0; i < nRow; i++)
+	{
+		for (int j = 0; j < nCol; j++)
+		{
+			char *pv = *(pRes + nCol*i + j);
+			vecColName.push_back(pv);
+		}
+		break;
+	}
+
+	if (pErr != NULL)
+	{
+		sqlite3_free(pErr);
+	}
+	sqlite3_free_table(pRes);
+	return true;
+}
+
 /*
 //使用回调函数获取表结果的方法
 //方法一

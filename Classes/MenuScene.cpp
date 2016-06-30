@@ -15,6 +15,7 @@
 #include "RankingPanelUtil.h"
 #include "GuideMacros.h"
 #include "GuideMgr.h"
+#include "SqliteHelper.h"
 
 USING_NS_CC;
 using namespace std;
@@ -92,6 +93,9 @@ void MenuScene::initBottomLayout()
 
 void MenuScene::toNormalGame(CCObject* pSender)
 {
+	SqliteHelper helper(DB_SAVING);
+	helper.getDBInfo();
+	return;
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 	StageModel::theModel()->resetStage(kNormalType);
 	MainScene::theScene()->showPanel(kPreStagePanel);

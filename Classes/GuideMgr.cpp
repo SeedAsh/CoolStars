@@ -18,11 +18,14 @@ GuideMgr *GuideMgr::theMgr()
 
 GuideMgr::GuideMgr()
 : m_curGuideId(kNotTriggerGuide)
+, m_guideEnable(true)
 {
 }
 
 void GuideMgr::startGuide(int startAction, std::function<void()> callback)
 {
+	if (!m_guideEnable) return;
+
 	int topStage = StageModel::theModel()->getStageInfo()->getTopStage();
 
 	auto configs = DataManagerSelf->getGuideConfig();
@@ -55,6 +58,8 @@ void GuideMgr::startGuide(int startAction, std::function<void()> callback)
 
 void GuideMgr::endGuide(int endAction)
 {
+	if (!m_guideEnable) return;
+
 	if (m_curGuideId == kNotTriggerGuide) return;
 	
 	auto config = DataManagerSelf->getGuideConfigById(m_curGuideId);
@@ -70,16 +75,9 @@ void GuideMgr::finishGuide()
 	if (iter != m_finishedGuides.end()) return;
 
 	m_finishedGuides.push_back(m_curGuideId);
-	string sql;
-	char str[100] = { 0 };
-	SqliteHelper helper(DB_SAVING);
-
-	sprintf(str, "replace into save_guide values(1, \"%s\");", parseIntsToStr(m_finishedGuides).c_str());
-
-	helper.executeSql(str);
-	helper.closeDB();
-
 	m_curGuideId = kNotTriggerGuide;
+
+	onSave();
 }
 
 void GuideMgr::init()
@@ -91,4 +89,22 @@ void GuideMgr::init()
 		auto data = *iter;
 		m_finishedGuides = parseStrToInts(data[1]);
 	}
+}
+
+void GuideMgr::onSave()
+{
+	string sql;
+	char str[100] = { 0 };
+	SqliteHelper helper(DB_SAVING);
+
+	sprintf(str, "replace into save_guide values(1, \"%s\", %d);", parseIntsToStr(m_finishedGuides).c_str(), m_guideEnable ? 1 : 0);
+
+	helper.executeSql(str);
+	helper.closeDB();
+}
+
+void GuideMgr::setGuideEnable(bool enable)
+{
+	m_guideEnable = enable;
+	onSave();
 }
