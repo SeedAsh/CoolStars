@@ -37,7 +37,6 @@ bool PetScene::init()
 	initMainLayout();
 	initBottomLayout();
 
-	changePetsColor(kColorGreen);
 	return true;
 }
 
@@ -78,7 +77,7 @@ void PetScene::initBottomLayout()
 	CCMenuItem *yellowPetBtn = dynamic_cast<CCMenuItem *>((m_bottomLayout->getChildById(4)));
 	yellowPetBtn->setTarget(this, menu_selector(PetScene::onYellowPetBtnClicked));
 
-
+	changePetsColor(kColorGreen);
 	greenPetBtn->setScale(kBtnSelectedScale);
 }
 
@@ -90,10 +89,10 @@ void PetScene::onLeftPetBtnClicked(cocos2d::CCObject* pSender)
 
 		int petId = m_colorPets[m_curPetColor][m_curColorPetIndex];
 		auto view = PetView::create(petId);
-		addChild(view);
+		addChild(view, -1);
 		m_moveHelper.moveLeft(view);
 
-		refreshCurPet();
+		refreshUi();
 	}
 }
 
@@ -105,10 +104,10 @@ void PetScene::onRigthPetBtnClicked(cocos2d::CCObject* pSender)
 
 		int petId = m_colorPets[m_curPetColor][m_curColorPetIndex];
 		auto view = PetView::create(petId);
-		addChild(view);
+		addChild(view, -1);
 		m_moveHelper.moveRight(view);
 
-		refreshCurPet();
+		refreshUi();
 	};
 }
 
@@ -117,7 +116,7 @@ void PetScene::onUpgradeBtnClicked(cocos2d::CCObject* pSender)
 	int petId = m_colorPets[m_curPetColor][m_curColorPetIndex];
 	auto pet = PetManager::petMgr()->getPetById(petId);
 	pet->upgrade();
-	refreshCurPet();
+	refreshUi();
 }
 
 void PetScene::onGreenPetBtnClicked(cocos2d::CCObject* pSender)
@@ -185,20 +184,33 @@ void PetScene::initColorPets()
 	}
 }
 
-void PetScene::refreshCurPet()
+void PetScene::changePetsColor(int color)
 {
-	//EmptyBox *pet = dynamic_cast<EmptyBox *>(m_mainLayout->getChildById(10));
-	//pet->removeNode();
+	m_curPetColor = color;
+	m_curColorPetIndex = 0;
 
+	m_moveHelper.clearNodes();
+
+	int size = m_colorPets[m_curPetColor].size();
+	if (m_curColorPetIndex >= 0 && m_curColorPetIndex < size)
+	{
+		int petId = m_colorPets[m_curPetColor][m_curColorPetIndex];
+		auto view = PetView::create(petId);
+		addChild(view, -1);
+		m_moveHelper.setCenterNode(view);
+	}
+
+	refreshUi();
+}
+
+void PetScene::refreshUi()
+{
 	int size = m_colorPets[m_curPetColor].size();
 	m_mainLayout->setVisible(size != 0);
 
 	if (m_curColorPetIndex >= 0 && m_curColorPetIndex < size)
 	{
 		int petId = m_colorPets[m_curPetColor][m_curColorPetIndex];
-
-		//pet->setNode(PetView::create(petId));
-		//pet->setAnchorPoint(ccp(0.5f, 0.5f));
 
 		auto data = PetManager::petMgr()->getPetById(petId)->getPetData();
 		auto config = DataManagerSelf->getPetColorConfig(data.color);
@@ -255,23 +267,4 @@ void PetScene::refreshArrows()
 	int size = m_colorPets[m_curPetColor].size();
 	m_mainLayout->getChildById(6)->setVisible(m_curColorPetIndex > 0);
 	m_mainLayout->getChildById(5)->setVisible(m_curColorPetIndex < size - 1);
-}
-
-void PetScene::changePetsColor(int color)
-{
-	m_curPetColor = color;
-	m_curColorPetIndex = 0;
-
-	m_moveHelper.clearNodes();
-
-	int size = m_colorPets[m_curPetColor].size();
-	if (m_curColorPetIndex >= 0 && m_curColorPetIndex < size)
-	{
-		int petId = m_colorPets[m_curPetColor][m_curColorPetIndex];
-		auto view = PetView::create(petId);
-		addChild(view);
-		m_moveHelper.setCenterNode(view);
-	}
-
-	refreshCurPet();
 }

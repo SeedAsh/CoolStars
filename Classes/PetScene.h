@@ -19,7 +19,7 @@ private:
 	void initBottomLayout();
 	void resetPetBtnsScale();
 	void initColorPets();
-	void refreshCurPet();
+	void refreshUi();
 	void refreshUpgrdeCost();
 	void refreshArrows();
 	void changePetsColor(int color);

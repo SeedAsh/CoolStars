@@ -30,42 +30,35 @@ void PetSceneMoveHelper::moveLeft(cocos2d::CCNode *newNode)
 {
 	if (m_curNode)
 	{
-		auto removeFunc = CCFunctionAction::create([=]()
-		{
-			m_curNode->removeFromParent();
-		});
+		auto removeFunc = CCFunctionAction::create(bind(&PetSceneMoveHelper::removeNode, this, m_curNode));
 		m_curNode->runAction(CCSequence::create(CCMoveTo::create(kFirstMoveDuation, m_leftmostPos), removeFunc, NULL));
 		m_curNode = NULL;
 	}
 
 	newNode->setAnchorPoint(ccp(0.5f, 0.5f));
 	newNode->setPosition(m_rightmostPos);
-	auto curNodeFunc = CCFunctionAction::create([&]()
-	{
-		m_curNode = newNode;
-	});
-	newNode->runAction(CCSequence::create(CCMoveTo::create(kSecondMoveDuation, m_centerPos), curNodeFunc, NULL));
+	auto curNodeFunc = CCFunctionAction::create(bind(&PetSceneMoveHelper::setCenterNode, this, newNode));
+	newNode->runAction(CCSequence::create(CCEaseBackInOut::create(CCMoveTo::create(kSecondMoveDuation, m_centerPos)), curNodeFunc, NULL));
 }
 
 void PetSceneMoveHelper::moveRight(cocos2d::CCNode *newNode)
 {
 	if (m_curNode)
 	{
-		auto removeFunc = CCFunctionAction::create([=]()
-		{
-			m_curNode->removeFromParent();
-		});
+		auto removeFunc = CCFunctionAction::create(bind(&PetSceneMoveHelper::removeNode, this, m_curNode));
 		m_curNode->runAction(CCSequence::create(CCMoveTo::create(kFirstMoveDuation, m_rightmostPos), removeFunc, NULL));
 		m_curNode = NULL;
 	}
 
 	newNode->setAnchorPoint(ccp(0.5f, 0.5f));
 	newNode->setPosition(m_leftmostPos);
-	auto curNodeFunc = CCFunctionAction::create([&]()
-	{
-		m_curNode = newNode;
-	});
-	newNode->runAction(CCSequence::create(CCMoveTo::create(kSecondMoveDuation, m_centerPos), curNodeFunc, NULL));
+	auto curNodeFunc = CCFunctionAction::create(bind(&PetSceneMoveHelper::setCenterNode, this, newNode));
+	newNode->runAction(CCSequence::create(CCEaseBackInOut::create(CCMoveTo::create(kSecondMoveDuation, m_centerPos)), curNodeFunc, NULL));
+}
+
+void PetSceneMoveHelper::removeNode(CCNode *node)
+{
+	node->removeFromParent();
 }
 
 void PetSceneMoveHelper::clearNodes()

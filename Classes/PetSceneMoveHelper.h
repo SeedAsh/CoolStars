@@ -6,6 +6,7 @@ class PetSceneMoveHelper
 public:
 	PetSceneMoveHelper();
 	void setCenterNode(cocos2d::CCNode *centerNode);
+	void removeNode(cocos2d::CCNode *node);
 	void moveLeft(cocos2d::CCNode *newNode);
 	void moveRight(cocos2d::CCNode *newNode);
 	void clearNodes();
