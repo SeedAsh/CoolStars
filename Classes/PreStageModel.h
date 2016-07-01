@@ -2,6 +2,8 @@
 #define __PRESTAGEMODEL_H__
 #include "cocos2d.h"
 
+#define NOT_SELECT_PET_ID 0
+
 struct IPreStageView
 {
 	virtual void onPetSelect(int oldPetId){}
@@ -15,7 +17,7 @@ public:
 	void removeView(IPreStageView *view);
 
 	void selectPet(int newPetId, int oldPetId);
-	std::vector<int> getPetsCanSelect();
+	std::vector<int> getPetsCanSelect(int curPetId);
 	
 	void confirmCurPets();
 	void init();

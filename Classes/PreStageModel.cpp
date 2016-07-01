@@ -29,16 +29,28 @@ void PreStageModel::selectPet(int newPetId, int oldPetId)
 	NOTIFY_VIEWS(onPetSelect, oldPetId);
 }
 
-std::vector<int> PreStageModel::getPetsCanSelect()
+std::vector<int> PreStageModel::getPetsCanSelect(int curPetId)
 {
 	auto ids = PetManager::petMgr()->getOwnedPetIds();
-	vector<int> result(ids.size());
+
+	vector<int> diff(ids.size());
 	sort(ids.begin(), ids.end());
 	sort(m_selectedPets.begin(), m_selectedPets.end());
 
-	auto iter = set_difference(ids.begin(), ids.end(), m_selectedPets.begin(), m_selectedPets.end(), result.begin());
-
-	return vector<int>(result.begin(), iter);
+	auto iter = set_difference(ids.begin(), ids.end(), m_selectedPets.begin(), m_selectedPets.end(), diff.begin());
+	
+	//添加当前petid 和 缺省不存在宠物的petid 
+	vector<int> result(diff.begin(), iter);
+	if (find(result.begin(), result.end(), curPetId) == result.end())
+	{
+		result.push_back(curPetId);
+	}
+	if (find(result.begin(), result.end(), NOT_SELECT_PET_ID) == result.end())
+	{
+		result.push_back(NOT_SELECT_PET_ID);
+	}
+	sort(result.begin(), result.end());
+	return result;
 }
 
 void PreStageModel::addView(IPreStageView *view)

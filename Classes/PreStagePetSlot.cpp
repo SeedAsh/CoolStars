@@ -5,10 +5,47 @@
 #include "PetManager.h"
 #include "ListPetView.h"
 #include "PreStageModel.h"
-#define NOT_SELECT_PET_ID 0
 USING_NS_CC;
 using namespace std;
 
+PreStagePetSlotNode *PreStagePetSlotNode::create(int petId)
+{
+	auto node = new PreStagePetSlotNode(petId);
+	node->init();
+	node->autorelease();
+	return node;
+}
+
+bool PreStagePetSlotNode::init()
+{
+	auto pet = PetManager::petMgr()->getPetById(m_petId);
+	if (pet)
+	{
+		auto path = pet->getPetData().petImgRes;
+		CCSprite* icon = CCSprite::create(path.c_str());
+
+		icon->ignoreAnchorPointForPosition(false);
+		icon->setAnchorPoint(ccp(0, 0));
+		addChild(icon);
+		setContentSize(icon->getContentSize());
+	}
+	return true;
+}
+
+string PreStagePetSlotNode::getBgPath()
+{
+	auto pet = PetManager::petMgr()->getPetById(m_petId);
+	string path;
+	if (pet)
+	{
+		int color = pet->getPetData().color;
+		path = DataManagerSelf->getStarsColorConfig(color).preStageSlotBg;
+	}
+	return path;
+}
+
+
+/////////////////////////////////////////////////////////////////////
 PreStagePetSlot *PreStagePetSlot::create(int petId)
 {
 	auto node = new PreStagePetSlot(petId);
@@ -46,78 +83,47 @@ void PreStagePetSlot::initLayout()
 	
 	EmptyBox *box = dynamic_cast<EmptyBox *>((m_layout->getChildById(2)));
 	box->setNode(m_listView);
-	refresh();
+	PreStageModel::theModel()->selectPet(m_curPetId, NOT_SELECT_PET_ID);
+	refreshList();
 }
 
-CCNode *PreStagePetSlot::getPetNode(const char* resPath)
+void PreStagePetSlot::refreshList()
 {
-	CCSprite* icon = CCSprite::create(resPath);
-
-	icon->ignoreAnchorPointForPosition(false);
-	icon->setAnchorPoint(ccp(0, 0));
-
-	return icon;
-}
-
-void PreStagePetSlot::refresh()
-{
-	//这里处理不好  需要重构； listview 添加sort功能 应对添加和删减节点
 	auto petMgr = PetManager::petMgr();
-	auto ids = PreStageModel::theModel()->getPetsCanSelect();
-	if (m_curPetId != NOT_SELECT_PET_ID)
-	{
-		ids.push_back(m_curPetId);
-	}
-	sort(ids.begin(), ids.end());
-	m_petIdInList.clear();
+	auto ids = PreStageModel::theModel()->getPetsCanSelect(m_curPetId);
 	m_listView->clear();
-	
-	//list里至少有一个空的node,即没宠物可选
-	//故list的数量为 宠物可选数量+1 
-	CCNode *emptyNode = CCNode::create();
-	m_listView->addNode(emptyNode);
-	m_petIdInList.push_back(NOT_SELECT_PET_ID);
 
 	int curIndex = 0;
 	for (size_t i = 0; i < ids.size(); ++i)
 	{
-		m_petIdInList.push_back(ids[i]);
-		auto pet = petMgr->getPetById(ids[i]);
-		if (m_curPetId == pet->getPetData().petId)
+		if (m_curPetId == ids[i])
 		{
-			curIndex = i + 1;
+			curIndex = i;
 		}
-
-		auto path = pet->getPetData().petImgRes;
-		m_listView->addNode(getPetNode(path.c_str()));
+		auto node = PreStagePetSlotNode::create(ids[i]);
+		m_listView->addNode(node);
 	}
 	m_listView->setCurItem(curIndex);
 }
 
 void PreStagePetSlot::onSelectItemCallback(int index)
 {
-	assert(index >= 0 && index <= (int)m_petIdInList.size());
-	int petId = m_petIdInList[index];
-	
+	PreStagePetSlotNode *node = dynamic_cast<PreStagePetSlotNode *>(m_listView->getNode(index));
+	int petId = node->getPetId();
 	if (m_curPetId != petId)
 	{
 		int oldPetId = m_curPetId;
 		m_curPetId = petId;
 		PreStageModel::theModel()->selectPet(petId, oldPetId);
-
-		auto pet = PetManager::petMgr()->getPetById(petId);
-		if (pet)
-		{
-			CCSprite *slotBg = dynamic_cast<CCSprite *>(m_layout->getChildById(1));
-			int color = pet->getPetData().color;
-			auto path = DataManagerSelf->getStarsColorConfig(color).preStageSlotBg;
-			slotBg->initWithFile(path.c_str());
-		}
 	}
+
+	CCSprite *slotBg = dynamic_cast<CCSprite *>(m_layout->getChildById(1));
+	slotBg->initWithFile(node->getBgPath().c_str());
 }
+
 
 void PreStagePetSlot::onPetSelect(int oldPetId)
 {
-	refresh();
+	refreshList();
 }
 
