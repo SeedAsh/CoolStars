@@ -7,7 +7,7 @@
 class PetSavingHelper
 {
 public:
-	static void setPetState(int petId);
+	static void setPetState(const PetData &data);
 	static PetData getPetState(int petId);
 
 	static void recordCurActivePets();

@@ -38,8 +38,17 @@ struct PetResConfig
 	string petImgRes;
 	string skillRes;
 	string petAnimationRes;
+	string petNameRes;
 };
 
+struct PetColorConfig
+{
+	int id;
+	string preStageSlotBg;
+	string skillTitle;
+	string skillLvLabel;
+	string numRes;
+};
 
 struct StageConfig
 {
@@ -74,7 +83,6 @@ struct StarsColorConfig
 	std::string colorExplosionRes;
 	std::string bounceBallRes;
 	std::string bounceBallExplosionRes;
-	std::string preStageSlotBg;
 	std::string desc;
 };
 

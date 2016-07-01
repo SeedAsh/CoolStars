@@ -28,7 +28,7 @@ void TitlePanel::onEnter()
 void TitlePanel::onExit()
 {
 	CCNode::onExit();
-	UserInfo::theInfo()->addView(this);
+	UserInfo::theInfo()->removeView(this);
 }
 
 bool TitlePanel::init()

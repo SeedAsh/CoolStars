@@ -24,6 +24,7 @@ void DataManager::LoadData()
 	loadStarsColorConfig();
 	loadPetCommonConfig();
 	loadPetResConfig();
+	loadPetColorConfig();
 	loadPropsConfig();
 	loadRankingConfig();
 	loadShopConfig();
@@ -88,7 +89,7 @@ void DataManager::loadPetCommonConfig()
 		config.foodToUpgrade = parseStrToInts(data[3]);
 		assert(config.foodToUpgrade.size() == MAX_PET_LEVEL);
 		config.skillTarget = atoi(data[4]);
-		config.desc = atoi(data[5]);
+		config.desc = data[5];
 		m_petCommonConfig.push_back(config);
 	}
 }
@@ -115,6 +116,7 @@ void DataManager::loadPetResConfig()
 		config.petImgRes = data[3];
 		config.skillRes = data[4];
 		config.petAnimationRes = data[5];
+		config.petNameRes = data[6];
 		m_petResConfig.push_back(config);
 	}
 	sort(m_petResConfig.begin(), m_petResConfig.end(), [=](PetResConfig config1, PetResConfig config2)->bool
@@ -127,6 +129,31 @@ const PetResConfig &DataManager::getPetResConfig(int petId)
 {
 	assert(petId > 0 && petId <= PETS_AMOUNT);
 	return m_petResConfig[petId - 1];
+}
+
+void DataManager::loadPetColorConfig()
+{
+	SqliteHelper helper(DB_CONFIG);
+	auto result = helper.readRecord("select * from pets_color");
+
+	for (auto iter = result.begin(); iter != result.end(); ++iter)
+	{
+		auto data = *iter;
+		PetColorConfig config;
+		config.id = atoi(data[0]);
+		config.preStageSlotBg = data[1];
+		config.skillTitle = data[2];
+		config.skillLvLabel = data[3];
+		config.numRes = data[4];
+
+		m_petColorConfig.push_back(config);
+	}
+}
+
+const PetColorConfig &DataManager::getPetColorConfig(int color)
+{
+	assert(color >= kColorRed && color <= kColorPurple);
+	return m_petColorConfig[color - 1];
 }
 
 void DataManager::loadStageConfig()
@@ -246,8 +273,7 @@ void DataManager::loadStarsColorConfig()
 		config.colorExplosionRes = data[2];
 		config.bounceBallRes = data[3];
 		config.bounceBallExplosionRes = data[4];
-		config.preStageSlotBg = data[5];
-		config.desc = data[6];
+		config.desc = data[5];
 
 		m_starsColorConfig.push_back(config);
 	}

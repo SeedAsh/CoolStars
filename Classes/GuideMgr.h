@@ -10,7 +10,7 @@ public:
 	GuideMgr();
 	void init();
 
-	void startGuide(int startAction, std::function<void()> callback = NULL);
+	void startGuide(int startAction, std::function<void()> callback = std::function<void()>());
 	void endGuide(int endAction);
 
 	void setGuideEnable(bool enable);

@@ -47,6 +47,9 @@ public:
 	void loadPetResConfig();
 	const PetResConfig &getPetResConfig(int petId);
 
+	void loadPetColorConfig();
+	const PetColorConfig &getPetColorConfig(int color);
+
 	void loadSystemConfig();
 	const SystemConfig &getSystemConfig();
 
@@ -79,6 +82,7 @@ private:
 	vector<StarsLoaderConfig> m_starsLoaderConfig;
 	vector<PetCommonConfig> m_petCommonConfig;
 	vector<PetResConfig> m_petResConfig;
+	vector<PetColorConfig> m_petColorConfig;
 	vector<StarsColorConfig> m_starsColorConfig;
 	SystemConfig m_systemConfig;
 	vector<PropsConfig> m_propsConfig;

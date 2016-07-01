@@ -1,33 +1,21 @@
 #ifndef __PETVIEW_H__
 #define __PETVIEW_H__
 #include "cocos2d.h"
-#include "TouchNode.h"
-
+class UiLayout;
 class PetEntity;
-class PetView : public TouchNode
+class PetView : public cocos2d::CCNode
 {
 public:
 	static PetView *create(int petId);
 	virtual ~PetView(){}
 	virtual bool init();
-
+	void initLayout();
 private:
 	PetView(int petId);
-	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
 private:
 	int m_petId;
+	UiLayout *m_layout;
 	const PetEntity *m_model;
 };
 
-//ø’∏Òpet Œ¥…œ≥°
-class PetEmptyView : public TouchNode
-{
-public:
-	static PetEmptyView *create();
-	virtual bool init();
-private:
-	PetEmptyView(){}
-	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
-
-};
 #endif

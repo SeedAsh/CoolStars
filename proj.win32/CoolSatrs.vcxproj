@@ -164,6 +164,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PetManager.cpp" />
     <ClCompile Include="..\Classes\PetSavingHelper.cpp" />
     <ClCompile Include="..\Classes\PetScene.cpp" />
+    <ClCompile Include="..\Classes\PetSceneMoveHelper.cpp" />
     <ClCompile Include="..\Classes\PetSkill.cpp" />
     <ClCompile Include="..\Classes\PetView.cpp" />
     <ClCompile Include="..\Classes\PreStageModel.cpp" />
@@ -246,6 +247,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PetManager.h" />
     <ClInclude Include="..\Classes\PetSavingHelper.h" />
     <ClInclude Include="..\Classes\PetScene.h" />
+    <ClInclude Include="..\Classes\PetSceneMoveHelper.h" />
     <ClInclude Include="..\Classes\PetSkill.h" />
     <ClInclude Include="..\Classes\PetView.h" />
     <ClInclude Include="..\Classes\PreStageModel.h" />

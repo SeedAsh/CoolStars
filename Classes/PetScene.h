@@ -2,7 +2,8 @@
 #define __PETSCENE_H__ 
 #include "cocos2d.h"
 #include "BasePanel.h"
-
+#include <unordered_map>
+#include "PetSceneMoveHelper.h"
 class UiLayout;
 
 class PetScene :
@@ -16,7 +17,13 @@ private:
 	~PetScene(){}
 	void initMainLayout();
 	void initBottomLayout();
-
+	void resetPetBtnsScale();
+	void initColorPets();
+	void refreshCurPet();
+	void refreshUpgrdeCost();
+	void refreshArrows();
+	void changePetsColor(int color);
+private:
 	void onLeftPetBtnClicked(cocos2d::CCObject* pSender);
 	void onRigthPetBtnClicked(cocos2d::CCObject* pSender);
 	void onUpgradeBtnClicked(cocos2d::CCObject* pSender);
@@ -31,5 +38,10 @@ private:
 private:
 	UiLayout *m_bottomLayout;
 	UiLayout *m_mainLayout;
+	PetSceneMoveHelper m_moveHelper;
+	static const float kBtnSelectedScale;
+	std::unordered_map<int, std::vector<int>>m_colorPets;
+	int m_curPetColor;
+	int m_curColorPetIndex;
 };
 #endif

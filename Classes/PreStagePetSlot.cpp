@@ -39,7 +39,7 @@ string PreStagePetSlotNode::getBgPath()
 	if (pet)
 	{
 		int color = pet->getPetData().color;
-		path = DataManagerSelf->getStarsColorConfig(color).preStageSlotBg;
+		path = DataManagerSelf->getPetColorConfig(color).preStageSlotBg;
 	}
 	return path;
 }

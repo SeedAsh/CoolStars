@@ -2,13 +2,14 @@
 #include "PetSkill.h"
 #include "PetSavingHelper.h"
 #include "StageOperator.h"
+#include "CommonMacros.h"
+#include "UserInfo.h"
 PetEntity::PetEntity(int petId)
 {
 	//上次保存的宠物数据
 	m_data = PetSavingHelper::getPetState(petId);
 
 	refreshPetData();
-
 }
 
 PetEntity::~PetEntity()
@@ -17,10 +18,13 @@ PetEntity::~PetEntity()
 
 void PetEntity::refreshPetData()
 {
+	m_data.energy = 0;
+
 	auto petRes = DataManagerSelf->getPetResConfig(m_data.petId);
 	m_data.petImgRes = petRes.petImgRes;
 	m_data.petSkillRes = petRes.skillRes;
 	m_data.petAnimationRes = petRes.petAnimationRes;
+	m_data.petNameRes = petRes.petNameRes;
 
 	auto commonData = DataManagerSelf->getPetCommonConfig(m_data.commonid);
 	int level = m_data.level;
@@ -65,6 +69,32 @@ PetEntity *PetEntity::PetFactory(int petId)
 		assert(false && "no this kind of pet");
 		return NULL;
 	}
+}
+
+bool PetEntity::isMaxLevel()
+{
+	return m_data.level == MAX_PET_LEVEL;
+}
+
+void PetEntity::upgrade()
+{
+	int foodNum = UserInfo::theInfo()->getFood();
+	int diamondNum = UserInfo::theInfo()->getDiamond();
+	if (isMaxLevel()) return;
+
+	int foodCost = m_data.foodToUpgrade;
+	if (foodNum >= foodCost)
+	{
+		UserInfo::theInfo()->setFood(foodNum - foodCost);
+	}
+	else if (diamondNum >= foodCost)
+	{
+		UserInfo::theInfo()->setDiamond(diamondNum - foodCost);
+	}
+
+	m_data.level++;
+	refreshPetData();
+	PetSavingHelper::setPetState(m_data);
 }
 //////////////////////////////////////////////////////////////////////////////
 

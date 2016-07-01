@@ -14,6 +14,7 @@ struct PetData
 	std::string petImgRes;
 	std::string petSkillRes;
 	std::string petAnimationRes;
+	std::string petNameRes;
 	int skillTarget;
 	//升级后变化
 	int maxEnergy;
@@ -21,8 +22,7 @@ struct PetData
 	int foodToUpgrade;
 	//可变
 	int level;
-	int exp;
-	int energy; 
+	int energy;
 };
 
 enum PetType
@@ -55,9 +55,11 @@ public:
 	const PetData &getPetData()const{ return m_data; }
 
 	void setEnergy(int energy){ m_data.energy = energy; }
-	void setExp(int exp){ m_data.exp = exp; }
 	void setLevel(int level){ m_data.level = level; }
 
+	bool isMaxLevel();
+	void upgrade();
+	
 	static PetEntity *PetFactory(int petId);
 protected:
 	PetEntity(int petId);

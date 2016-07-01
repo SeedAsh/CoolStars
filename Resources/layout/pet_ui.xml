@@ -1,8 +1,8 @@
 <layout width="480.000000" height="864.000000">
 	<button>
 		<id>5</id>
-		<x>401.33</x>
-		<y>449.06</y>
+		<x>451.35</x>
+		<y>453.91</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -12,8 +12,8 @@
 	</button>
 	<button>
 		<id>6</id>
-		<x>61.96</x>
-		<y>456.25</y>
+		<x>34.10</x>
+		<y>458.36</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -22,9 +22,26 @@
 		<disabled>pet/cwjm_jianhao1.png</disabled>
 	</button>
 	<image>
+		<id>9</id>
+		<x>214.14</x>
+		<y>128.46</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
+		<path>pet/ty_zuanshi.png</path>
+	</image>
+	<emptyBox>
+		<id>10</id>
+		<x>231.65</x>
+		<y>418.47</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+	</emptyBox>
+	<image>
 		<id>7</id>
-		<x>266.26</x>
-		<y>266.48</y>
+		<x>241.36</x>
+		<y>267.32</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -32,8 +49,8 @@
 	</image>
 	<button>
 		<id>8</id>
-		<x>261.61</x>
-		<y>177.67</y>
+		<x>238.82</x>
+		<y>187.59</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -42,42 +59,9 @@
 		<disabled>pet/cwjm_anniu7.png</disabled>
 	</button>
 	<image>
-		<id>9</id>
-		<x>251.07</x>
-		<y>118.54</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-		<path>pet/ty_zuanshi.png</path>
-	</image>
-	<emptyBox>
-		<id>10</id>
-		<x>250.64</x>
-		<y>435.14</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-	</emptyBox>
-	<emptyBox>
-		<id>11</id>
-		<x>128.86</x>
-		<y>523.15</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-	</emptyBox>
-	<emptyBox>
-		<id>12</id>
-		<x>376.42</x>
-		<y>528.21</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-	</emptyBox>
-	<image>
 		<id>13</id>
-		<x>185.65</x>
-		<y>595.72</y>
+		<x>192.61</x>
+		<y>659.67</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -85,8 +69,8 @@
 	</image>
 	<image>
 		<id>14</id>
-		<x>279.14</x>
-		<y>594.87</y>
+		<x>277.03</x>
+		<y>663.88</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -94,10 +78,10 @@
 	</image>
 	<imageNum>
 		<id>16</id>
-		<x>212.71</x>
-		<y>580.14</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<x>215.66</x>
+		<y>646.20</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>3</num>
@@ -105,14 +89,39 @@
 	</imageNum>
 	<imageNum>
 		<id>17</id>
-		<x>277.31</x>
-		<y>105.70</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<x>242.28</x>
+		<y>113.72</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>10</num>
 		<path>pet/cwjm_shuzi6.png</path>
 	</imageNum>
+	<image>
+		<id>18</id>
+		<x>215.19</x>
+		<y>127.62</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
+		<path>common/title_food.png</path>
+	</image>
+	<emptyBox>
+		<id>19</id>
+		<x>-204.71</x>
+		<y>422.27</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+	</emptyBox>
+	<emptyBox>
+		<id>20</id>
+		<x>655.73</x>
+		<y>415.30</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+	</emptyBox>
 </layout>
 

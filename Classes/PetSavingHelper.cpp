@@ -7,9 +7,14 @@ USING_NS_CC;
 using namespace std;
 using namespace CommonUtil;
 
-void PetSavingHelper::setPetState(int petId)
+void PetSavingHelper::setPetState(const PetData &data)
 {
-	//save_pet_ids
+	SqliteHelper sqlHelper(DB_SAVING);
+
+	char str[100] = { 0 };
+	vector<int> curPets = PetManager::petMgr()->getCurPetIds();
+	sprintf(str, "update save_pets set level = \"%d\" where id = %d", data.level,  data.petId);
+	sqlHelper.executeSql(str); 
 }
 
 PetData PetSavingHelper::getPetState(int petId)
@@ -25,8 +30,6 @@ PetData PetSavingHelper::getPetState(int petId)
 	data.commonid = atoi(result[0][1]);
 	data.color = atoi(result[0][2]);
 	data.level = atoi(result[0][3]);
-	data.exp = atoi(result[0][4]);
-	data.energy = atoi(result[0][5]);
 	return data;
 	
 }

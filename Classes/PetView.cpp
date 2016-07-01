@@ -1,6 +1,7 @@
 #include "PetView.h"
 #include "PetEntity.h"
 #include "PetManager.h"
+#include "UiLayout.h"
 using namespace std;
 USING_NS_CC;
 
@@ -9,13 +10,6 @@ PetView::PetView(int petId)
 {
 	m_model = PetManager::petMgr()->getPetById(petId);
 	assert(m_model);
-}
-
-bool PetView::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
-{
-	runScale();
-	return true;
-	//CCMessageBox("click!", "click");
 }
 
 PetView *PetView::create(int petId)
@@ -28,63 +22,26 @@ PetView *PetView::create(int petId)
 
 bool PetView::init()
 {
-	string iconPath = m_model->getPetData().petImgRes;
-
-	auto spr = CCSprite::create(iconPath.c_str());
-	CCSize size = spr->getContentSize();
-
-	//设置宠物的宽度为两个星星的大小
-	float scale = STAR_SIZE / size.width * 2;
-	spr->setScale(scale);
-	size.width *= scale;
-	size.height *= scale;
-
-	setContentSize(size);
-	setAnchorPoint(ccp(0.5f, 0.5f));
-
-	spr->setPosition(ccp(size.width * 0.5f, size.height *0.5f));
-
-	addChild(spr);
+	m_layout = UiLayout::create("layout/pet_node.xml");
+	initLayout();
 	
-	CCLayerColor *mask = CCLayerColor::create(ccc4(255, 0, 0, 75));
-	mask->setContentSize(size);
-	//addChild(mask);
+	setContentSize(m_layout->getContentSize());
+	addChild(m_layout);
 	return true;
 }
 
-
-
-////////////////////////////////////////////////////////////////////////////////////////
-PetEmptyView *PetEmptyView::create()
+void PetView::initLayout()
 {
-	auto view = new PetEmptyView();
-	view->init();
-	view->autorelease();
-	return view;
-}
+	CCArmature *pet = dynamic_cast<CCArmature *>(m_layout->getChildById(3));
+	
+	string path = m_model->getPetData().petAnimationRes;
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo(path.c_str());
 
-bool PetEmptyView::init()
-{
-	string iconPath = "pets/black.png";
-	auto spr = CCSprite::create(iconPath.c_str());
-	CCSize size = spr->getContentSize();
+	int pos1 = path.rfind("/");
+	int pos2 = path.rfind(".");
+	string armatureName = path.substr(pos1 + 1, pos2 - pos1 - 1);
 
-	//设置宠物的宽度为两个星星的大小
-	float scale = STAR_SIZE / size.width * 2;
-	spr->setScale(scale);
-	size.width *= scale;
-	size.height *= scale;
+	pet->init(armatureName.c_str());
+	pet->getAnimation()->play("standby");
 
-	setContentSize(size);
-	setAnchorPoint(ccp(0.5f, 0.5f));
-
-	spr->setPosition(ccp(size.width * 0.5f, size.height *0.5f));
-	addChild(spr);
-	return true;
-}
-
-bool PetEmptyView::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
-{
-	runScale();
-	return true;
 }
