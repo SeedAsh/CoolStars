@@ -17,6 +17,7 @@ ListSlideView::ListSlideView(const CCSize &size)
 : ListView(size)
 , m_speed(0)
 , m_scrollTime(0)
+, m_curIndex(0)
 {
 }
 
@@ -74,5 +75,21 @@ void ListSlideView::onTouchEnded(cocos2d::CCTouch *pTouch)
 	if (fabs(m_speed) < minSpeed)
 	{
 		m_speed = 0;
+	}
+	
+	//list node的点选回调
+	static const float maxMoveDistance = 10;
+	if (fabs(curPos.y - startPos.y) <= maxMoveDistance)
+	{
+		auto pos = m_container->convertToNodeSpace(curPos);
+		for (size_t i = 0; i < m_nodes.size(); ++i)
+		{
+			if (m_nodes[i]->boundingBox().containsPoint(pos) && m_handle)
+			{
+				m_curIndex = i;
+				m_handle(i);
+				break;
+			}
+		}
 	}
 }

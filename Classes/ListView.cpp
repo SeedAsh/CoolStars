@@ -182,8 +182,8 @@ void ListView::dragback()
 	float minY = 0;
 	if (containerSize.height <= m_size.height)
 	{
-		maxY = containerSize.height;
-		minY = containerSize.height;
+		maxY = m_size.height - containerSize.height;
+		minY = maxY;
 	}
 	else
 	{
