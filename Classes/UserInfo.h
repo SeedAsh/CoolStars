@@ -33,6 +33,16 @@ public:
 	void setKey(int value);
 	int getKey(){ return m_key; }
 
+	void setFirstPlay(bool isFirstPlay);
+	bool isFirstPlay(){ return m_isFirstPlay; }
+
+	void setFirstPlayTime(int firstPlayTime);
+	int getFirstPlayTime(){ return m_firstPlayTime; }
+	int getDaysFromFirstPlay(){ return 5; }
+
+	void saveCurLoginInTime();
+	std::string getLastLoginInTime(){ return m_lastLoginInTime; }
+	bool isFirstLoginToday();
 private:
 	UserInfo(){}
 private:
@@ -41,6 +51,11 @@ private:
 	int m_strength;
 	int m_runeStone; //符石
 	int m_key;
+
+	bool m_isFirstPlay;
+	int m_firstPlayTime;
+	std::string m_lastLoginInTime;
+
 	std::vector<IUserInfoView *>m_views;
 
 };

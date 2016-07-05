@@ -102,7 +102,7 @@ struct RankingConfig
 {
 	int id;
 	std::string name;
-	int score;
+	int stage;
 	int ownPetPercent;
 };
 

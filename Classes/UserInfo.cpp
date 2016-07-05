@@ -23,6 +23,10 @@ void UserInfo::loadUserInfo()
 	m_food = atoi(data[2]);
 	m_strength = atoi(data[3]);
 	m_runeStone = atoi(data[4]);
+	m_key = atoi(data[5]);
+	m_isFirstPlay = atoi(data[6]) == 1;
+	m_firstPlayTime = atoi(data[7]);
+	m_lastLoginInTime = data[8];
 }
 
 void UserInfo::setDiamond(int value)
@@ -85,6 +89,38 @@ void UserInfo::setKey(int value)
 	NOTIFY_VIEWS(onKeyChanged);
 }
 
+void UserInfo::setFirstPlay(bool isFirstPlay)
+{
+	m_isFirstPlay = isFirstPlay;
+
+	SqliteHelper sqlHelper(DB_SAVING);
+	char str[100] = { 0 };
+	sprintf(str, "update save_user_info set %s = '%d' where id = 1;", "first_play", m_isFirstPlay ? 1 : 0);
+	sqlHelper.executeSql(str);
+}
+
+void UserInfo::setFirstPlayTime(int firstPlayTime)
+{
+	m_firstPlayTime = firstPlayTime;
+
+	SqliteHelper sqlHelper(DB_SAVING);
+	char str[100] = { 0 };
+	sprintf(str, "update save_user_info set %s = '%d' where id = 1;", "first_play_time", m_firstPlayTime);
+	sqlHelper.executeSql(str);
+}
+
+void UserInfo::saveCurLoginInTime()
+{
+	return;
+	//m_isFirstOpenRanking = isFirstOpenRanking;
+	/*
+	SqliteHelper sqlHelper(DB_SAVING);
+	char str[100] = { 0 };
+	sprintf(str, "update save_user_info set %s = '%d' where id = 1;", "first_open_ranking", m_isFirstOpenRanking ? 1 : 0);
+	sqlHelper.executeSql(str);
+	*/
+}
+
 void UserInfo::addView(IUserInfoView *view)
 {
 	auto iter = find(m_views.begin(), m_views.end(), view);
@@ -101,4 +137,9 @@ void UserInfo::removeView(IUserInfoView *view)
 	{
 		m_views.erase(iter);
 	}
+}
+
+bool UserInfo::isFirstLoginToday()
+{
+	return true;
 }

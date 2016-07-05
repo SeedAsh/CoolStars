@@ -315,16 +315,21 @@ void DataManager::loadRankingConfig()
 		RankingConfig config;
 		config.id = atoi(data[0]);
 		config.name = data[1];
-		config.score = atoi(data[2]);
+		config.stage = atoi(data[2]);
 		config.ownPetPercent = atoi(data[3]);
 		m_rankingConfig.push_back(config);
 	}
 }
 
-const RankingConfig &DataManager::getRankingConfig(int rank)
+const RankingConfig &DataManager::getRankingConfig(int id)
 {
-	assert(rank >= 0 && rank < (int)m_rankingConfig.size());
-	return m_rankingConfig[rank];
+	assert(id > 0 && id <= (int)m_rankingConfig.size());
+	return m_rankingConfig[id - 1];
+}
+
+const std::vector<RankingConfig> &DataManager::getRankingConfigs()
+{
+	return m_rankingConfig;
 }
 
 void DataManager::loadShopConfig()

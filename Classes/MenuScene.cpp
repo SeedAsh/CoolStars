@@ -15,6 +15,7 @@
 #include "RankingPanelUtil.h"
 #include "GuideMacros.h"
 #include "GuideMgr.h"
+#include "RankingModel.h"
 
 USING_NS_CC;
 using namespace std;
@@ -150,7 +151,16 @@ void MenuScene::toHelpPanel(cocos2d::CCObject* pSender)
 void MenuScene::toRankPanel(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	MainScene::theScene()->showPanel(kRankingPanel);
+
+	if (RankingModel::theModel()->alreadyOpenRanking())
+	{
+		MainScene::theScene()->showPanel(kRankingPanel);
+	}
+	else
+	{
+		auto panel = RankingNameInputPanel::create();
+		MainScene::theScene()->showDialog(panel);
+	}
 }
 
 void MenuScene::toPackagePanel(cocos2d::CCObject* pSender)

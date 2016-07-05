@@ -39,14 +39,13 @@
 		<selected>ranking/qm_anniu1.png</selected>
 		<disabled>ranking/qm_anniu1.png</disabled>
 	</button>
-	<label>
-		<id>5</id>
-		<x>112.91</x>
-		<y>118.82</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+	<emptyBox>
+		<id>6</id>
+		<x>37.14</x>
+		<y>95.60</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
-		<text>hello hey</text>
-	</label>
+	</emptyBox>
 </layout>
 

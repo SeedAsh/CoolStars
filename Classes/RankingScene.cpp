@@ -33,7 +33,7 @@ bool RankingScene::init()
 void RankingScene::initMainLayout()
 {
 	auto pos = m_layout->getChildById(7)->getPosition();
-	ListSlideView *rankList = ListSlideView::create(ccp(350, 400));
+	ListSlideView *rankList = ListSlideView::create(ccp(356, 400));
 	addChild(rankList);
 	rankList->setAnchorPoint(ccp(0, 1));
 	rankList->setPosition(pos);
@@ -44,7 +44,7 @@ void RankingScene::initMainLayout()
 		return config1.diamond > config2.diamond;
 	});
 	*/
-	for (int i = 10; i >= 0; --i)
+	for (int i = 5; i >= 1; --i)
 	{
 		rankList->addNode(RankingNode::create(i));
 	}

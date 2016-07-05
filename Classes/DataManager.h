@@ -57,7 +57,8 @@ public:
 	const PropsConfig &getPropsConfig(int propsId);
 
 	void loadRankingConfig();
-	const RankingConfig &getRankingConfig(int rank);
+	const std::vector<RankingConfig> &getRankingConfigs();
+	const RankingConfig &getRankingConfig(int id);
 
 	void loadShopConfig();
 	const std::vector<ShopConfig> &getShopConfig();

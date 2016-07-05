@@ -10,8 +10,8 @@
 	</image>
 	<image>
 		<id>1</id>
-		<x>125.58</x>
-		<y>587.94</y>
+		<x>175.39</x>
+		<y>589.00</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -19,8 +19,8 @@
 	</image>
 	<image>
 		<id>2</id>
-		<x>347.39</x>
-		<y>587.73</y>
+		<x>256.01</x>
+		<y>588.78</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -28,8 +28,8 @@
 	</image>
 	<image>
 		<id>3</id>
-		<x>235.75</x>
-		<y>587.94</y>
+		<x>363.65</x>
+		<y>586.88</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -52,5 +52,14 @@
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
+	<image>
+		<id>8</id>
+		<x>100.05</x>
+		<y>586.88</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
+		<path>ranking/phb_paiming.png</path>
+	</image>
 </layout>
 

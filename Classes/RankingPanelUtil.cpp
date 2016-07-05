@@ -6,14 +6,17 @@
 #include "CommonUtil.h"
 USING_NS_CC;
 using namespace std;
+using namespace extension;
 using namespace CommonUtil;
 
 bool RankingNameInputPanel::init()
 {
 	m_layout = UiLayout::create("layout/ranking_name_input.xml");
+	m_layout->setMenuTouchPriority(m_touchPriority);
 	initLayout();
 	addChild(m_layout);
 
+	initEditBox();
 	setContentSize(m_layout->getContentSize());
 	addMaskLayer();
 	return true;
@@ -26,14 +29,24 @@ void RankingNameInputPanel::initLayout()
 
 	CCMenuItem *genNameBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(3)));
 	genNameBtn->setTarget(this, menu_selector(RankingNameInputPanel::onGenRandomName));
+}
 
-	refreshName("");
+void RankingNameInputPanel::initEditBox()
+{
+	CCSize editSize = CCSize(200, 50);
+	m_editBox = CCEditBox::create(editSize, CCScale9Sprite::create("ranking/text_bk.png"));
+	m_editBox->setDelegate(this);
+	m_editBox->setAnchorPoint(ccp(0, 0));
+	m_editBox->setPosition(m_layout->getChildById(6)->getPosition());
+	m_editBox->setTouchPriority(m_touchPriority - 1);
+	m_editBox->setPlaceHolder("your name");
+	m_editBox->setMaxLength(4);
+	addChild(m_editBox);
 }
 
 void RankingNameInputPanel::refreshName(std::string name)
 {
-	CCLabelTTF *nameLabel = dynamic_cast<CCLabelTTF *>((m_layout->getChildById(5)));
-	nameLabel->setString(name.c_str());
+	m_editBox->setText(name.c_str());
 }
 
 void RankingNameInputPanel::onGenRandomName(cocos2d::CCObject* pSender)
@@ -42,9 +55,39 @@ void RankingNameInputPanel::onGenRandomName(cocos2d::CCObject* pSender)
 	refreshName(name);
 }
 
+
 void RankingNameInputPanel::onConfirm(cocos2d::CCObject* pSender)
 {
-	removeFromParent();
+	string name = m_editBox->getText();
+	if (RankingModel::theModel()->isValidName(name))
+	{
+		removeFromParent();
+	}
+	else
+	{
+		CCMessageBox("invalid name", "title");
+	}
+
+}
+
+void RankingNameInputPanel::editBoxEditingDidBegin(CCEditBox *editBox)
+{
+	CCLOG("start edit");
+}
+
+void RankingNameInputPanel::editBoxEditingDidEnd(CCEditBox *editBox)
+{
+	CCLOG("end edit");
+}
+
+void RankingNameInputPanel::editBoxTextChanged(CCEditBox *editBox, const std::string &text)
+{
+	CCLOG("textchanged");
+}
+
+void RankingNameInputPanel::editBoxReturn(CCEditBox *editBox)
+{
+	CCLOG("editboxreturn");
 }
 
 //////////////////////////////////////////////////////////////////////////////

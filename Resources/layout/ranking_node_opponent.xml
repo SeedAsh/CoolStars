@@ -28,8 +28,8 @@
 	</image>
 	<label>
 		<id>5</id>
-		<x>42.84</x>
-		<y>31.66</y>
+		<x>99.82</x>
+		<y>33.77</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -37,14 +37,25 @@
 	</label>
 	<imageNum>
 		<id>6</id>
-		<x>82.73</x>
-		<y>14.98</y>
+		<x>180.66</x>
+		<y>35.03</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
-		<num>1234</num>
-		<path>stage/yxjm_shuzi1.png</path>
+		<num>12</num>
+		<path>num/ty_ziti13.png</path>
+	</imageNum>
+	<imageNum>
+		<id>7</id>
+		<x>16.04</x>
+		<y>22.16</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+		<amount>10</amount>
+		<num>10</num>
+		<path>num/ty_ziti13.png</path>
 	</imageNum>
 </layout>
 
