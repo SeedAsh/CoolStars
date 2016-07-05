@@ -23,24 +23,24 @@
 		<id>12</id>
 		<x>241.44</x>
 		<y>-0.84</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
 		<x>324.38</x>
 		<y>0.00</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>14</id>
 		<x>408.16</x>
 		<y>2.11</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 </layout>

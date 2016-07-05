@@ -92,7 +92,10 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 		string text = node->first_node("text")->value();
 		auto pLabel = CCLabelTTF::create(text.c_str(), "Arial", 24);
 		addChild(pLabel, 0, id);
+		pLabel->setAnchorPoint(ccp(anchorPtX, anchorPtY));
 		pLabel->setPosition(ccp(x, y));
+		pLabel->setScale(scale);
+
 	}
 	else if (widgetName == "button")
 	{
@@ -120,13 +123,16 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 
 		m_menu->addChild(imageItem);
 		m_menuItems[id] = imageItem;
+		imageItem->setAnchorPoint(ccp(anchorPtX, anchorPtY));
 		imageItem->setPosition(ccp(x, y));
+		imageItem->setScale(scale);
 	}
 	else if (widgetName == "image")
 	{
 		string path = node->first_node("path")->value();
 		CCSprite *spr = CCSprite::create(path.c_str());
 		addChild(spr, 0, id);
+		spr->setAnchorPoint(ccp(anchorPtX, anchorPtY));
 		spr->setPosition(ccp(x, y));
 		spr->setScale(scale);
 	}
@@ -134,7 +140,9 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 	{
 		EmptyBox *node = EmptyBox::create();
 		addChild(node, 0, id);
+		node->setAnchorPoint(ccp(anchorPtX, anchorPtY));
 		node->setPosition(ccp(x, y));
+		node->setScale(scale);
 	}
 	else if (widgetName == "imageNum")
 	{
@@ -145,7 +153,9 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 		auto pLabel = CCLabelAtlas::create(text.c_str(), path.c_str(), size.width / amount, size.height, '0');
 
 		addChild(pLabel, 0, id);
+		pLabel->setAnchorPoint(ccp(anchorPtX, anchorPtY));
 		pLabel->setPosition(ccp(x, y));
+		pLabel->setScale(scale);
 	}
 	else if (widgetName == "animation")
 	{
@@ -165,8 +175,13 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 			armature->getAnimation()->play(movementName.c_str());
 		}
 		addChild(armature, 0, id);
-		armature->setPosition(ccp(x, y));
+		CCPoint pos = ccp(x, y);
 		armature->setScale(scale);
+		CCRect rect = armature->boundingBox();
+		CCPoint anchorPt = ccp(0.5f, 0.5f);//动画里以(0.5f, 0.5f)为锚点
+		pos.x += (anchorPt.x - anchorPtX) * rect.size.width;
+		pos.y += (anchorPt.y - anchorPtY) * rect.size.height;
+		armature->setPosition(pos);
 	}
 	else
 	{

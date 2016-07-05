@@ -8,15 +8,15 @@
 		<scale>1.00</scale>
 		<path>pet/cwjm_taizi.png</path>
 	</image>
-	<animation>
+		<animation>
 		<id>3</id>
-		<x>115.02</x>
-		<y>222.87</y>
+		<x>111.21</x>
+		<y>123.88</y>
 		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>0.25</scale>
-		<path>pet_animation/gou_lv/gou.ExportJson</path>
-		<movement>move2</movement>
+		<path>pet_animation/niu_zhi/niu.ExportJson</path>
+		<movement>0</movement>
 	</animation>
 </layout>
 

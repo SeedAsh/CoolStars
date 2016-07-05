@@ -95,8 +95,8 @@
 	</button>
 	<imageNum>
 		<id>16</id>
-		<x>60.99</x>
-		<y>107.85</y>
+		<x>86.95</x>
+		<y>114.81</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -106,8 +106,8 @@
 	</imageNum>
 	<imageNum>
 		<id>17</id>
-		<x>220.54</x>
-		<y>109.54</y>
+		<x>250.51</x>
+		<y>117.35</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -117,8 +117,8 @@
 	</imageNum>
 	<imageNum>
 		<id>18</id>
-		<x>386.42</x>
-		<y>109.96</y>
+		<x>414.28</x>
+		<y>117.98</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>

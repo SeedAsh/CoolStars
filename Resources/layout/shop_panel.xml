@@ -21,8 +21,8 @@
 		<id>3</id>
 		<x>53.82</x>
 		<y>543.18</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 </layout>
