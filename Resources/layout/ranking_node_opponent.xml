@@ -19,17 +19,17 @@
 	</image>
 	<image>
 		<id>3</id>
-		<x>282.18</x>
-		<y>33.73</y>
-		<anchorPtX>0.50</anchorPtX>
+		<x>242.30</x>
+		<y>33.95</y>
+		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
 		<path>ranking/phb_jinditiao.png</path>
 	</image>
 	<label>
 		<id>5</id>
-		<x>99.82</x>
-		<y>33.77</y>
+		<x>103.83</x>
+		<y>29.76</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -37,10 +37,10 @@
 	</label>
 	<imageNum>
 		<id>6</id>
-		<x>180.66</x>
-		<y>35.03</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
+		<x>171.58</x>
+		<y>22.16</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>12</num>
@@ -56,6 +56,17 @@
 		<amount>10</amount>
 		<num>10</num>
 		<path>num/ty_ziti13.png</path>
+	</imageNum>
+	<imageNum>
+		<id>8</id>
+		<x>259.59</x>
+		<y>21.32</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+		<amount>12</amount>
+		<num>12</num>
+		<path>num/ty_ziti6.png</path>
 	</imageNum>
 </layout>
 

@@ -81,7 +81,7 @@ bool RankingModel::isValidName(string name)
 void RankingModel::loadData()
 {
 	SqliteHelper helper(DB_SAVING);
-	string sql = "select * from save_ranking";
+	string sql = "select * from save_my_ranking";
 	auto result = helper.readRecord(sql.c_str());
 	auto data = result[0];
 
@@ -100,35 +100,28 @@ void RankingModel::initFirstOpenRanking(string myName)
 	char str[100] = { 0 };
 
 	m_alreadyOpenRanking = true;
-	sprintf(str, "update save_ranking set %s = '%d' where id = 1;", "first_open_ranking", m_alreadyOpenRanking ? 1 : 0);
+	sprintf(str, "update save_my_ranking set %s = '%d' where id = 1;", "already_open_ranking", m_alreadyOpenRanking ? 1 : 0);
 	sqlHelper.executeSql(str);
 
 	m_myName = myName;
-	sprintf(str, "update save_ranking set %s = '%s' where id = 1;", "my_name", m_myName.c_str());
+	sprintf(str, "update save_my_ranking set %s = '%s' where id = 1;", "my_name", m_myName.c_str());
 	sqlHelper.executeSql(str);
 	//排序表数据
 	auto datas = DataManagerSelf->getRankingConfigs();
-	sort(datas.begin(), datas.end(), [=](RankingConfig data1, RankingConfig data2)->bool
-	{
-		if (data1.score > data2.score) return true;
-		else if (data1.score == data2.score)
-		{
-			return data1.ownPetPercent > data2.ownPetPercent;
-		}
-		return false;
-	});
+	
+;
 
 	//根据 最高得分 和 宠物拥有比 计算排名。对手的排名在玩家之前
-	int topScore = StageModel::theModel()->getStageInfo()->getTopScore();
+	int topStage = StageModel::theModel()->getStageInfo()->getTopStage();
 	int ownPetNum = PetManager::petMgr()->getOwnedPetIds().size();
 	int ownPetPercent = int((float)ownPetNum / PETS_AMOUNT * 100);
 	auto iter = find_if(datas.begin(), datas.end(), [=](RankingConfig data)->bool
 	{
-		if (topScore == data.score)
+		if (topStage == data.stage)
 		{
 			return ownPetNum > data.ownPetPercent;
 		}
-		return topScore > data.score;
+		return topStage > data.stage;
 	});
 
 	int opponentId = datas.size();
@@ -148,7 +141,19 @@ void RankingModel::initFirstOpenRanking(string myName)
 
 bool RankingModel::isOverOpponent()
 {
-	return false;
+	auto ranking = getCurRanking();
+	auto playerIter = find_if(ranking.begin(), ranking.end(), [=](RankingData data)->bool
+	{
+		return data.type == kPlayer;
+	});
+
+	auto opponentIter = find_if(ranking.begin(), ranking.end(), [=](RankingData data)->bool
+	{
+		return data.type == kOpponent;
+	});
+
+	assert(playerIter != ranking.end() && opponentIter != ranking.end());
+	return *playerIter > *opponentIter;
 }
 
 RankingData RankingModel::getMyRankingData()
@@ -162,17 +167,49 @@ RankingData RankingModel::getMyRankingData()
 	data.stage = stage;
 	data.type = kPlayer;
 	data.ownPetPercent = ownPetPercent;
+
+	return data;
 }
 
 vector<RankingData> RankingModel::getCurRanking()
 {
+	vector<RankingData> datas;
 	auto configs = DataManagerSelf->getRankingConfigs();
+	auto opponent = RankingOpponent::theOpponent();
 	for (size_t i = 0; i < configs.size(); ++i)
 	{
+		if (configs[i].id == opponent->getRankId())
+		{
+			continue;
+		}
 		RankingData data;
 		data.type = kData;
 		data.name = configs[i].name;
-		data.stage = configs[i].score;
+		data.ownPetPercent = configs[i].ownPetPercent;
+		data.stage = configs[i].stage;
+		datas.push_back(data);
 	}
+	datas.push_back(getMyRankingData());
+	datas.push_back(opponent->getRankingData());
+	sort(datas.begin(), datas.end(), greater<RankingData>());
+	return datas;
+}
 
+unordered_map<int, RankingData> RankingModel::getNeighboursRanking()
+{
+	auto ranking = getCurRanking();
+	auto playerIter = find_if(ranking.begin(), ranking.end(), [=](RankingData data)->bool
+	{
+		return data.type == kPlayer;
+	});
+	
+	static const int kAmount = 5;
+	int startIndex = max(0, playerIter - ranking.begin() - kAmount + 1);
+	unordered_map<int, RankingData> neighbours;
+	for (int i = 0; i < kAmount;  ++i)
+	{
+		int index = startIndex + i;
+		neighbours.insert(make_pair(index + 1, ranking[index]));
+	}
+	return neighbours;
 }

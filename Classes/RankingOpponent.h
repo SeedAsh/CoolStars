@@ -16,12 +16,13 @@ public:
 	void update();
 	RankingData getRankingData();
 	bool needUpdate();
+	int getRankId(){ return m_opponentId; }
 private:
-	RankingOpponent(){}
+	RankingOpponent();
 private:
 	int m_opponentId;
 	int m_lastDays;
-	int m_ownPets;
+	int m_ownPetPercent;
 	int m_stage;
 };
 #endif

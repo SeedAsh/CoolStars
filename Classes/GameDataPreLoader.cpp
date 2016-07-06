@@ -9,6 +9,7 @@
 #include "PropManager.h"
 #include "StageModel.h"
 #include "GuideMgr.h"
+#include "RankingModel.h"
 
 void GameDataPreLoader::initGameData()
 {
@@ -37,4 +38,5 @@ void GameDataPreLoader::intModels()
 	PropManager::propMgr()->loadPropData();
 	PetManager::petMgr()->init();
 	GuideMgr::theMgr()->init();
+	RankingModel::theModel()->loadData();
 }

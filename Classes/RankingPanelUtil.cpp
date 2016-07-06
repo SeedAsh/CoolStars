@@ -61,6 +61,7 @@ void RankingNameInputPanel::onConfirm(cocos2d::CCObject* pSender)
 	string name = m_editBox->getText();
 	if (RankingModel::theModel()->isValidName(name))
 	{
+		RankingModel::theModel()->initFirstOpenRanking(name);
 		removeFromParent();
 	}
 	else
@@ -91,9 +92,9 @@ void RankingNameInputPanel::editBoxReturn(CCEditBox *editBox)
 }
 
 //////////////////////////////////////////////////////////////////////////////
-RankingNode* RankingNode::create(int id)
+RankingNode* RankingNode::create(int rank, const RankingData &data)
 {
-	RankingNode *node = new RankingNode(id);
+	RankingNode *node = new RankingNode(rank, data);
 	node->init();
 	node->autorelease();
 	return node;
@@ -101,42 +102,34 @@ RankingNode* RankingNode::create(int id)
 
 bool RankingNode::init()
 {
-	m_layout = UiLayout::create("layout/ranking_node_common.xml");
-	addChild(m_layout);
-	setContentSize(m_layout->getContentSize());
-
-	auto data = DataManagerSelf->getRankingConfig(m_id);
-	CCLabelTTF *name = dynamic_cast<CCLabelTTF *>(m_layout->getChildById(5));
-	name->setString(data.name.c_str());
-
-	CCLabelAtlas *rank = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(6));
-	rank->setString(intToStr(data.id));
-	return true;
-}
-
-//////////////////////////////////////////////////////////////////////////////
-RankingOpponentNode* RankingOpponentNode::create()
-{
-	RankingOpponentNode *node = new RankingOpponentNode();
-	node->init();
-	node->autorelease();
-	return node;
-}
-
-bool RankingOpponentNode::init()
-{
-	m_layout = UiLayout::create("layout/ranking_node_opponent.xml");
+	if (m_data.type == kOpponent)
+	{
+		m_layout = UiLayout::create("layout/ranking_node_opponent.xml");
+	}
+	else
+	{
+		m_layout = UiLayout::create("layout/ranking_node_common.xml");
+	}
 	addChild(m_layout);
 	setContentSize(m_layout->getContentSize());
 
 	CCLabelTTF *name = dynamic_cast<CCLabelTTF *>(m_layout->getChildById(5));
-	name->setString("hellow");
+	name->setString(m_data.name.c_str());
 
-	CCLabelAtlas *rank = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(6));
-	rank->setString("100");
+	CCLabelAtlas *rank = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(7));
+	rank->setString(intToStr(m_rank));
+
+	CCLabelAtlas *stage = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(6));
+	stage->setString(intToStr(m_data.stage));
+
+	CCLabelAtlas *petPercent = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(8));
+	petPercent->setString(intToStr(m_data.ownPetPercent));
+	m_layout->getChildById(3)->setScaleX((float)m_data.ownPetPercent / 100);
 	return true;
 }
+
 //////////////////////////////////////////////////////////////////////////////
+
 bool RankingOpponentUpgradePanel::init()
 {
 	m_layout = UiLayout::create("layout/ranking_opponet_upgrade.xml");
@@ -154,10 +147,10 @@ void RankingOpponentUpgradePanel::initLayout()
 	confirmBtn->setTarget(this, menu_selector(RankingOpponentUpgradePanel::onConfirm));
 
 	auto targetRank = dynamic_cast<EmptyBox *>((m_layout->getChildById(5)));
-	targetRank->setNode(RankingNode::create(90));
+	//targetRank->setNode(RankingNode::create(90));
 
 	auto opponent = dynamic_cast<EmptyBox *>((m_layout->getChildById(6)));
-	opponent->setNode(RankingOpponentNode::create());
+	//opponent->setNode(RankingOpponentNode::create());
 	
 	runAction(CCSequence::create(CCDelayTime::create(1.0f), 
 		CCCallFunc::create(this, callfunc_selector(RankingOpponentUpgradePanel::doMoveAction)), NULL));

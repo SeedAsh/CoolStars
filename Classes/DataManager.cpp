@@ -319,6 +319,16 @@ void DataManager::loadRankingConfig()
 		config.ownPetPercent = atoi(data[3]);
 		m_rankingConfig.push_back(config);
 	}
+
+	sort(m_rankingConfig.begin(), m_rankingConfig.end(), [=](RankingConfig data1, RankingConfig data2)->bool
+	{
+		if (data1.stage > data2.stage) return true;
+		else if (data1.stage == data2.stage)
+		{
+			return data1.ownPetPercent > data2.ownPetPercent;
+		}
+		return false;
+	});
 }
 
 const RankingConfig &DataManager::getRankingConfig(int id)

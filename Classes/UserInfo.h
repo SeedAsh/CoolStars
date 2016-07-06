@@ -38,7 +38,7 @@ public:
 
 	void setFirstPlayTime(int firstPlayTime);
 	int getFirstPlayTime(){ return m_firstPlayTime; }
-	int getDaysFromFirstPlay(){ return 5; }
+	int getDaysFromFirstPlay(){ return 1; }
 
 	void saveCurLoginInTime();
 	std::string getLastLoginInTime(){ return m_lastLoginInTime; }

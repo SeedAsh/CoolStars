@@ -5,6 +5,7 @@
 #include "ListSlideView.h"
 #include "RankingPanelUtil.h"
 #include "CommonMacros.h"
+#include "RankingModel.h"
 
 USING_NS_CC;
 using namespace std;
@@ -44,9 +45,10 @@ void RankingScene::initMainLayout()
 		return config1.diamond > config2.diamond;
 	});
 	*/
-	for (int i = 5; i >= 1; --i)
+	auto ranks = RankingModel::theModel()->getNeighboursRanking();
+	for (auto iter = ranks.rbegin(); iter != ranks.rend(); ++iter)
 	{
-		rankList->addNode(RankingNode::create(i));
+		rankList->addNode(RankingNode::create(iter->first, iter->second));
 	}
 	
 }

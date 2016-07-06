@@ -4,6 +4,7 @@
 #include "cocos-ext.h"
 #include "ScaleDialog.h"
 #include "GUI/CCEditBox/CCEditBox.h"
+#include "RankingModel.h"
 
 class UiLayout;
 
@@ -35,27 +36,15 @@ class RankingNode
 	: public cocos2d::CCNode
 {
 public:
-	static RankingNode *create(int id);
+	static RankingNode *create(int rank, const RankingData &data);
 private:
-	RankingNode(int id) : m_id(id){}
+	RankingNode(int rank, const RankingData &data) : m_rank(rank), m_data(data){}
 	virtual bool init();
 private:
 	UiLayout *m_layout;
-	int m_id;
+	int m_rank;
+	RankingData m_data;
 };
-
-class RankingOpponentNode
-	: public cocos2d::CCNode
-{
-public:
-	static RankingOpponentNode *create();
-private:
-	RankingOpponentNode(){}
-	virtual bool init();
-private:
-	UiLayout *m_layout;
-};
-
 
 class RankingOpponentUpgradePanel
 	: public ScaleDialog

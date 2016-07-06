@@ -8,6 +8,15 @@ using namespace std;
 using namespace CommonUtil;
 USING_NS_CC;
 
+RankingOpponent::RankingOpponent()
+: m_opponentId(0)
+, m_lastDays(0)
+, m_ownPetPercent(0)
+, m_stage(0)
+{
+
+}
+
 RankingOpponent *RankingOpponent::theOpponent()
 {
 	static RankingOpponent opponent;
@@ -26,18 +35,23 @@ void RankingOpponent::loadLastSavedData()
 
 	auto config = DataManagerSelf->getRankingConfig(m_opponentId);
 	m_stage = atoi(data[3]);
-	m_ownPets = atoi(data[4]);
+	m_ownPetPercent = atoi(data[4]);
 }
 
 void RankingOpponent::firstInitData(int rankId)
 {
+	m_opponentId = rankId;
+
 	SqliteHelper helper(DB_SAVING);
 	char str[256] = { 0 };
-	auto config = DataManagerSelf->getRankingConfig(m_opponentId);
 	sprintf(str, "update save_opponent_ranking set %s = '%d' where id = 1;", "rank_id", m_opponentId);
 	helper.executeSql(str);
 	helper.closeDB();
 
+	auto config = DataManagerSelf->getRankingConfig(m_opponentId);
+	m_lastDays = 1;
+	m_stage = config.stage;
+	m_ownPetPercent = config.ownPetPercent;
 	saveData();
 }
 
@@ -46,13 +60,11 @@ void RankingOpponent::saveData()
 	SqliteHelper helper(DB_SAVING);
 	string sql;
 	char str[256] = { 0 };
-	auto config = DataManagerSelf->getRankingConfig(m_opponentId);
 	sprintf(str, "update save_opponent_ranking set %s = '%d'", "last_days", m_lastDays);
 	sql += str;
-	sprintf(str, ",%s = '%d'", "last_score", m_stage);
+	sprintf(str, ",%s = '%d'", "last_stage", m_stage);
 	sql += str;
-	int ownPetPercent = (int)((float)m_ownPets / PETS_AMOUNT * 100);
-	sprintf(str, ",%s = '%d' where id = 1;", "last_own_pet_percent", ownPetPercent);
+	sprintf(str, ",%s = '%d' where id = 1;", "last_own_pet_percent", m_ownPetPercent);
 	sql += str;
 	helper.executeSql(sql.c_str());
 	helper.closeDB();
@@ -68,7 +80,8 @@ void RankingOpponent::update()
 	for (int i = 0; i < days; ++i)
 	{
 		m_stage += getRandomValue(1, 5);
-		m_ownPets += getRandomValue(0, 3);
+		m_ownPetPercent += (int)((float)getRandomValue(0, 3) / PETS_AMOUNT * 100);
+		m_ownPetPercent = min(m_ownPetPercent, 100);
 	}
 	saveData();
 }
@@ -86,8 +99,9 @@ RankingData RankingOpponent::getRankingData()
 
 	data.name = config.name;
 	data.type = kOpponent;
-	data.ownPetPercent = (int)((float)m_ownPets / PETS_AMOUNT * 100);
-	data.score = m_stage;
+	data.ownPetPercent = m_ownPetPercent;
+	data.stage = m_stage;
 
 	return data;
 }
+
