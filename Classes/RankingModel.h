@@ -35,7 +35,7 @@ class RankingModel
 {
 public:
 	static RankingModel *theModel();
-	void loadData();
+	void init();
 
 	std::string getRandomName();
 	bool isValidName(std::string name);
@@ -44,9 +44,13 @@ public:
 	void initFirstOpenRanking(std::string myName);
 	bool isOverOpponent();
 	std::unordered_map<int, RankingData> getNeighboursRanking();
-private:
-	std::vector<RankingData> getCurRanking();
 	RankingData getMyRankingData();
+	RankingData getDataByRank(int rank);
+	int getOpponetRank();
+	int getMyRank();
+private:
+	void loadData();
+	std::vector<RankingData> getCurRanking();
 private:
 	static const int kMaxLength = 4;
 	bool m_alreadyOpenRanking;

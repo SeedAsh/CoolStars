@@ -1,16 +1,13 @@
 #ifndef __TIMEUTILE_H
 #define __TIMEUTILE_H
 #include "cocos2d.h"
+#include <time.h>
+#include <wchar.h>
 
-struct TimeWrapper 
+namespace time_util
 {
-	int year;
-	int month;
-	int day;
-	int hour;
-	int min;
-	int second;
-};
+	int getCurTime();
+	struct tm *getDate(time_t time);
+}
 
-TimeWrapper GetTime();
 #endif

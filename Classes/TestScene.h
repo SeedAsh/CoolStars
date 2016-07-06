@@ -15,9 +15,10 @@ private:
 	void addClippingNode();
 	void initPanel();
 	void imageNumtest();
-	void test();
+	void animationTest();
 	void listViewTest();
 	void printDBInfos();
+	void test();
 private:
 	cocos2d::CCClippingNode *m_clippingNode;
 	cocos2d::CCSprite *m_spr;

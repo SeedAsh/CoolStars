@@ -31,12 +31,12 @@ void GameDataPreLoader::LoadGameConfigs()
 
 void GameDataPreLoader::intModels()
 {
-	UserInfo::theInfo()->loadUserInfo();
+	UserInfo::theInfo()->init();
 	SoundMgr::init();
 
 	StageModel::theModel()->getStageInfo()->init();
 	PropManager::propMgr()->loadPropData();
 	PetManager::petMgr()->init();
 	GuideMgr::theMgr()->init();
-	RankingModel::theModel()->loadData();
+	RankingModel::theModel()->init();
 }

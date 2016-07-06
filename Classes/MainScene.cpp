@@ -16,6 +16,8 @@
 #include "GuideView.h"
 #include "GuideEditLayer.h"
 #include "CommonUtil.h"
+#include "UserInfo.h"
+#include "RankingPanelUtil.h"
 
 USING_NS_CC;
 using namespace std;
@@ -41,8 +43,9 @@ bool MainScene::init()
 	m_bkLayer->addChild(bk);
 	
 	showPanel(kMainMenu);
+	showInitialUi();//显示游戏开始 可能需要弹出的ui
 
-	addGuideEditBtn();
+	addGuideEditBtn();//新手引导编辑器
 	return true;
 }
 
@@ -178,4 +181,13 @@ void MainScene::onGuideBtnClicked(cocos2d::CCObject* pSender)
 {
 	auto layer = GuideEditLayer::create();
 	addChild(layer);
+}
+
+void MainScene::showInitialUi()
+{
+	if(RankingOpponent::theOpponent()->needUpdate())
+	{
+		auto dialog = RankingOpponentUpgradePanel::create();
+		showDialog(dialog);
+	}
 }

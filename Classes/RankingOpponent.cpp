@@ -4,6 +4,7 @@
 #include "UserInfo.h"
 #include "CommonUtil.h"
 #include "CommonMacros.h"
+#include "RankingModel.h"
 using namespace std;
 using namespace CommonUtil;
 USING_NS_CC;
@@ -75,7 +76,6 @@ void RankingOpponent::update()
 	if (!needUpdate()) return;
 
 	int curdays = UserInfo::theInfo()->getDaysFromFirstPlay();
-	m_lastDays = curdays;
 	int days = curdays - m_lastDays;
 	for (int i = 0; i < days; ++i)
 	{
@@ -83,11 +83,15 @@ void RankingOpponent::update()
 		m_ownPetPercent += (int)((float)getRandomValue(0, 3) / PETS_AMOUNT * 100);
 		m_ownPetPercent = min(m_ownPetPercent, 100);
 	}
-	saveData();
+	m_lastDays = curdays;
+	//saveData();
 }
 
 bool RankingOpponent::needUpdate()
 {
+	//没开启过排行榜时，对手信息不需要update
+	if (!RankingModel::theModel()->alreadyOpenRanking()) return false;
+
 	int days = UserInfo::theInfo()->getDaysFromFirstPlay();
 	return m_lastDays < days;
 }

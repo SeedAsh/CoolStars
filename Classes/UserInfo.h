@@ -15,6 +15,8 @@ public:
 	static UserInfo *theInfo();
 
 	void loadUserInfo();
+	void init();
+
 	void addView(IUserInfoView *view);
 	void removeView(IUserInfoView *view);
 public:
@@ -36,12 +38,12 @@ public:
 	void setFirstPlay(bool isFirstPlay);
 	bool isFirstPlay(){ return m_isFirstPlay; }
 
-	void setFirstPlayTime(int firstPlayTime);
+	void saveFirstPlayTime();
 	int getFirstPlayTime(){ return m_firstPlayTime; }
-	int getDaysFromFirstPlay(){ return 1; }
+	int getDaysFromFirstPlay();
 
 	void saveCurLoginInTime();
-	std::string getLastLoginInTime(){ return m_lastLoginInTime; }
+	int getLastLoginInTime(){ return m_lastLoginInTime; }
 	bool isFirstLoginToday();
 private:
 	UserInfo(){}
@@ -54,7 +56,7 @@ private:
 
 	bool m_isFirstPlay;
 	int m_firstPlayTime;
-	std::string m_lastLoginInTime;
+	int m_lastLoginInTime;
 
 	std::vector<IUserInfoView *>m_views;
 

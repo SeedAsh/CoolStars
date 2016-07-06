@@ -29,6 +29,8 @@ private:
 	void addUiPanel(BasePanel *panel, bool closeBehind);
 	void recordPanel(int panelId, int usage);
 	
+	void showInitialUi();
+
 	void addGuideEditBtn();
 	void onGuideBtnClicked(cocos2d::CCObject* pSender);
 private:

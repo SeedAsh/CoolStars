@@ -57,6 +57,7 @@ private:
 	void initLayout();
 	void onConfirm(cocos2d::CCObject* pSender);
 	void doMoveAction();
+	void onMoveActionFinished();
 private:
 	UiLayout *m_layout;
 };

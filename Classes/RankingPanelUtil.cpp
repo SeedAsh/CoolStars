@@ -143,15 +143,21 @@ bool RankingOpponentUpgradePanel::init()
 
 void RankingOpponentUpgradePanel::initLayout()
 {
+	int rank = RankingModel::theModel()->getOpponetRank();
+	auto data = RankingOpponent::theOpponent()->getRankingData();
+	auto targetRank = dynamic_cast<EmptyBox *>((m_layout->getChildById(6)));
+	targetRank->setNode(RankingNode::create(rank, data));
+
+	//更新对手数据
+	RankingOpponent::theOpponent()->update();
+	rank = RankingModel::theModel()->getOpponetRank();
+	data = RankingModel::theModel()->getDataByRank(rank + 1);
+	auto opponent = dynamic_cast<EmptyBox *>((m_layout->getChildById(5)));
+	opponent->setNode(RankingNode::create(rank, data));
+	
 	CCMenuItem *confirmBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(4)));
 	confirmBtn->setTarget(this, menu_selector(RankingOpponentUpgradePanel::onConfirm));
 
-	auto targetRank = dynamic_cast<EmptyBox *>((m_layout->getChildById(5)));
-	//targetRank->setNode(RankingNode::create(90));
-
-	auto opponent = dynamic_cast<EmptyBox *>((m_layout->getChildById(6)));
-	//opponent->setNode(RankingOpponentNode::create());
-	
 	runAction(CCSequence::create(CCDelayTime::create(1.0f), 
 		CCCallFunc::create(this, callfunc_selector(RankingOpponentUpgradePanel::doMoveAction)), NULL));
 
@@ -170,9 +176,24 @@ void RankingOpponentUpgradePanel::doMoveAction()
 
 	targetRank->runAction(CCEaseBounceInOut::create(CCMoveTo::create(kDuration, toPos1)));
 	opponent->runAction(CCEaseBounceInOut::create(CCMoveTo::create(kDuration, toPos2)));
+
+	runAction(CCSequence::create(CCDelayTime::create(kDuration + 1.0f),
+		CCCallFunc::create(this, callfunc_selector(RankingOpponentUpgradePanel::onMoveActionFinished)), NULL));
 }
 
 void RankingOpponentUpgradePanel::onConfirm(cocos2d::CCObject* pSender)
 {
 	removeFromParent();
+}
+
+void RankingOpponentUpgradePanel::onMoveActionFinished()
+{
+	int rank = RankingModel::theModel()->getOpponetRank();
+	auto data = RankingOpponent::theOpponent()->getRankingData();
+	auto targetRank = dynamic_cast<EmptyBox *>((m_layout->getChildById(6)));
+	targetRank->setNode(RankingNode::create(rank, data));
+
+	data = RankingModel::theModel()->getDataByRank(rank + 1);
+	auto opponent = dynamic_cast<EmptyBox *>((m_layout->getChildById(5)));
+	opponent->setNode(RankingNode::create(rank + 1, data));
 }

@@ -1,6 +1,7 @@
 ﻿#include "UserInfo.h"
 #include "SqliteHelper.h"
 #include "CommonMacros.h"
+#include "TimeUtil.h"
 USING_NS_CC;
 using namespace std;
 
@@ -26,7 +27,19 @@ void UserInfo::loadUserInfo()
 	m_key = atoi(data[5]);
 	m_isFirstPlay = atoi(data[6]) == 1;
 	m_firstPlayTime = atoi(data[7]);
-	m_lastLoginInTime = data[8];
+	m_lastLoginInTime = atoi(data[8]);
+}
+
+void UserInfo::init()
+{
+	loadUserInfo();
+
+	if (m_isFirstPlay)
+	{
+		setFirstPlay(false);
+		saveFirstPlayTime();
+	}
+	saveCurLoginInTime();
 }
 
 void UserInfo::setDiamond(int value)
@@ -99,9 +112,9 @@ void UserInfo::setFirstPlay(bool isFirstPlay)
 	sqlHelper.executeSql(str);
 }
 
-void UserInfo::setFirstPlayTime(int firstPlayTime)
+void UserInfo::saveFirstPlayTime()
 {
-	m_firstPlayTime = firstPlayTime;
+	m_firstPlayTime = time_util::getCurTime();
 
 	SqliteHelper sqlHelper(DB_SAVING);
 	char str[100] = { 0 };
@@ -111,14 +124,12 @@ void UserInfo::setFirstPlayTime(int firstPlayTime)
 
 void UserInfo::saveCurLoginInTime()
 {
-	return;
-	//m_isFirstOpenRanking = isFirstOpenRanking;
-	/*
+	m_lastLoginInTime = time_util::getCurTime();
+	
 	SqliteHelper sqlHelper(DB_SAVING);
 	char str[100] = { 0 };
-	sprintf(str, "update save_user_info set %s = '%d' where id = 1;", "first_open_ranking", m_isFirstOpenRanking ? 1 : 0);
+	sprintf(str, "update save_user_info set %s = '%d' where id = 1;", "last_login_in", m_lastLoginInTime);
 	sqlHelper.executeSql(str);
-	*/
 }
 
 void UserInfo::addView(IUserInfoView *view)
@@ -141,5 +152,20 @@ void UserInfo::removeView(IUserInfoView *view)
 
 bool UserInfo::isFirstLoginToday()
 {
-	return true;
+	int curTime = time_util::getCurTime();
+	auto curData = time_util::getDate(curTime);
+	auto lastLoginInDate = time_util::getDate(m_lastLoginInTime);
+
+	return !(curData->tm_year == lastLoginInDate->tm_year
+		&& curData->tm_mon == lastLoginInDate->tm_mon
+		&& curData->tm_mday == lastLoginInDate->tm_mday);
+}
+
+int UserInfo::getDaysFromFirstPlay()
+{
+	static const int kDaySecs = 24 * 3600;
+	int startTime = m_firstPlayTime / kDaySecs * kDaySecs;
+	
+	int days = (m_lastLoginInTime - startTime) / kDaySecs + 1;
+	return days;
 }

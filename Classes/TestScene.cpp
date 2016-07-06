@@ -6,6 +6,7 @@
 #include "ListPetView.h"
 #include "StageOperator.h"
 #include "StarNode.h"
+#include "TimeUtil.h"
 #include "SqliteHelper.h"
 #include <fstream>
 
@@ -26,11 +27,17 @@ bool TestScene::init()
 		return false;
 	}
 	initPanel();
-	printDBInfos();
+	test();
 	return true;
 }
 
 void TestScene::test()
+{
+	int curTime = time_util::getCurTime();
+	auto date = time_util::getDate(curTime);
+}
+
+void TestScene::animationTest()
 {
 	/*
 	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("test/chuangguanchenggong.ExportJson");

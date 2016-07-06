@@ -78,6 +78,11 @@ bool RankingModel::isValidName(string name)
 	return true;
 }
 
+void RankingModel::init()
+{
+	loadData();
+}
+
 void RankingModel::loadData()
 {
 	SqliteHelper helper(DB_SAVING);
@@ -109,8 +114,6 @@ void RankingModel::initFirstOpenRanking(string myName)
 	//排序表数据
 	auto datas = DataManagerSelf->getRankingConfigs();
 	
-;
-
 	//根据 最高得分 和 宠物拥有比 计算排名。对手的排名在玩家之前
 	int topStage = StageModel::theModel()->getStageInfo()->getTopStage();
 	int ownPetNum = PetManager::petMgr()->getOwnedPetIds().size();
@@ -212,4 +215,33 @@ unordered_map<int, RankingData> RankingModel::getNeighboursRanking()
 		neighbours.insert(make_pair(index + 1, ranking[index]));
 	}
 	return neighbours;
+}
+
+int RankingModel::getOpponetRank()
+{
+	auto ranking = getCurRanking();
+	auto iter = find_if(ranking.begin(), ranking.end(), [=](RankingData data)->bool
+	{
+		return data.type == kOpponent;
+	});
+	assert(iter != ranking.end());
+	return iter - ranking.begin() + 1;
+}
+
+int RankingModel::getMyRank()
+{
+	auto ranking = getCurRanking();
+	auto iter = find_if(ranking.begin(), ranking.end(), [=](RankingData data)->bool
+	{
+		return data.type == kPlayer;
+	});
+	assert(iter != ranking.end());
+	return iter - ranking.begin() + 1;
+}
+
+RankingData RankingModel::getDataByRank(int rank)
+{
+	auto ranking = getCurRanking();
+	assert(rank > 0 && rank <= ranking.size());
+	return ranking[rank - 1];
 }
