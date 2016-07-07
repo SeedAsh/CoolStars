@@ -27,7 +27,8 @@ bool TestScene::init()
 		return false;
 	}
 	initPanel();
-	test();
+	//test();
+	animationTest2();
 	return true;
 }
 
@@ -60,6 +61,28 @@ void TestScene::animationTest()
 	armature->setPosition(ccp(200, 200));
 	armature->setScale(0.6f);
 	addChild(armature);
+}
+
+void TestScene::animationTest2()
+{
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("pet_animation/gou_lv/gou_lv.ExportJson");
+	auto ani2 = CCArmature::create("gou_lv");
+	ani2->getAnimation()->playWithIndex(1);
+	//ani->getAnimation()->playWithIndex(0, -1, -1, 0);
+	ani2->setPosition(ccp(300, 300));
+	ani2->setScale(0.2f);
+	addChild(ani2, 10);
+
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("pet_animation/gou_huang/gou_huang.ExportJson");
+	auto ani = CCArmature::create("gou_huang");
+	ani->getAnimation()->playWithIndex(0);
+	//ani->getAnimation()->playWithIndex(0, -1, -1, 0);
+	ani->setPosition(ccp(100, 100));
+	ani->setScale(0.2f);
+	addChild(ani, 10);
+
+
+	
 }
 
 void TestScene::imageNumtest()

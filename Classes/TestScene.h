@@ -16,6 +16,7 @@ private:
 	void initPanel();
 	void imageNumtest();
 	void animationTest();
+	void animationTest2();
 	void listViewTest();
 	void printDBInfos();
 	void test();
