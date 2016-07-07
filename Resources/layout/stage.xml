@@ -1,8 +1,8 @@
 <layout width="480.000000" height="864.000000">
 	<image>
 		<id>5</id>
-		<x>234.70</x>
-		<y>314.85</y>
+		<x>239.77</x>
+		<y>313.79</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -10,7 +10,7 @@
 	</image>
 	<emptyBox>
 		<id>1</id>
-		<x>17.82</x>
+		<x>21.83</x>
 		<y>97.03</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
@@ -18,7 +18,7 @@
 	</emptyBox>
 	<emptyBox>
 		<id>4</id>
-		<x>17.82</x>
+		<x>21.83</x>
 		<y>97.03</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>

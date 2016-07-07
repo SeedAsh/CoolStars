@@ -61,8 +61,17 @@ enum GoodsType
 	kGoodsStrength,
 	kGoodsRuneStone,
 	kGoodsKey,
+	kGoodsProps,
+	kGoodsPets,
+	kGoodsStep,
 };
 
+//消费方式
+enum ConsumeType
+{
+	kConsumeDiamond,
+	kConsumeMoney,
+};
 #define NOTIFY_VIEWS(_FUNC_ ,...)						\
 for (size_t index = 0; index < m_views.size(); ++index) \
 {														\

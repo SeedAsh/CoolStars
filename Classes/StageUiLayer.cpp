@@ -4,7 +4,7 @@
 #include "GameData.h"
 #include "SoundMgr.h"
 #include "MenuScene.h"
-#include "PauseLayer.h"
+#include "PauseDialog.h"
 #include "PetManager.h"
 #include "StageOperator.h"
 #include "CommonUtil.h"
@@ -230,8 +230,7 @@ void StageUiLayer::onGameOver(int isWon)
 
 void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 {
-	MainScene::theScene()->showPanel(kMainMenu);
-
+	MainScene::theScene()->showDialog(PauseDialog::create());
 }
 
 void StageUiLayer::showChangeColorPanel(const LogicGrid &grid)

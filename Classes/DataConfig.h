@@ -117,8 +117,8 @@ struct ShopConfig
 struct PackageConfig
 {
 	int id;
-	int cost;
-	int award;
+	std::vector<int> cost;
+	std::vector<int> goods;
 	std::string titlePath;
 };
 

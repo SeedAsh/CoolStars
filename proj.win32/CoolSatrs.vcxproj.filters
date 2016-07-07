@@ -58,6 +58,9 @@
     <Filter Include="Utils\guide">
       <UniqueIdentifier>{b9b8ac4e-49d7-46e2-9203-4300be4f16c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Goods">
+      <UniqueIdentifier>{28c473c1-fe33-4781-b3c7-de41b6013619}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,9 +89,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\MenuScene.cpp">
       <Filter>MainMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PauseLayer.cpp">
-      <Filter>GameStage\StageUi</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\StageScene.cpp">
       <Filter>GameStage\StageUi</Filter>
@@ -294,6 +294,12 @@
     <ClCompile Include="..\Classes\MyPurchase_old.cpp">
       <Filter>Shop</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GoodsMgr.cpp">
+      <Filter>Goods</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PauseDialog.cpp">
+      <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -328,9 +334,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\MenuScene.h">
       <Filter>MainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PauseLayer.h">
-      <Filter>GameStage\StageUi</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StageScene.h">
       <Filter>GameStage\StageUi</Filter>
@@ -559,6 +562,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\MyPurchase_old.h">
       <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GoodsMgr.h">
+      <Filter>Goods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PauseDialog.h">
+      <Filter>GameStage\StageUi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

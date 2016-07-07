@@ -143,6 +143,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\GameData.cpp" />
     <ClCompile Include="..\Classes\GameDataPreLoader.cpp" />
     <ClCompile Include="..\Classes\GameResultLayer.cpp" />
+    <ClCompile Include="..\Classes\GoodsMgr.cpp" />
     <ClCompile Include="..\Classes\GuideDelegate.cpp" />
     <ClCompile Include="..\Classes\GuideDialog.cpp" />
     <ClCompile Include="..\Classes\GuideEditLayer.cpp" />
@@ -160,7 +161,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\MyPurchase.cpp" />
     <ClCompile Include="..\Classes\MyPurchase_old.cpp" />
     <ClCompile Include="..\Classes\PackageScene.cpp" />
-    <ClCompile Include="..\Classes\PauseLayer.cpp" />
+    <ClCompile Include="..\Classes\PauseDialog.cpp" />
     <ClCompile Include="..\Classes\PetEntity.cpp" />
     <ClCompile Include="..\Classes\PetManager.cpp" />
     <ClCompile Include="..\Classes\PetSavingHelper.cpp" />
@@ -227,6 +228,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\GameData.h" />
     <ClInclude Include="..\Classes\GameDataPreLoader.h" />
     <ClInclude Include="..\Classes\GameResultLayer.h" />
+    <ClInclude Include="..\Classes\GoodsMgr.h" />
     <ClInclude Include="..\Classes\GuideDelegate.h" />
     <ClInclude Include="..\Classes\GuideDialog.h" />
     <ClInclude Include="..\Classes\GuideEditLayer.h" />
@@ -246,7 +248,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\MyPurchase_old.h" />
     <ClInclude Include="..\Classes\PackageScene.h" />
     <ClInclude Include="..\Classes\PanelMacros.h" />
-    <ClInclude Include="..\Classes\PauseLayer.h" />
+    <ClInclude Include="..\Classes\PauseDialog.h" />
     <ClInclude Include="..\Classes\PetEntity.h" />
     <ClInclude Include="..\Classes\PetManager.h" />
     <ClInclude Include="..\Classes\PetSavingHelper.h" />

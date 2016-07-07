@@ -6,6 +6,7 @@
 #include "StageBaseInfo.h"
 #include "PetManager.h"
 #include "UserInfo.h"
+#include "GoodsMgr.h"
 USING_NS_CC;
 using namespace std;
 using namespace CommonUtil;
@@ -180,7 +181,7 @@ void RankingModel::getOverOpponentReward()
 	sqlHelper.closeDB();
 
 	auto rewards = DataManagerSelf->getRewardsConfig().rankingOverOpponent;
-	UserInfo::theInfo()->addGoods(rewards);
+	GoodsMgr::theMgr()->addGoods(rewards);
 }
 
 RankingData RankingModel::getMyRankingData()

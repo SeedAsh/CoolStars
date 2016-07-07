@@ -379,8 +379,8 @@ void DataManager::loadPackageConfig()
 		auto data = *iter;
 		PackageConfig config;
 		config.id = atoi(data[0]);
-		config.cost = atoi(data[1]);
-		config.award = atoi(data[2]);
+		config.cost = parseStrToInts(data[1]);
+		config.goods = parseStrToInts(data[2]);
 		config.titlePath = data[3];
 		m_packageConfig.push_back(config);
 	}

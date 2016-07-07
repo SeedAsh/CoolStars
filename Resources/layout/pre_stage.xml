@@ -59,9 +59,27 @@
 		<scale>1.00</scale>
 	</emptyBox>
 	<image>
+		<id>22</id>
+		<x>241.66</x>
+		<y>344.38</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
+		<path>pre_stage/zbjm_yinying2.png</path>
+	</image>
+	<image>
+		<id>21</id>
+		<x>240.39</x>
+		<y>177.87</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>1.00</scale>
+		<path>pre_stage/zbjm_yinying.png</path>
+	</image>
+	<image>
 		<id>10</id>
-		<x>240.82</x>
-		<y>270.31</y>
+		<x>241.36</x>
+		<y>268.15</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>

@@ -5,6 +5,7 @@
 #include "DataManager.h"
 #include "UserInfo.h"
 #include "CommonMacros.h"
+#include "GoodsMgr.h"
 
 USING_NS_CC;
 using namespace std;
@@ -20,7 +21,6 @@ PackageView *PackageView::create(int type, int touchPriority)
 PackageView::PackageView(int type, int touchPriority)
 : m_type(type)
 , m_touchPriority(touchPriority)
-
 {
 
 }
@@ -46,8 +46,6 @@ void PackageView::initLayout()
 	auto config = DataManagerSelf->getPackageConfig(m_type);
 	CCSprite *title = dynamic_cast<CCSprite *>((m_layout->getChildById(3)));
 	title->initWithFile(config.titlePath.c_str());
-
-
 }
 
 void PackageView::onCancelBtnClicked(cocos2d::CCObject* pSender)
@@ -60,14 +58,25 @@ void PackageView::onCancelBtnClicked(cocos2d::CCObject* pSender)
 
 void PackageView::onBuyBtnClicked(cocos2d::CCObject* pSender)
 {
-	UserInfo::theInfo()->setDiamond(200);
+	auto config = DataManagerSelf->getPackageConfig(m_type);
+	int consumeType = config.cost[0];
+	int costValue = config.cost[1];
+	if (consumeType == kConsumeDiamond)
+	{
+		int diamond = UserInfo::theInfo()->getDiamond();
+		int value = max(0, diamond - costValue);
+		UserInfo::theInfo()->setDiamond(value);
+		
+		GoodsMgr::theMgr()->addGoods(config.goods);
+	}
+
 	if (m_handle)
 	{
 		m_handle();
 	}
 }
 
-
+///////////////////////////////////////////////////////////////////////
 bool PackageScene::init()
 {
 	setPanelId(kPackagePanel);
@@ -85,7 +94,7 @@ bool PackageScene::init()
 	return true;
 }
 
-
+///////////////////////////////////////////////////////////////////////
 PackageDialog *PackageDialog::create(int type)
 {
 	auto dialog = new PackageDialog(type);
