@@ -288,6 +288,12 @@
     <ClCompile Include="..\Classes\RankingModel.cpp">
       <Filter>Ranking</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\ShopManager.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MyPurchase_old.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -547,6 +553,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\RankingModel.h">
       <Filter>Ranking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShopManager.h">
+      <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MyPurchase_old.h">
+      <Filter>Shop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

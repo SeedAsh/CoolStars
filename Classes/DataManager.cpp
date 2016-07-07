@@ -354,12 +354,18 @@ void DataManager::loadShopConfig()
 		config.id = atoi(data[0]);
 		config.cost = atoi(data[1]);
 		config.diamond = atoi(data[2]);
-		config.iconPath = atoi(data[3]);
+		config.iconPath = data[3];
 		m_shopConfig.push_back(config);
 	}
 }
 
-const vector<ShopConfig> &DataManager::getShopConfig()
+const ShopConfig &DataManager::getShopConfig(int id)
+{
+	assert(id > 0 && id <= m_shopConfig.size());
+	return m_shopConfig[id - 1];
+}
+
+const std::vector<ShopConfig> &DataManager::getShopConfigs()
 {
 	return m_shopConfig;
 }

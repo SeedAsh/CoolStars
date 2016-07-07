@@ -158,6 +158,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\MainScene.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
     <ClCompile Include="..\Classes\MyPurchase.cpp" />
+    <ClCompile Include="..\Classes\MyPurchase_old.cpp" />
     <ClCompile Include="..\Classes\PackageScene.cpp" />
     <ClCompile Include="..\Classes\PauseLayer.cpp" />
     <ClCompile Include="..\Classes\PetEntity.cpp" />
@@ -178,6 +179,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\RankingScene.cpp" />
     <ClCompile Include="..\Classes\ScaleDialog.cpp" />
     <ClCompile Include="..\Classes\SettingBtnsHelper.cpp" />
+    <ClCompile Include="..\Classes\ShopManager.cpp" />
     <ClCompile Include="..\Classes\ShopScene.cpp" />
     <ClCompile Include="..\Classes\SoundMgr.cpp" />
     <ClCompile Include="..\Classes\sqlite3.c" />
@@ -241,6 +243,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\MainScene.h" />
     <ClInclude Include="..\Classes\MenuScene.h" />
     <ClInclude Include="..\Classes\MyPurchase.h" />
+    <ClInclude Include="..\Classes\MyPurchase_old.h" />
     <ClInclude Include="..\Classes\PackageScene.h" />
     <ClInclude Include="..\Classes\PanelMacros.h" />
     <ClInclude Include="..\Classes\PauseLayer.h" />
@@ -266,6 +269,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="..\Classes\ScaleDialog.h" />
     <ClInclude Include="..\Classes\SettingBtnsHelper.h" />
+    <ClInclude Include="..\Classes\ShopManager.h" />
     <ClInclude Include="..\Classes\ShopScene.h" />
     <ClInclude Include="..\Classes\SoundMgr.h" />
     <ClInclude Include="..\Classes\sqlite3.h" />

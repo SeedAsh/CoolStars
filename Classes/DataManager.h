@@ -61,7 +61,8 @@ public:
 	const RankingConfig &getRankingConfig(int id);
 
 	void loadShopConfig();
-	const std::vector<ShopConfig> &getShopConfig();
+	const ShopConfig &getShopConfig(int id);
+	const std::vector<ShopConfig> &getShopConfigs();
 
 	void loadPackageConfig();
 	const PackageConfig &getPackageConfig(int type);

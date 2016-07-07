@@ -7,6 +7,7 @@
 #include "DataManager.h"
 #include "CommonUtil.h"
 #include "CommonMacros.h"
+#include "ShopManager.h"
 
 USING_NS_CC;
 using namespace std;
@@ -36,14 +37,14 @@ bool ShopNode::init()
 	diamond->setString(intToStr(m_config.diamond));
 
 	CCLabelAtlas *cost = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(7));
-	diamond->setString(intToStr(m_config.cost));
+	cost->setString(intToStr(m_config.cost));
 
 	return true;
 }
 
 void ShopNode::onBtnClicked(cocos2d::CCObject* pSender)
 {
-	CCMessageBox("clicked", "title");
+	ShopManager::theMgr()->purchase(m_config.id);
 }
 
 bool ShopScene::init()
@@ -69,13 +70,13 @@ bool ShopScene::init()
 void ShopScene::initPanel()
 {
 	auto pos = m_layout->getChildById(3)->getPosition();
-	ListSlideView *shopList = ListSlideView::create(ccp(350, 400));
+	ListSlideView *shopList = ListSlideView::create(ccp(350, 500));
 	addChild(shopList);
 	shopList->setAnchorPoint(ccp(0, 1));
 	shopList->setPosition(pos);
-	shopList->setSpacing(10);
+	shopList->setSpacing(5);
 
-	auto configs = DataManagerSelf->getShopConfig();
+	auto configs = DataManagerSelf->getShopConfigs();
 	sort(configs.begin(), configs.end(), [=](ShopConfig config1, ShopConfig config2)->bool
 	{
 		return config1.diamond > config2.diamond;
