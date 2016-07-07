@@ -10,6 +10,13 @@ USING_NS_CC;
 using namespace std;
 using namespace CommonUtil;
 
+RankingModel::RankingModel()
+: m_alreadyOpenRanking(false)
+, m_daysOverOpponent(0)
+{
+
+}
+
 RankingModel *RankingModel::theModel()
 {
 	static RankingModel model;
@@ -95,6 +102,7 @@ void RankingModel::loadData()
 	if (m_alreadyOpenRanking)
 	{
 		m_myName = data[2];
+		m_daysOverOpponent = atoi(data[3]);
 		RankingOpponent::theOpponent()->loadLastSavedData();
 	}
 }
@@ -144,6 +152,9 @@ void RankingModel::initFirstOpenRanking(string myName)
 
 bool RankingModel::isOverOpponent()
 {
+	int days = UserInfo::theInfo()->getDaysFromFirstPlay();
+	if (days <= m_daysOverOpponent) return false;
+
 	auto ranking = getCurRanking();
 	auto playerIter = find_if(ranking.begin(), ranking.end(), [=](RankingData data)->bool
 	{
@@ -157,6 +168,19 @@ bool RankingModel::isOverOpponent()
 
 	assert(playerIter != ranking.end() && opponentIter != ranking.end());
 	return *playerIter > *opponentIter;
+}
+
+void RankingModel::getOverOpponentReward()
+{
+	SqliteHelper sqlHelper(DB_SAVING);
+	m_daysOverOpponent = UserInfo::theInfo()->getDaysFromFirstPlay();
+	char str[100] = { 0 };
+	sprintf(str, "update save_my_ranking set %s = '%d' where id = 1;", "days_over_opponent", m_daysOverOpponent);
+	sqlHelper.executeSql(str);
+	sqlHelper.closeDB();
+
+	auto rewards = DataManagerSelf->getRewardsConfig().rankingOverOpponent;
+	UserInfo::theInfo()->addGoods(rewards);
 }
 
 RankingData RankingModel::getMyRankingData()

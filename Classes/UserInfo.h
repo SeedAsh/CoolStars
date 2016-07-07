@@ -20,6 +20,7 @@ public:
 	void addView(IUserInfoView *view);
 	void removeView(IUserInfoView *view);
 public:
+	void addGoods(std::vector<int> items); //用于解析配置，添加游戏货币
 	void setDiamond(int value);
 	int getDiamond(){ return m_diamond; }
 

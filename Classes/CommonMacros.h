@@ -46,7 +46,6 @@ enum PanelId
 	kStageView,
 	kStageFailPanel,
 	kStageWinPanel,
-
 };
 
 enum GameType
@@ -54,6 +53,16 @@ enum GameType
 	kNormalType,
 	kTreasureType,
 };
+
+enum GoodsType
+{
+	kGoodsDiamond,
+	kGoodsFood,
+	kGoodsStrength,
+	kGoodsRuneStone,
+	kGoodsKey,
+};
+
 #define NOTIFY_VIEWS(_FUNC_ ,...)						\
 for (size_t index = 0; index < m_views.size(); ++index) \
 {														\

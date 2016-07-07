@@ -106,12 +106,11 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 		//选中状态直接使用放大的正常图片
 		auto normalSpr = CCSprite::create(normalPath.c_str());
 		auto selectedSpr = CCSprite::create(normalPath.c_str());
-
-		float scale = 1.1f;
-		selectedSpr->setScale(scale);
+		float selectedScale = 1.1f;
+		selectedSpr->setScale(selectedScale);
 		
 		CCMenuItemSprite* imageItem = CCMenuItemSprite::create(normalSpr, selectedSpr, this, NULL);
-		selectedSpr->setAnchorPoint(ccp((scale - 1.0f) / 2, (scale - 1.0f) / 2));
+		selectedSpr->setAnchorPoint(ccp((selectedScale - 1.0f) / 2, (selectedScale - 1.0f) / 2));
 		/*
 		CCMenuItemImage *imageItem = CCMenuItemImage::create(
 			normalPath.c_str(),
@@ -119,7 +118,7 @@ void UiLayout::createWidget(rapidxml::xml_node<> *node)
 			disabledPath.c_str(),
 			this,
 			NULL);
-			*/
+		*/
 
 		m_menu->addChild(imageItem);
 		m_menuItems[id] = imageItem;

@@ -143,24 +143,35 @@ bool RankingOpponentUpgradePanel::init()
 
 void RankingOpponentUpgradePanel::initLayout()
 {
-	int rank = RankingModel::theModel()->getOpponetRank();
-	auto data = RankingOpponent::theOpponent()->getRankingData();
-	auto targetRank = dynamic_cast<EmptyBox *>((m_layout->getChildById(6)));
-	targetRank->setNode(RankingNode::create(rank, data));
-
-	//更新对手数据
-	RankingOpponent::theOpponent()->update();
-	rank = RankingModel::theModel()->getOpponetRank();
-	data = RankingModel::theModel()->getDataByRank(rank + 1);
-	auto opponent = dynamic_cast<EmptyBox *>((m_layout->getChildById(5)));
-	opponent->setNode(RankingNode::create(rank, data));
-	
 	CCMenuItem *confirmBtn = dynamic_cast<CCMenuItem *>((m_layout->getChildById(4)));
 	confirmBtn->setTarget(this, menu_selector(RankingOpponentUpgradePanel::onConfirm));
 
-	runAction(CCSequence::create(CCDelayTime::create(1.0f), 
-		CCCallFunc::create(this, callfunc_selector(RankingOpponentUpgradePanel::doMoveAction)), NULL));
+	int rank1 = RankingModel::theModel()->getOpponetRank();
+	auto data1 = RankingOpponent::theOpponent()->getRankingData();
+	//更新对手数据
+	RankingOpponent::theOpponent()->update();
+	int rank2 = RankingModel::theModel()->getOpponetRank();
+	auto data2 = RankingModel::theModel()->getDataByRank(rank2 + 1);
 
+	if (rank1 > rank2)
+	{
+		//对手节点
+		auto opponent = dynamic_cast<EmptyBox *>((m_layout->getChildById(6)));
+		opponent->setNode(RankingNode::create(rank1, data1));
+
+		//被超越的节点
+		auto oldRank = dynamic_cast<EmptyBox *>((m_layout->getChildById(5)));
+		oldRank->setNode(RankingNode::create(rank2, data2));
+
+		runAction(CCSequence::create(CCDelayTime::create(1.0f),
+			CCCallFunc::create(this, callfunc_selector(RankingOpponentUpgradePanel::doMoveAction)), NULL));
+	}
+	else
+	{
+		auto data3 = RankingOpponent::theOpponent()->getRankingData();
+		auto opponent = dynamic_cast<EmptyBox *>((m_layout->getChildById(7)));
+		opponent->setNode(RankingNode::create(rank2, data3));
+	}
 }
 
 void RankingOpponentUpgradePanel::doMoveAction()

@@ -43,18 +43,20 @@ public:
 	bool alreadyOpenRanking(){ return m_alreadyOpenRanking; }
 	void initFirstOpenRanking(std::string myName);
 	bool isOverOpponent();
+	void getOverOpponentReward();
 	std::unordered_map<int, RankingData> getNeighboursRanking();
 	RankingData getMyRankingData();
 	RankingData getDataByRank(int rank);
 	int getOpponetRank();
 	int getMyRank();
 private:
+	RankingModel();
 	void loadData();
 	std::vector<RankingData> getCurRanking();
 private:
 	static const int kMaxLength = 4;
 	bool m_alreadyOpenRanking;
-
+	int m_daysOverOpponent;
 	std::string m_myName;
 };
 #endif

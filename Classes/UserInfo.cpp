@@ -169,3 +169,34 @@ int UserInfo::getDaysFromFirstPlay()
 	int days = (m_lastLoginInTime - startTime) / kDaySecs + 1;
 	return days;
 }
+
+void UserInfo::addGoods(std::vector<int> items)
+{
+	assert(items.size() % 2 == 0);
+	for (size_t i = 0; i < items.size(); i += 2)
+	{
+		int type = items[i];
+		int amount = items[i + 1];
+		switch (type)
+		{
+		case kGoodsDiamond:
+			setDiamond(m_diamond + amount);
+			break;
+		case kGoodsFood:
+			setFood(m_food + amount);
+			break;
+		case kGoodsStrength:
+			setStrength(m_strength + amount);
+			break;
+		case kGoodsRuneStone:
+			setRuneStone(m_runeStone + amount);
+			break;
+		case kGoodsKey:
+			setKey(m_key + amount);
+			break;
+		default:
+			break;
+		}
+	}
+	
+}

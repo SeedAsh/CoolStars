@@ -151,4 +151,10 @@ struct GuideConfig
 	bool showTextDialog;
 	std::string desc;
 };
+
+struct RewardsConfig
+{
+	int id;
+	std::vector<int> rankingOverOpponent;
+};
 #endif

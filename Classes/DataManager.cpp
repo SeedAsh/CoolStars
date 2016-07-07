@@ -33,6 +33,7 @@ void DataManager::LoadData()
 	loadLotteryOutput();
 	loadStarsLoaderConfig();
 	loadGuideConfig();
+	loadRewardsConfig();
 }
 
 void DataManager::loadStarsConfig()
@@ -160,7 +161,7 @@ void DataManager::loadStageConfig()
 {
 	SqliteHelper sqlHelper(DB_STAGE);
 	auto result = sqlHelper.readRecord("select * from stages_config");
-	assert(!result.empty());
+	assert(result.size() == m_systemConfig.stageAmount);
 
 	for (auto iter = result.begin(); iter != result.end(); ++iter)
 	{
@@ -179,7 +180,7 @@ void DataManager::loadStageConfig()
 
 const StageConfig &DataManager::getStageConfig(int stage)
 {
-	assert(stage > 0 && stage <= (int)m_stagesConfig.size());
+	assert(stage > 0 && stage <= m_systemConfig.stageAmount);
 	return m_stagesConfig[stage - 1];
 }
 
@@ -487,4 +488,19 @@ const GuideConfig *DataManager::getGuideConfigById(int guideId)
 	assert(iter != m_guideConfig.end());
 
 	return iter != m_guideConfig.end() ? &(*iter) : NULL;
+}
+
+void DataManager::loadRewardsConfig()
+{
+	SqliteHelper sqlHelper(DB_CONFIG);
+	auto result = sqlHelper.readRecord("select * from rewards");
+	assert(result.size() == 1);
+	auto data = result[0];
+	m_rewardsConfig.id = atoi(data[0]);
+	m_rewardsConfig.rankingOverOpponent = parseStrToInts(data[1]);
+}
+
+const RewardsConfig &DataManager::getRewardsConfig()
+{
+	return m_rewardsConfig;
 }

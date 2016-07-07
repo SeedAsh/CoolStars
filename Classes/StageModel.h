@@ -35,6 +35,7 @@ public: //对星星的操作接口
 	void replaceStar(const StarAttr &attr);
 	void genStar(const StarAttr &attr);
 	void resetStage(int gameType);
+	int getStageAmount();
 public:
 	StageBaseInfo *getStageInfo(){ return &m_stageInfo; }
 	StageTarget *getStageTarget(){ return &m_target; }

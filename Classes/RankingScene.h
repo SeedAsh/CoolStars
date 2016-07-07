@@ -15,9 +15,12 @@ public:
 private:
 	RankingScene(){}
 	~RankingScene(){}
-	void initMainLayout();
+	void initLayout();
+	void initBottomLayout();
+	void onGetReward(cocos2d::CCObject* pSender);
 private:
 	UiLayout *m_layout;
+	UiLayout *m_bottomlayout;
 
 };
 #endif

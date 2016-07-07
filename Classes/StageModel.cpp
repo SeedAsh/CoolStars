@@ -322,3 +322,8 @@ void StageModel::genStar(const StarAttr &attr)
 	m_starNodes.push_back(node);
 	NOTIFY_VIEWS(onCreateNewStar, node);
 }
+
+int StageModel::getStageAmount()
+{
+	return DataManagerSelf->getSystemConfig().stageAmount;
+}
