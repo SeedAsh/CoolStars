@@ -44,7 +44,6 @@ string PreStagePetSlotNode::getBgPath()
 	return path;
 }
 
-
 /////////////////////////////////////////////////////////////////////
 PreStagePetSlot *PreStagePetSlot::create(int petId)
 {
@@ -110,15 +109,16 @@ void PreStagePetSlot::onSelectItemCallback(int index)
 {
 	PreStagePetSlotNode *node = dynamic_cast<PreStagePetSlotNode *>(m_listView->getNode(index));
 	int petId = node->getPetId();
+
+	CCSprite *slotBg = dynamic_cast<CCSprite *>(m_layout->getChildById(1));
+	slotBg->initWithFile(node->getBgPath().c_str());
+
 	if (m_curPetId != petId)
 	{
 		int oldPetId = m_curPetId;
 		m_curPetId = petId;
 		PreStageModel::theModel()->selectPet(petId, oldPetId);
 	}
-
-	CCSprite *slotBg = dynamic_cast<CCSprite *>(m_layout->getChildById(1));
-	slotBg->initWithFile(node->getBgPath().c_str());
 }
 
 

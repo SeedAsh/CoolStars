@@ -15,7 +15,7 @@
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>0.25</scale>
-		<path>pet_animation/niu_hong/niu_hong.ExportJson</path>
+		<path>pet_animation/ma_hong/ma_hong.ExportJson</path>
 		<movement>0</movement>
 	</animation>
 </layout>
