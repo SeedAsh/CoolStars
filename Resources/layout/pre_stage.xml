@@ -98,14 +98,14 @@
 	</imageNum>
 	<imageNum>
 		<id>17</id>
-		<x>321.42</x>
-		<y>510.05</y>
+		<x>322.48</x>
+		<y>503.09</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 		<amount>10</amount>
 		<num>20</num>
-		<path>stage/yxjm_shuzi1.png</path>
+		<path>num/ty_ziti1.png</path>
 	</imageNum>
 	<emptyBox>
 		<id>18</id>

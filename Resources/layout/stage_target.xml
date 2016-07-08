@@ -8,24 +8,25 @@
 		<scale>1.00</scale>
 		<path>stage/stars/yxjm_fangkuai1.png</path>
 	</image>
-	<emptyBox>
+		<emptyBox>
 		<id>2</id>
-		<x>0.00</x>
-		<y>0.00</y>
+		<x>-1.06</x>
+		<y>0.84</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<imageNum>
 		<id>3</id>
-		<x>14.97</x>
-		<y>-7.22</y>
+		<x>18.98</x>
+		<y>-5.11</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
-		<amount>10</amount>
+		<amount>12</amount>
 		<num>5</num>
-		<path>stage/yxjm_shuzi1.png</path>
+		<path>num/ty_ziti6.png</path>
 	</imageNum>
+
 </layout>
 

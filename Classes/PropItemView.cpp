@@ -41,7 +41,9 @@ void PropItemView::refreshItemNum()
 	CCLabelAtlas *num = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(2));
 	auto mgr = PropManager::propMgr();
 	int amount = mgr->getPropItemAmount(m_type);
-	num->setString(intToStr(amount));
+	string str = ":";
+	str += intToStr(amount);
+	num->setString(str.c_str());
 }
 
 void PropItemView::runScale()

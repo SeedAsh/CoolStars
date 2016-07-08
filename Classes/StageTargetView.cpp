@@ -38,6 +38,7 @@ bool StageTargetView::init()
 	addChild(m_layout);
 	initLayout();
 
+	setScale(0.8f);
 	setContentSize(m_layout->getContentSize());
 	return true;
 }

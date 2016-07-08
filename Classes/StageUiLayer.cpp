@@ -104,11 +104,6 @@ void StageUiLayer::initTopUi()
 		node->setNode(view);
 	}
 	
-	auto stageTarget = StageModel::theModel()->getStageTarget();
-	int targetScore = stageTarget->getTargetScore();
-	CCLabelAtlas * targetScoreLabel = dynamic_cast<CCLabelAtlas *>(m_topUi->getChildById(16));
-	targetScoreLabel->setString(intToStr(targetScore));
-
 	onStepsChanged();
 	onScoreChanged();
 }
@@ -204,8 +199,15 @@ void StageUiLayer::onScoreChanged()
 {
 	auto stageInfo = StageModel::theModel()->getStageInfo();
 	int curScore = stageInfo->getCurScore();
+	auto stageTarget = StageModel::theModel()->getStageTarget();
+	int targetScore = stageTarget->getTargetScore();
+
 	CCLabelAtlas * curScoreLabel = dynamic_cast<CCLabelAtlas *>(m_topUi->getChildById(15));
-	curScoreLabel->setString(intToStr(curScore));
+	string str = intToStr(curScore);
+	str += ";";
+	str += intToStr(targetScore);
+	
+	curScoreLabel->setString(str.c_str());
 }
 
 void StageUiLayer::onCoinsChanged()
