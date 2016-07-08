@@ -38,18 +38,10 @@ StagePetNode *StagePetNode::create(int petId, int touchPriority)
 
 bool StagePetNode::init()
 {
-	string iconPath = m_model->getPetData().petImgRes;
-
 	m_layout = UiLayout::create("layout/stage_pet_node.xml");
 	auto size = m_layout->getContentSize();
 	addChild(m_layout);
-
-	auto bottomSpr = dynamic_cast<CCSprite *>(m_layout->getChildById(1));
-	auto petSpr = dynamic_cast<CCSprite *>(m_layout->getChildById(2));
-	petSpr->initWithFile(iconPath.c_str());
-	petSpr->setScale(size.width / petSpr->getContentSize().width);
-	m_layout->getChildById(3)->setVisible(false);
-
+	initLayout();
 	setContentSize(size);
 	setAnchorPoint(ccp(0.5f, 0.5f));
 	
@@ -58,4 +50,21 @@ bool StagePetNode::init()
 	//addChild(mask);
 
 	return true;
+}
+
+void StagePetNode::initLayout()
+{
+	m_layout->getChildById(3)->setVisible(false);
+
+	CCArmature *pet = dynamic_cast<CCArmature *>(m_layout->getChildById(4));
+
+	string path = m_model->getPetData().petAnimationRes;
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo(path.c_str());
+
+	int pos1 = path.rfind("/");
+	int pos2 = path.rfind(".");
+	string armatureName = path.substr(pos1 + 1, pos2 - pos1 - 1);
+
+	pet->init(armatureName.c_str());
+	pet->getAnimation()->play("standby");
 }

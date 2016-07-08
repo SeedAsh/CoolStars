@@ -16,6 +16,7 @@ public:
 	void setTouchHandle(std::function<void(int)> handle){ m_touchHandle = handle; }
 private:
 	StagePetNode(int petId, int touchPriority);
+	void initLayout();
 	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
 private:
 	int m_petId;

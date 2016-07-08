@@ -8,19 +8,20 @@
 		<scale>1.00</scale>
 		<path>stage/pets/yxjm_guangdi2.png</path>
 	</image>
-	<image>
-		<id>2</id>
-		<x>63.33</x>
-		<y>75.73</y>
+	<animation>
+		<id>4</id>
+		<x>59.72</x>
+		<y>78.08</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-		<path>main_menu/zcd_logo2.png</path>
-	</image>
+		<scale>0.15</scale>
+		<path>pet_animation/su_hong/su_hong.ExportJson</path>
+		<movement>0</movement>
+	</animation>
 	<image>
 		<id>3</id>
-		<x>48.50</x>
-		<y>126.10</y>
+		<x>47.44</x>
+		<y>151.00</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
