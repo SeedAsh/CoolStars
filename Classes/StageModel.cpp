@@ -37,7 +37,8 @@ void StageModel::initStarsData()
 			m_starNodes.push_back(StarNode::createNodeFatory(attr));
 		}
 	}
-	
+
+	m_starsBehavior.onOneRoundBegin();
 	m_stageInfo.doSave();
 }
 
@@ -298,6 +299,17 @@ void StageModel::moveOneStep()
 		}
 		gameOver(isWon);
 	}
+}
+
+//玩家移动一步，新回合开始
+void StageModel::onOneRoundBegan()
+{
+	m_starsBehavior.onOneRoundBegin();
+}
+
+void StageModel::onOneRoundEnd()
+{
+	m_starsBehavior.onOneRoundEnd();
 }
 
 void StageModel::addScore(int value)

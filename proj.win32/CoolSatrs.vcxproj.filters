@@ -102,9 +102,6 @@
     <ClCompile Include="..\Classes\StageModel.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\StarsController.cpp">
-      <Filter>GameStage\StageModel</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\StarViewNode.cpp">
       <Filter>GameStage\StageUi</Filter>
     </ClCompile>
@@ -300,6 +297,9 @@
     <ClCompile Include="..\Classes\PauseDialog.cpp">
       <Filter>GameStage\StageUi</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\StarsBehavior.cpp">
+      <Filter>GameStage\StageModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -349,9 +349,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PanelMacros.h">
       <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\StarsController.h">
-      <Filter>GameStage\StageModel</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StarViewNode.h">
       <Filter>GameStage\StageUi</Filter>
@@ -568,6 +565,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PauseDialog.h">
       <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StarsBehavior.h">
+      <Filter>GameStage\StageModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

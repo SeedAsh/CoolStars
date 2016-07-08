@@ -8,6 +8,7 @@
 #include "StageTarget.h"
 #include "StageBaseInfo.h"
 #include "StarsLoader.h"
+#include "StarsBehavior.h"
 
 struct IStageView
 {
@@ -31,6 +32,8 @@ public: //对星星的操作接口
 	void removeStarNode(StarNode *node);
 	void genNewStars();
 	void moveOneStep();
+	void onOneRoundBegan();
+	void onOneRoundEnd();
 	void addScore(int value);
 	void replaceStar(const StarAttr &attr);
 	void genStar(const StarAttr &attr);
@@ -56,6 +59,7 @@ private:
 	std::vector<IStageView *> m_views;
 	StageTarget m_target;
 	StarsLoader m_starsLoader;
+	StarsBehavior m_starsBehavior;
 private:
 	enum Direction
 	{

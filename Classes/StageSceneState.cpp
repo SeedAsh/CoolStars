@@ -71,8 +71,10 @@ void StageNormalState::clickStar(const LogicGrid &grid)
 	if (node)
 	{
 		node->handleClick();
+		StageModel::theModel()->onOneRoundEnd();
+		StageModel::theModel()->genNewStars();
+		StageModel::theModel()->onOneRoundBegan();
 	}
-	StageModel::theModel()->genNewStars();
 }
 
 void StageNormalState::clickPet(int petId)
