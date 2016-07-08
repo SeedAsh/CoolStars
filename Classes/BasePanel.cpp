@@ -5,7 +5,7 @@ USING_NS_CC;
 using namespace std;
 
 BasePanel::BasePanel()
-: m_touchPriority(kMainMenuTouchPriority)
+: m_touchPriority(kPanelTouchPriority)
 , m_panelId(kDefaultPanel)
 , m_usage(0)
 {

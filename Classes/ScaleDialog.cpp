@@ -3,7 +3,7 @@
 using namespace std;
 USING_NS_CC; 
 ScaleDialog::ScaleDialog()
-: m_touchPriority(kDialogMenuTouchPriority)
+: m_touchPriority(kDialogTouchPriority)
 , m_isRunScale(true)
 {
 
@@ -34,7 +34,7 @@ void ScaleDialog::addMaskLayer()
 void ScaleDialog::onEnter()
 {
 	CCNode::onEnter();
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kDialogMenuTouchPriority + 1, true);
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kDialogTouchPriority + 1, true);
 	if (m_isRunScale)
 	{
 		runScale();

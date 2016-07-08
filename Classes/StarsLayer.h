@@ -7,9 +7,10 @@
 USING_NS_CC;
 class StarUtil;
 class StageStateOwner;
-
+class UiLayout;
 class StarsLayer
-	: public CCLayer
+	: public cocos2d::CCNode
+	, public cocos2d::CCTouchDelegate
 	, public IStageView
 	, public IStageLayer
 {
@@ -23,7 +24,8 @@ public:
 	void initStars();
 	void starInitDone();
 	StarViewNode *getClickedStar(CCPoint pos);
-	virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+	virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+
 	CCPoint getPosByGrid(LogicGrid grid);
 	void removeStar(StarViewNode *node);
 	StarViewNode *createStarByGrid(const LogicGrid &grid);
@@ -32,10 +34,12 @@ private:
 	virtual void onEnter();
 	virtual void onExit();
 	void addClippingNode();
+	void addBkGrids();
 private:
 	StarUtil *m_pStarUtil;
 	std::vector<StarViewNode *> m_starsSprite;
 	cocos2d::CCClippingNode *m_clippingNode;
 	StageStateOwner *m_stateOwner;
+	UiLayout *m_layout;
 };
 #endif 

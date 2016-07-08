@@ -20,9 +20,10 @@ enum Colors
 
 enum TouchPriority
 {
-	kMainMenuTouchPriority = -10,
-	kStageUiTouchPriority = -20,
-	kDialogMenuTouchPriority = -50,
+	kPanelTouchPriority = -10,
+	kStageStarsTouchPriority = -20,
+	kStageUiTouchPriority = -30,
+	kDialogTouchPriority = -50,
 	kGuideTouchPriority = -70,
 };
 

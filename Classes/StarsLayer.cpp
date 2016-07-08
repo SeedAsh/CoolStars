@@ -3,6 +3,8 @@
 #include "StageModel.h"
 #include "StageSceneState.h"
 #include "GuideMgr.h"
+#include "UiLayout.h"
+#include "EmptyBox.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -27,14 +29,16 @@ StarsLayer *StarsLayer::create(StageStateOwner *stateOwner)
 
 void StarsLayer::onEnter()
 {
-	CCLayer::onEnter();
+	CCNode::onEnter();
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kStageStarsTouchPriority, true);
 	StageModel::theModel()->addView(this);
 	StageLayersMgr::theMgr()->addLayers(this);
 }
 
 void StarsLayer::onExit()
 {
-	CCLayer::onExit();
+	CCNode::onExit();
+	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 	StageModel::theModel()->removeView(this);
 	StageLayersMgr::theMgr()->addLayers(this);
 
@@ -42,9 +46,17 @@ void StarsLayer::onExit()
 
 bool StarsLayer::init()
 {
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
+	m_layout = UiLayout::create("layout/stage.xml");
+	setContentSize(m_layout->getContentSize());
+	addChild(m_layout);
+
+	addBkGrids();
 	addClippingNode();
+
 	StageModel::theModel()->initStarsData();
 	initStars();
+
 	return true;
 }
 
@@ -53,7 +65,6 @@ void StarsLayer::addClippingNode()
 	CCLayerColor *back = CCLayerColor::create(ccc4(125, 0, 0, 255));
 	CCSize size = CCSize(STAR_SIZE * COlUMNS_SIZE, STAR_SIZE * ROWS_SIZE);
 	back->setContentSize(size);
-	//addChild(back);
 	
 	CCSprite *sp = CCSprite::create("shop/sd_zuanshi2.png");
 	sp->setAnchorPoint(ccp(0, 0));
@@ -61,8 +72,43 @@ void StarsLayer::addClippingNode()
 	m_clippingNode->setInverted(false);
 	m_clippingNode->setAlphaThreshold(1.0f);
 	m_clippingNode->setStencil(back);
+
 	addChild(m_clippingNode);
+	m_clippingNode->setPosition(m_layout->getChildById(4)->getPosition());
 }
+
+void StarsLayer::addBkGrids()
+{
+	CCNode *node = CCNode::create();
+	static const float kSpacing = 2;
+	float curX = kSpacing;
+	float curY = kSpacing;
+	float maxHeight = 0;
+
+	for (int row = 0; row < ROWS_SIZE; ++row)
+	{
+		for (int col = 0; col < COlUMNS_SIZE; ++col)
+		{
+			auto grid = CCSprite::create("stage/yxjm_di2.png");
+			grid->setAnchorPoint(ccp(0, 0));
+			auto size = grid->getContentSize();
+			node->addChild(grid);
+			grid->setPosition(ccp(curX, curY));
+			curX += size.width + kSpacing;
+			if (maxHeight < size.height)
+			{
+				maxHeight = size.height;
+			}
+		}
+		curX = kSpacing;
+		curY += maxHeight + kSpacing;
+	}
+	node->setContentSize(m_layout->getChildById(5)->getContentSize());
+
+	addChild(node);
+	node->setPosition(m_layout->getChildById(4)->getPosition());
+}
+
 
 StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
 {
@@ -113,7 +159,6 @@ void StarsLayer::initStars()
 
 void StarsLayer::starInitDone()
 {
-	setTouchEnabled(true);
 	GuideMgr::theMgr()->startGuide(kGuideStart_stage_initStarsFinished);
 }
 
@@ -130,14 +175,15 @@ StarViewNode *StarsLayer::getClickedStar(CCPoint pos)
 	return NULL;
 }
 
-void StarsLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
+bool StarsLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
-	CCPoint touchLocation = (((CCTouch*)(*(pTouches->begin())))->getLocation());
-	CCPoint pos = convertToNodeSpace(touchLocation);
+	CCPoint touchLocation = pTouch->getLocation();
+	CCPoint pos = m_clippingNode->convertToNodeSpace(touchLocation);
 	StarViewNode *star = getClickedStar(pos);
-	if (star == NULL) return;
+	if (star == NULL) return false;
 	
 	m_stateOwner->clickStar(star->getGrid());
+	return true;
 }
 
 //左下第一个grid为（0，0）
