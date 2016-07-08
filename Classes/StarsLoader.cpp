@@ -1,6 +1,7 @@
 #include "StarsLoader.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "CommonUtil.h"
+#include "StageDataMgr.h"
 using namespace std;
 using namespace CommonUtil;
 USING_NS_CC;
@@ -12,7 +13,7 @@ StarAttr StarsLoader::genNewStars(const LogicGrid &grid)
 	attr.type = kColorStar;
 	attr.color = kColorRandom;
 
-	int curScore = StageModel::theModel()->getStageInfo()->getCurScore();
+	int curScore = StageDataMgr::theMgr()->getCurScore();
 	int popFrontNum = 0;
 	for (auto iter = m_loaderDatas.begin(); iter != m_loaderDatas.end(); ++iter)
 	{
@@ -41,7 +42,7 @@ StarAttr StarsLoader::genNewStars(const LogicGrid &grid)
 
 void StarsLoader::init()
 {
-	int curStage = StageModel::theModel()->getStageInfo()->getCurStage();
+	int curStage = StageDataMgr::theMgr()->getCurStage();
 	auto configs = DataManagerSelf->getStarsLoaderConfig(curStage);
 	
 	m_loaderDatas.clear();

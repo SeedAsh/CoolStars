@@ -2,13 +2,14 @@
 #include "ConfData.h"
 #include "SqliteHelper.h"
 #include "StarNode.h"
-#include "StageModel.h"
+#include "StarsController.h"
+#include "StageDataMgr.h"
 
 USING_NS_CC;
 using namespace std;
 void StageSavingHelper::saveCurStars()
 {
-	auto stageModel = StageModel::theModel();
+	auto stageModel = StarsController::theModel();
 
 	char str[100] = { 0 };
 	SqliteHelper helper(DB_SAVING);
@@ -75,12 +76,12 @@ bool StageSavingHelper::getLastSavedStars(std::vector<std::vector<int>> &stars)
 void StageSavingHelper::saveCurStageData()
 {
 	//保存当前关卡id 分数 最高分
-	auto stageModel = StageModel::theModel();
+	auto stageModel = StarsController::theModel();
 	string sql;
 	char str[100] = { 0 };
 	SqliteHelper helper(DB_SAVING);
 
-	auto stageInfo = stageModel->getStageInfo();
+	auto stageInfo = StageDataMgr::theMgr();
 	int curStage = stageInfo->getCurStage();
 	int topScore = stageInfo->getTopScore();
 	sprintf(str, "replace into save_cur_stage values(1, %d,%d);"
@@ -92,7 +93,7 @@ void StageSavingHelper::saveCurStageData()
 
 void StageSavingHelper::LoadLastSavedStageData()
 {
-	auto stageModel = StageModel::theModel();
+	auto stageModel = StarsController::theModel();
 
 	char str[100] = { 0 };
 	SqliteHelper helper(DB_SAVING);
@@ -103,7 +104,7 @@ void StageSavingHelper::LoadLastSavedStageData()
 	int curStage = atoi(result[0][1]);
 	int topScore = atoi(result[0][2]);
 
-	auto stageInfo = stageModel->getStageInfo();
+	auto stageInfo = StageDataMgr::theMgr();
 	stageInfo->setTopStage(curStage);
 	stageInfo->setTopScore(topScore);
 }

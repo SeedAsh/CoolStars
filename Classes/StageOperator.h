@@ -1,7 +1,7 @@
 #ifndef __STAGEOPERATOR_H__
 #define __STAGEOPERATOR_H__
 #include "cocos2d.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "StarNode.h"
 
 #define StageOp StageOperator::theOperator()

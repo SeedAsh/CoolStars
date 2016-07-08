@@ -7,11 +7,12 @@
 #include "PreStagePetSlot.h"
 #include "PetManager.h"
 #include "MainScene.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "StageTarget.h"
 #include "StageTargetView.h"
 #include "CommonUtil.h"
 #include "GuideMgr.h"
+#include "StageDataMgr.h"
 USING_NS_CC;
 using namespace std;
 using namespace CommonUtil;
@@ -67,7 +68,7 @@ void PreStageScene::initMainLayout()
 
 	//сно╥д©╠Й
 	int targetBoxIds[] = { 18, 19, 20 };
-	auto target = StageModel::theModel()->getStageTarget();
+	auto target = StarsController::theModel()->getStageTarget();
 	auto leftTarget = target->getEraseStarsLeft();
 	assert(leftTarget.size() <= 3);
 	for (size_t i = 0; i < leftTarget.size(); ++i)
@@ -78,11 +79,11 @@ void PreStageScene::initMainLayout()
 	}
 
 	CCLabelAtlas *stepLabel = dynamic_cast<CCLabelAtlas *>(m_mainLayout->getChildById(17));
-	int stepLeft = StageModel::theModel()->getStageInfo()->getLeftSteps();
+	int stepLeft = StageDataMgr::theMgr()->getLeftSteps();
 	stepLabel->setString(intToStr(stepLeft));
 	
 	CCLabelAtlas *stageLabel = dynamic_cast<CCLabelAtlas *>(m_mainLayout->getChildById(15));
-	int curStage = StageModel::theModel()->getStageInfo()->getCurStage();
+	int curStage = StageDataMgr::theMgr()->getCurStage();
 	stageLabel->setString(intToStr(curStage));
 }
 

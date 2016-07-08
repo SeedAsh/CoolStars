@@ -2,8 +2,8 @@
 #include "CommonUtil.h"
 #include "SqliteHelper.h"
 #include "DataManager.h"
-#include "StageModel.h"
-#include "StageBaseInfo.h"
+#include "StarsController.h"
+#include "StageDataMgr.h"
 #include "PetManager.h"
 #include "UserInfo.h"
 #include "GoodsMgr.h"
@@ -124,7 +124,7 @@ void RankingModel::initFirstOpenRanking(string myName)
 	auto datas = DataManagerSelf->getRankingConfigs();
 	
 	//根据 最高得分 和 宠物拥有比 计算排名。对手的排名在玩家之前
-	int topStage = StageModel::theModel()->getStageInfo()->getTopStage();
+	int topStage = StageDataMgr::theMgr()->getTopStage();
 	int ownPetNum = PetManager::petMgr()->getOwnedPetIds().size();
 	int ownPetPercent = int((float)ownPetNum / PETS_AMOUNT * 100);
 	auto iter = find_if(datas.begin(), datas.end(), [=](RankingConfig data)->bool
@@ -186,7 +186,7 @@ void RankingModel::getOverOpponentReward()
 
 RankingData RankingModel::getMyRankingData()
 {
-	int stage = StageModel::theModel()->getStageInfo()->getTopStage();
+	int stage = StageDataMgr::theMgr()->getTopStage();
 	int ownPetNum = PetManager::petMgr()->getOwnedPetIds().size();
 	int ownPetPercent = int((float)ownPetNum / PETS_AMOUNT * 100);
 

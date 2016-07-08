@@ -25,14 +25,14 @@ void StageMaskLayer::onEnter()
 {
 	CCNode::onEnter();
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kStageMaskTouchPriority, true);
-	StageModel::theModel()->addView(this);
+	StarsController::theModel()->addView(this);
 }
 
 void StageMaskLayer::onExit()
 {
 	CCNode::onExit();
 	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-	StageModel::theModel()->removeView(this);
+	StarsController::theModel()->removeView(this);
 
 }
 
@@ -51,7 +51,7 @@ bool StageMaskLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pE
 		}
 	}
 
-	StageModel::theModel()->toNormalState();
+	StarsController::theModel()->toNormalState();
 	return true;
 }
 
@@ -61,7 +61,7 @@ void StageMaskLayer::onHighLightStars(int color)
 	m_stars.clear();
 
 	setVisible(true);
-	auto nodes = StageModel::theModel()->getStarNodes();
+	auto nodes = StarsController::theModel()->getStarNodes();
 	for (size_t i = 0; i < nodes.size(); ++i)
 	{
 		auto attr = nodes[i]->getAttr();

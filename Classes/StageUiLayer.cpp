@@ -20,6 +20,7 @@
 #include "StageTarget.h"
 #include "StageTargetView.h"
 #include "CommonMacros.h"
+#include "StageDataMgr.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -52,14 +53,16 @@ StageUiLayer *StageUiLayer::create(StageStateOwner *stateOwner)
 void StageUiLayer::onEnter()
 {
 	CCLayer::onEnter();
-	StageModel::theModel()->addView(this);
+	StageDataMgr::theMgr()->addView(this);
+	StarsController::theModel()->addView(this);
 	StageLayersMgr::theMgr()->addLayers(this);
 }
 
 void StageUiLayer::onExit()
 {
 	CCLayer::onExit();
-	StageModel::theModel()->removeView(this);
+	StageDataMgr::theMgr()->removeView(this);
+	StarsController::theModel()->removeView(this);
 	StageLayersMgr::theMgr()->removeLayers(this);
 }
 
@@ -94,7 +97,7 @@ bool StageUiLayer::init()
 void StageUiLayer::initTopUi()
 {
 	int targetBoxIds[] = { 18, 19, 20 };
-	auto target = StageModel::theModel()->getStageTarget();
+	auto target = StarsController::theModel()->getStageTarget();
 	auto leftTarget = target->getEraseStarsLeft();
 	assert(leftTarget.size() <= 3);
 	for (size_t i = 0; i < leftTarget.size(); ++i)
@@ -189,7 +192,7 @@ void StageUiLayer::menuCallback( CCObject *pSender )
 
 void StageUiLayer::onStepsChanged()
 {
-	auto stageInfo = StageModel::theModel()->getStageInfo();
+	auto stageInfo = StageDataMgr::theMgr();
 	int leftStep = stageInfo->getLeftSteps();
 	CCLabelAtlas *stepLabel = dynamic_cast<CCLabelAtlas *>(m_topUi->getChildById(17));
 	stepLabel->setString(intToStr(leftStep));
@@ -197,9 +200,9 @@ void StageUiLayer::onStepsChanged()
 
 void StageUiLayer::onScoreChanged()
 {
-	auto stageInfo = StageModel::theModel()->getStageInfo();
+	auto stageInfo = StageDataMgr::theMgr();
 	int curScore = stageInfo->getCurScore();
-	auto stageTarget = StageModel::theModel()->getStageTarget();
+	auto stageTarget = StarsController::theModel()->getStageTarget();
 	int targetScore = stageTarget->getTargetScore();
 
 	CCLabelAtlas * curScoreLabel = dynamic_cast<CCLabelAtlas *>(m_topUi->getChildById(15));

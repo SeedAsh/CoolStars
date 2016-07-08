@@ -4,15 +4,21 @@
 #include "DataConfig.h"
 #include "CommonMacros.h"
 
-class StageBaseInfo
+struct IStageDataView
 {
-public:
-	StageBaseInfo();
+	virtual void onStepsChanged(){}
+	virtual void onScoreChanged(){}
+	virtual void onCoinsChanged(){}
+};
+
+class StageDataMgr
+{
 public: //基本信息存取
+	static StageDataMgr *theMgr();
 	int getCurStep(){ return m_step; }
-	void setCurStep(int step){ m_step = step; }
+	void setCurStep(int step);
 	int getLeftSteps();
-	void addStep() {m_step++; }
+	void addStep() { setCurStep(m_step + 1); }
 
 	int getCurScore(){ return m_curScore; }
 	void setNextScoreBonus(int bonus){ m_curScoreBonus = bonus; }
@@ -36,10 +42,13 @@ public: //基本信息存取
 	void init();
 	void doSave();
 	void reset(int gameType = kNormalType);
+public:
+	void addView(IStageDataView *view);
+	void removeView(IStageDataView *view);
 private:
-
-
+	StageDataMgr();
 private:
+	std::vector<IStageDataView *> m_views;
 	int m_curStage;
 	int m_topStage;
 	int m_step;

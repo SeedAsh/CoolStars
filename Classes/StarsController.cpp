@@ -1,30 +1,34 @@
-#include "StageModel.h"
+#include "StarsController.h"
 #include "DataManager.h"
 #include "SqliteHelper.h"
 #include "StageSavingHelper.h"
 #include "CommonMacros.h"
+#include "StageDataMgr.h"
+
 USING_NS_CC;
 using namespace std;
-StageModel::StageModel()
+StarsController::StarsController()
+{
+
+}
+
+StarsController::~StarsController()
 {
 }
 
-StageModel::~StageModel()
+StarsController *StarsController::theModel()
 {
-}
-
-StageModel *StageModel::theModel()
-{
-	static StageModel model;
+	static StarsController model;
 	return &model;
 }
 
 
-void StageModel::initStarsData()
+void StarsController::initStarsData()
 {
 	//返回的数据是保存行的
 	vector<vector<StageStarInfo>> stageVec;
-	m_stageInfo.getStageStars(stageVec);
+	
+	StageDataMgr::theMgr()->getStageStars(stageVec);
 	
 	for (int row = 0; row < ROWS_SIZE; ++row)
 	{
@@ -39,23 +43,23 @@ void StageModel::initStarsData()
 	}
 
 	m_starsBehavior.onOneRoundBegin();
-	m_stageInfo.doSave();
+	StageDataMgr::theMgr()->doSave();
 }
 
-void StageModel::resetStage(int gameType)
+void StarsController::resetStage(int gameType)
 {
 	//reset nodes
 	for (auto iter = m_starNodes.begin(); iter != m_starNodes.end(); ++iter)
 	{
 		delete(*iter);
 	}
-	m_stageInfo.reset(gameType);
+	StageDataMgr::theMgr()->reset(gameType);
 	m_starNodes.clear();
 	m_target.init();
 	m_starsLoader.init();
 }
 
-StarNode *StageModel::getStarNode(const LogicGrid &grid)
+StarNode *StarsController::getStarNode(const LogicGrid &grid)
 {
 	auto iter = find_if(m_starNodes.begin(), m_starNodes.end(), [=](StarNode *node)->bool
 	{
@@ -66,13 +70,13 @@ StarNode *StageModel::getStarNode(const LogicGrid &grid)
 	return iter != m_starNodes.end() ? *iter : NULL;
 }
 
-void StageModel::moveStars()
+void StarsController::moveStars()
 {
 	sort(m_starNodes.begin(), m_starNodes.end(), [=](StarNode *node1, StarNode *node2)->bool
 	{
 		auto grid1 = node1->getAttr().grid;
 		auto grid2 = node2->getAttr().grid;
-		switch (m_stageInfo.getCurDirection())
+		switch (StageDataMgr::theMgr()->getCurDirection())
 		{
 		case kMoveUp:
 			return grid1.y > grid2.y;
@@ -92,7 +96,7 @@ void StageModel::moveStars()
 	}
 }
 
-bool StageModel::isGridEmpty(const LogicGrid &grid)
+bool StarsController::isGridEmpty(const LogicGrid &grid)
 {
 	auto iter = find_if(m_starNodes.begin(), m_starNodes.end(), [=](StarNode* node)->bool
 	{
@@ -101,9 +105,9 @@ bool StageModel::isGridEmpty(const LogicGrid &grid)
 	return iter == m_starNodes.end();
 }
 
-void StageModel::moveStar(StarNode *node)
+void StarsController::moveStar(StarNode *node)
 {
-	int direction = m_stageInfo.getCurDirection();
+	int direction = StageDataMgr::theMgr()->getCurDirection();
     auto curGrid = node->getAttr().grid;
     auto targetGrid = curGrid;
     switch (direction)
@@ -157,7 +161,7 @@ void StageModel::moveStar(StarNode *node)
 	}
 }
 
-void StageModel::removeStarNode(StarNode *node)
+void StarsController::removeStarNode(StarNode *node)
 {
 	auto iter = find(m_starNodes.begin(), m_starNodes.end(), node);
 	if (iter != m_starNodes.end())
@@ -171,13 +175,13 @@ void StageModel::removeStarNode(StarNode *node)
 	}
 }
 
-void StageModel::gameOver(bool isWon)
+void StarsController::gameOver(bool isWon)
 {
 	StageSavingHelper::saveCurStageData();
 	NOTIFY_VIEWS(onGameOver, isWon);
 }
 
-void StageModel::genNewStars()
+void StarsController::genNewStars()
 {
 	//移动方向： 上下左右
 	int moveDirection[4][2] = { { 0, 1 }, { 0, -1 }, { -1, 0 }, { 1, 0 } };
@@ -204,7 +208,7 @@ void StageModel::genNewStars()
 
 	int kExtraGridOffset = max(COlUMNS_SIZE, ROWS_SIZE);//新创建的星星初始 在四方扩大kExtraGridOffset个的地方
 	vector<LogicGrid> newGrid;
-	switch (m_stageInfo.getCurDirection())
+	switch (StageDataMgr::theMgr()->getCurDirection())
 	{
 	case kMoveUp:
 		for (int i = 0; i < COlUMNS_SIZE; ++i)
@@ -251,14 +255,6 @@ void StageModel::genNewStars()
 	}
 	for (size_t i = 0; i < newGrid.size(); ++i)
 	{
-		/*
-		//当前只测试 彩色星星 5种
-		int startype = ((int)(CCRANDOM_0_1() * 100)) % 5 + 1;
-		StarAttr attr;
-		attr.grid = newGrid[i];
-		attr.type = startype;
-		attr.color = kColorRandom;
-		*/
 		auto attr = m_starsLoader.genNewStars(newGrid[i]);
 		StarNode *node = StarNode::createNodeFatory(attr);
 		m_starNodes.push_back(node);
@@ -267,7 +263,7 @@ void StageModel::genNewStars()
 	moveStars();
 }
 
-void StageModel::addView(IStageView *view)
+void StarsController::addView(IStarsControlView *view)
 {
 	auto iter = find(m_views.begin(), m_views.end(), view);
 	if (iter == m_views.end())
@@ -276,7 +272,7 @@ void StageModel::addView(IStageView *view)
 	}
 }
 
-void StageModel::removeView(IStageView *view)
+void StarsController::removeView(IStarsControlView *view)
 {
 	auto iter = find(m_views.begin(), m_views.end(), view);
 	if (iter != m_views.end())
@@ -285,10 +281,9 @@ void StageModel::removeView(IStageView *view)
 	}
 }
 
-void StageModel::moveOneStep()
+void StarsController::moveOneStep()
 {
-	m_stageInfo.addStep();
-	NOTIFY_VIEWS(onStepsChanged);
+	StageDataMgr::theMgr()->addStep();
 
 	if (m_target.isGameOver())
 	{
@@ -302,23 +297,22 @@ void StageModel::moveOneStep()
 }
 
 //玩家移动一步，新回合开始
-void StageModel::onOneRoundBegan()
+void StarsController::onOneRoundBegan()
 {
 	m_starsBehavior.onOneRoundBegin();
 }
 
-void StageModel::onOneRoundEnd()
+void StarsController::onOneRoundEnd()
 {
 	m_starsBehavior.onOneRoundEnd();
 }
 
-void StageModel::addScore(int value)
+void StarsController::addScore(int value)
 {
-	m_stageInfo.addCurScore(value);
-	NOTIFY_VIEWS(onScoreChanged);
+	StageDataMgr::theMgr()->addCurScore(value);
 }
 
-void StageModel::replaceStar(const StarAttr &attr)
+void StarsController::replaceStar(const StarAttr &attr)
 {
 	auto grid = attr.grid;
 	StarNode *node = getStarNode(grid);
@@ -328,24 +322,24 @@ void StageModel::replaceStar(const StarAttr &attr)
 	genStar(attr);
 }
 
-void StageModel::genStar(const StarAttr &attr)
+void StarsController::genStar(const StarAttr &attr)
 {
 	auto node = StarNode::createNodeFatory(attr);
 	m_starNodes.push_back(node);
 	NOTIFY_VIEWS(onCreateNewStar, node);
 }
 
-int StageModel::getStageAmount()
+int StarsController::getStageAmount()
 {
 	return DataManagerSelf->getSystemConfig().stageAmount;
 }
 
-void StageModel::highLightStars(int color)
+void StarsController::highLightStars(int color)
 {
 	NOTIFY_VIEWS(onHighLightStars, color);
 }
 
-void StageModel::toNormalState()
+void StarsController::toNormalState()
 {
 	NOTIFY_VIEWS(onToNormalState);
 }

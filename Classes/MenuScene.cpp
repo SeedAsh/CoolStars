@@ -1,6 +1,6 @@
 ﻿#include "MenuScene.h"
 #include "UiLayout.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "SoundMgr.h"
 #include "StageScene.h"
 #include "PetScene.h"
@@ -94,14 +94,14 @@ void MenuScene::initBottomLayout()
 void MenuScene::toNormalGame(CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	StageModel::theModel()->resetStage(kNormalType);
+	StarsController::theModel()->resetStage(kNormalType);
 	MainScene::theScene()->showPanel(kPreStagePanel);
 }
 
 void MenuScene::toTreasureGame(CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
-	StageModel::theModel()->resetStage(kTreasureType);
+	StarsController::theModel()->resetStage(kTreasureType);
 	MainScene::theScene()->showPanel(kPreStagePanel);;
 }
 

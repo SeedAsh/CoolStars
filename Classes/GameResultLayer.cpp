@@ -1,9 +1,10 @@
 #include "GameResultLayer.h"
 #include "StageScene.h"
 #include "MenuScene.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "MainScene.h"
 #include "UiLayout.h"
+#include "StageDataMgr.h"
 using namespace std;
 USING_NS_CC;
 
@@ -30,7 +31,7 @@ void GameWinLayer::onConfirmBtnClicked(CCObject *pSender)
 	MainScene::theScene()->showPanel(kMainMenu);
 
 	return;
-	auto info = StageModel::theModel()->getStageInfo();
+	auto info = StageDataMgr::theMgr();
 	info->toNextStage();
 	MainScene::theScene()->showPanel(kStageView);
 }

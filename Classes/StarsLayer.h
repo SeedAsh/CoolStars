@@ -2,7 +2,7 @@
 #define __STARSLAYER_H__
 #include "cocos2d.h"
 #include "StarViewNode.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "StageLayersMgr.h"
 USING_NS_CC;
 class StarUtil;
@@ -11,7 +11,7 @@ class UiLayout;
 class StarsLayer
 	: public cocos2d::CCNode
 	, public cocos2d::CCTouchDelegate
-	, public IStageView
+	, public IStarsControlView
 	, public IStageLayer
 {
 public:

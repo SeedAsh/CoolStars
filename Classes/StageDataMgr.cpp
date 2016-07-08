@@ -1,13 +1,19 @@
-#include "StageBaseInfo.h"
+#include "StageDataMgr.h"
 #include "DataManager.h"
 #include "StageSavingHelper.h"
 #include "CommonUtil.h"
 
-StageBaseInfo::StageBaseInfo()
+StageDataMgr::StageDataMgr()
 {
 }
 
-int StageBaseInfo::getCurDirection()
+StageDataMgr *StageDataMgr::theMgr()
+{
+	static StageDataMgr mgr;
+	return &mgr;
+}
+
+int StageDataMgr::getCurDirection()
 {
 	int index = 0;
 	auto config = DataManagerSelf->getStageConfig(m_curStage);
@@ -19,14 +25,14 @@ int StageBaseInfo::getCurDirection()
 	return dirs[index];
 }
 
-int StageBaseInfo::getLeftSteps()
+int StageDataMgr::getLeftSteps()
 {
 	auto config = DataManagerSelf->getStageConfig(m_curStage);
 	int leftStep = config.step - m_step;
 	return max(leftStep, 0);
 }
 
-void StageBaseInfo::reset(int gameType)
+void StageDataMgr::reset(int gameType)
 {
 	m_step = 0;
 	m_curScore = 0;
@@ -42,13 +48,13 @@ void StageBaseInfo::reset(int gameType)
 	}
 }
 
-void StageBaseInfo::init()
+void StageDataMgr::init()
 {
 	StageSavingHelper::LoadLastSavedStageData();
 	reset();
 }
 
-void StageBaseInfo::toNextStage()
+void StageDataMgr::toNextStage()
 {
 	reset();
 	if (!isTheLastStage())
@@ -57,7 +63,7 @@ void StageBaseInfo::toNextStage()
 	}
 }
 
-void StageBaseInfo::setCurScore(int score)
+void StageDataMgr::setCurScore(int score)
 {
 	if (score > m_topScore)
 	{
@@ -67,26 +73,51 @@ void StageBaseInfo::setCurScore(int score)
 	m_curScore = score;
 }
 
-bool StageBaseInfo::isTheLastStage()
+bool StageDataMgr::isTheLastStage()
 {
 	auto config = DataManagerSelf->getSystemConfig();
 	return m_curStage >= config.stageAmount;
 }
 
-void StageBaseInfo::getStageStars(std::vector<std::vector<StageStarInfo>> &stars)
+void StageDataMgr::getStageStars(std::vector<std::vector<StageStarInfo>> &stars)
 {
 	DataManagerSelf->getNewStageStarsData(stars, m_curStage);
 }
 
-void StageBaseInfo::doSave()
+void StageDataMgr::doSave()
 {
 	StageSavingHelper::saveCurStageData();
 	StageSavingHelper::saveCurStars();
 }
 
-void StageBaseInfo::addCurScore(int value)
+void StageDataMgr::setCurStep(int step)
+{
+	m_step = step;
+	NOTIFY_VIEWS(onStepsChanged);
+}
+
+void StageDataMgr::addCurScore(int value)
 { 
 	float score = m_curScore * (1 + m_curScoreBonus);
 	setCurScore(score + value);
 	m_curScoreBonus = 0;
+	NOTIFY_VIEWS(onScoreChanged);
+}
+
+void StageDataMgr::addView(IStageDataView *view)
+{
+	auto iter = find(m_views.begin(), m_views.end(), view);
+	if (iter == m_views.end())
+	{
+		m_views.push_back(view);
+	}
+}
+
+void StageDataMgr::removeView(IStageDataView *view)
+{
+	auto iter = find(m_views.begin(), m_views.end(), view);
+	if (iter != m_views.end())
+	{
+		m_views.erase(iter);
+	}
 }

@@ -2,12 +2,12 @@
 #define __STAGEMASKLAYER_H__
 
 #include "cocos2d.h"
-#include "StageModel.h"
+#include "StarsController.h"
 
 class StageMaskLayer
 	: public cocos2d::CCNode
 	, public cocos2d::CCTouchDelegate
-	, public IStageView
+	, public IStarsControlView
 {
 public:
 	CREATE_FUNC(StageMaskLayer);

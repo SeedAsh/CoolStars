@@ -5,7 +5,7 @@
 #include "CommonUtil.h"
 #include "CommonMacros.h"
 #include "RankingModel.h"
-#include "StageModel.h"
+#include "StarsController.h"
 using namespace std;
 using namespace CommonUtil;
 USING_NS_CC;
@@ -81,7 +81,7 @@ void RankingOpponent::update()
 	for (int i = 0; i < days; ++i)
 	{
 		m_stage += getRandomValue(1, 5);
-		m_stage = min(StageModel::theModel()->getStageAmount(), m_stage);
+		m_stage = min(StarsController::theModel()->getStageAmount(), m_stage);
 		m_ownPetPercent += (int)((float)getRandomValue(0, 3) / PETS_AMOUNT * 100);
 		m_ownPetPercent = min(m_ownPetPercent, 100);
 	}

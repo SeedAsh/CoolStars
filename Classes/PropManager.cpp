@@ -60,12 +60,12 @@ void PropManager::usePropBomb(const LogicGrid &grid)
 {
 	auto grids = getSquareGrids(grid, 1);
 	StageOp->eraseStars(grids);
-	StageModel::theModel()->genNewStars();
+	StarsController::theModel()->genNewStars();
 }
 
 void PropManager::usePropBrush(const LogicGrid &grid, int color)
 {
-	StarNode *node = StageModel::theModel()->getStarNode(grid);
+	StarNode *node = StarsController::theModel()->getStarNode(grid);
 	auto attr = node->getAttr();
 	attr.color = color;
 	StageOp->changeColor(attr);

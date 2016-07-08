@@ -2,8 +2,9 @@
 #define __STAGEUILAYER_H___ 
 
 #include "cocos2d.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "StageLayersMgr.h"
+#include "StageDataMgr.h"
 USING_NS_CC;
 struct StageUiValue
 {
@@ -20,7 +21,8 @@ class UiLayout;
 class StageStateOwner;
 class StageUiLayer
     : public CCLayer
-	, public IStageView
+	, public IStageDataView
+	, public IStarsControlView
 	, public IStageLayer
 {
 public:

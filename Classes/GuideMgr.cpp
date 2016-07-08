@@ -2,8 +2,8 @@
 #include "SqliteHelper.h"
 #include "CommonUtil.h"
 #include "DataManager.h"
-#include "StageModel.h"
-#include "StageBaseInfo.h"
+#include "StarsController.h"
+#include "StageDataMgr.h"
 #include "GuideMacros.h"
 #include "MainScene.h"
 using namespace std;
@@ -26,7 +26,7 @@ void GuideMgr::startGuide(int startAction, std::function<void()> callback)
 {
 	if (!m_guideEnable) return;
 
-	int topStage = StageModel::theModel()->getStageInfo()->getTopStage();
+	int topStage = StageDataMgr::theMgr()->getTopStage();
 
 	auto configs = DataManagerSelf->getGuideConfig();
 	auto iter = find_if(configs.begin(), configs.end(), [=](GuideConfig data)

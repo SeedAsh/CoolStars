@@ -6,26 +6,22 @@
 #include "StarNode.h"
 #include "DataManager.h"
 #include "StageTarget.h"
-#include "StageBaseInfo.h"
 #include "StarsLoader.h"
 #include "StarsBehavior.h"
 
-struct IStageView
+struct IStarsControlView
 {
 	virtual void onCreateNewStar(StarNode *node){}
-	virtual void onStepsChanged(){}
-	virtual void onScoreChanged(){}
-	virtual void onCoinsChanged(){}
 	virtual void onGameOver(int isWon){}
 	virtual void onHighLightStars(int color){}
 	virtual void onToNormalState(){}
 	
 };
 
-class StageModel
+class StarsController
 {
 public:
-	static StageModel *theModel();
+	static StarsController *theModel();
 public: //对星星的操作接口
 	StarNode *getStarNode(const LogicGrid &grid);
 	std::vector<StarNode *> &getStarNodes(){ return m_starNodes; }
@@ -44,23 +40,21 @@ public: //对星星的操作接口
 	void highLightStars(int color);
 	void toNormalState();
 public:
-	StageBaseInfo *getStageInfo(){ return &m_stageInfo; }
 	StageTarget *getStageTarget(){ return &m_target; }
 private:
 	void gameOver(bool isWon);
 public:
-	void addView(IStageView *view);
-	void removeView(IStageView *view);
+	void addView(IStarsControlView *view);
+	void removeView(IStarsControlView *view);
 private:
-	StageModel();
-	~StageModel();
+	StarsController();
+	~StarsController();
 
     void moveStar(StarNode *node);
 	bool isGridEmpty(const LogicGrid &grid);
 private:
-	StageBaseInfo m_stageInfo;
 	std::vector<StarNode *> m_starNodes;
-	std::vector<IStageView *> m_views;
+	std::vector<IStarsControlView *> m_views;
 	StageTarget m_target;
 	StarsLoader m_starsLoader;
 	StarsBehavior m_starsBehavior;

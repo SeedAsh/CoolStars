@@ -1,6 +1,6 @@
 #include "StageTarget.h"
-#include "StageModel.h"
-#include "StageBaseInfo.h"
+#include "StarsController.h"
+#include "StageDataMgr.h"
 #include "CommonUtil.h"
 
 using namespace std;
@@ -33,7 +33,7 @@ void StageTarget::init()
 {
 	reset();
 
-	auto info = StageModel::theModel()->getStageInfo();
+	auto info = StageDataMgr::theMgr();
 	auto config = DataManagerSelf->getStageConfig(info->getCurStage());
 	m_winType = config.tagetType;
 	m_targetScore = config.targetScore;
@@ -83,7 +83,7 @@ bool StageTarget::isGameOver()
 {
 	if (isReachTarget()) return true;
 
-	auto stageInfo = StageModel::theModel()->getStageInfo();
+	auto stageInfo = StageDataMgr::theMgr();
 	return stageInfo->getLeftSteps() <= 0;
 
 }
@@ -103,7 +103,7 @@ bool StageTarget::isReachTarget()
 
 bool StageTarget::isGetEnoughScore()
 {
-	auto stageInfo = StageModel::theModel()->getStageInfo();
+	auto stageInfo = StageDataMgr::theMgr();
 	return stageInfo->getCurScore() >= m_targetScore;
 }
 

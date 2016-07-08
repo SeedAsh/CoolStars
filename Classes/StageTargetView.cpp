@@ -23,13 +23,13 @@ StageTargetView::StageTargetView(const EraseStarsData &data)
 void StageTargetView::onEnter()
 {
 	CCNode::onEnter();
-	StageModel::theModel()->addView(this);
+	StageDataMgr::theMgr()->addView(this);
 }
 
 void StageTargetView::onExit()
 {
 	CCNode::onExit();
-	StageModel::theModel()->removeView(this);
+	StageDataMgr::theMgr()->removeView(this);
 }
 
 bool StageTargetView::init()
@@ -67,7 +67,7 @@ void StageTargetView::initLayout()
 
 void StageTargetView::onStepsChanged()
 {
-	auto target = StageModel::theModel()->getStageTarget();
+	auto target = StarsController::theModel()->getStageTarget();
 	auto leftTarget = target->getEraseStarsLeft();
 	auto iter = find_if(leftTarget.begin(), leftTarget.end(), [=](EraseStarsData data)->bool
 	{

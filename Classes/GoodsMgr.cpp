@@ -2,8 +2,8 @@
 #include "CommonMacros.h"
 #include "UserInfo.h"
 #include "PropManager.h"
-#include "StageModel.h"
-#include "StageBaseInfo.h"
+#include "StarsController.h"
+#include "StageDataMgr.h"
 using namespace std;
 USING_NS_CC;
 
@@ -65,7 +65,7 @@ void GoodsMgr::addGoods(std::vector<int> items)
 			}
 			case kGoodsStep:
 			{
-				auto stageInfo = StageModel::theModel()->getStageInfo();
+				auto stageInfo = StageDataMgr::theMgr();
 				int step = stageInfo->getCurStep() - amount;
 				stageInfo->setCurStep(step);
 			}

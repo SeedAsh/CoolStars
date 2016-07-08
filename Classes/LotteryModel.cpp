@@ -1,8 +1,9 @@
 #include "LotteryModel.h"
 #include "DataManager.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "PetManager.h"
 #include "CommonUtil.h"
+#include "StageDataMgr.h"
 using namespace std;
 using namespace CommonUtil;
 
@@ -16,7 +17,7 @@ LotteryData LotteryModel::doLottery()
 {
 	LotteryData data;
 	//在指定关卡里,必然抽到某宠物（对应lotteryPet表）
-	auto curStage = StageModel::theModel()->getStageInfo()->getCurStage();
+	auto curStage = StageDataMgr::theMgr()->getCurStage();
 	auto lotteryPetConfig = DataManagerSelf->getLotteryPetConfigByStage(curStage);
 	if (lotteryPetConfig && !PetManager::petMgr()->ownThisPet(lotteryPetConfig->petId))
 	{
@@ -59,7 +60,7 @@ LotteryData LotteryModel::doLottery()
 std::vector<int> LotteryModel::getPetsCanNotOwn()
 {
 	vector<int> ids;
-	auto curStage = StageModel::theModel()->getStageInfo()->getCurStage();
+	auto curStage = StageDataMgr::theMgr()->getCurStage();
 	auto config = DataManagerSelf->getLotteryPetConfig();
 	for (auto iter = config.begin(); iter != config.end(); ++iter)
 	{

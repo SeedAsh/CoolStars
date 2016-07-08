@@ -3,6 +3,7 @@
 #include "PetEntity.h"
 #include "CommonUtil.h"
 #include "LogicGridUtil.h"
+#include "StageDataMgr.h"
 using namespace std;
 using namespace CommonUtil;
 USING_NS_CC; 
@@ -18,24 +19,24 @@ void StageOperator::eraseStars(vector<LogicGrid> &grids)
 {
 	for (size_t i = 0; i < grids.size(); ++i)
 	{
-		auto node = StageModel::theModel()->getStarNode(grids[i]);
+		auto node = StarsController::theModel()->getStarNode(grids[i]);
 		if (node)
 		{
 			node->doRemove();
 		}
 	}
-	StageModel::theModel()->genNewStars();
+	StarsController::theModel()->genNewStars();
 }
 
 void StageOperator::eraseSameColorStars(const LogicGrid &centerGrids, int distance)
 {
-	auto centerNode = StageModel::theModel()->getStarNode(centerGrids);
+	auto centerNode = StarsController::theModel()->getStarNode(centerGrids);
 	auto grids = getSquareGrids(centerGrids, distance);
 
 	vector<LogicGrid> targetGrids;
 	for (size_t i = 0; i < grids.size(); ++i)
 	{
-		auto node = StageModel::theModel()->getStarNode(grids[i]);
+		auto node = StarsController::theModel()->getStarNode(grids[i]);
 		if (node && node->getAttr().color == centerNode->getAttr().color)
 		{
 			targetGrids.push_back(grids[i]);
@@ -62,19 +63,19 @@ void StageOperator::randomErase(int num)
 
 void StageOperator::addSteps(int amount)
 {
-	auto stageInfo = StageModel::theModel()->getStageInfo();
+	auto stageInfo = StageDataMgr::theMgr();
 	int curStep = stageInfo->getCurStep();
-	stageInfo->setCurStep(curStep + amount);
+	stageInfo->setCurStep(curStep - amount);
 }
 
 void StageOperator::changeColor(const StarAttr &attr)
 {
-	StageModel::theModel()->replaceStar(attr);
+	StarsController::theModel()->replaceStar(attr);
 }
 
 void StageOperator::randomChangeColor(int color, int num)
 {
-	auto stars = StageModel::theModel()->getStarNodes();
+	auto stars = StarsController::theModel()->getStarNodes();
 	vector<LogicGrid> grids;
 	for (size_t i = 0; i < stars.size(); ++i)
 	{
@@ -89,12 +90,12 @@ void StageOperator::randomChangeColor(int color, int num)
 	auto targetGrids = getRandomGrids(grids, num);
 	for (size_t i = 0; i < targetGrids.size(); ++i)
 	{
-		auto star = StageModel::theModel()->getStarNode(targetGrids[i]);
+		auto star = StarsController::theModel()->getStarNode(targetGrids[i]);
 		if (star)
 		{
 			StarAttr targetStarAttr = star->getAttr();
 			targetStarAttr.color = color;
-			StageModel::theModel()->replaceStar(targetStarAttr);
+			StarsController::theModel()->replaceStar(targetStarAttr);
 		}
 	}
 
@@ -125,7 +126,7 @@ void StageOperator::chageStarType(int type)
 {
 	StarAttr attr;
 	//init
-	StageModel::theModel()->replaceStar(attr);
+	StarsController::theModel()->replaceStar(attr);
 }
 
 void StageOperator::reOrderStars()
@@ -134,7 +135,7 @@ void StageOperator::reOrderStars()
 	auto rowSeq = buildRandomSequence(ROWS_SIZE);
 	auto colSeq = buildRandomSequence(COlUMNS_SIZE);
 
-	auto nodes = StageModel::theModel()->getStarNodes();
+	auto nodes = StarsController::theModel()->getStarNodes();
 	assert(nodes.size() <= ROWS_SIZE * COlUMNS_SIZE);
 
 	for (size_t i = 0; i < nodes.size(); ++i)
@@ -152,7 +153,7 @@ void StageOperator::reOrderStars()
 
 void StageOperator::randomReplaceToDiamond(int num)
 {
-	auto stars = StageModel::theModel()->getStarNodes();
+	auto stars = StarsController::theModel()->getStarNodes();
 	vector<LogicGrid> grids;
 	for (size_t i = 0; i < stars.size(); ++i)
 	{
@@ -167,20 +168,20 @@ void StageOperator::randomReplaceToDiamond(int num)
 	auto targetGrids = getRandomGrids(grids, num);
 	for (size_t i = 0; i < targetGrids.size(); ++i)
 	{
-		auto star = StageModel::theModel()->getStarNode(targetGrids[i]);
+		auto star = StarsController::theModel()->getStarNode(targetGrids[i]);
 		if (star)
 		{
 			StarAttr targetStarAttr = star->getAttr();
 			targetStarAttr.color = 0;
 			targetStarAttr.type = kDiamond;
-			StageModel::theModel()->replaceStar(targetStarAttr);
+			StarsController::theModel()->replaceStar(targetStarAttr);
 		}
 	}
 }
 
 void StageOperator::randomReplaceToKey(int num)
 {
-	auto stars = StageModel::theModel()->getStarNodes();
+	auto stars = StarsController::theModel()->getStarNodes();
 	vector<LogicGrid> grids;
 	for (size_t i = 0; i < stars.size(); ++i)
 	{
@@ -195,13 +196,13 @@ void StageOperator::randomReplaceToKey(int num)
 	auto targetGrids = getRandomGrids(grids, num);
 	for (size_t i = 0; i < targetGrids.size(); ++i)
 	{
-		auto star = StageModel::theModel()->getStarNode(targetGrids[i]);
+		auto star = StarsController::theModel()->getStarNode(targetGrids[i]);
 		if (star)
 		{
 			StarAttr targetStarAttr = star->getAttr();
 			targetStarAttr.color = 0;
 			targetStarAttr.type = kKey;
-			StageModel::theModel()->replaceStar(targetStarAttr);
+			StarsController::theModel()->replaceStar(targetStarAttr);
 		}
 	}
 }

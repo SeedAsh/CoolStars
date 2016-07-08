@@ -7,9 +7,10 @@
 #include "DataCheck.h"
 #include "PetManager.h"
 #include "PropManager.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "GuideMgr.h"
 #include "RankingModel.h"
+#include "StageDataMgr.h"
 
 void GameDataPreLoader::initGameData()
 {
@@ -34,7 +35,7 @@ void GameDataPreLoader::intModels()
 	UserInfo::theInfo()->init();
 	SoundMgr::init();
 
-	StageModel::theModel()->getStageInfo()->init();
+	StageDataMgr::theMgr()->init();
 	PropManager::propMgr()->loadPropData();
 	PetManager::petMgr()->init();
 	GuideMgr::theMgr()->init();

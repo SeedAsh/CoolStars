@@ -1,5 +1,5 @@
 #include "StarNode.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "StarViewNode.h"
 #include "CommonUtil.h"
 
@@ -93,7 +93,7 @@ void StarNode::handleClick()
 			node->removeNeighbours();
 			node->doRemove();
 		}
-		StageModel::theModel()->moveOneStep();
+		StarsController::theModel()->moveOneStep();
 	}
 }
 
@@ -102,11 +102,11 @@ void StarNode::doRemove(bool withExplosion)
 	if (m_view)
 	{
 		int myScore = getConfig().score;
-		StageModel::theModel()->addScore(myScore);//爆炸则加分
+		StarsController::theModel()->addScore(myScore);//爆炸则加分
 		m_view->removeSelf(withExplosion);
 	}
 	onRemove();
-	StageModel::theModel()->removeStarNode(this);
+	StarsController::theModel()->removeStarNode(this);
 }
 
 void StarNode::removeNeighbours()
@@ -175,7 +175,7 @@ vector<StarNode *> StarNode::getNeighbours()
 	for (int i = 0; i < 4; ++i)
 	{
         auto temp = LogicGrid(grid.x + arr[i][0], grid.y + arr[i][1]);
-		StarNode *neighbour = StageModel::theModel()->getStarNode(temp);
+		StarNode *neighbour = StarsController::theModel()->getStarNode(temp);
 		if (neighbour)
 		{
 			neighbours.push_back(neighbour);
@@ -254,7 +254,7 @@ void DeadVineNode::onRemove()
 {
 	auto attr = m_attr;
 	attr.type = kColorStar;
-	StageModel::theModel()->genStar(attr);
+	StarsController::theModel()->genStar(attr);
 }
 
 std::string DeadVineNode::getResPath()
@@ -282,7 +282,7 @@ void LiveVineNode::onRemove()
 {
 	auto attr = m_attr;
 	attr.type = kColorStar;
-	StageModel::theModel()->genStar(attr);
+	StarsController::theModel()->genStar(attr);
 }
 
 std::string LiveVineNode::getResPath()
@@ -301,14 +301,14 @@ void Stone1Node::onRemove()
 {
 	auto attr = m_attr;
 	attr.type = kStone2;
-	StageModel::theModel()->genStar(attr);
+	StarsController::theModel()->genStar(attr);
 }
 /////////////////////////////////////////////////////////////////////////////////
 void Stone2Node::onRemove()
 {
 	auto attr = m_attr;
 	attr.type = kStone3;
-	StageModel::theModel()->genStar(attr);
+	StarsController::theModel()->genStar(attr);
 }
 /////////////////////////////////////////////////////////////////////////////////
 

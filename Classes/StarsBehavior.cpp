@@ -1,5 +1,5 @@
 #include "StarsBehavior.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include <vector>
 using namespace std;
 USING_NS_CC;
@@ -27,7 +27,7 @@ void StarsBehavior::onOneRoundBegin()
 			{
 				auto attr = (*iter)->getAttr();
 				attr.type = kLiveVine;
-				StageModel::theModel()->replaceStar(attr);
+				StarsController::theModel()->replaceStar(attr);
 				break;
 			}
 		}
@@ -49,7 +49,7 @@ void StarsBehavior::onOneRoundEnd()
 vector<StarNode *> StarsBehavior::getLiveVineNodes()
 {
 	vector<StarNode *> liveVines;
-	auto nodes = StageModel::theModel()->getStarNodes();
+	auto nodes = StarsController::theModel()->getStarNodes();
 	for (size_t i = 0; i < nodes.size(); ++i)
 	{
 		if (nodes[i]->getAttr().type == kLiveVine)

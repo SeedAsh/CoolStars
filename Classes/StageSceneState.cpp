@@ -1,5 +1,5 @@
 #include "StageSceneState.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "StageUiLayer.h"
 #include "StarsLayer.h"
 #include "StageOperator.h"
@@ -72,13 +72,13 @@ StageSceneState::StageSceneState(StageStateOwner *owner)
 ////////////////////////////////////////////////////////////////////////////////////
 void StageNormalState::clickStar(const LogicGrid &grid)
 {
-	StarNode *node = StageModel::theModel()->getStarNode(grid);
+	StarNode *node = StarsController::theModel()->getStarNode(grid);
 	if (node)
 	{
 		node->handleClick();
-		StageModel::theModel()->onOneRoundEnd();
-		StageModel::theModel()->genNewStars();
-		StageModel::theModel()->onOneRoundBegan();
+		StarsController::theModel()->onOneRoundEnd();
+		StarsController::theModel()->genNewStars();
+		StarsController::theModel()->onOneRoundBegan();
 	}
 }
 
@@ -99,7 +99,7 @@ void StageNormalState::clickPet(int petId)
 ////////////////////////////////////////////////////////////////////////////////////
 void StagePropsClickState::clickStar(const LogicGrid &grid)
 {
-	StarNode *node = StageModel::theModel()->getStarNode(grid);
+	StarNode *node = StarsController::theModel()->getStarNode(grid);
 	if (!node) return;
 	int starType = node->getAttr().type;
 	if (m_curType == kPropBrush && starType == kColorStar)

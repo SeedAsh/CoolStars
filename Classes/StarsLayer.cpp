@@ -1,6 +1,6 @@
 ﻿#include "StarsLayer.h"
 #include "StarViewNode.h"
-#include "StageModel.h"
+#include "StarsController.h"
 #include "StageSceneState.h"
 #include "GuideMgr.h"
 #include "UiLayout.h"
@@ -31,7 +31,7 @@ void StarsLayer::onEnter()
 {
 	CCNode::onEnter();
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kStageStarsTouchPriority, true);
-	StageModel::theModel()->addView(this);
+	StarsController::theModel()->addView(this);
 	StageLayersMgr::theMgr()->addLayers(this);
 }
 
@@ -39,7 +39,7 @@ void StarsLayer::onExit()
 {
 	CCNode::onExit();
 	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-	StageModel::theModel()->removeView(this);
+	StarsController::theModel()->removeView(this);
 	StageLayersMgr::theMgr()->addLayers(this);
 }
 
@@ -53,7 +53,7 @@ bool StarsLayer::init()
 	addBkGrids();
 	addClippingNode();
 
-	StageModel::theModel()->initStarsData();
+	StarsController::theModel()->initStarsData();
 	initStars();
 
 	return true;
@@ -110,7 +110,7 @@ void StarsLayer::addBkGrids()
 
 StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
 {
-	StarNode *nodeData = StageModel::theModel()->getStarNode(grid);
+	StarNode *nodeData = StarsController::theModel()->getStarNode(grid);
 	if (nodeData)
 	{
 		return StarViewNode::create(nodeData);
