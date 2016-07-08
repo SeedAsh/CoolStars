@@ -8,10 +8,10 @@
 		<scale>1.00</scale>
 		<path>pet/cwjm_taizi.png</path>
 	</image>
-		<animation>
+	<animation>
 		<id>3</id>
-		<x>111.21</x>
-		<y>123.88</y>
+		<x>112.05</x>
+		<y>108.90</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>0.25</scale>
