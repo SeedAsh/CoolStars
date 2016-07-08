@@ -3,6 +3,7 @@
 #include "DataManager.h"
 #include "StarNode.h"
 #include "StarViewNode.h"
+#include "StageLayersMgr.h"
 USING_NS_CC;
 using namespace std;
 
@@ -51,7 +52,7 @@ bool StageMaskLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pE
 		}
 	}
 
-	StarsController::theModel()->toNormalState();
+	StageLayersMgr::theMgr()->toNormalState();
 	return true;
 }
 

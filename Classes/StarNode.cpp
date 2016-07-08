@@ -97,13 +97,13 @@ void StarNode::handleClick()
 	}
 }
 
-void StarNode::doRemove(bool withExplosion)
+void StarNode::doRemove(bool withAction)
 {
 	if (m_view)
 	{
 		int myScore = getConfig().score;
 		StarsController::theModel()->addScore(myScore);//±¬Õ¨Ôò¼Ó·Ö
-		m_view->removeSelf(withExplosion);
+		m_view->removeSelf(withAction);
 	}
 	onRemove();
 	StarsController::theModel()->removeStarNode(this);

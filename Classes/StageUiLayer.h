@@ -6,17 +6,8 @@
 #include "StageLayersMgr.h"
 #include "StageDataMgr.h"
 USING_NS_CC;
-struct StageUiValue
-{
-	int step;
-	std::vector<int> targets;
-	int bestScore;
-	int stage;
-	int score;
-	int coins;
 
-};
-
+class StagePetNode;
 class UiLayout;
 class StageStateOwner;
 class StageUiLayer
@@ -39,6 +30,7 @@ public:
 	virtual void onScoreChanged();
 	virtual void onCoinsChanged();
 	virtual void onGameOver(int isWon);
+	virtual void onNormalStarErased(cocos2d::CCPoint pos, int color);
 public:
 	void showChangeColorPanel(const LogicGrid &grid);
 private:
@@ -61,5 +53,6 @@ private:
 	UiLayout *m_bottomUi;
 	UiLayout *m_topUi;
 	StageStateOwner *m_stateOwner;
+	std::vector<StagePetNode *>m_petViews;
 };
 #endif // __PANELLLAYER_H__

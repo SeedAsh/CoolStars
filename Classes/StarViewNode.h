@@ -17,10 +17,10 @@ public :
 	void onClick();
 	void doMove(LogicGrid targetGrid);
     cocos2d::CCPoint getPosByGrid(LogicGrid grid);
-	void removeSelf(bool withExplosion);
+	void removeSelf(bool withAction);
 
 private:
-	void runExplosion();
+	void doEraseAction();
 protected:
 	bool m_isExploded;
 	StarNode *m_model;

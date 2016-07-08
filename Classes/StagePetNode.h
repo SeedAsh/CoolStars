@@ -14,6 +14,7 @@ public:
 	virtual bool init();
 	//技能查看
 	void setTouchHandle(std::function<void(int)> handle){ m_touchHandle = handle; }
+	int getColor();
 private:
 	StagePetNode(int petId, int touchPriority);
 	void initLayout();

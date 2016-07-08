@@ -15,6 +15,8 @@ class StageDataMgr
 {
 public: //基本信息存取
 	static StageDataMgr *theMgr();
+	void newRound();
+public:
 	int getCurStep(){ return m_step; }
 	void setCurStep(int step);
 	int getLeftSteps();

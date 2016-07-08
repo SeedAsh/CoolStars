@@ -5,6 +5,7 @@
 #include "CommonMacros.h"
 #include "UserInfo.h"
 #include "StageDataMgr.h"
+#include "StageLayersMgr.h"
 PetEntity::PetEntity(int petId)
 {
 	//上次保存的宠物数据
@@ -100,7 +101,7 @@ void PetEntity::upgrade()
 //////////////////////////////////////////////////////////////////////////////
 void PetRat::skillInit()
 {
-	StarsController::theModel()->highLightStars(m_data.color);
+	StageLayersMgr::theMgr()->highLightStars(m_data.color);
 }
 
 void PetRat::toStarSkill(const LogicGrid &grid)
@@ -110,7 +111,7 @@ void PetRat::toStarSkill(const LogicGrid &grid)
 //////////////////////////////////////////////////////////////////////////////
 void PetOx::skillInit()
 {
-	StarsController::theModel()->highLightStars(m_data.color);
+	StageLayersMgr::theMgr()->highLightStars(m_data.color);
 }
 
 void PetOx::toStarSkill(const LogicGrid &grid)
@@ -137,6 +138,10 @@ void PetDragon::noTargetSkill()
 	info->setNextScoreBonus(m_data.skillPower);
 }
 //////////////////////////////////////////////////////////////////////////////
+void PetSnake::skillInit()
+{
+	StageLayersMgr::theMgr()->highLightStars(m_data.color);
+}
 
 void PetSnake::toStarSkill(const LogicGrid &grid)
 {

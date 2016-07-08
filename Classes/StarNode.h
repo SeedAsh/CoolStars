@@ -47,7 +47,7 @@ public:
 	void handleClick();
 	std::vector<StarNode *> getNeighbours();
 	std::vector<StarNode *> getLinkNeighbours();
-	void doRemove(bool withExplosion = true);
+	void doRemove(bool withAction = true);
 	void removeNeighbours();
     void moveTo(LogicGrid grid);
 

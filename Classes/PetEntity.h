@@ -117,6 +117,7 @@ class PetSnake : public PetEntity
 public:
 	PetSnake(int petId) : PetEntity(petId){}
 	virtual void toStarSkill(const LogicGrid &grid);
+	virtual void skillInit();
 };
 
 class PetHorse : public PetEntity

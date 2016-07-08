@@ -71,6 +71,8 @@ void StageDataMgr::setCurScore(int score)
 	}
 
 	m_curScore = score;
+	NOTIFY_VIEWS(onScoreChanged);
+
 }
 
 bool StageDataMgr::isTheLastStage()
@@ -87,7 +89,6 @@ void StageDataMgr::getStageStars(std::vector<std::vector<StageStarInfo>> &stars)
 void StageDataMgr::doSave()
 {
 	StageSavingHelper::saveCurStageData();
-	StageSavingHelper::saveCurStars();
 }
 
 void StageDataMgr::setCurStep(int step)
@@ -98,10 +99,8 @@ void StageDataMgr::setCurStep(int step)
 
 void StageDataMgr::addCurScore(int value)
 { 
-	float score = m_curScore * (1 + m_curScoreBonus);
-	setCurScore(score + value);
-	m_curScoreBonus = 0;
-	NOTIFY_VIEWS(onScoreChanged);
+	float score = value * (1 + m_curScoreBonus);
+	setCurScore(m_curScore + score);
 }
 
 void StageDataMgr::addView(IStageDataView *view)
@@ -120,4 +119,10 @@ void StageDataMgr::removeView(IStageDataView *view)
 	{
 		m_views.erase(iter);
 	}
+}
+
+//ÐÂ»ØºÏ
+void StageDataMgr::newRound()
+{
+	m_curScoreBonus = 0;
 }

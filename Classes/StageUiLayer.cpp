@@ -21,6 +21,7 @@
 #include "StageTargetView.h"
 #include "CommonMacros.h"
 #include "StageDataMgr.h"
+#include "CCFunctionAction.h"
 
 #define Z_ORDER_PROPS_BG 0
 #define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
@@ -123,6 +124,7 @@ void StageUiLayer::initPets()
 		auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(uiIds[i])));
 		node->setNode(petNode);
 		node->setAnchorPoint(ccp(0.5f, 0.5f));
+		m_petViews.push_back(petNode);
 	}
 }
 
@@ -264,4 +266,36 @@ void StageUiLayer::handlePropsItemClicked(int type)
 	{
 		m_stateOwner->enterPropsClickState(type);
 	}
+}
+
+void StageUiLayer::onNormalStarErased(cocos2d::CCPoint pos, int color)
+{
+	auto iter = find_if(m_petViews.begin(), m_petViews.end(), [=](StagePetNode *node)->bool
+	{
+		return node->getColor() == color;
+	});
+
+	const static float kDuration = 0.8f;
+	if (iter != m_petViews.end())
+	{
+		auto petView = *iter;
+		auto config = DataManagerSelf->getStarsColorConfig(color);
+		auto resPath = config.colorStarRes;
+		CCSprite *starSpr = CCSprite::create(resPath.c_str());
+		addChild(starSpr);
+		starSpr->setPosition(pos);
+		
+		auto func = CCFunctionAction::create([=]()
+		{
+			starSpr->removeFromParent();
+		});
+		auto targetPos = petView->getParent()->convertToWorldSpace(petView->getPosition());
+		auto moveTo = CCMoveTo::create(kDuration, targetPos);
+		auto scaleTo = CCScaleTo::create(kDuration, 0.5f);
+		auto rotateBy = CCRotateBy::create(kDuration, 360);
+		starSpr->runAction(CCSequence::create(
+			CCSpawn::create(moveTo, scaleTo, rotateBy, NULL),
+			func, NULL));
+	}
+
 }

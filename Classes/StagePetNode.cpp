@@ -68,3 +68,8 @@ void StagePetNode::initLayout()
 	pet->init(armatureName.c_str());
 	pet->getAnimation()->play("standby");
 }
+
+int StagePetNode::getColor()
+{
+	return m_model->getPetData().color;
+}

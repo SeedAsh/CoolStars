@@ -13,9 +13,6 @@ struct IStarsControlView
 {
 	virtual void onCreateNewStar(StarNode *node){}
 	virtual void onGameOver(int isWon){}
-	virtual void onHighLightStars(int color){}
-	virtual void onToNormalState(){}
-	
 };
 
 class StarsController
@@ -37,8 +34,6 @@ public: //对星星的操作接口
 	void genStar(const StarAttr &attr);
 	void resetStage(int gameType);
 	int getStageAmount();
-	void highLightStars(int color);
-	void toNormalState();
 public:
 	StageTarget *getStageTarget(){ return &m_target; }
 private:

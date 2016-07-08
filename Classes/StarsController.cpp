@@ -300,6 +300,7 @@ void StarsController::moveOneStep()
 void StarsController::onOneRoundBegan()
 {
 	m_starsBehavior.onOneRoundBegin();
+	StageDataMgr::theMgr()->newRound();
 }
 
 void StarsController::onOneRoundEnd()
@@ -332,14 +333,4 @@ void StarsController::genStar(const StarAttr &attr)
 int StarsController::getStageAmount()
 {
 	return DataManagerSelf->getSystemConfig().stageAmount;
-}
-
-void StarsController::highLightStars(int color)
-{
-	NOTIFY_VIEWS(onHighLightStars, color);
-}
-
-void StarsController::toNormalState()
-{
-	NOTIFY_VIEWS(onToNormalState);
 }

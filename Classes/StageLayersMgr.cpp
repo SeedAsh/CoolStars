@@ -25,3 +25,19 @@ void StageLayersMgr::removeLayers(IStageLayer *layer)
 		m_layers.erase(iter);
 	}
 }
+
+void StageLayersMgr::highLightStars(int color)
+{
+	NOTIFY_LAYERSS(onHighLightStars, color);
+}
+
+void StageLayersMgr::toNormalState()
+{
+	NOTIFY_LAYERSS(onToNormalState);
+}
+
+void StageLayersMgr::colorStarErased(cocos2d::CCPoint pos, int color)
+{
+	NOTIFY_LAYERSS(onNormalStarErased, pos, color);
+
+}

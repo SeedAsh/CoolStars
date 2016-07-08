@@ -62,7 +62,15 @@ void StarViewNode::doMove(LogicGrid targetGrid)
 	runAction(CCEaseBackInOut::create(moveTo));
 }
 
-void StarViewNode::runExplosion(){
+void StarViewNode::doEraseAction()
+{
+	auto attr = m_model->getAttr();
+	if (attr.type == kColorStar)
+	{
+		auto pos = getParent()->convertToWorldSpace(getPosition());
+		StageLayersMgr::theMgr()->colorStarErased(pos, attr.color);
+		return;
+	}
 	CCParticleExplosion *pEmitter = CCParticleExplosion::create();
 	string fileImage = m_model->getExplosionPath();
 	if (fileImage.empty()) return;
@@ -90,11 +98,11 @@ void StarViewNode::runExplosion(){
     getParent()->addChild(pEmitter);
 }
 
-void StarViewNode::removeSelf(bool withExplosion)
+void StarViewNode::removeSelf(bool withAction)
 {
-	if (withExplosion)
+	if (withAction)
 	{
-		runExplosion();
+		doEraseAction();
 	}
 	StarsLayer *layer = dynamic_cast<StarsLayer *>(getParent()->getParent());
 	layer->removeStar(this);
