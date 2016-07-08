@@ -13,11 +13,14 @@ enum StarType
 	kBounceBall,
 	kDeadVine,
 	kLiveVine,
-	kStone,
+	kStump,
 	kBomb,
 	kIron,
 	kDiamond,
 	kKey,
+	kStone1,
+	kStone2,
+	kStone3,
 	
 	kStarTypeCount,
 };
@@ -84,14 +87,28 @@ public:
 	virtual std::string getExplosionPath();
 };
 
-class StoneNode : public StarNode
+class Stone1Node : public StarNode
 {
 public:
-
-	StoneNode(const StarAttr &attr) : StarNode(attr){}
-	~StoneNode(){}
+	Stone1Node(const StarAttr &attr) : StarNode(attr){}
+	~Stone1Node(){}
+	virtual void onRemove();
 };
 
+class Stone2Node : public StarNode
+{
+public:
+	Stone2Node(const StarAttr &attr) : StarNode(attr){}
+	~Stone2Node(){}
+	virtual void onRemove();
+};
+
+class Stone3Node : public StarNode
+{
+public:
+	Stone3Node(const StarAttr &attr) : StarNode(attr){}
+	~Stone3Node(){}
+};
 
 class DeadVineNode : public StarNode
 {
@@ -113,6 +130,12 @@ public:
 	virtual void onRemove();
 };
 
+class StumpNode : public StarNode
+{
+public:
+	StumpNode(const StarAttr &attr) : StarNode(attr){}
+	~StumpNode(){}
+};
 
 class IronNode : public StarNode
 {

@@ -18,8 +18,8 @@ StarNode *StarNode::createNodeFatory(const StarAttr &attr)
 		return new DeadVineNode(attr);
 	case kLiveVine:
 		return new LiveVineNode(attr);
-	case kStone:
-		return new StoneNode(attr);
+	case kStump:
+		return new StumpNode(attr);
 	case kBomb:
 		return new BombNode(attr);
 	case kIron:
@@ -28,6 +28,12 @@ StarNode *StarNode::createNodeFatory(const StarAttr &attr)
 		return new DiamondNode(attr);
 	case kKey:
 		return new KeyNode(attr);
+	case kStone1:
+		return new Stone1Node(attr);
+	case kStone2:
+		return new Stone2Node(attr);
+	case kStone3:
+		return new Stone3Node(attr);
 	default:
 		assert("no this node type!");
 		return NULL;
@@ -291,8 +297,21 @@ std::string LiveVineNode::getExplosionPath()
 	return config.colorExplosionRes;
 }
 /////////////////////////////////////////////////////////////////////////////////
+void Stone1Node::onRemove()
+{
+	auto attr = m_attr;
+	attr.type = kStone2;
+	StageModel::theModel()->genStar(attr);
+}
+/////////////////////////////////////////////////////////////////////////////////
+void Stone2Node::onRemove()
+{
+	auto attr = m_attr;
+	attr.type = kStone3;
+	StageModel::theModel()->genStar(attr);
+}
+/////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////////////////////////////////////
