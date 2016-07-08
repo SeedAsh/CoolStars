@@ -42,6 +42,7 @@ public:
 	const StarAttr &getAttr(){ return m_attr; }
 	void setLogicGrid(const LogicGrid &grid){ m_attr.grid = grid; }
 	void bindView(StarViewNode *view){ m_view = view; }
+	StarViewNode *getView(){ return m_view; }
 
 	void handleClick();
 	std::vector<StarNode *> getNeighbours();
