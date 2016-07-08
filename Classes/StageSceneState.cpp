@@ -56,6 +56,11 @@ void StageStateOwner::enterPetSkillState(int petId)
 {
 	m_petSkillState->setCurPet(petId);
 	m_curState = m_petSkillState;
+	auto pet = PetManager::petMgr()->getPetById(petId);
+	if (pet)
+	{
+		pet->skillInit();
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 StageSceneState::StageSceneState(StageStateOwner *owner)

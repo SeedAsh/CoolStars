@@ -65,6 +65,7 @@ protected:
 	PetEntity(int petId);
 	void refreshPetData();
 public:
+	virtual void skillInit(){}
 	//三个接口对应三种技能目标
 	virtual void noTargetSkill(){}
 	virtual void toStarSkill(const LogicGrid &grid){}
@@ -79,6 +80,7 @@ class PetRat: public PetEntity
 public:
 	PetRat(int petId) : PetEntity(petId){}
 	virtual void toStarSkill(const LogicGrid &grid);
+	virtual void skillInit();
 };
 
 class PetOx : public PetEntity

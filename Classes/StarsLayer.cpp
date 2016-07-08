@@ -41,7 +41,6 @@ void StarsLayer::onExit()
 	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 	StageModel::theModel()->removeView(this);
 	StageLayersMgr::theMgr()->addLayers(this);
-
 }
 
 bool StarsLayer::init()
@@ -74,7 +73,7 @@ void StarsLayer::addClippingNode()
 	m_clippingNode->setStencil(back);
 
 	addChild(m_clippingNode);
-	m_clippingNode->setPosition(m_layout->getChildById(4)->getPosition());
+	m_clippingNode->setPosition(m_layout->getChildById(1)->getPosition());
 }
 
 void StarsLayer::addBkGrids()
@@ -106,9 +105,8 @@ void StarsLayer::addBkGrids()
 	node->setContentSize(m_layout->getChildById(5)->getContentSize());
 
 	addChild(node);
-	node->setPosition(m_layout->getChildById(4)->getPosition());
+	node->setPosition(m_layout->getChildById(1)->getPosition());
 }
-
 
 StarViewNode *StarsLayer::createStarByGrid(const LogicGrid &grid)
 {

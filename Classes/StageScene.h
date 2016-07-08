@@ -4,16 +4,29 @@
 #include "BasePanel.h"
 #include "StageSceneState.h"
 
+class StarsLayer;
+class StarsLayer;
+class StageMaskLayer;
+
 class StageScene :
 	public BasePanel
 {
 public:
-	CREATE_FUNC(StageScene);
 	~StageScene();
+	static StageScene *theScene();
+	
+	StarsLayer *getStarsLayer(){return m_starsLayer;}
+	StageUiLayer *getStageUiLayer(){ return m_stageUiLayer; }
 private:
 	StageScene();
+	virtual void onExit();
 	virtual bool init();
 private :
 	StageStateOwner m_stateOwner;
+	StarsLayer* m_starsLayer;
+	StageUiLayer *m_stageUiLayer;
+	StageMaskLayer *m_maskLayer;
+private:
+	static StageScene * s_scene;
 };
 #endif

@@ -16,13 +16,5 @@
 		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
-	<emptyBox>
-		<id>4</id>
-		<x>27.11</x>
-		<y>129.11</y>
-		<anchorPtX>0.00</anchorPtX>
-		<anchorPtY>0.00</anchorPtY>
-		<scale>1.00</scale>
-	</emptyBox>
 </layout>
 

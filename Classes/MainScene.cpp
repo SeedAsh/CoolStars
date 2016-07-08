@@ -135,7 +135,7 @@ void MainScene::showPanel(int panelId, bool closeBehind)
 		panel = PreStageScene::create();
 		break;
 	case kStageView:
-		panel = StageScene::create();
+		panel = StageScene::theScene();
 		break;
 	case kStageFailPanel:
 		panel = GameFailLayer::create();

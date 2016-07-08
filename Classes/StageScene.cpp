@@ -4,7 +4,10 @@
 #include "VisibleRect.h"
 #include "EmptyBox.h"
 #include "BackgroundLayer.h"
+#include "StageMaskLayer.h"
 using namespace cocos2d;
+
+StageScene *StageScene::s_scene = NULL;
 
 StageScene::StageScene()
 {
@@ -16,6 +19,23 @@ StageScene::~StageScene()
 
 }
 
+void StageScene::onExit()
+{
+	BasePanel::onExit();
+	s_scene = NULL;
+}
+
+StageScene* StageScene::theScene()
+{
+	if (!s_scene)
+	{
+		s_scene = new StageScene;
+		s_scene->init();
+		s_scene->autorelease();
+	}
+	return s_scene;
+}
+
 bool StageScene::init()
 {
 	setPanelId(kStageView);
@@ -23,16 +43,19 @@ bool StageScene::init()
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
-	StarsLayer *starsLayer = StarsLayer::create(&m_stateOwner);
-	starsLayer->setAnchorPoint(ccp(0.5f, 0.5f));
-	starsLayer->setPosition(ccpMult(winSize, 0.5f));
-	addChild(starsLayer);
+	m_starsLayer = StarsLayer::create(&m_stateOwner);
+	m_starsLayer->setAnchorPoint(ccp(0.5f, 0.5f));
+	m_starsLayer->setPosition(ccpMult(winSize, 0.5f));
+	addChild(m_starsLayer);
 
-	StageUiLayer *uiLayer = StageUiLayer::create(&m_stateOwner);
-	addChild(uiLayer);
+	m_stageUiLayer = StageUiLayer::create(&m_stateOwner);
+	addChild(m_stageUiLayer);
 	
-	m_stateOwner.setStarsLayer(starsLayer);
-	m_stateOwner.setUiLayer(uiLayer);
+	m_maskLayer = StageMaskLayer::create();
+	addChild(m_maskLayer);
+
+	m_stateOwner.setStarsLayer(m_starsLayer);
+	m_stateOwner.setUiLayer(m_stageUiLayer);
 	m_stateOwner.init();
 
 	return true;

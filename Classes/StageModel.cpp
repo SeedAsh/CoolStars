@@ -339,3 +339,9 @@ int StageModel::getStageAmount()
 {
 	return DataManagerSelf->getSystemConfig().stageAmount;
 }
+
+void StageModel::highLightStars(int color)
+{
+	NOTIFY_VIEWS(onHighLightStars, color);
+
+}

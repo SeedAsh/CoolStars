@@ -97,6 +97,10 @@ void PetEntity::upgrade()
 	PetSavingHelper::setPetState(m_data);
 }
 //////////////////////////////////////////////////////////////////////////////
+void PetRat::skillInit()
+{
+
+}
 
 void PetRat::toStarSkill(const LogicGrid &grid)
 {

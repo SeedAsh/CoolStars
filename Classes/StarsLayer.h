@@ -15,10 +15,11 @@ class StarsLayer
 	, public IStageLayer
 {
 public:
+	static StarsLayer *create(StageStateOwner *stateOwner);
+	void removeStar(StarViewNode *node);
+private:
 	StarsLayer(StageStateOwner *stateOwner);
 	~StarsLayer();
-
-	static StarsLayer *create(StageStateOwner *stateOwner);
 	virtual bool init();
 
 	void initStars();
@@ -27,9 +28,8 @@ public:
 	virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 
 	CCPoint getPosByGrid(LogicGrid grid);
-	void removeStar(StarViewNode *node);
 	StarViewNode *createStarByGrid(const LogicGrid &grid);
-private:
+
 	virtual void onCreateNewStar(StarNode *node);
 	virtual void onEnter();
 	virtual void onExit();

@@ -80,3 +80,4 @@ void PreStageModel::init()
 {
 	m_selectedPets.clear();
 }
+

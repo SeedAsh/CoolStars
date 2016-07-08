@@ -13,6 +13,7 @@ public :
 	~StarViewNode();
 	
 	LogicGrid getGrid()const {return m_model->getAttr().grid;}
+
 	void onClick();
 	void doMove(LogicGrid targetGrid);
     cocos2d::CCPoint getPosByGrid(LogicGrid grid);
