@@ -343,5 +343,9 @@ int StageModel::getStageAmount()
 void StageModel::highLightStars(int color)
 {
 	NOTIFY_VIEWS(onHighLightStars, color);
+}
 
+void StageModel::toNormalState()
+{
+	NOTIFY_VIEWS(onToNormalState);
 }

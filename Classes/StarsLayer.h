@@ -31,6 +31,7 @@ private:
 	StarViewNode *createStarByGrid(const LogicGrid &grid);
 
 	virtual void onCreateNewStar(StarNode *node);
+	virtual void onToNormalState();
 	virtual void onEnter();
 	virtual void onExit();
 	void addClippingNode();

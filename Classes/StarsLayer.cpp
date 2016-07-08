@@ -217,3 +217,8 @@ void StarsLayer::onCreateNewStar(StarNode *node)
 		m_starsSprite.push_back(pStarSprite);
 	}
 }
+
+void StarsLayer::onToNormalState()
+{
+	m_stateOwner->enterNormalState();
+}

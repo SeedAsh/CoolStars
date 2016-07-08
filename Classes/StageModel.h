@@ -18,6 +18,7 @@ struct IStageView
 	virtual void onCoinsChanged(){}
 	virtual void onGameOver(int isWon){}
 	virtual void onHighLightStars(int color){}
+	virtual void onToNormalState(){}
 	
 };
 
@@ -41,6 +42,7 @@ public: //对星星的操作接口
 	void resetStage(int gameType);
 	int getStageAmount();
 	void highLightStars(int color);
+	void toNormalState();
 public:
 	StageBaseInfo *getStageInfo(){ return &m_stageInfo; }
 	StageTarget *getStageTarget(){ return &m_target; }

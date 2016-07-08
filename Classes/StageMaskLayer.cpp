@@ -14,6 +14,8 @@ bool StageMaskLayer::init()
 	CCLayerColor *mask = CCLayerColor::create(ccc4(0, 0, 0, 175));
 	mask->setContentSize(winSize);
 	addChild(mask);
+	m_container = CCNode::create();
+	addChild(m_container);
 	
 	setVisible(false);
 	return true;
@@ -22,7 +24,7 @@ bool StageMaskLayer::init()
 void StageMaskLayer::onEnter()
 {
 	CCNode::onEnter();
-	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kStageMaskTouchPriority, false);
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kStageMaskTouchPriority, true);
 	StageModel::theModel()->addView(this);
 }
 
@@ -36,13 +38,29 @@ void StageMaskLayer::onExit()
 
 bool StageMaskLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
+	if (!isVisible()) return false;
+
 	setVisible(false);
+	auto pos = convertToNodeSpace(pTouch->getLocation());
+	for (size_t i = 0; i < m_stars.size(); ++i)
+	{
+		auto node = m_stars[i];
+		if (node->boundingBox().containsPoint(pos))
+		{
+			return false;
+		}
+	}
+
+	StageModel::theModel()->toNormalState();
 	return true;
 }
 
 void StageMaskLayer::onHighLightStars(int color)
 {
-	CCNode *node = CCNode::create();
+	m_container->removeAllChildren();
+	m_stars.clear();
+
+	setVisible(true);
 	auto nodes = StageModel::theModel()->getStarNodes();
 	for (size_t i = 0; i < nodes.size(); ++i)
 	{
@@ -54,9 +72,8 @@ void StageMaskLayer::onHighLightStars(int color)
 			auto pos = view->getParent()->convertToWorldSpace(view->getPosition());
 			CCSprite *starSpr = CCSprite::create(resPath.c_str());
 			starSpr->setPosition(pos);
-			starSpr->setAnchorPoint(ccp(0, 0));
-			node->addChild(starSpr);
+			m_container->addChild(starSpr);
+			m_stars.push_back(starSpr);
 		}
 	}
-	addChild(node);
 }

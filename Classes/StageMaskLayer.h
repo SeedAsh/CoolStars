@@ -21,5 +21,7 @@ private:
 	virtual void onHighLightStars(int color);
 
 private:
+	std::vector<cocos2d::CCNode *> m_stars;
+	cocos2d::CCNode *m_container;
 };
 #endif
