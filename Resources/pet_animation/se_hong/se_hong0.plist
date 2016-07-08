@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>se/se_yan1.png</key>
+			<key>se_hong/se_yan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>49</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>se/se_yan2.png</key>
+			<key>se_hong/se_yan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>31</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>se/se_tou1.png</key>
+			<key>se_hong/se_tou1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>367</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>se/se_setou.png</key>
+			<key>se_hong/se_setou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>64</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>se/se_tou2.png</key>
+			<key>se_hong/se_tou2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>287</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>se/se_shen1.png</key>
+			<key>se_hong/se_shen1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>299</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>se/se_shen2.png</key>
+			<key>se_hong/se_shen2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>484</integer>
@@ -175,7 +175,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>se/xx.png</key>
+			<key>se_hong/xx.png</key>
 			<dict>
 				<key>width</key>
 				<integer>64</integer>

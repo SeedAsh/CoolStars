@@ -37,8 +37,8 @@ void PetSceneMoveHelper::moveLeft(cocos2d::CCNode *newNode)
 
 	newNode->setAnchorPoint(ccp(0.5f, 0.5f));
 	newNode->setPosition(m_rightmostPos);
-	auto curNodeFunc = CCFunctionAction::create(bind(&PetSceneMoveHelper::setCenterNode, this, newNode));
-	newNode->runAction(CCSequence::create(CCEaseBackInOut::create(CCMoveTo::create(kSecondMoveDuation, m_centerPos)), curNodeFunc, NULL));
+	m_curNode = newNode;
+	newNode->runAction(CCEaseBackInOut::create(CCMoveTo::create(kSecondMoveDuation, m_centerPos)));
 }
 
 void PetSceneMoveHelper::moveRight(cocos2d::CCNode *newNode)
@@ -52,8 +52,8 @@ void PetSceneMoveHelper::moveRight(cocos2d::CCNode *newNode)
 
 	newNode->setAnchorPoint(ccp(0.5f, 0.5f));
 	newNode->setPosition(m_leftmostPos);
-	auto curNodeFunc = CCFunctionAction::create(bind(&PetSceneMoveHelper::setCenterNode, this, newNode));
-	newNode->runAction(CCSequence::create(CCEaseBackInOut::create(CCMoveTo::create(kSecondMoveDuation, m_centerPos)), curNodeFunc, NULL));
+	m_curNode = newNode;
+	newNode->runAction(CCEaseBackInOut::create(CCMoveTo::create(kSecondMoveDuation, m_centerPos)));
 }
 
 void PetSceneMoveHelper::removeNode(CCNode *node)

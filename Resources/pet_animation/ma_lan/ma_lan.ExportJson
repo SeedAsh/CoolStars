@@ -23,7 +23,7 @@
           "bl": 131,
           "display_data": [
             {
-              "name": "ma/ma_jiao1.png",
+              "name": "ma_lan/ma_jiao1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -55,7 +55,7 @@
           "bl": 131,
           "display_data": [
             {
-              "name": "ma/ma_jiao1.png",
+              "name": "ma_lan/ma_jiao1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -87,7 +87,7 @@
           "bl": 286,
           "display_data": [
             {
-              "name": "ma/ma_shen.png",
+              "name": "ma_lan/ma_shen.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -119,7 +119,7 @@
           "bl": 104,
           "display_data": [
             {
-              "name": "ma/ma_sou.png",
+              "name": "ma_lan/ma_sou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -151,7 +151,7 @@
           "bl": 104,
           "display_data": [
             {
-              "name": "ma/ma_sou.png",
+              "name": "ma_lan/ma_sou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -183,7 +183,7 @@
           "bl": 331,
           "display_data": [
             {
-              "name": "ma/ma_tou.png",
+              "name": "ma_lan/ma_tou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -215,7 +215,7 @@
           "bl": 105,
           "display_data": [
             {
-              "name": "ma/ma_zui1.png",
+              "name": "ma_lan/ma_zui1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -229,7 +229,7 @@
               ]
             },
             {
-              "name": "ma/ma_zui2.png",
+              "name": "ma_lan/ma_zui2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -261,7 +261,7 @@
           "bl": 203,
           "display_data": [
             {
-              "name": "ma/ma_yan1.png",
+              "name": "ma_lan/ma_yan1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -275,7 +275,7 @@
               ]
             },
             {
-              "name": "ma/ma_yan2.png",
+              "name": "ma_lan/ma_yan2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -307,7 +307,7 @@
           "bl": 0,
           "display_data": [
             {
-              "name": "ma/ma_toumao.png",
+              "name": "ma_lan/ma_toumao.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -339,7 +339,7 @@
           "bl": 131,
           "display_data": [
             {
-              "name": "ma/ma_er1.png",
+              "name": "ma_lan/ma_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -371,7 +371,7 @@
           "bl": 131,
           "display_data": [
             {
-              "name": "ma/ma_er1.png",
+              "name": "ma_lan/ma_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -403,7 +403,7 @@
           "bl": 127,
           "display_data": [
             {
-              "name": "ma/ma_wei.png",
+              "name": "ma_lan/ma_wei.png",
               "displayType": 0,
               "skin_data": [
                 {

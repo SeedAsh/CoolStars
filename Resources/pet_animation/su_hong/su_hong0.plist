@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>su/su_sou1.png</key>
+			<key>su_hong/su_sou1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>93</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>su/su_yan1.png</key>
+			<key>su_hong/su_yan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>197</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>su/su_yan2.png</key>
+			<key>su_hong/su_yan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>206</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>-0.5</real>
 			</dict>
-			<key>su/su_wuguan.png</key>
+			<key>su_hong/su_wuguan.png</key>
 			<dict>
 				<key>width</key>
 				<integer>193</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>su/su_xu1.png</key>
+			<key>su_hong/su_xu1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>79</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>su/su_kou1.png</key>
+			<key>su_hong/su_kou1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>69</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>su/su_kou2.png</key>
+			<key>su_hong/su_kou2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>86</integer>
@@ -137,7 +137,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>su/su_jiao1.png</key>
+			<key>su_hong/su_jiao1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>91</integer>
@@ -156,7 +156,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>su/su_shen.png</key>
+			<key>su_hong/su_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>518</integer>
@@ -175,7 +175,7 @@
 				<key>offsetY</key>
 				<real>-0.5</real>
 			</dict>
-			<key>su/su_wei.png</key>
+			<key>su_hong/su_wei.png</key>
 			<dict>
 				<key>width</key>
 				<integer>264</integer>
@@ -194,7 +194,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>su/su_er1.png</key>
+			<key>su_hong/su_er1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>226</integer>

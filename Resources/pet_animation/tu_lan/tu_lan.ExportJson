@@ -39,7 +39,7 @@
           "bl": 85,
           "display_data": [
             {
-              "name": "tu/tu_jiao1.png",
+              "name": "tu_lan/tu_jiao1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -71,7 +71,7 @@
           "bl": 85,
           "display_data": [
             {
-              "name": "tu/tu_jiao1.png",
+              "name": "tu_lan/tu_jiao1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -103,7 +103,7 @@
           "bl": 214,
           "display_data": [
             {
-              "name": "tu/tu_shen.png",
+              "name": "tu_lan/tu_shen.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -135,7 +135,7 @@
           "bl": 71,
           "display_data": [
             {
-              "name": "tu/tu_sou1.png",
+              "name": "tu_lan/tu_sou1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -167,7 +167,7 @@
           "bl": 71,
           "display_data": [
             {
-              "name": "tu/tu_sou1.png",
+              "name": "tu_lan/tu_sou1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -199,7 +199,7 @@
           "bl": 247,
           "display_data": [
             {
-              "name": "tu/tu_tou.png",
+              "name": "tu_lan/tu_tou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -231,7 +231,7 @@
           "bl": 67,
           "display_data": [
             {
-              "name": "tu/tu_zui1.png",
+              "name": "tu_lan/tu_zui1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -245,7 +245,7 @@
               ]
             },
             {
-              "name": "tu/tu_zui2.png",
+              "name": "tu_lan/tu_zui2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -277,7 +277,7 @@
           "bl": 157,
           "display_data": [
             {
-              "name": "tu/tu_yan1.png",
+              "name": "tu_lan/tu_yan1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -291,7 +291,7 @@
               ]
             },
             {
-              "name": "tu/tu_yan2.png",
+              "name": "tu_lan/tu_yan2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -323,7 +323,7 @@
           "bl": 255,
           "display_data": [
             {
-              "name": "tu/tu_hongyun.png",
+              "name": "tu_lan/tu_hongyun.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -355,7 +355,7 @@
           "bl": 318,
           "display_data": [
             {
-              "name": "tu/tu_er1.png",
+              "name": "tu_lan/tu_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -369,7 +369,7 @@
               ]
             },
             {
-              "name": "tu/tu_era1.png",
+              "name": "tu_lan/tu_era1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -401,7 +401,7 @@
           "bl": 318,
           "display_data": [
             {
-              "name": "tu/tu_er1.png",
+              "name": "tu_lan/tu_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -415,7 +415,7 @@
               ]
             },
             {
-              "name": "tu/tu_era1.png",
+              "name": "tu_lan/tu_era1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -447,7 +447,7 @@
           "bl": 60,
           "display_data": [
             {
-              "name": "tu/tu_wei.png",
+              "name": "tu_lan/tu_wei.png",
               "displayType": 0,
               "skin_data": [
                 {

@@ -23,7 +23,7 @@
           "bl": 213,
           "display_data": [
             {
-              "name": "hu/hu_shen.png",
+              "name": "hu_lan/hu_shen.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -55,7 +55,7 @@
           "bl": 144,
           "display_data": [
             {
-              "name": "hu/hu_shou.png",
+              "name": "hu_lan/hu_shou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -87,7 +87,7 @@
           "bl": 371,
           "display_data": [
             {
-              "name": "hu/hu_tou.png",
+              "name": "hu_lan/hu_tou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -119,7 +119,7 @@
           "bl": 216,
           "display_data": [
             {
-              "name": "hu/hu_wuguan.png",
+              "name": "hu_lan/hu_wuguan.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -133,7 +133,7 @@
               ]
             },
             {
-              "name": "hu/hu_wuguan2.png",
+              "name": "hu_lan/hu_wuguan2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -165,7 +165,7 @@
           "bl": 104,
           "display_data": [
             {
-              "name": "hu/hu_zui2.png",
+              "name": "hu_lan/hu_zui2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -179,7 +179,7 @@
               ]
             },
             {
-              "name": "hu/hu_zui1.png",
+              "name": "hu_lan/hu_zui1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -211,7 +211,7 @@
           "bl": 94,
           "display_data": [
             {
-              "name": "hu/hu_er1.png",
+              "name": "hu_lan/hu_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -243,7 +243,7 @@
           "bl": 94,
           "display_data": [
             {
-              "name": "hu/hu_er1.png",
+              "name": "hu_lan/hu_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -275,7 +275,7 @@
           "bl": 162,
           "display_data": [
             {
-              "name": "hu/hu_wei.png",
+              "name": "hu_lan/hu_wei.png",
               "displayType": 0,
               "skin_data": [
                 {

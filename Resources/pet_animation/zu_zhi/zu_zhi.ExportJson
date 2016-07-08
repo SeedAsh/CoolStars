@@ -39,7 +39,7 @@
           "bl": 90,
           "display_data": [
             {
-              "name": "zu/zu_sou1.png",
+              "name": "zu_zhi/zu_sou1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -71,7 +71,7 @@
           "bl": 90,
           "display_data": [
             {
-              "name": "zu/zu_sou1.png",
+              "name": "zu_zhi/zu_sou1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -103,7 +103,7 @@
           "bl": 242,
           "display_data": [
             {
-              "name": "zu/zu_yan1.png",
+              "name": "zu_zhi/zu_yan1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -117,7 +117,7 @@
               ]
             },
             {
-              "name": "zu/zu_yan2.png",
+              "name": "zu_zhi/zu_yan2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -149,7 +149,7 @@
           "bl": 358,
           "display_data": [
             {
-              "name": "zu/zu_wuguan.png",
+              "name": "zu_zhi/zu_wuguan.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -181,7 +181,7 @@
           "bl": 0,
           "display_data": [
             {
-              "name": "zu/zu_bi.png",
+              "name": "zu_zhi/zu_bi.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -213,7 +213,7 @@
           "bl": 592,
           "display_data": [
             {
-              "name": "zu/zu_shen.png",
+              "name": "zu_zhi/zu_shen.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -245,7 +245,7 @@
           "bl": 161,
           "display_data": [
             {
-              "name": "zu/zu_er1.png",
+              "name": "zu_zhi/zu_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -277,7 +277,7 @@
           "bl": 161,
           "display_data": [
             {
-              "name": "zu/zu_er1.png",
+              "name": "zu_zhi/zu_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -309,7 +309,7 @@
           "bl": 102,
           "display_data": [
             {
-              "name": "zu/zu_wei.png",
+              "name": "zu_zhi/zu_wei.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -341,7 +341,7 @@
           "bl": 71,
           "display_data": [
             {
-              "name": "zu/zu_jiao1.png",
+              "name": "zu_zhi/zu_jiao1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -373,7 +373,7 @@
           "bl": 71,
           "display_data": [
             {
-              "name": "zu/zu_jiao1.png",
+              "name": "zu_zhi/zu_jiao1.png",
               "displayType": 0,
               "skin_data": [
                 {

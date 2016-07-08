@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>niu/niu_yan1.png</key>
+			<key>niu_zhi/niu_yan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>203</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>niu/niu_yan2.png</key>
+			<key>niu_zhi/niu_yan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>186</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>niu/niu_wuguan.png</key>
+			<key>niu_zhi/niu_wuguan.png</key>
 			<dict>
 				<key>width</key>
 				<integer>233</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>niu/niu_sou1.png</key>
+			<key>niu_zhi/niu_sou1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>91</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>niu/niu_tou.png</key>
+			<key>niu_zhi/niu_tou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>437</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>niu/niu_shen.png</key>
+			<key>niu_zhi/niu_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>292</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>niu/niu_jiao1.png</key>
+			<key>niu_zhi/niu_jiao1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>218</integer>
@@ -137,7 +137,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>niu/niu_wei.png</key>
+			<key>niu_zhi/niu_wei.png</key>
 			<dict>
 				<key>width</key>
 				<integer>165</integer>
@@ -156,7 +156,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>niu/niu_er1.png</key>
+			<key>niu_zhi/niu_er1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>150</integer>

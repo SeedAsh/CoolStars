@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>yang/yang_er1.png</key>
+			<key>yang_hong/yang_er1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>107</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>yang/yang_wuguan1.png</key>
+			<key>yang_hong/yang_wuguan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>237</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>yang/yang_wuguan2.png</key>
+			<key>yang_hong/yang_wuguan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>222</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>yang/yang_sou1.png</key>
+			<key>yang_hong/yang_sou1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>74</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>yang/yang_lian.png</key>
+			<key>yang_hong/yang_lian.png</key>
 			<dict>
 				<key>width</key>
 				<integer>406</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>yang/yang_jiao1.png</key>
+			<key>yang_hong/yang_jiao1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>113</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>yang/yang_shen.png</key>
+			<key>yang_hong/yang_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>611</integer>

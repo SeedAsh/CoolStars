@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>hou/hou_yan1.png</key>
+			<key>hou_lv/hou_yan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>207</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_yan2.png</key>
+			<key>hou_lv/hou_yan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>190</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_zui1.png</key>
+			<key>hou_lv/hou_zui1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>138</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_zui2.png</key>
+			<key>hou_lv/hou_zui2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>108</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_wuguan.png</key>
+			<key>hou_lv/hou_wuguan.png</key>
 			<dict>
 				<key>width</key>
 				<integer>294</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_sou.png</key>
+			<key>hou_lv/hou_sou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>67</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_toumao.png</key>
+			<key>hou_lv/hou_toumao.png</key>
 			<dict>
 				<key>width</key>
 				<integer>181</integer>
@@ -137,7 +137,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_tou.png</key>
+			<key>hou_lv/hou_tou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>552</integer>
@@ -156,7 +156,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_shen.png</key>
+			<key>hou_lv/hou_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>264</integer>
@@ -175,7 +175,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_jiao.png</key>
+			<key>hou_lv/hou_jiao.png</key>
 			<dict>
 				<key>width</key>
 				<integer>161</integer>
@@ -194,7 +194,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_wei.png</key>
+			<key>hou_lv/hou_wei.png</key>
 			<dict>
 				<key>width</key>
 				<integer>251</integer>
@@ -213,7 +213,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>hou/hou_er.png</key>
+			<key>hou_lv/hou_er.png</key>
 			<dict>
 				<key>width</key>
 				<integer>127</integer>

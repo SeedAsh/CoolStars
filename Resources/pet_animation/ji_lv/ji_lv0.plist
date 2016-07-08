@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>ji/ji_jiguan.png</key>
+			<key>ji_lv/ji_jiguan.png</key>
 			<dict>
 				<key>width</key>
 				<integer>109</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ji/ji_cibang.png</key>
+			<key>ji_lv/ji_cibang.png</key>
 			<dict>
 				<key>width</key>
 				<integer>113</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ji/ji_yan2.png</key>
+			<key>ji_lv/ji_yan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>224</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ji/ji_yan1.png</key>
+			<key>ji_lv/ji_yan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>192</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ji/ji_zui.png</key>
+			<key>ji_lv/ji_zui.png</key>
 			<dict>
 				<key>width</key>
 				<integer>144</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ji/ji_wuguan.png</key>
+			<key>ji_lv/ji_wuguan.png</key>
 			<dict>
 				<key>width</key>
 				<integer>272</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ji/ji_shen.png</key>
+			<key>ji_lv/ji_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>490</integer>
@@ -137,7 +137,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ji/ji_jiao.png</key>
+			<key>ji_lv/ji_jiao.png</key>
 			<dict>
 				<key>width</key>
 				<integer>300</integer>

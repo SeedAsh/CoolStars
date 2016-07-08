@@ -23,7 +23,7 @@
           "bl": 76,
           "display_data": [
             {
-              "name": "yang/yang_jiao1.png",
+              "name": "yang_zhi/yang_jiao1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -55,7 +55,7 @@
           "bl": 76,
           "display_data": [
             {
-              "name": "yang/yang_jiao1.png",
+              "name": "yang_zhi/yang_jiao1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -87,7 +87,7 @@
           "bl": 674,
           "display_data": [
             {
-              "name": "yang/yang_shen.png",
+              "name": "yang_zhi/yang_shen.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -135,7 +135,7 @@
           "bl": 120,
           "display_data": [
             {
-              "name": "yang/yang_er1.png",
+              "name": "yang_zhi/yang_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -167,7 +167,7 @@
           "bl": 120,
           "display_data": [
             {
-              "name": "yang/yang_er1.png",
+              "name": "yang_zhi/yang_er1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -199,7 +199,7 @@
           "bl": 63,
           "display_data": [
             {
-              "name": "yang/yang_sou1.png",
+              "name": "yang_zhi/yang_sou1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -231,7 +231,7 @@
           "bl": 63,
           "display_data": [
             {
-              "name": "yang/yang_sou1.png",
+              "name": "yang_zhi/yang_sou1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -263,7 +263,7 @@
           "bl": 0,
           "display_data": [
             {
-              "name": "yang/yang_lian.png",
+              "name": "yang_zhi/yang_lian.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -295,7 +295,7 @@
           "bl": 190,
           "display_data": [
             {
-              "name": "yang/yang_wuguan1.png",
+              "name": "yang_zhi/yang_wuguan1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -309,7 +309,7 @@
               ]
             },
             {
-              "name": "yang/yang_wuguan2.png",
+              "name": "yang_zhi/yang_wuguan2.png",
               "displayType": 0,
               "skin_data": [
                 {

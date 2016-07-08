@@ -39,7 +39,7 @@
           "bl": 584,
           "display_data": [
             {
-              "name": "long/long_shen.png",
+              "name": "long_hong/long_shen.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -71,7 +71,7 @@
           "bl": 141,
           "display_data": [
             {
-              "name": "long/long_zuojiao.png",
+              "name": "long_hong/long_zuojiao.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -103,7 +103,7 @@
           "bl": 256,
           "display_data": [
             {
-              "name": "long/long_tou.png",
+              "name": "long_hong/long_tou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -135,7 +135,7 @@
           "bl": 135,
           "display_data": [
             {
-              "name": "long/long_xu1.png",
+              "name": "long_hong/long_xu1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -167,7 +167,7 @@
           "bl": 116,
           "display_data": [
             {
-              "name": "long/long_yang1.png",
+              "name": "long_hong/long_yang1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -181,7 +181,7 @@
               ]
             },
             {
-              "name": "long/long_yang2.png",
+              "name": "long_hong/long_yang2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -213,7 +213,7 @@
           "bl": 209,
           "display_data": [
             {
-              "name": "long/long_xiaba.png",
+              "name": "long_hong/long_xiaba.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -245,7 +245,7 @@
           "bl": 135,
           "display_data": [
             {
-              "name": "long/long_xu1.png",
+              "name": "long_hong/long_xu1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -277,7 +277,7 @@
           "bl": 180,
           "display_data": [
             {
-              "name": "long/long_shou1.png",
+              "name": "long_hong/long_shou1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -309,7 +309,7 @@
           "bl": 308,
           "display_data": [
             {
-              "name": "long/long_wei.png",
+              "name": "long_hong/long_wei.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -341,7 +341,7 @@
           "bl": 141,
           "display_data": [
             {
-              "name": "long/long_zuojiao.png",
+              "name": "long_hong/long_zuojiao.png",
               "displayType": 0,
               "skin_data": [
                 {

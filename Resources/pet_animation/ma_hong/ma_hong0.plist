@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>ma/ma_sou.png</key>
+			<key>ma_hong/ma_sou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>103</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_jiao1.png</key>
+			<key>ma_hong/ma_jiao1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>160</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_zui1.png</key>
+			<key>ma_hong/ma_zui1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>125</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_zui2.png</key>
+			<key>ma_hong/ma_zui2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>129</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_yan1.png</key>
+			<key>ma_hong/ma_yan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>233</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_yan2.png</key>
+			<key>ma_hong/ma_yan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>236</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_toumao.png</key>
+			<key>ma_hong/ma_toumao.png</key>
 			<dict>
 				<key>width</key>
 				<integer>126</integer>
@@ -137,7 +137,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_tou.png</key>
+			<key>ma_hong/ma_tou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>385</integer>
@@ -156,7 +156,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_shen.png</key>
+			<key>ma_hong/ma_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>358</integer>
@@ -175,7 +175,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_er1.png</key>
+			<key>ma_hong/ma_er1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>144</integer>
@@ -194,7 +194,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ma/ma_wei.png</key>
+			<key>ma_hong/ma_wei.png</key>
 			<dict>
 				<key>width</key>
 				<integer>166</integer>

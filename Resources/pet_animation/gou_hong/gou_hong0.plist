@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>gou/gou_sou1.png</key>
+			<key>gou_hong/gou_sou1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>100</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_er1.png</key>
+			<key>gou_hong/gou_er1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>170</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_setou.png</key>
+			<key>gou_hong/gou_setou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>62</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_zui1.png</key>
+			<key>gou_hong/gou_zui1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>233</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_zui2.png</key>
+			<key>gou_hong/gou_zui2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>233</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_yan2.png</key>
+			<key>gou_hong/gou_yan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>194</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_yan1.png</key>
+			<key>gou_hong/gou_yan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>210</integer>
@@ -137,7 +137,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_shen.png</key>
+			<key>gou_hong/gou_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>420</integer>
@@ -156,7 +156,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_jiao1.png</key>
+			<key>gou_hong/gou_jiao1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>203</integer>
@@ -175,7 +175,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>gou/gou_wei.png</key>
+			<key>gou_hong/gou_wei.png</key>
 			<dict>
 				<key>width</key>
 				<integer>296</integer>

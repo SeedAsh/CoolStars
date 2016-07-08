@@ -39,7 +39,7 @@
           "bl": 190,
           "display_data": [
             {
-              "name": "hou/hou_shen.png",
+              "name": "hou_huang/hou_shen.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -71,7 +71,7 @@
           "bl": 59,
           "display_data": [
             {
-              "name": "hou/hou_sou.png",
+              "name": "hou_huang/hou_sou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -103,7 +103,7 @@
           "bl": 56,
           "display_data": [
             {
-              "name": "hou/hou_sou.png",
+              "name": "hou_huang/hou_sou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -135,7 +135,7 @@
           "bl": 424,
           "display_data": [
             {
-              "name": "hou/hou_tou.png",
+              "name": "hou_huang/hou_tou.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -167,7 +167,7 @@
           "bl": 161,
           "display_data": [
             {
-              "name": "hou/hou_yan1.png",
+              "name": "hou_huang/hou_yan1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -181,7 +181,7 @@
               ]
             },
             {
-              "name": "hou/hou_yan2.png",
+              "name": "hou_huang/hou_yan2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -213,7 +213,7 @@
           "bl": 42,
           "display_data": [
             {
-              "name": "hou/hou_zui1.png",
+              "name": "hou_huang/hou_zui1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -227,7 +227,7 @@
               ]
             },
             {
-              "name": "hou/hou_zui2.png",
+              "name": "hou_huang/hou_zui2.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -259,7 +259,7 @@
           "bl": 240,
           "display_data": [
             {
-              "name": "hou/hou_wuguan.png",
+              "name": "hou_huang/hou_wuguan.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -291,7 +291,7 @@
           "bl": 130,
           "display_data": [
             {
-              "name": "hou/hou_toumao.png",
+              "name": "hou_huang/hou_toumao.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -323,7 +323,7 @@
           "bl": 61,
           "display_data": [
             {
-              "name": "hou/hou_er.png",
+              "name": "hou_huang/hou_er.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -355,7 +355,7 @@
           "bl": 58,
           "display_data": [
             {
-              "name": "hou/hou_er.png",
+              "name": "hou_huang/hou_er.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -387,7 +387,7 @@
           "bl": 101,
           "display_data": [
             {
-              "name": "hou/hou_jiao.png",
+              "name": "hou_huang/hou_jiao.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -419,7 +419,7 @@
           "bl": 95,
           "display_data": [
             {
-              "name": "hou/hou_jiao.png",
+              "name": "hou_huang/hou_jiao.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -451,7 +451,7 @@
           "bl": 172,
           "display_data": [
             {
-              "name": "hou/hou_wei.png",
+              "name": "hou_huang/hou_wei.png",
               "displayType": 0,
               "skin_data": [
                 {

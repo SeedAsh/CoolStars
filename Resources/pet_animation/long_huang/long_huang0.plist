@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>long/long_xu1.png</key>
+			<key>long_huang/long_xu1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>173</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>long/long_zuojiao.png</key>
+			<key>long_huang/long_zuojiao.png</key>
 			<dict>
 				<key>width</key>
 				<integer>147</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>long/long_yang1.png</key>
+			<key>long_huang/long_yang1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>130</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>long/long_yang2.png</key>
+			<key>long_huang/long_yang2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>130</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>long/long_xiaba.png</key>
+			<key>long_huang/long_xiaba.png</key>
 			<dict>
 				<key>width</key>
 				<integer>222</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>long/long_tou.png</key>
+			<key>long_huang/long_tou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>357</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>long/long_shou1.png</key>
+			<key>long_huang/long_shou1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>250</integer>
@@ -137,7 +137,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>long/long_wei.png</key>
+			<key>long_huang/long_wei.png</key>
 			<dict>
 				<key>width</key>
 				<integer>423</integer>
@@ -156,7 +156,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>long/long_shen.png</key>
+			<key>long_huang/long_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>404</integer>

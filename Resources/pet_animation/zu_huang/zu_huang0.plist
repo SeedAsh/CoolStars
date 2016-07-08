@@ -4,7 +4,7 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>zu/zu_sou1.png</key>
+			<key>zu_huang/zu_sou1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>94</integer>
@@ -23,7 +23,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>zu/zu_yan1.png</key>
+			<key>zu_huang/zu_yan1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>286</integer>
@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>zu/zu_yan2.png</key>
+			<key>zu_huang/zu_yan2.png</key>
 			<dict>
 				<key>width</key>
 				<integer>284</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>zu/zu_wuguan.png</key>
+			<key>zu_huang/zu_wuguan.png</key>
 			<dict>
 				<key>width</key>
 				<integer>426</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>zu/zu_bi.png</key>
+			<key>zu_huang/zu_bi.png</key>
 			<dict>
 				<key>width</key>
 				<integer>218</integer>
@@ -99,7 +99,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>zu/zu_jiao1.png</key>
+			<key>zu_huang/zu_jiao1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>105</integer>
@@ -118,7 +118,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>zu/zu_shen.png</key>
+			<key>zu_huang/zu_shen.png</key>
 			<dict>
 				<key>width</key>
 				<integer>569</integer>
@@ -137,7 +137,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>zu/zu_er1.png</key>
+			<key>zu_huang/zu_er1.png</key>
 			<dict>
 				<key>width</key>
 				<integer>170</integer>
@@ -156,7 +156,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>zu/zu_wei.png</key>
+			<key>zu_huang/zu_wei.png</key>
 			<dict>
 				<key>width</key>
 				<integer>155</integer>
