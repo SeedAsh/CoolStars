@@ -8,7 +8,7 @@ using namespace std;
 USING_NS_CC;
 
 StagePetNode::StagePetNode(int petId, int touchPriority)
-: TouchNode(touchPriority)
+: m_touchPriority(touchPriority)
 , m_petId(petId)
 {
 	m_model = PetManager::petMgr()->getPetById(petId);
@@ -23,6 +23,17 @@ StagePetNode *StagePetNode::create(int petId, int touchPriority)
 	return view;
 }
 
+void StagePetNode::onEnter()
+{
+	CCNode::onEnter();
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, m_touchPriority, true);
+}
+
+void StagePetNode::onExit()
+{
+	CCNode::onExit();
+	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+}
 bool StagePetNode::init()
 {
 	m_layout = UiLayout::create("layout/stage_pet_node.xml");
@@ -58,23 +69,51 @@ void StagePetNode::initLayout()
 	EmptyBox *box = dynamic_cast<EmptyBox *>(m_layout->getChildById(5));
 	m_skillIcon = StagePetSkillIcon::create(m_petId);
 	box->setNode(m_skillIcon);
+	m_skillIcon->setVisible(false);
 }
 
-bool StagePetNode::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
+bool StagePetNode::isInside(CCPoint pt)
 {
-	if (!isInside) return false;
+	auto pos = convertToNodeSpace(pt);
+	auto size = getContentSize();
+	CCRect rect(0, 0, size.width, size.height);
+	return rect.containsPoint(pos);
+}
 
-	if(m_model->canUseSkill())
+bool StagePetNode::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+{
+	if (isInside(pTouch->getLocation()))
 	{
-		m_petAnimation->getAnimation()->play("move");
-		m_petAnimation->getAnimation()->setMovementEventCallFunc(this, SEL_MovementEventCallFunc(&StagePetNode::runNormalAction));
-		if (m_touchHandle)
+		if (m_model->canUseSkill())
 		{
-			m_touchHandle(m_petId);
+			m_petAnimation->getAnimation()->play("move");
+			m_petAnimation->getAnimation()->setMovementEventCallFunc(this, SEL_MovementEventCallFunc(&StagePetNode::runNormalAction));
+			if (m_touchHandle)
+			{
+				m_touchHandle(m_petId);
+			}
 		}
+		else
+		{
+			m_skillIcon->setVisible(true);
+		}
+		return true;
 	}
-	return true;
 
+	return false;
+}
+
+void StagePetNode::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+{
+	if (!isInside(pTouch->getLocation()))
+	{
+		m_skillIcon->setVisible(false);
+	}
+}
+
+void StagePetNode::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+{
+	m_skillIcon->setVisible(false);
 }
 
 void StagePetNode::runNormalAction(CCArmature *, MovementEventType, const char *)
@@ -91,5 +130,8 @@ int StagePetNode::getColor()
 void StagePetNode::updateSkillEnergy()
 {
 	m_skillIcon->setVisible(true);
-	m_skillIcon->refresh();
+	m_skillIcon->refresh([=]()
+	{
+		m_skillIcon->setVisible(false);
+	});
 }

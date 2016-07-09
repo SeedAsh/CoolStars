@@ -1,5 +1,6 @@
 #include "StagePetSkillIcon.h"
 #include "PetManager.h"
+#include "CCFunctionAction.h"
 USING_NS_CC;
 using namespace std;
 
@@ -34,14 +35,16 @@ bool StagePetSkillIcon::init()
 	return true;
 }
 
-void StagePetSkillIcon::setPercentage(int value, bool withAction)
+void StagePetSkillIcon::setPercentage(int value, bool withAction, std::function<void()> callback)
 {
 	value = max(0, min(value, 100));
 	if (withAction)
 	{
 		static const float kDurainon = 0.5f;
-		CCProgressTo *t = CCProgressTo::create(kDurainon, value);
-		m_progress->runAction(t);
+		CCProgressTo *progressto = CCProgressTo::create(kDurainon, value);
+		CCDelayTime *delay = CCDelayTime::create(1.5f);
+		CCFunctionAction *func = CCFunctionAction::create(callback);
+		m_progress->runAction(CCSequence::create(progressto, delay, func, NULL));
 	}
 	else
 	{
@@ -49,8 +52,8 @@ void StagePetSkillIcon::setPercentage(int value, bool withAction)
 	}
 }
 
-void StagePetSkillIcon::refresh()
+void StagePetSkillIcon::refresh(std::function<void()> callback)
 {
 	auto pet = PetManager::petMgr()->getPetById(m_petId);
-	setPercentage(pet->getPetData().energy, true);
+	setPercentage(pet->getPetData().energy, true, callback);
 }

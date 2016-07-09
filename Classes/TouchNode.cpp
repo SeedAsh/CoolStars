@@ -7,12 +7,14 @@ bool TouchNode::init()
 	return true;
 }
 
-void TouchNode::onEnter(){
+void TouchNode::onEnter()
+{
 	CCNode::onEnter();
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, m_touchPriority, true);
 }
 
-void TouchNode::onExit(){
+void TouchNode::onExit()
+{
 	CCNode::onExit();
 	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 }

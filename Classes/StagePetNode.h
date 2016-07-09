@@ -8,7 +8,9 @@
 class UiLayout;
 class PetEntity;
 class StagePetSkillIcon;
-class StagePetNode : public TouchNode
+class StagePetNode
+	: public cocos2d::CCNode
+	, public cocos2d::CCTouchDelegate
 {
 public:
 	static StagePetNode *create(int petId, int touchPriority);
@@ -20,12 +22,18 @@ public:
 	void updateSkillEnergy();
 private:
 	StagePetNode(int petId, int touchPriority);
+	virtual void onEnter();
+	virtual void onExit();
 	void initLayout();
-	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
+	virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+	virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+	virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+	bool isInside(cocos2d::CCPoint pt);
 	void runNormalAction(cocos2d::extension::CCArmature *, cocos2d::extension::MovementEventType, const char *);
 private:
 	int m_petId;
 	const PetEntity *m_model;
+	int m_touchPriority;
 	UiLayout *m_layout;
 	std::function<void(int)> m_touchHandle;
 	cocos2d::extension::CCArmature *m_petAnimation;
