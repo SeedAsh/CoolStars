@@ -139,6 +139,7 @@ class PetMonkey : public PetEntity
 public:
 	PetMonkey(int petId) : PetEntity(petId){}
 	virtual void toPetSkill(int petId);
+	void PetMonkey::skillInit();
 };
 
 class PetRooster : public PetEntity

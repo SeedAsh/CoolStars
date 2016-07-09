@@ -8,7 +8,7 @@ StageLayersMgr *StageLayersMgr::theMgr()
 	return &mgr;
 }
 
-void StageLayersMgr::addLayers(IStageLayer *layer)
+void StageLayersMgr::addLayer(IStageLayer *layer)
 {
 	auto iter = find(m_layers.begin(), m_layers.end(), layer);
 	if (iter == m_layers.end())
@@ -17,7 +17,7 @@ void StageLayersMgr::addLayers(IStageLayer *layer)
 	}
 }
 
-void StageLayersMgr::removeLayers(IStageLayer *layer)
+void StageLayersMgr::removeLayer(IStageLayer *layer)
 {
 	auto iter = find(m_layers.begin(), m_layers.end(), layer);
 	if (iter != m_layers.end())
@@ -29,6 +29,11 @@ void StageLayersMgr::removeLayers(IStageLayer *layer)
 void StageLayersMgr::highLightStars(int color)
 {
 	NOTIFY_LAYERSS(onHighLightStars, color);
+}
+
+void StageLayersMgr::highLightPets(const std::vector<int> &petIds)
+{
+	NOTIFY_LAYERSS(onHighLightPets, petIds);
 }
 
 void StageLayersMgr::toNormalState()

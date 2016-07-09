@@ -15,10 +15,10 @@ class StarsLayer
 	, public IStageLayer
 {
 public:
-	static StarsLayer *create(StageStateOwner *stateOwner);
+	static StarsLayer *create();
 	void removeStar(StarViewNode *node);
 private:
-	StarsLayer(StageStateOwner *stateOwner);
+	StarsLayer();
 	~StarsLayer();
 	virtual bool init();
 

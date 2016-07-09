@@ -7,6 +7,7 @@ struct IStageLayer
 	virtual void onHighLightStars(int color){}
 	virtual void onToNormalState(){}
 	virtual void onNormalStarErased(cocos2d::CCPoint pos, int color){}
+	virtual void onHighLightPets(const std::vector<int> &petIds){}
 };
 
 #define NOTIFY_LAYERSS(_FUNC_ ,...)						 \
@@ -22,10 +23,11 @@ public:
 	static StageLayersMgr *theMgr();
 	~StageLayersMgr(){}
 	
-	void addLayers(IStageLayer *layer);
-	void removeLayers(IStageLayer *layer);
+	void addLayer(IStageLayer *layer);
+	void removeLayer(IStageLayer *layer);
 public:
 	void highLightStars(int color);
+	void highLightPets(const std::vector<int> &petIds);
 	void toNormalState();
 	void colorStarErased(cocos2d::CCPoint pos, int color);
 private:

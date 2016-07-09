@@ -22,30 +22,23 @@
 #include "CommonMacros.h"
 #include "StageDataMgr.h"
 #include "CCFunctionAction.h"
+#include "StageScene.h"
 
-#define Z_ORDER_PROPS_BG 0
-#define Z_ORDER_PROPS (Z_ORDER_PROPS_BG + 1)
-#define Z_ORDER_TITLE_BG (Z_ORDER_PROPS + 1)
-#define Z_ORDER_TITLE (Z_ORDER_TITLE_BG + 1)
-#define Z_ORDER_REWARD (Z_ORDER_TITLE + 1)
-#define Z_ORDER_PAUSE (Z_ORDER_REWARD + 1)
-
-#define SELECTED_SKILL_OFFSET 20
 USING_NS_CC;
 using namespace std;
 using namespace CommonUtil;
-StageUiLayer::StageUiLayer(StageStateOwner *stateOwner)
-: m_stateOwner(stateOwner)
+StageUiLayer::StageUiLayer()
 {
+	m_stateOwner = StageScene::theScene()->getStateOwner();
 }
 
 StageUiLayer::~StageUiLayer(void)
 {
 }
 
-StageUiLayer *StageUiLayer::create(StageStateOwner *stateOwner)
+StageUiLayer *StageUiLayer::create()
 {
-	StageUiLayer* layer = new StageUiLayer(stateOwner);
+	StageUiLayer* layer = new StageUiLayer();
 	layer->init();
 	layer->autorelease();
 	return layer;
@@ -56,7 +49,7 @@ void StageUiLayer::onEnter()
 	CCLayer::onEnter();
 	StageDataMgr::theMgr()->addView(this);
 	StarsController::theModel()->addView(this);
-	StageLayersMgr::theMgr()->addLayers(this);
+	StageLayersMgr::theMgr()->addLayer(this);
 }
 
 void StageUiLayer::onExit()
@@ -64,7 +57,7 @@ void StageUiLayer::onExit()
 	CCLayer::onExit();
 	StageDataMgr::theMgr()->removeView(this);
 	StarsController::theModel()->removeView(this);
-	StageLayersMgr::theMgr()->removeLayers(this);
+	StageLayersMgr::theMgr()->removeLayer(this);
 }
 
 bool StageUiLayer::init()
@@ -124,7 +117,7 @@ void StageUiLayer::initPets()
 		auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(uiIds[i])));
 		node->setNode(petNode);
 		node->setAnchorPoint(ccp(0.5f, 0.5f));
-		m_petViews.push_back(petNode);
+		m_petViews[ids[i]] = petNode;
 	}
 }
 
@@ -161,35 +154,6 @@ void StageUiLayer::showPetsSkillPanel()
 	auto node = dynamic_cast<EmptyBox *>((m_topUi->getChildById(14)));
 	node->setNode(panel);
 	node->setAnchorPoint(ccp(0, 1));
-}
-
-void StageUiLayer::deliveryScore( const CCPoint &from, int totalScore, int count ){
-
-	/*
-    int delay = 0;
-    int delta = totalScore / count;
-    char *label = new char[16];
-    CCLabelTTF *pScore = NULL;
-    CCPoint to = m_pScoreLabel->getPosition();
-    for (int i = 0; i < count; i++){
-        sprintf(label, "%d", delta);
-        pScore = CCLabelTTF::create(label,  "Arial", 21);
-        pScore->setPosition(from);
-		pScore->setColor(ccWHITE);
-        addChild(pScore, 2);
-        pScore->runAction(CCSequence::create(
-            CCDelayTime::create(0.1 * delay),
-            CCMoveTo::create(0.5f, to),
-            CCCallFuncN::create(this, callfuncN_selector(StageUiLayer::removeChild)),
-            NULL));
-        delay++;
-    }
-	*/
-}
-
-void StageUiLayer::menuCallback( CCObject *pSender )
-{
-
 }
 
 void StageUiLayer::onStepsChanged()
@@ -270,32 +234,62 @@ void StageUiLayer::handlePropsItemClicked(int type)
 
 void StageUiLayer::onNormalStarErased(cocos2d::CCPoint pos, int color)
 {
-	auto iter = find_if(m_petViews.begin(), m_petViews.end(), [=](StagePetNode *node)->bool
-	{
-		return node->getColor() == color;
-	});
-
 	const static float kDuration = 0.8f;
-	if (iter != m_petViews.end())
+	for (auto iter = m_petViews.begin(); iter != m_petViews.end(); ++iter)
 	{
-		auto petView = *iter;
-		auto config = DataManagerSelf->getStarsColorConfig(color);
-		auto resPath = config.colorStarRes;
-		CCSprite *starSpr = CCSprite::create(resPath.c_str());
-		addChild(starSpr);
-		starSpr->setPosition(pos);
-		
-		auto func = CCFunctionAction::create([=]()
+		auto petView = iter->second;
+		if (petView->getColor() == color)
 		{
-			starSpr->removeFromParent();
-		});
-		auto targetPos = petView->getParent()->convertToWorldSpace(petView->getPosition());
-		auto moveTo = CCMoveTo::create(kDuration, targetPos);
-		auto scaleTo = CCScaleTo::create(kDuration, 0.5f);
-		auto rotateBy = CCRotateBy::create(kDuration, 360);
-		starSpr->runAction(CCSequence::create(
-			CCSpawn::create(moveTo, scaleTo, rotateBy, NULL),
-			func, NULL));
-	}
+			auto config = DataManagerSelf->getStarsColorConfig(color);
+			auto resPath = config.colorStarRes;
+			CCSprite *starSpr = CCSprite::create(resPath.c_str());
+			addChild(starSpr);
+			starSpr->setPosition(pos);
 
+			auto func = CCFunctionAction::create([=]()
+			{
+				starSpr->removeFromParent();
+			});
+			auto targetPos = petView->getParent()->convertToWorldSpace(petView->getPosition());
+			auto move = CCEaseExponentialIn::create(CCMoveTo::create(kDuration, targetPos));
+			auto scaleTo = CCScaleTo::create(kDuration, 0.5f);
+			auto rotateBy = (CCRotateBy::create(kDuration, 360 * 10));
+			starSpr->runAction(CCSequence::create(
+				CCSpawn::create(move, scaleTo, rotateBy, NULL),
+				func, NULL));
+		}
+	}
+}
+
+void StageUiLayer::onHighLightPets(const std::vector<int> &petIds)
+{
+	for (auto iter = m_petViews.begin(); iter != m_petViews.end(); ++iter)
+	{
+		if (find(petIds.begin(), petIds.end(), iter->first) != petIds.end())
+		{
+			//隐藏需要高亮的宠物,在stagemasklayer里高亮宠物
+			iter->second->setVisible(false);
+		}
+	}
+}
+
+unordered_map<int, cocos2d::CCPoint> StageUiLayer::getPetViewsInfo()
+{
+	unordered_map<int, CCPoint> info;
+	for (auto iter = m_petViews.begin(); iter != m_petViews.end(); ++iter)
+	{
+		auto petView = iter->second;
+		auto pos = petView->getParent()->convertToWorldSpace(petView->getPosition());
+		info[iter->first] = pos;
+	}
+	return info;
+}
+
+void StageUiLayer::onToNormalState()
+{
+	//显示pets
+	for (auto iter = m_petViews.begin(); iter != m_petViews.end(); ++iter)
+	{
+		iter->second->setVisible(true);
+	}
 }

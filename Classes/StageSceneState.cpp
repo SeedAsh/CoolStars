@@ -44,6 +44,7 @@ void StageStateOwner::clickPet(int petId)
 void StageStateOwner::enterNormalState()
 {
 	m_curState = m_normalState;
+	StageLayersMgr::theMgr()->toNormalState();
 }
 
 void StageStateOwner::enterPropsClickState(int propType)

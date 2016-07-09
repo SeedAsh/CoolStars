@@ -17,6 +17,7 @@ public:
 	
 	StarsLayer *getStarsLayer(){return m_starsLayer;}
 	StageUiLayer *getStageUiLayer(){ return m_stageUiLayer; }
+	StageStateOwner *getStateOwner(){ return &m_stateOwner; }
 private:
 	StageScene();
 	virtual void onExit();

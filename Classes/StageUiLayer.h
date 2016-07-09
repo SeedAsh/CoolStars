@@ -5,6 +5,7 @@
 #include "StarsController.h"
 #include "StageLayersMgr.h"
 #include "StageDataMgr.h"
+#include <unordered_map>
 USING_NS_CC;
 
 class StagePetNode;
@@ -17,20 +18,23 @@ class StageUiLayer
 	, public IStageLayer
 {
 public:
-	StageUiLayer(StageStateOwner *stateOwner);
+	StageUiLayer();
     ~StageUiLayer(void);
 
-	static StageUiLayer *create(StageStateOwner *stateOwner);
+	static StageUiLayer *create();
     virtual bool init();
 	void initTopUi();
 	void initPets();
 	void initBottomUi();
+	std::unordered_map<int, cocos2d::CCPoint> getPetViewsInfo();
 public:
 	virtual void onStepsChanged();
 	virtual void onScoreChanged();
 	virtual void onCoinsChanged();
 	virtual void onGameOver(int isWon);
 	virtual void onNormalStarErased(cocos2d::CCPoint pos, int color);
+	virtual void onHighLightPets(const std::vector<int> &petIds);
+	virtual void onToNormalState();
 public:
 	void showChangeColorPanel(const LogicGrid &grid);
 private:
@@ -40,10 +44,8 @@ private:
 	void handlePropsItemClicked(int type);
 	void showGameOverHint();
 	void showPetsSkillPanel();
-	void deliveryScore(const CCPoint &from, int totalScore, int count);
 
 	void onPauseBtnClicked(CCObject *pSender);
-	void menuCallback(CCObject *pSender);
 
 private:
 
@@ -53,6 +55,6 @@ private:
 	UiLayout *m_bottomUi;
 	UiLayout *m_topUi;
 	StageStateOwner *m_stateOwner;
-	std::vector<StagePetNode *>m_petViews;
+	std::unordered_map<int , StagePetNode *>m_petViews;
 };
 #endif // __PANELLLAYER_H__

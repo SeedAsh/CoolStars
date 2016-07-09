@@ -5,23 +5,23 @@
 #include "GuideMgr.h"
 #include "UiLayout.h"
 #include "EmptyBox.h"
+#include "StageScene.h"
 
 using namespace cocos2d;
 using namespace std;
-StarsLayer::StarsLayer(StageStateOwner *stateOwner)
+StarsLayer::StarsLayer()
 :m_starsSprite(NULL)
-, m_stateOwner(stateOwner)
 {
-	
+	m_stateOwner = StageScene::theScene()->getStateOwner();
 }
 
 StarsLayer::~StarsLayer()
 {
 }
 
-StarsLayer *StarsLayer::create(StageStateOwner *stateOwner)
+StarsLayer *StarsLayer::create()
 {
-	StarsLayer* layer = new StarsLayer(stateOwner);
+	StarsLayer* layer = new StarsLayer();
 	layer->init();
 	layer->autorelease();
 	return layer;
@@ -32,7 +32,7 @@ void StarsLayer::onEnter()
 	CCNode::onEnter();
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kStageStarsTouchPriority, true);
 	StarsController::theModel()->addView(this);
-	StageLayersMgr::theMgr()->addLayers(this);
+	StageLayersMgr::theMgr()->addLayer(this);
 }
 
 void StarsLayer::onExit()
@@ -40,7 +40,7 @@ void StarsLayer::onExit()
 	CCNode::onExit();
 	CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 	StarsController::theModel()->removeView(this);
-	StageLayersMgr::theMgr()->addLayers(this);
+	StageLayersMgr::theMgr()->removeLayer(this);
 }
 
 bool StarsLayer::init()
@@ -220,5 +220,4 @@ void StarsLayer::onCreateNewStar(StarNode *node)
 
 void StarsLayer::onToNormalState()
 {
-	m_stateOwner->enterNormalState();
 }

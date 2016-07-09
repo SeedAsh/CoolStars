@@ -43,15 +43,16 @@ bool StageScene::init()
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	setContentSize(winSize);
 
-	m_starsLayer = StarsLayer::create(&m_stateOwner);
+	m_starsLayer = StarsLayer::create();
 	m_starsLayer->setAnchorPoint(ccp(0.5f, 0.5f));
 	m_starsLayer->setPosition(ccpMult(winSize, 0.5f));
 	addChild(m_starsLayer);
 
-	m_stageUiLayer = StageUiLayer::create(&m_stateOwner);
+	m_stageUiLayer = StageUiLayer::create();
 	addChild(m_stageUiLayer);
 	
 	m_maskLayer = StageMaskLayer::create();
+	m_maskLayer->initPetViewsInfo(m_stageUiLayer->getPetViewsInfo());
 	addChild(m_maskLayer);
 
 	m_stateOwner.setStarsLayer(m_starsLayer);

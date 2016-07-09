@@ -160,6 +160,12 @@ void PetGoat::noTargetSkill()
 	StageOp->randomErase(m_data.skillPower);
 }
 //////////////////////////////////////////////////////////////////////////////
+void PetMonkey::skillInit()
+{
+	std::vector<int> petIds;
+	petIds.push_back(4);
+	StageLayersMgr::theMgr()->highLightPets(petIds);
+}
 
 void PetMonkey::toPetSkill(int petId)
 {
