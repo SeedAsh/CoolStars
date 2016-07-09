@@ -251,7 +251,9 @@ void DataManager::loadSystemConfig()
 	auto result = sqlHelper.readRecord("select * from system");
 	assert(result.size() == 1);
 
-	m_systemConfig.stageAmount = atoi(result[0][0]);
+	auto data = result[0];
+	m_systemConfig.stageAmount = atoi(data[0]);
+	m_systemConfig.starPetEnergy = atoi(data[1]);
 }
 
 const SystemConfig &DataManager::getSystemConfig()

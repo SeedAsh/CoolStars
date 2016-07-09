@@ -237,6 +237,7 @@ void StageUiLayer::onNormalStarErased(cocos2d::CCPoint pos, int color)
 	const static float kDuration = 0.8f;
 	for (auto iter = m_petViews.begin(); iter != m_petViews.end(); ++iter)
 	{
+		int petId = iter->first;
 		auto petView = iter->second;
 		if (petView->getColor() == color)
 		{
@@ -249,6 +250,9 @@ void StageUiLayer::onNormalStarErased(cocos2d::CCPoint pos, int color)
 			auto func = CCFunctionAction::create([=]()
 			{
 				starSpr->removeFromParent();
+				int value = DataManagerSelf->getSystemConfig().starPetEnergy;
+				PetManager::petMgr()->addPetEnergy(petId, value);
+				petView->updateSkillEnergy();
 			});
 			auto targetPos = petView->getParent()->convertToWorldSpace(petView->getPosition());
 			auto move = CCEaseExponentialIn::create(CCMoveTo::create(kDuration, targetPos));

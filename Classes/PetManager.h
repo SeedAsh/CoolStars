@@ -5,6 +5,7 @@
 #include "CommonMacros.h"
 
 class PetEntity;
+
 class PetManager
 {
 public:
@@ -18,6 +19,8 @@ public:
 	//当前选中的宠物 ，将在关卡里出现
 	const std::vector<int> &getCurPetIds() { return m_curPets; }
 	void setCurPets(std::vector<int> &ids);
+
+	void addPetEnergy(int petId, int value);
 private:
 	PetManager();
 	~PetManager();

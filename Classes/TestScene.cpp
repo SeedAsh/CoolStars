@@ -28,7 +28,7 @@ bool TestScene::init()
 	}
 	initPanel();
 	//test();
-	animationTest2();
+	progressTest();
 	return true;
 }
 
@@ -36,6 +36,22 @@ void TestScene::test()
 {
 	int curTime = time_util::getCurTime();
 	auto date = time_util::getDate(curTime);
+}
+
+void TestScene::progressTest()
+{
+	CCProgressTimer *progress1 = CCProgressTimer::create(CCSprite::create("pet_skill_icon/jntb_hou4.png"));
+
+	progress1->setPosition(ccp(100, 100));
+
+	//设置进度条的样式
+
+	progress1->setType(kCCProgressTimerTypeRadial);
+	progress1->setPercentage(40);
+	addChild(progress1);
+
+	CCProgressTo *t = CCProgressTo::create(1.5, 100);
+	progress1->runAction(t);
 }
 
 void TestScene::animationTest()

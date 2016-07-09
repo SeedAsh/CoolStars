@@ -81,3 +81,15 @@ void PetManager::setCurPets(std::vector<int> &ids)
 	m_curPets = ids; 
 	PetSavingHelper::recordCurActivePets();
 }
+
+void PetManager::addPetEnergy(int petId, int value)
+{
+	if (find(m_curPets.begin(), m_curPets.end(), petId) == m_curPets.end()) return;
+
+	auto pet = getPetById(petId);
+	if (pet)
+	{
+		auto data = pet->getPetData();
+		pet->setEnergy(data.energy + value);
+	}
+}

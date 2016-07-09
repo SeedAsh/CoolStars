@@ -103,18 +103,7 @@ void StageOperator::randomChangeColor(int color, int num)
 
 void StageOperator::addPetEnergy(int petId, int value)
 {
-	auto petMgr = PetManager::petMgr();
-	auto curPetIds = petMgr->getCurPetIds();
-	auto iter = find(curPetIds.begin(), curPetIds.end(), petId);
-	assert(iter != curPetIds.end());
-	if (iter == curPetIds.end()) return;
-
-	auto pet = petMgr->getPetById(petId);
-	if (pet)
-	{
-		auto data = pet->getPetData();
-		pet->setEnergy(data.energy + value);
-	}
+	PetManager::petMgr()->addPetEnergy(petId, value);
 }
 
 void StageOperator::removePetDebuff(int who)

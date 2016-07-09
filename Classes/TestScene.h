@@ -19,6 +19,7 @@ private:
 	void animationTest2();
 	void listViewTest();
 	void printDBInfos();
+	void progressTest();
 	void test();
 private:
 	cocos2d::CCClippingNode *m_clippingNode;

@@ -1,17 +1,8 @@
 <layout width="120.000000" height="140.000000">
-	<image>
-		<id>1</id>
-		<x>64.80</x>
-		<y>59.91</y>
-		<anchorPtX>0.50</anchorPtX>
-		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
-		<path>stage/pets/yxjm_guangdi2.png</path>
-	</image>
 	<animation>
 		<id>4</id>
-		<x>56.77</x>
-		<y>74.91</y>
+		<x>62.89</x>
+		<y>73.85</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>0.15</scale>
@@ -27,5 +18,13 @@
 		<scale>1.00</scale>
 		<path>stage/pets/yxjm_tishi1.png</path>
 	</image>
+	<emptyBox>
+		<id>5</id>
+		<x>35.03</x>
+		<y>-33.13</y>
+		<anchorPtX>0.00</anchorPtX>
+		<anchorPtY>0.00</anchorPtY>
+		<scale>1.00</scale>
+	</emptyBox>
 </layout>
 

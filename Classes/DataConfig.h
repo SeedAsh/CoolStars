@@ -74,6 +74,7 @@ struct SystemConfig
 {
 	int id;
 	int stageAmount;
+	int starPetEnergy;
 };
 
 struct StarsColorConfig
