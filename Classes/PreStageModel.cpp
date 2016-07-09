@@ -74,6 +74,7 @@ void PreStageModel::removeView(IPreStageView *view)
 void PreStageModel::confirmCurPets()
 {
 	PetManager::petMgr()->setCurPets(m_selectedPets);
+	PetManager::petMgr()->newStageInit();
 }
 
 void PreStageModel::init()

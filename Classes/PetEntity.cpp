@@ -98,6 +98,12 @@ void PetEntity::upgrade()
 	refreshPetData();
 	PetSavingHelper::setPetState(m_data);
 }
+
+void PetEntity::setEnergy(int energy)
+{
+	int value = max(0, min(energy, m_data.maxEnergy));
+	m_data.energy = value;
+}
 //////////////////////////////////////////////////////////////////////////////
 void PetRat::skillInit()
 {

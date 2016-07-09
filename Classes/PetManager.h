@@ -21,6 +21,7 @@ public:
 	void setCurPets(std::vector<int> &ids);
 
 	void addPetEnergy(int petId, int value);
+	void newStageInit();
 private:
 	PetManager();
 	~PetManager();

@@ -62,7 +62,9 @@ void StagePetNode::initLayout()
 
 bool StagePetNode::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 {
-	if (isInside)
+	if (!isInside) return false;
+
+	if(m_model->canUseSkill())
 	{
 		m_petAnimation->getAnimation()->play("move");
 		m_petAnimation->getAnimation()->setMovementEventCallFunc(this, SEL_MovementEventCallFunc(&StagePetNode::runNormalAction));
@@ -70,9 +72,8 @@ bool StagePetNode::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 		{
 			m_touchHandle(m_petId);
 		}
-		return true;
 	}
-	return false;
+	return true;
 
 }
 

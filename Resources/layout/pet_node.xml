@@ -11,11 +11,11 @@
 	<animation>
 		<id>3</id>
 		<x>112.05</x>
-		<y>108.90</y>
+		<y>122.83</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>0.25</scale>
-		<path>pet_animation/ma_hong/ma_hong.ExportJson</path>
+		<path>pet_animation/gou_huang/gou_huang.ExportJson</path>
 		<movement>0</movement>
 	</animation>
 </layout>

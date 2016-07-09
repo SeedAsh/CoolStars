@@ -20,11 +20,13 @@ bool StagePetSkillIcon::init()
 	auto size = spr->getContentSize();
 	spr->setPosition(ccpMult(size, 0.5f));
 	addChild(spr);
+	auto mask = CCSprite::create("pet_skill_icon/jntb_mask.png");
+	mask->setPosition(ccpMult(size, 0.5f));
+	addChild(mask);
 	setContentSize(size);
 
-	m_progress = CCProgressTimer::create(CCSprite::create("pet_skill_icon/jntb_mask.png"));
+	m_progress = CCProgressTimer::create(CCSprite::create(iconPath.c_str()));
 	m_progress->setType(kCCProgressTimerTypeRadial);
-	m_progress->setReverseProgress(false);
 	m_progress->setPosition(ccpMult(size, 0.5f));
 	addChild(m_progress);
 	setPercentage(pet->getPetData().energy, false);
@@ -34,7 +36,7 @@ bool StagePetSkillIcon::init()
 
 void StagePetSkillIcon::setPercentage(int value, bool withAction)
 {
-	value = max(0, min(100 - value, 100));
+	value = max(0, min(value, 100));
 	if (withAction)
 	{
 		static const float kDurainon = 0.5f;

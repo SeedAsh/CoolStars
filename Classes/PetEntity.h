@@ -54,7 +54,8 @@ public:
 	virtual ~PetEntity();
 	const PetData &getPetData()const{ return m_data; }
 
-	void setEnergy(int energy){ m_data.energy = energy; }
+	void setEnergy(int energy);
+	bool canUseSkill() const{ return m_data.energy >= m_data.maxEnergy; }
 	void setLevel(int level){ m_data.level = level; }
 
 	bool isMaxLevel();
