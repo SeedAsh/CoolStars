@@ -154,14 +154,15 @@ class PetDog : public PetEntity
 {
 public:
 	PetDog(int petId) : PetEntity(petId){}
-	virtual void toPetSkill(int petId);
+	virtual void noTargetSkill();
+
 };
 
 class PetPig : public PetEntity
 {
 public:
 	PetPig(int petId) : PetEntity(petId){}
-	virtual void noTargetSkill();
+	virtual void toPetSkill(int petId);
 };
 
 #endif

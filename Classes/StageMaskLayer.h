@@ -6,11 +6,6 @@
 #include "StageLayersMgr.h"
 #include <unordered_map>
 
-enum MaskMode
-{
-	kMaskModeStar,
-	kMaskModePet,
-};
 class StageMaskLayer
 	: public cocos2d::CCNode
 	, public cocos2d::CCTouchDelegate
@@ -28,10 +23,9 @@ private:
 
 	virtual void onHighLightStars(int color);
 	virtual void onHighLightPets(const std::vector<int> &petIds);
-
+	void hideLayer();
+	void clear();
 private:
-	int m_maskMode;
-
 	std::vector<cocos2d::CCNode *> m_stars;
 	cocos2d::CCNode *m_starsContainer;
 

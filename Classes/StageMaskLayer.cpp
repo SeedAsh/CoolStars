@@ -10,7 +10,6 @@ USING_NS_CC;
 using namespace std;
 
 StageMaskLayer::StageMaskLayer()
-: m_maskMode(kMaskModeStar)
 {
 
 }
@@ -51,7 +50,7 @@ bool StageMaskLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pE
 {
 	if (!isVisible()) return false;
 
-	setVisible(false);
+	hideLayer();
 	auto pos = convertToNodeSpace(pTouch->getLocation());
 	for (size_t i = 0; i < m_stars.size(); ++i)
 	{
@@ -69,10 +68,7 @@ bool StageMaskLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pE
 
 void StageMaskLayer::onHighLightStars(int color)
 {
-	m_maskMode = kMaskModeStar;
-	m_starsContainer->removeAllChildren();
-	m_stars.clear();
-
+	clear();
 	setVisible(true);
 	auto nodes = StarsController::theModel()->getStarNodes();
 	for (size_t i = 0; i < nodes.size(); ++i)
@@ -98,10 +94,7 @@ void StageMaskLayer::initPetViewsInfo(std::unordered_map<int, cocos2d::CCPoint> 
 
 void StageMaskLayer::onHighLightPets(const std::vector<int> &petIds)
 {	
-	m_maskMode = kMaskModePet;
-
-	m_petsContainer->removeAllChildren();
-
+	clear();
 	setVisible(true);
 	for (size_t i = 0; i < petIds.size(); ++i)
 	{
@@ -115,10 +108,23 @@ void StageMaskLayer::onHighLightPets(const std::vector<int> &petIds)
 			{
 				auto stateOwner = StageScene::theScene()->getStateOwner();
 				stateOwner->clickPet(petId);
-				setVisible(false);
+				hideLayer();
 			});
 			m_petsContainer->addChild(petNode);
 		}
 
 	}
+}
+
+void StageMaskLayer::hideLayer()
+{
+	setVisible(false);
+	clear();
+}
+
+void StageMaskLayer::clear()
+{
+	m_starsContainer->removeAllChildren();
+	m_stars.clear();
+	m_petsContainer->removeAllChildren();
 }

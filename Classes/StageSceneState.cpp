@@ -86,7 +86,7 @@ void StageNormalState::clickStar(const LogicGrid &grid)
 void StageNormalState::clickPet(int petId)
 {
 	auto pet = PetManager::petMgr()->getPetById(petId);
-	if (!pet) return;
+	if (!pet || !pet->canUseSkill()) return;
 	int targetType = pet->getPetData().skillTarget;
 	if (targetType == kNoTarget)
 	{

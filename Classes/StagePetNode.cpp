@@ -84,14 +84,15 @@ bool StagePetNode::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEve
 {
 	if (isInside(pTouch->getLocation()))
 	{
+		if (m_touchHandle)
+		{
+			m_touchHandle(m_petId);
+		}
 		if (m_model->canUseSkill())
 		{
 			m_petAnimation->getAnimation()->play("move");
 			m_petAnimation->getAnimation()->setMovementEventCallFunc(this, SEL_MovementEventCallFunc(&StagePetNode::runNormalAction));
-			if (m_touchHandle)
-			{
-				m_touchHandle(m_petId);
-			}
+			
 		}
 		else
 		{
