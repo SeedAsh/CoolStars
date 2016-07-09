@@ -77,22 +77,22 @@
 	</emptyBox>
 	<imageNum>
 		<id>15</id>
-		<x>280.26</x>
-		<y>220.76</y>
+		<x>291.23</x>
+		<y>222.66</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
+		<scale>0.50</scale>
 		<amount>12</amount>
 		<num>100;1000</num>
 		<path>num/ty_ziti2.png</path>
 	</imageNum>
 	<imageNum>
 		<id>17</id>
-		<x>411.12</x>
-		<y>187.41</y>
-		<anchorPtX>0.00</anchorPtX>
-		<anchorPtY>0.00</anchorPtY>
-		<scale>1.00</scale>
+		<x>442.14</x>
+		<y>205.35</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>0.70</scale>
 		<amount>10</amount>
 		<num>10</num>
 		<path>stage/yxjm_shuzi1.png</path>

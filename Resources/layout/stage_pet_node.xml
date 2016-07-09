@@ -1,8 +1,8 @@
 <layout width="120.000000" height="140.000000">
 	<image>
 		<id>1</id>
-		<x>58.89</x>
-		<y>21.92</y>
+		<x>64.80</x>
+		<y>59.91</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -10,8 +10,8 @@
 	</image>
 	<animation>
 		<id>4</id>
-		<x>59.72</x>
-		<y>78.08</y>
+		<x>56.77</x>
+		<y>74.91</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>0.15</scale>

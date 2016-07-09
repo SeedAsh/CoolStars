@@ -19,14 +19,14 @@
 	</image>
 	<imageNum>
 		<id>2</id>
-		<x>67.12</x>
-		<y>13.92</y>
+		<x>64.38</x>
+		<y>28.06</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
-		<scale>1.00</scale>
+		<scale>0.70</scale>
 		<amount>12</amount>
-		<num>:10</num>
-		<path>num/ty_ziti2.png</path>
+		<num>;10</num>
+		<path>num/ty_ziti6.png</path>
 	</imageNum>
 </layout>
 
