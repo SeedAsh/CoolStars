@@ -6,6 +6,7 @@
 #include "UserInfo.h"
 #include "StageDataMgr.h"
 #include "StageLayersMgr.h"
+#include "PetManager.h"
 PetEntity::PetEntity(int petId)
 {
 	//上次保存的宠物数据
@@ -104,6 +105,24 @@ void PetEntity::setEnergy(int energy)
 	int value = max(0, min(energy, m_data.maxEnergy));
 	m_data.energy = value;
 }
+
+void PetEntity::useNoTargetSkill()
+{
+	setEnergy(0);
+	noTargetSkill();
+}
+
+void PetEntity::useToStarSkill(const LogicGrid &grid)
+{
+	setEnergy(0);
+	toStarSkill(grid);
+}
+
+void PetEntity::useToPetSkill(int petId)
+{
+	setEnergy(0);
+	toPetSkill(petId);
+}
 //////////////////////////////////////////////////////////////////////////////
 void PetRat::skillInit()
 {
@@ -151,7 +170,7 @@ void PetSnake::skillInit()
 
 void PetSnake::toStarSkill(const LogicGrid &grid)
 {
-	StageOp->eraseSameColorStars(grid, m_data.skillPower);
+	StageOp->eraseStars(getSquareGrids(grid, m_data.skillPower));
 }
 //////////////////////////////////////////////////////////////////////////////
 
@@ -168,9 +187,20 @@ void PetGoat::noTargetSkill()
 //////////////////////////////////////////////////////////////////////////////
 void PetMonkey::skillInit()
 {
-	std::vector<int> petIds;
-	petIds.push_back(4);
-	StageLayersMgr::theMgr()->highLightPets(petIds);
+	vector<int> highLightPetsId;
+	std::vector<int> petIds = PetManager::petMgr()->getCurPetIds();
+	for (size_t i = 0; i < petIds.size(); ++i)
+	{
+		int petId = petIds[i];
+		if (m_data.petId == petId) continue;
+		auto pet = PetManager::petMgr()->getPetById(petId);
+		if (pet && !pet->canUseSkill())
+		{
+			highLightPetsId.push_back(petId);
+		}
+		
+	}
+	StageLayersMgr::theMgr()->highLightPets(highLightPetsId);
 }
 
 void PetMonkey::toPetSkill(int petId)
@@ -181,7 +211,7 @@ void PetMonkey::toPetSkill(int petId)
 
 void PetRooster::noTargetSkill()
 {
-
+	StageOp->loadDesignatedStar(m_data.color, m_data.skillPower);
 }
 //////////////////////////////////////////////////////////////////////////////
 void PetDog::noTargetSkill()

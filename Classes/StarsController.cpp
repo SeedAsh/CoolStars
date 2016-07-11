@@ -306,6 +306,7 @@ void StarsController::onOneRoundBegan()
 void StarsController::onOneRoundEnd()
 {
 	m_starsBehavior.onOneRoundEnd();
+	m_starsLoader.onOneRoundEnd();
 }
 
 void StarsController::addScore(int value)
@@ -333,4 +334,9 @@ void StarsController::genStar(const StarAttr &attr)
 int StarsController::getStageAmount()
 {
 	return DataManagerSelf->getSystemConfig().stageAmount;
+}
+
+void StarsController::loadDesignatedStar(int starType, int color, int rounds)
+{
+	m_starsLoader.designateStar(starType, color, rounds);
 }

@@ -30,14 +30,15 @@ bool StagePetSkillIcon::init()
 	m_progress->setType(kCCProgressTimerTypeRadial);
 	m_progress->setPosition(ccpMult(size, 0.5f));
 	addChild(m_progress);
-	setPercentage(pet->getPetData().energy, false);
+	int maxEnergy = pet->getPetData().maxEnergy;
+	setPercentage((float)pet->getPetData().energy / maxEnergy, false);
 
 	return true;
 }
 
-void StagePetSkillIcon::setPercentage(int value, bool withAction, std::function<void()> callback)
+void StagePetSkillIcon::setPercentage(float value, bool withAction, std::function<void()> callback)
 {
-	value = max(0, min(value, 100));
+	value = max(0, min(value * 100, 100));
 	if (withAction)
 	{
 		static const float kDurainon = 0.5f;
@@ -52,8 +53,11 @@ void StagePetSkillIcon::setPercentage(int value, bool withAction, std::function<
 	}
 }
 
-void StagePetSkillIcon::refresh(std::function<void()> callback)
+void StagePetSkillIcon::runEnergyAddAction(int oldEnergy, std::function<void()> callback)
 {
 	auto pet = PetManager::petMgr()->getPetById(m_petId);
-	setPercentage(pet->getPetData().energy, true, callback);
+	int maxEnergy = pet->getPetData().maxEnergy;
+
+	setPercentage((float)oldEnergy / maxEnergy, false);
+	setPercentage((float)pet->getPetData().energy / maxEnergy, true, callback);
 }

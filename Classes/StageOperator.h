@@ -26,6 +26,7 @@ public:
 	void removePetDebuff(int who);
 	void chageStarType(int type);
 	void reOrderStars();
+	void loadDesignatedStar(int color, int rounds);
 private:
 };
 #endif

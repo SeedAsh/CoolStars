@@ -34,6 +34,7 @@ public: //对星星的操作接口
 	void genStar(const StarAttr &attr);
 	void resetStage(int gameType);
 	int getStageAmount();
+	void loadDesignatedStar(int starType, int color, int rounds);
 public:
 	StageTarget *getStageTarget(){ return &m_target; }
 private:

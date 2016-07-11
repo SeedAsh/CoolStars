@@ -61,12 +61,16 @@ public:
 	bool isMaxLevel();
 	void upgrade();
 	
+	void useNoTargetSkill();
+	void useToStarSkill(const LogicGrid &grid);
+	void useToPetSkill(int petId);
 	static PetEntity *PetFactory(int petId);
 protected:
 	PetEntity(int petId);
 	void refreshPetData();
 public:
 	virtual void skillInit(){}
+private:
 	//三个接口对应三种技能目标
 	virtual void noTargetSkill(){}
 	virtual void toStarSkill(const LogicGrid &grid){}

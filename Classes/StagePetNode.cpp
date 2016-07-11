@@ -66,10 +66,6 @@ void StagePetNode::initLayout()
 	m_petAnimation->init(armatureName.c_str());
 	m_petAnimation->getAnimation()->play("standby");
 
-	EmptyBox *box = dynamic_cast<EmptyBox *>(m_layout->getChildById(5));
-	m_skillIcon = StagePetSkillIcon::create(m_petId);
-	box->setNode(m_skillIcon);
-	m_skillIcon->setVisible(false);
 }
 
 bool StagePetNode::isInside(CCPoint pt)
@@ -96,7 +92,7 @@ bool StagePetNode::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEve
 		}
 		else
 		{
-			m_skillIcon->setVisible(true);
+			showSkillIcon(true);
 		}
 		return true;
 	}
@@ -108,13 +104,13 @@ void StagePetNode::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEve
 {
 	if (!isInside(pTouch->getLocation()))
 	{
-		m_skillIcon->setVisible(false);
+		showSkillIcon(false);
 	}
 }
 
 void StagePetNode::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
-	m_skillIcon->setVisible(false);
+	showSkillIcon(false);
 }
 
 void StagePetNode::runNormalAction(CCArmature *, MovementEventType, const char *)
@@ -128,11 +124,25 @@ int StagePetNode::getColor()
 	return m_model->getPetData().color;
 }
 
-void StagePetNode::updateSkillEnergy()
+void StagePetNode::showSkillEnergyAciton(int oldEnergy)
 {
-	m_skillIcon->setVisible(true);
-	m_skillIcon->refresh([=]()
+	EmptyBox *box = dynamic_cast<EmptyBox *>(m_layout->getChildById(5));
+	box->removeNode();
+	auto icon = StagePetSkillIcon::create(m_petId);
+	icon->runEnergyAddAction(oldEnergy, [=]()
 	{
-		m_skillIcon->setVisible(false);
+		box->removeNode();
 	});
+	box->setNode(icon);
+}
+
+void StagePetNode::showSkillIcon(bool isShow)
+{
+	EmptyBox *box = dynamic_cast<EmptyBox *>(m_layout->getChildById(5));
+	box->removeNode();
+	if (isShow)
+	{
+		auto icon = StagePetSkillIcon::create(m_petId);
+		box->setNode(icon);
+	}
 }

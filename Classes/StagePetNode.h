@@ -19,7 +19,7 @@ public:
 	//技能查看
 	void setTouchHandle(std::function<void(int)> handle){ m_touchHandle = handle; }
 	int getColor();
-	void updateSkillEnergy();
+	void showSkillEnergyAciton(int oldEnergy);
 private:
 	StagePetNode(int petId, int touchPriority);
 	virtual void onEnter();
@@ -30,6 +30,7 @@ private:
 	virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 	bool isInside(cocos2d::CCPoint pt);
 	void runNormalAction(cocos2d::extension::CCArmature *, cocos2d::extension::MovementEventType, const char *);
+	void showSkillIcon(bool isShow);
 private:
 	int m_petId;
 	const PetEntity *m_model;
@@ -37,7 +38,6 @@ private:
 	UiLayout *m_layout;
 	std::function<void(int)> m_touchHandle;
 	cocos2d::extension::CCArmature *m_petAnimation;
-	StagePetSkillIcon *m_skillIcon;
 };
 
 #endif

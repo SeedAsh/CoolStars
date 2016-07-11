@@ -50,17 +50,18 @@ bool StageMaskLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pE
 {
 	if (!isVisible()) return false;
 
-	hideLayer();
 	auto pos = convertToNodeSpace(pTouch->getLocation());
 	for (size_t i = 0; i < m_stars.size(); ++i)
 	{
 		auto node = m_stars[i];
 		if (node->boundingBox().containsPoint(pos))
 		{
+			hideLayer();
 			return false;
 		}
 	}
 
+	hideLayer();
 	auto stateOwner = StageScene::theScene()->getStateOwner();
 	stateOwner->enterNormalState();
 	return true;

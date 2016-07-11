@@ -196,3 +196,8 @@ void StageOperator::randomReplaceToKey(int num)
 	}
 }
 
+void StageOperator::loadDesignatedStar(int color, int rounds)
+{
+	StarsController::theModel()->loadDesignatedStar(kColorStar, color, rounds);
+}
+

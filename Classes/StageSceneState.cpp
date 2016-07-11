@@ -90,7 +90,7 @@ void StageNormalState::clickPet(int petId)
 	int targetType = pet->getPetData().skillTarget;
 	if (targetType == kNoTarget)
 	{
-		pet->noTargetSkill();
+		pet->useNoTargetSkill();
 	}
 	else
 	{
@@ -124,7 +124,7 @@ void StagePetSkillState::clickStar(const LogicGrid &grid)
 	auto pet = PetManager::petMgr()->getPetById(m_curPetId);
 	if (pet)
 	{
-		pet->toStarSkill(grid);
+		pet->useToStarSkill(grid);
 		m_owner->enterNormalState();
 	}
 }
@@ -134,7 +134,7 @@ void StagePetSkillState::clickPet(int petId)
 	auto pet = PetManager::petMgr()->getPetById(m_curPetId);
 	if (pet)
 	{
-		pet->toPetSkill(petId);
+		pet->useToPetSkill(petId);
 		m_owner->enterNormalState();
 	}
 }
