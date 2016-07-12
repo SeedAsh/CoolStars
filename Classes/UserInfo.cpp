@@ -90,6 +90,11 @@ void UserInfo::setRuneStone(int value)
 	NOTIFY_VIEWS(onRuneStoneChanged);
 }
 
+bool UserInfo::canGetRuneStoneReward()
+{ 
+	return m_runeStone >= MAX_RUNESTORN_AMOUNT; 
+}
+
 void UserInfo::setKey(int value)
 {
 	m_key = value;

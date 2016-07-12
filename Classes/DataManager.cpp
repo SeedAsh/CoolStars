@@ -173,7 +173,10 @@ void DataManager::loadStageConfig()
 		stage.targetParam = CommonUtil::parseStrToInts(rowData[3]);
 		stage.step= atoi(rowData[4]);
 		stage.direction = CommonUtil::parseStrToInts(rowData[5]);
-
+		stage.recommendPets = CommonUtil::parseStrToInts(rowData[6]);
+		stage.rewardWin = CommonUtil::parseStrToInts(rowData[7]);
+		stage.rewardFail = CommonUtil::parseStrToInts(rowData[8]);
+		
 		m_stagesConfig.push_back(stage);
 	}
 }
@@ -254,6 +257,7 @@ void DataManager::loadSystemConfig()
 	auto data = result[0];
 	m_systemConfig.stageAmount = atoi(data[0]);
 	m_systemConfig.starPetEnergy = atoi(data[1]);
+	m_systemConfig.runeStoneReward = CommonUtil::parseStrToInts(data[2]);
 }
 
 const SystemConfig &DataManager::getSystemConfig()

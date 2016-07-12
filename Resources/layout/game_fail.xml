@@ -45,7 +45,7 @@
 		<path>stage/game_win/sljm_guanxiao3.png</path>
 	</image>
 	<image>
-		<id>6</id>
+		<id>8</id>
 		<x>367.22</x>
 		<y>190.58</y>
 		<anchorPtX>0.50</anchorPtX>
@@ -63,7 +63,7 @@
 		<path>stage/game_fail/sbjm_logo.png</path>
 	</image>
 	<image>
-		<id>8</id>
+		<id>6</id>
 		<x>94.13</x>
 		<y>522.98</y>
 		<anchorPtX>0.50</anchorPtX>
@@ -109,8 +109,8 @@
 	</image>
 	<image>
 		<id>13</id>
-		<x>292.51</x>
-		<y>475.91</y>
+		<x>52.97</x>
+		<y>468.95</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -118,8 +118,8 @@
 	</image>
 	<image>
 		<id>14</id>
-		<x>213.79</x>
-		<y>472.95</y>
+		<x>139.92</x>
+		<y>471.05</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -127,8 +127,8 @@
 	</image>
 	<image>
 		<id>15</id>
-		<x>131.69</x>
-		<y>474.01</y>
+		<x>234.47</x>
+		<y>471.90</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -136,15 +136,15 @@
 	</image>
 	<image>
 		<id>16</id>
-		<x>54.87</x>
-		<y>473.80</y>
+		<x>325.43</x>
+		<y>472.74</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
 		<path>pet/blue/cwjm_mingzilan1.png</path>
 	</image>
 	<button>
-		<id>18</id>
+		<id>40</id>
 		<x>223.80</x>
 		<y>100.92</y>
 		<anchorPtX>0.50</anchorPtX>
@@ -176,8 +176,8 @@
 	</image>
 	<image>
 		<id>21</id>
-		<x>275.43</x>
-		<y>179.78</y>
+		<x>93.51</x>
+		<y>166.48</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -185,8 +185,8 @@
 	</image>
 	<image>
 		<id>22</id>
-		<x>231.53</x>
-		<y>166.70</y>
+		<x>129.81</x>
+		<y>162.90</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -194,8 +194,8 @@
 	</image>
 	<image>
 		<id>23</id>
-		<x>185.54</x>
-		<y>162.49</y>
+		<x>176.46</x>
+		<y>164.81</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -203,8 +203,8 @@
 	</image>
 	<image>
 		<id>24</id>
-		<x>137.41</x>
-		<y>165.01</y>
+		<x>230.27</x>
+		<y>163.74</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -212,8 +212,8 @@
 	</image>
 	<image>
 		<id>25</id>
-		<x>92.87</x>
-		<y>171.77</y>
+		<x>282.60</x>
+		<y>173.67</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>

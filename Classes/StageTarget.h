@@ -23,6 +23,7 @@ public:
 	void starErased(int starType, int color);
 	std::vector<EraseStarsData> getEraseStarsLeft();
 	int getTargetScore(){ return m_targetScore; }
+	int getErasedStarAmount(int starType){ return m_record[starType]; }
 private:
 	void reset();
 
@@ -38,7 +39,8 @@ private:
 private:
 	int m_winType;
 	int m_targetScore;
-	std::vector<EraseStarsData> m_eraseStars;
+	std::vector<EraseStarsData> m_starsLeft;
+	std::unordered_map<int, int> m_record;
 	LogicGrid m_targetGrid;
 };
 #endif

@@ -6,6 +6,8 @@
 #define COMMON_PETS_AMOUNT 11
 #define PETS_AMOUNT (COLOR_AMOUNT * COMMON_PETS_AMOUNT)
 #define MAX_PET_LEVEL 5
+
+#define MAX_RUNESTORN_AMOUNT 5
 enum Colors
 {
 	kColorRandom,

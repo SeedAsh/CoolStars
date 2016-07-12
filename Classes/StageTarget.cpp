@@ -18,7 +18,9 @@ StageTarget::~StageTarget()
 
 void StageTarget::starErased(int starType, int color)
 {
-	for (auto iter = m_eraseStars.begin(); iter != m_eraseStars.end(); ++iter)
+	m_record[starType]++;
+
+	for (auto iter = m_starsLeft.begin(); iter != m_starsLeft.end(); ++iter)
 	{
 		auto data = *iter;
 		if (data.starType == starType && data.color == color)
@@ -51,7 +53,7 @@ void StageTarget::init()
 			target.color = param[i + 1];
 			target.num = param[i + 2];
 
-			m_eraseStars.push_back(target);
+			m_starsLeft.push_back(target);
 		}
 		break;
 	}
@@ -76,7 +78,7 @@ void StageTarget::reset()
 	m_targetGrid.x = 0; 
 	m_targetGrid.y = 0;
 
-	m_eraseStars.clear();
+	m_starsLeft.clear();
 }
 
 bool StageTarget::isGameOver()
@@ -109,9 +111,9 @@ bool StageTarget::isGetEnoughScore()
 
 bool StageTarget::isErasedEnoughStars()
 {
-	for (size_t i = 0; i < m_eraseStars.size(); ++i)
+	for (size_t i = 0; i < m_starsLeft.size(); ++i)
 	{
-		if (m_eraseStars[i].num > 0)
+		if (m_starsLeft[i].num > 0)
 		{
 			return false;
 		}
@@ -126,5 +128,5 @@ bool StageTarget::isReachTargetGrid()
 
 vector<EraseStarsData> StageTarget::getEraseStarsLeft()
 {
-	return m_eraseStars;
+	return m_starsLeft;
 }

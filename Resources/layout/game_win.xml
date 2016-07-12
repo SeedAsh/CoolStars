@@ -64,8 +64,8 @@
 	</image>
 	<image>
 		<id>11</id>
-		<x>239.57</x>
-		<y>498.25</y>
+		<x>242.52</x>
+		<y>485.17</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -73,8 +73,8 @@
 	</image>
 	<image>
 		<id>12</id>
-		<x>409.25</x>
-		<y>556.51</y>
+		<x>49.84</x>
+		<y>566.43</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -82,8 +82,8 @@
 	</image>
 	<image>
 		<id>13</id>
-		<x>307.95</x>
-		<y>546.16</y>
+		<x>179.21</x>
+		<y>546.37</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -91,8 +91,8 @@
 	</image>
 	<image>
 		<id>14</id>
-		<x>184.49</x>
-		<y>540.04</y>
+		<x>298.24</x>
+		<y>549.11</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -100,8 +100,8 @@
 	</image>
 	<image>
 		<id>15</id>
-		<x>70.94</x>
-		<y>563.89</y>
+		<x>419.38</x>
+		<y>565.79</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -145,8 +145,8 @@
 	</image>
 	<image>
 		<id>21</id>
-		<x>278.38</x>
-		<y>171.76</y>
+		<x>89.70</x>
+		<y>140.95</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -154,8 +154,8 @@
 	</image>
 	<image>
 		<id>22</id>
-		<x>237.44</x>
-		<y>154.67</y>
+		<x>129.81</x>
+		<y>138.63</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -163,8 +163,8 @@
 	</image>
 	<image>
 		<id>23</id>
-		<x>185.54</x>
-		<y>152.57</y>
+		<x>175.41</x>
+		<y>144.35</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -172,8 +172,8 @@
 	</image>
 	<image>
 		<id>24</id>
-		<x>138.47</x>
-		<y>146.23</y>
+		<x>224.36</x>
+		<y>149.18</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -181,15 +181,15 @@
 	</image>
 	<image>
 		<id>25</id>
-		<x>87.80</x>
-		<y>154.89</y>
+		<x>270.57</x>
+		<y>153.83</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
 		<path>stage/game_win/sljm_guozi.png</path>
 	</image>
 	<button>
-		<id>26</id>
+		<id>40</id>
 		<x>233.72</x>
 		<y>87.83</y>
 		<anchorPtX>0.50</anchorPtX>
@@ -260,7 +260,7 @@
 		<path>stage/game_win/sljm_shuzi.png</path>
 	</imageNum>
 	<imageNum>
-		<id>33</id>
+		<id>26</id>
 		<x>270.55</x>
 		<y>616.02</y>
 		<anchorPtX>0.00</anchorPtX>
@@ -270,5 +270,45 @@
 		<num>5</num>
 		<path>stage/game_win/sljm_shuzi.png</path>
 	</imageNum>
+	<animation>
+		<id>41</id>
+		<x>58.68</x>
+		<y>530.93</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>0.15</scale>
+		<path>pet_animation/niu_hong/niu_hong.ExportJson</path>
+		<movement>0</movement>
+	</animation>
+	<animation>
+		<id>42</id>
+		<x>183.40</x>
+		<y>522.06</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>0.15</scale>
+		<path>pet_animation/niu_hong/niu_hong.ExportJson</path>
+		<movement>0</movement>
+	</animation>
+	<animation>
+		<id>43</id>
+		<x>303.50</x>
+		<y>519.11</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>0.15</scale>
+		<path>pet_animation/niu_hong/niu_hong.ExportJson</path>
+		<movement>0</movement>
+	</animation>
+	<animation>
+		<id>44</id>
+		<x>415.13</x>
+		<y>531.77</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>0.15</scale>
+		<path>pet_animation/niu_hong/niu_hong.ExportJson</path>
+		<movement>0</movement>
+	</animation>
 </layout>
 

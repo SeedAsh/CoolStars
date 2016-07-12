@@ -31,6 +31,7 @@ public:
 
 	void setRuneStone(int value);
 	int getRuneStone(){ return m_runeStone; }
+	bool canGetRuneStoneReward();
 	
 	void setKey(int value);
 	int getKey(){ return m_key; }

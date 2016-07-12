@@ -58,6 +58,9 @@ struct StageConfig
 	vector<int> targetParam;
 	int step;
 	vector<int> direction;
+	vector<int> recommendPets;
+	vector<int> rewardWin;//饲料， 钻石，钥匙
+	vector<int> rewardFail;//饲料， 钻石，钥匙
 };
 
 struct StarsLoaderConfig
@@ -75,6 +78,7 @@ struct SystemConfig
 	int id;
 	int stageAmount;
 	int starPetEnergy;
+	std::vector<int> runeStoneReward; //饲料， 钻石，钥匙
 };
 
 struct StarsColorConfig
