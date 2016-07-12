@@ -6,6 +6,18 @@
 class UiLayout;
 class ListPetView;
 
+class PetSkillIcon : public cocos2d::CCSprite
+{
+public:
+	static PetSkillIcon *create(int petId);
+	virtual bool init();
+private:
+	PetSkillIcon(int petId) : m_petId(petId){}
+private:
+	int m_petId;
+};
+
+
 class PreStagePetSlotNode : public cocos2d::CCNode
 {
 public:
@@ -17,6 +29,7 @@ private:
 	virtual bool init();
 private:
 	int m_petId;
+	UiLayout *m_layout;
 };
 
 class PreStagePetSlot

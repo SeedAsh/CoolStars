@@ -7,7 +7,7 @@
 
 class UiLayout;
 class PetEntity;
-class StagePetSkillIcon;
+class StagePetSkillIconProgress;
 class StagePetNode
 	: public cocos2d::CCNode
 	, public cocos2d::CCTouchDelegate

@@ -2,14 +2,14 @@
 #define __STAGEPETSKILLICON_H__
 #include <functional>
 #include "cocos2d.h"
-class StagePetSkillIcon
+class StagePetSkillIconProgress
 	: public cocos2d::CCNode
 {
 public:
-	static StagePetSkillIcon *create(int petId);
+	static StagePetSkillIconProgress *create(int petId);
 	void runEnergyAddAction(int oldEnergy, std::function<void()> callback);
 private:
-	StagePetSkillIcon(int petId):m_petId(petId){}
+	StagePetSkillIconProgress(int petId):m_petId(petId){}
 	virtual bool init();
 	void setPercentage(float value, bool withAction, std::function<void()> callback = std::function<void()>());
 private:

@@ -3,7 +3,7 @@
 #include "PetManager.h"
 #include "UiLayout.h"
 #include "EmptyBox.h"
-#include "StagePetSkillIcon.h"
+#include "StagePetSkillIconProgress.h"
 using namespace std;
 USING_NS_CC;
 
@@ -128,7 +128,7 @@ void StagePetNode::showSkillEnergyAciton(int oldEnergy)
 {
 	EmptyBox *box = dynamic_cast<EmptyBox *>(m_layout->getChildById(5));
 	box->removeNode();
-	auto icon = StagePetSkillIcon::create(m_petId);
+	auto icon = StagePetSkillIconProgress::create(m_petId);
 	icon->runEnergyAddAction(oldEnergy, [=]()
 	{
 		box->removeNode();
@@ -142,7 +142,7 @@ void StagePetNode::showSkillIcon(bool isShow)
 	box->removeNode();
 	if (isShow)
 	{
-		auto icon = StagePetSkillIcon::create(m_petId);
+		auto icon = StagePetSkillIconProgress::create(m_petId);
 		box->setNode(icon);
 	}
 }

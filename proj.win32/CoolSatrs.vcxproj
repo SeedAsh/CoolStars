@@ -188,7 +188,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StageDataMgr.cpp" />
     <ClCompile Include="..\Classes\StageLayersMgr.cpp" />
     <ClCompile Include="..\Classes\StageMaskLayer.cpp" />
-    <ClCompile Include="..\Classes\StagePetSkillIcon.cpp" />
+    <ClCompile Include="..\Classes\StagePetSkillIconProgress.cpp" />
     <ClCompile Include="..\Classes\StarsController.cpp" />
     <ClCompile Include="..\Classes\StageOperator.cpp" />
     <ClCompile Include="..\Classes\StagePanelUtil.cpp" />
@@ -281,7 +281,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\StageDataMgr.h" />
     <ClInclude Include="..\Classes\StageLayersMgr.h" />
     <ClInclude Include="..\Classes\StageMaskLayer.h" />
-    <ClInclude Include="..\Classes\StagePetSkillIcon.h" />
+    <ClInclude Include="..\Classes\StagePetSkillIconProgress.h" />
     <ClInclude Include="..\Classes\StarsController.h" />
     <ClInclude Include="..\Classes\StageOperator.h" />
     <ClInclude Include="..\Classes\StagePanelUtil.h" />

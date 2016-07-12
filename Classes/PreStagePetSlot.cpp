@@ -8,6 +8,48 @@
 USING_NS_CC;
 using namespace std;
 
+PetSkillIcon *PetSkillIcon::create(int petId)
+{
+	PetSkillIcon  *icon = new PetSkillIcon(petId);
+	icon->init();
+	icon->autorelease();
+	return icon;
+}
+
+bool PetSkillIcon::init()
+{
+	auto pet = PetManager::petMgr()->getPetById(m_petId);
+	auto iconPath = pet->getPetData().petSkillRes;
+
+	CCSprite::initWithFile(iconPath.c_str());
+	auto spr = CCSprite::create(iconPath.c_str());
+	auto size = spr->getContentSize();
+	spr->setPosition(ccpMult(size, 0.5f));
+	//addChild(spr);
+
+	int commandId = pet->getPetData().commonid;
+	char str[100] = { 0 };
+	auto numSize = CCSprite::create("num/ty_ziti6.png")->getContentSize();
+	if (commandId == kPetDragon)
+	{
+		sprintf(str, ";%d", pet->getPetData().skillPower);
+		auto pLabel = CCLabelAtlas::create(str, "num/ty_ziti6.png", numSize.width / 12, numSize.height, '0');
+		pLabel->setAnchorPoint(ccp(0.5f, 0.5f));
+		pLabel->setPosition(ccpMult(size, 0.5));
+		addChild(pLabel);
+	}
+	else if (commandId == kPetTiger)
+	{
+		sprintf(str, ":%d", pet->getPetData().skillPower);
+		auto pLabel = CCLabelAtlas::create(str, "num/ty_ziti6.png", numSize.width / 12, numSize.height, '0');
+		pLabel->setAnchorPoint(ccp(0.5f, 0.5f));
+		pLabel->setPosition(ccpMult(size, 0.5));
+		addChild(pLabel);
+	}
+	setContentSize(size);
+	return true;
+}
+//////////////////////////////////////////////////////////////////////////
 PreStagePetSlotNode *PreStagePetSlotNode::create(int petId)
 {
 	auto node = new PreStagePetSlotNode(petId);
@@ -21,13 +63,16 @@ bool PreStagePetSlotNode::init()
 	auto pet = PetManager::petMgr()->getPetById(m_petId);
 	if (pet)
 	{
+		m_layout = UiLayout::create("layout/pre_stage_pet_slot_node.xml");
+		addChild(m_layout);
 		auto path = pet->getPetData().petImgRes;
-		CCSprite* icon = CCSprite::create(path.c_str());
+		CCSprite *petImg = dynamic_cast<CCSprite *>(m_layout->getChildById(5));
+		petImg->initWithFile(path.c_str());
+		
+		EmptyBox *iconBox = dynamic_cast<EmptyBox *>(m_layout->getChildById(2));
+		iconBox->setNode(PetSkillIcon::create(m_petId));
 
-		icon->ignoreAnchorPointForPosition(false);
-		icon->setAnchorPoint(ccp(0, 0));
-		addChild(icon);
-		setContentSize(icon->getContentSize());
+		setContentSize(m_layout->getContentSize());
 	}
 	return true;
 }

@@ -1,42 +1,64 @@
-#include "StagePetSkillIcon.h"
+#include "StagePetSkillIconProgress.h"
 #include "PetManager.h"
 #include "CCFunctionAction.h"
 USING_NS_CC;
 using namespace std;
-
-StagePetSkillIcon *StagePetSkillIcon::create(int petId)
+StagePetSkillIconProgress *StagePetSkillIconProgress::create(int petId)
 {
-	StagePetSkillIcon *icon = new StagePetSkillIcon(petId);
-	icon->init();
-	icon->autorelease();
-	return icon;
+	StagePetSkillIconProgress *progress = new StagePetSkillIconProgress(petId);
+	progress->init();
+	progress->autorelease();
+	return progress;
 }
 
-bool StagePetSkillIcon::init()
+bool StagePetSkillIconProgress::init()
 {
 	auto pet = PetManager::petMgr()->getPetById(m_petId);
 	auto iconPath = pet->getPetData().petSkillRes;
-
 	auto spr = CCSprite::create(iconPath.c_str());
 	auto size = spr->getContentSize();
 	spr->setPosition(ccpMult(size, 0.5f));
 	addChild(spr);
+
 	auto mask = CCSprite::create("pet_skill_icon/jntb_mask.png");
 	mask->setPosition(ccpMult(size, 0.5f));
 	addChild(mask);
+	
 	setContentSize(size);
-
+	
 	m_progress = CCProgressTimer::create(CCSprite::create(iconPath.c_str()));
 	m_progress->setType(kCCProgressTimerTypeRadial);
 	m_progress->setPosition(ccpMult(size, 0.5f));
 	addChild(m_progress);
+
 	int maxEnergy = pet->getPetData().maxEnergy;
 	setPercentage((float)pet->getPetData().energy / maxEnergy, false);
+
+	//不能直接用PetSkillIcon,因为CCProgressTimer只是支持CCSprite
+	int commandId = pet->getPetData().commonid;
+	char str[100] = { 0 };
+	auto numSize = CCSprite::create("num/ty_ziti6.png")->getContentSize();
+	if (commandId == kPetDragon)
+	{
+		sprintf(str, ";%d", pet->getPetData().skillPower);
+		auto pLabel = CCLabelAtlas::create(str, "num/ty_ziti6.png", numSize.width / 12, numSize.height, '0');
+		pLabel->setAnchorPoint(ccp(0.5f, 0.5f));
+		pLabel->setPosition(ccpMult(size, 0.5));
+		addChild(pLabel);
+	}
+	else if (commandId == kPetTiger)
+	{
+		sprintf(str, ":%d", pet->getPetData().skillPower);
+		auto pLabel = CCLabelAtlas::create(str, "num/ty_ziti6.png", numSize.width / 12, numSize.height, '0');
+		pLabel->setAnchorPoint(ccp(0.5f, 0.5f));
+		pLabel->setPosition(ccpMult(size, 0.5));
+		addChild(pLabel);
+	}
 
 	return true;
 }
 
-void StagePetSkillIcon::setPercentage(float value, bool withAction, std::function<void()> callback)
+void StagePetSkillIconProgress::setPercentage(float value, bool withAction, std::function<void()> callback)
 {
 	value = max(0, min(value * 100, 100));
 	if (withAction)
@@ -53,7 +75,7 @@ void StagePetSkillIcon::setPercentage(float value, bool withAction, std::functio
 	}
 }
 
-void StagePetSkillIcon::runEnergyAddAction(int oldEnergy, std::function<void()> callback)
+void StagePetSkillIconProgress::runEnergyAddAction(int oldEnergy, std::function<void()> callback)
 {
 	auto pet = PetManager::petMgr()->getPetById(m_petId);
 	int maxEnergy = pet->getPetData().maxEnergy;

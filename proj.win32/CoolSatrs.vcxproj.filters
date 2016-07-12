@@ -303,7 +303,7 @@
     <ClCompile Include="..\Classes\StageDataMgr.cpp">
       <Filter>GameStage\StageModel</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\StagePetSkillIcon.cpp">
+    <ClCompile Include="..\Classes\StagePetSkillIconProgress.cpp">
       <Filter>GameStage\StageUi</Filter>
     </ClCompile>
   </ItemGroup>
@@ -578,7 +578,7 @@
     <ClInclude Include="..\Classes\StageDataMgr.h">
       <Filter>GameStage\StageModel</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\StagePetSkillIcon.h">
+    <ClInclude Include="..\Classes\StagePetSkillIconProgress.h">
       <Filter>GameStage\StageUi</Filter>
     </ClInclude>
   </ItemGroup>
