@@ -4,6 +4,7 @@
 #include "StageSavingHelper.h"
 #include "CommonMacros.h"
 #include "StageDataMgr.h"
+#include "UserInfo.h"
 
 USING_NS_CC;
 using namespace std;
@@ -178,6 +179,8 @@ void StarsController::removeStarNode(StarNode *node)
 void StarsController::gameOver(bool isWon)
 {
 	StageSavingHelper::saveCurStageData();
+	int value = UserInfo::theInfo()->getRuneStone();
+	UserInfo::theInfo()->setRuneStone(value + 1);
 	NOTIFY_VIEWS(onGameOver, isWon);
 }
 

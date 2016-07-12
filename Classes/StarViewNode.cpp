@@ -71,6 +71,14 @@ void StarViewNode::doEraseAction()
 		StageLayersMgr::theMgr()->colorStarErased(pos, attr.color);
 		return;
 	}
+
+	static const string resPath = "stage/star_explosion/common/baozatexiao.ExportJson";
+	string armatureName = "baozatexiao";
+
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo(resPath.c_str());
+	auto armature = CCArmature::create(armatureName.c_str());
+
+
 	CCParticleExplosion *pEmitter = CCParticleExplosion::create();
 	string fileImage = m_model->getExplosionPath();
 	if (fileImage.empty()) return;
