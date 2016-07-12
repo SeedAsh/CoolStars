@@ -4,6 +4,8 @@
 #include "CommonUtil.h"
 #include "LogicGridUtil.h"
 #include "StageDataMgr.h"
+#include "StageScene.h"
+#include "StageUiLayer.h"
 using namespace std;
 using namespace CommonUtil;
 USING_NS_CC; 
@@ -140,7 +142,7 @@ void StageOperator::reOrderStars()
 	}
 }
 
-void StageOperator::randomReplaceToDiamond(int num)
+void StageOperator::randomReplaceToDiamond(int petId, int num)
 {
 	auto stars = StarsController::theModel()->getStarNodes();
 	vector<LogicGrid> grids;
@@ -163,12 +165,16 @@ void StageOperator::randomReplaceToDiamond(int num)
 			StarAttr targetStarAttr = star->getAttr();
 			targetStarAttr.color = 0;
 			targetStarAttr.type = kDiamond;
-			StarsController::theModel()->replaceStar(targetStarAttr);
+			auto uiLayer = StageScene::theScene()->getStageUiLayer();
+			uiLayer->showPetSpreadStarsAction(petId, targetStarAttr, [=]()
+			{
+				StarsController::theModel()->replaceStar(targetStarAttr);
+			});
 		}
 	}
 }
 
-void StageOperator::randomReplaceToKey(int num)
+void StageOperator::randomReplaceToKey(int petId, int num)
 {
 	auto stars = StarsController::theModel()->getStarNodes();
 	vector<LogicGrid> grids;
@@ -191,7 +197,11 @@ void StageOperator::randomReplaceToKey(int num)
 			StarAttr targetStarAttr = star->getAttr();
 			targetStarAttr.color = 0;
 			targetStarAttr.type = kKey;
-			StarsController::theModel()->replaceStar(targetStarAttr);
+			auto uiLayer = StageScene::theScene()->getStageUiLayer();
+			uiLayer->showPetSpreadStarsAction(petId, targetStarAttr, [=]()
+			{
+				StarsController::theModel()->replaceStar(targetStarAttr);
+			});
 		}
 	}
 }

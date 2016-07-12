@@ -23,6 +23,8 @@
 #include "StageDataMgr.h"
 #include "CCFunctionAction.h"
 #include "StageScene.h"
+#include "StarsController.h"
+#include "StarViewNode.h"
 
 USING_NS_CC;
 using namespace std;
@@ -296,5 +298,33 @@ void StageUiLayer::onToNormalState()
 	for (auto iter = m_petViews.begin(); iter != m_petViews.end(); ++iter)
 	{
 		iter->second->setVisible(true);
+	}
+}
+
+void StageUiLayer::showPetSpreadStarsAction(int petId, const StarAttr &attr, function<void()> callback)
+{
+	auto iter = m_petViews.find(petId);
+	if (iter != m_petViews.end())
+	{
+		static const float kDutation = 0.3f;
+
+		auto starNode = StarsController::theModel()->getStarNode(attr.grid);
+		auto starView = starNode->getView();
+		auto targetPos = starView->getParent()->convertToWorldSpace(starView->getPosition());
+
+		auto tempNode = StarNode::createNodeFatory(attr);
+		auto petView = iter->second;
+		auto sourcePos = petView->getParent()->convertToWorldSpace(petView->getPosition());
+
+		CCSprite *starImg = CCSprite::create(tempNode->getResPath().c_str());
+		starImg->setPosition(sourcePos);
+		addChild(starImg);
+		auto moveTo = CCMoveTo::create(kDutation, targetPos);
+		auto func = CCFunctionAction::create([=]()
+		{
+			starImg->removeFromParent();
+			if (callback) callback();
+		});
+		starImg->runAction(CCSequence::create(CCEaseExponentialInOut::create(moveTo), func, NULL));
 	}
 }

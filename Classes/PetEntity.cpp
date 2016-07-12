@@ -176,7 +176,7 @@ void PetSnake::toStarSkill(const LogicGrid &grid)
 
 void PetHorse::noTargetSkill()
 {
-	StageOp->randomReplaceToDiamond(m_data.skillPower);
+	StageOp->randomReplaceToDiamond(m_data.petId, m_data.skillPower);
 }
 //////////////////////////////////////////////////////////////////////////////
 
@@ -216,7 +216,7 @@ void PetRooster::noTargetSkill()
 //////////////////////////////////////////////////////////////////////////////
 void PetDog::noTargetSkill()
 {
-	StageOp->randomReplaceToKey(m_data.skillPower);
+	StageOp->randomReplaceToKey(m_data.petId, m_data.skillPower);
 }
 
 

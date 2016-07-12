@@ -27,6 +27,7 @@ public:
 	void initPets();
 	void initBottomUi();
 	std::unordered_map<int, cocos2d::CCPoint> getPetViewsInfo();
+	void showPetSpreadStarsAction(int petId, const StarAttr &attr, std::function<void()> callback);
 public:
 	virtual void onStepsChanged();
 	virtual void onScoreChanged();

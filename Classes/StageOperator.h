@@ -19,8 +19,8 @@ public:
 
 	void changeColor(const StarAttr &attr);
 	void randomChangeColor(int color, int num);
-	void randomReplaceToDiamond(int num);
-	void randomReplaceToKey(int num);
+	void randomReplaceToDiamond(int petId, int num);
+	void randomReplaceToKey(int petId, int num);
 
 	void addPetEnergy(int petId, int value);
 	void removePetDebuff(int who);
