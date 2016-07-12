@@ -108,7 +108,7 @@ void MainScene::recordPanel(int panelId, int usage)
 	m_panelRecord.push_back(record);
 }
 
-void MainScene::showPanel(int panelId, bool closeBehind)
+void MainScene::showPanel(int panelId, int usage, bool closeBehind)
 {
 	BasePanel *panel = NULL;
 	switch (panelId)
@@ -123,7 +123,7 @@ void MainScene::showPanel(int panelId, bool closeBehind)
 		panel = ShopScene::create();
 		break;
 	case kLotteryPanel:
-		panel = LotteryScene::create();
+		panel = LotteryScene::create(usage);
 		break;
 	case kRankingPanel:
 		panel = RankingScene::create();

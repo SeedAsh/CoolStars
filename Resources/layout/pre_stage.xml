@@ -1,8 +1,8 @@
 <layout width="480.000000" height="800.000000">
 	<image>
 		<id>9</id>
-		<x>238.50</x>
-		<y>258.49</y>
+		<x>242.51</x>
+		<y>272.63</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -28,32 +28,32 @@
 	</image>
 	<emptyBox>
 		<id>11</id>
-		<x>58.67</x>
-		<y>120.73</y>
+		<x>55.62</x>
+		<y>131.92</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>12</id>
-		<x>152.60</x>
-		<y>120.43</y>
+		<x>147.59</x>
+		<y>131.62</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>13</id>
-		<x>245.20</x>
-		<y>120.68</y>
+		<x>241.15</x>
+		<y>131.44</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
 	</emptyBox>
 	<emptyBox>
 		<id>14</id>
-		<x>338.55</x>
-		<y>120.12</y>
+		<x>335.44</x>
+		<y>131.09</y>
 		<anchorPtX>0.00</anchorPtX>
 		<anchorPtY>0.00</anchorPtY>
 		<scale>1.00</scale>
@@ -70,7 +70,7 @@
 	<image>
 		<id>21</id>
 		<x>240.39</x>
-		<y>177.87</y>
+		<y>185.89</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>
@@ -78,8 +78,8 @@
 	</image>
 	<image>
 		<id>10</id>
-		<x>241.36</x>
-		<y>268.15</y>
+		<x>238.62</x>
+		<y>273.49</y>
 		<anchorPtX>0.50</anchorPtX>
 		<anchorPtY>0.50</anchorPtY>
 		<scale>1.00</scale>

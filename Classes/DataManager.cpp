@@ -60,7 +60,7 @@ void DataManager::loadStarsConfig()
 }
 
 const StarsConfig &DataManager::getStarsConfig(int starType)
-{ 
+{
 	assert(starType > kEmpty && starType < kStarTypeCount);
 	if (starType > kEmpty && starType < kStarTypeCount)
 	{
@@ -171,12 +171,12 @@ void DataManager::loadStageConfig()
 		stage.tagetType = atoi(rowData[1]);
 		stage.targetScore = atoi(rowData[2]);
 		stage.targetParam = CommonUtil::parseStrToInts(rowData[3]);
-		stage.step= atoi(rowData[4]);
+		stage.step = atoi(rowData[4]);
 		stage.direction = CommonUtil::parseStrToInts(rowData[5]);
 		stage.recommendPets = CommonUtil::parseStrToInts(rowData[6]);
 		stage.rewardWin = CommonUtil::parseStrToInts(rowData[7]);
 		stage.rewardFail = CommonUtil::parseStrToInts(rowData[8]);
-		
+
 		m_stagesConfig.push_back(stage);
 	}
 }
@@ -202,7 +202,7 @@ void DataManager::loadStarsLoaderConfig()
 		config.score = atoi(data[3]);
 		config.percent = atoi(data[4]);
 		config.num = atoi(data[5]);
-	
+
 		m_starsLoaderConfig.push_back(config);
 	}
 }
@@ -224,7 +224,7 @@ void DataManager::getNewStageStarsData(std::vector<std::vector<StageStarInfo>> &
 {
 	vector<StageConfig> m_stagesConfig;
 	SqliteHelper sqlHelper(DB_STAGE);
-	
+
 	char str[100] = { 0 };
 	sprintf(str, "select * from stage%d_stars", stageNum);
 	auto result = sqlHelper.readRecord(str);
@@ -258,6 +258,7 @@ void DataManager::loadSystemConfig()
 	m_systemConfig.stageAmount = atoi(data[0]);
 	m_systemConfig.starPetEnergy = atoi(data[1]);
 	m_systemConfig.runeStoneReward = CommonUtil::parseStrToInts(data[2]);
+	m_systemConfig.lotteryCanGetPetStage = atoi(data[3]);
 }
 
 const SystemConfig &DataManager::getSystemConfig()
@@ -446,14 +447,20 @@ void DataManager::loadLotteryOutput()
 		config.id = atoi(data[0]);
 		config.amount = atoi(data[1]);
 		config.percent = atof(data[2]);
-
-		config.desc = data[3];
+		config.resPath = data[3];
+		config.desc = data[4];
 
 		m_lotteryOutputConfig.push_back(config);
 	}
 }
 
-const vector<LotteryOutputConfig> &DataManager::getLotteryOutputConfig()
+const LotteryOutputConfig &DataManager::getLotteryOutputConfig(int id)
+{
+	assert(id >= 0 && id < m_lotteryOutputConfig.size());
+	return m_lotteryOutputConfig[id];
+}
+
+const vector<LotteryOutputConfig> &DataManager::getLotteryOutputConfigs()
 {
 	return m_lotteryOutputConfig;
 }

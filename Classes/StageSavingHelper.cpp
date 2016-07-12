@@ -70,9 +70,6 @@ bool StageSavingHelper::getLastSavedStars(std::vector<std::vector<int>> &stars)
 	return true;
 }
 
-
-
-
 void StageSavingHelper::saveCurStageData()
 {
 	//保存当前关卡id 分数 最高分
@@ -82,10 +79,10 @@ void StageSavingHelper::saveCurStageData()
 	SqliteHelper helper(DB_SAVING);
 
 	auto stageInfo = StageDataMgr::theMgr();
-	int curStage = stageInfo->getCurStage();
+	int topStage = stageInfo->getTopStage();
 	int topScore = stageInfo->getTopScore();
 	sprintf(str, "replace into save_cur_stage values(1, %d,%d);"
-		, curStage, topScore);
+		, topStage, topScore);
 	
 	helper.executeSql(str);
 	helper.closeDB();

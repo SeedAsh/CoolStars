@@ -111,10 +111,8 @@ void StagePropsClickState::clickStar(const LogicGrid &grid)
 	{
 		PropManager::propMgr()->usePropBomb(starType, grid);
 	}
-	else
-	{
-		m_owner->enterNormalState();
-	}
+
+	m_owner->enterNormalState();
 }
 
 void StagePropsClickState::clickPet(int petId)

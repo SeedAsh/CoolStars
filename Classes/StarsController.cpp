@@ -178,9 +178,12 @@ void StarsController::removeStarNode(StarNode *node)
 
 void StarsController::gameOver(bool isWon)
 {
-	StageSavingHelper::saveCurStageData();
 	int value = UserInfo::theInfo()->getRuneStone();
 	UserInfo::theInfo()->setRuneStone(value + 1);
+	if (isWon)
+	{
+		StageDataMgr::theMgr()->toNextStage();
+	}
 	NOTIFY_VIEWS(onGameOver, isWon);
 }
 

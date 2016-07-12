@@ -60,6 +60,11 @@ void StageDataMgr::toNextStage()
 	if (!isTheLastStage())
 	{
 		m_curStage++;
+		if (m_curStage > m_topStage)
+		{
+			m_topStage = m_curStage;
+			StageSavingHelper::saveCurStageData();
+		}
 	}
 }
 

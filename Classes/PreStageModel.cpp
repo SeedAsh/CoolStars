@@ -21,7 +21,7 @@ void PreStageModel::selectPet(int newPetId, int oldPetId)
 	}
 
 	iter = find(m_selectedPets.begin(), m_selectedPets.end(), newPetId);
-	if (iter == m_selectedPets.end() && petMgr->ownThisPet(newPetId))
+	if (iter == m_selectedPets.end() && petMgr->ownedThisPet(newPetId))
 	{
 		m_selectedPets.push_back(newPetId);
 	}

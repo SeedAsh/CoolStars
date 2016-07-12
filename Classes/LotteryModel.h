@@ -22,7 +22,8 @@ class LotteryModel
 {
 public:
 	static LotteryModel *theModel();
-	LotteryData doLottery();
+	LotteryData getLotteryResult();
+	void doLottery(const LotteryData &data);
 	
 private:
 	std::vector<int> getPetsCanNotOwn();

@@ -11,6 +11,7 @@
 #include "UserInfo.h"
 #include "PetManager.h"
 #include "CCFunctionAction.h"
+#include "LotteryScene.h"
 using namespace std;
 USING_NS_CC;
 
@@ -79,7 +80,7 @@ void GameResultLayer::initRewardData()
 
 void GameResultLayer::onConfirmBtnClicked(CCObject *pSender)
 {
-	handelConfirm();
+	MainScene::theScene()->showPanel(kLotteryPanel, kLotterySceneFromStageScene);
 }
 
 bool GameResultLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
@@ -207,19 +208,9 @@ void GameWinLayer::initPanel()
 	}
 }
 
-void GameWinLayer::handelConfirm()
-{
-	MainScene::theScene()->showPanel(kMainMenu);
-
-	return;
-	auto info = StageDataMgr::theMgr();
-	info->toNextStage();
-	MainScene::theScene()->showPanel(kStageView);
-}
-
 void GameWinLayer::addGameResultReward()
 {
-	int curStage = StageDataMgr::theMgr()->getCurStage();
+	int curStage = StageDataMgr::theMgr()->getCurStage() - 1;
 	auto rewards = DataManagerSelf->getStageConfig(curStage).rewardWin;
 	m_reward.food += rewards[0];
 	m_reward.diamond += rewards[1];
@@ -260,18 +251,7 @@ void GameFailLayer::addGameResultReward()
 	m_reward.key += rewards[2];
 }
 
-void GameFailLayer::handelConfirm()
-{
-	MainScene::theScene()->showPanel(kMainMenu);
-}
-
 void GameFailLayer::onBuyPetBtnClicked(CCObject *pSender)
 {
 
-}
-
-bool GameFailLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
-{
-	auto node = m_layout->getChildById(6);
-	return true;
 }

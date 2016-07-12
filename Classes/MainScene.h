@@ -18,7 +18,7 @@ public:
 	static MainScene* theScene();
 	bool init();
 
-	void showPanel(int panelId, bool closeBehind = true);
+	void showPanel(int panelId, int usage = 0, bool closeBehind = true);
 	void showDialog(ScaleDialog *dialog);
 	void showGuideView(int guideId);
 	void backPanel();

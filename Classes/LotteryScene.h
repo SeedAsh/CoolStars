@@ -3,6 +3,9 @@
 #include "cocos2d.h"
 #include "BasePanel.h"
 #include "TouchNode.h"
+#include <functional>
+#include "UserInfo.h"
+#include "LotteryModel.h"
 
 class UiLayout;
 
@@ -11,31 +14,48 @@ class LotteryNode
 {
 public:
 	static LotteryNode *create(int touchPriority);
-	virtual bool init();
+	void setHandle(std::function<void()> handle){ m_handle = handle; }
+	bool isOpened();
 private:
-	LotteryNode(int touchPriority):TouchNode(touchPriority){}
+	virtual bool init();
+	LotteryNode(int touchPriority);
 	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
+	cocos2d::CCAction *getRewardOutAction(LotteryData data);
 private:
 	UiLayout *m_layout;
+	std::function<void()> m_handle;
+	bool m_isOpened;
+};
+
+enum LotterySceneUsage
+{
+	kLotterySceneFromMenuScene,
+	kLotterySceneFromStageScene,
 };
 
 class LotteryScene 
 	: public BasePanel
+	, public IUserInfoView
 {
 public:
-	CREATE_FUNC(LotteryScene);
+	static LotteryScene *create(int usage);
 	virtual bool init();
 private:
 	virtual void onEnter();
 	virtual void onExit();
-	LotteryScene(){}
-	~LotteryScene(){}
+	LotteryScene(int usage);
 	void initLayout();
 	void initBottomLayout();
+	void refreshUi();
 	void toPetScene(cocos2d::CCObject* pSender);
-	void startLottery(cocos2d::CCObject* pSender);
+	void onStartBtnClicked(cocos2d::CCObject* pSender);
+	void onOpenReward();
+	virtual void onKeyChanged();
 private:
 	UiLayout *m_layout;
 	UiLayout *m_bottomLayout;
+	static const int kRewardBoxNum = 9;
+	static const int kMinOpenBoxNum = 3;
+	int m_openedBoxNum;
 };
 #endif

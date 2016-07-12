@@ -28,7 +28,7 @@ void PetManager::init()
 	m_curPets = PetSavingHelper::getCurActivePets();
 	for (size_t i = 0; i < m_curPets.size(); ++i)
 	{
-		assert(ownThisPet(m_curPets[i]));
+		assert(ownedThisPet(m_curPets[i]));
 	}
 }
 
@@ -38,7 +38,7 @@ vector<int> PetManager::getOwnedPetIds()
 	for (auto iter = m_pets.begin(); iter != m_pets.end(); ++iter)
 	{
 		int petId = iter->first;
-		if (ownThisPet(petId))
+		if (ownedThisPet(petId))
 		{
 			ids.push_back(iter->first);
 		}
@@ -52,7 +52,7 @@ vector<int> PetManager::getNotOwnedPetIds()
 	for (auto iter = m_pets.begin(); iter != m_pets.end(); ++iter)
 	{
 		int petId = iter->first;
-		if (!ownThisPet(petId))
+		if (!ownedThisPet(petId))
 		{
 			ids.push_back(iter->first);
 		}
@@ -60,11 +60,20 @@ vector<int> PetManager::getNotOwnedPetIds()
 	return ids;
 }
 
-bool PetManager::ownThisPet(int id)
+bool PetManager::ownedThisPet(int id)
 {
 	auto pet = getPetById(id);
 	if (!pet) return false;
 	return pet->getPetData().level > 0; //大于0级，玩家才拥有该宠物
+}
+
+void PetManager::addNewPet(int petId)
+{
+	if (!ownedThisPet(petId))
+	{
+		auto pet = getPetById(petId);
+		pet->getThisNewPet();
+	}
 }
 
 PetEntity *PetManager::getPetById(int id)

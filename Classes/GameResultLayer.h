@@ -19,7 +19,6 @@ class GameResultLayer
 public:
 	bool init(std::string xmlFile);
 protected:
-	virtual void handelConfirm(){}
 	virtual void addGameResultReward(){}
 
 private:
@@ -47,7 +46,6 @@ public:
 	bool init();
 private:
 	void initPanel();
-	virtual void handelConfirm();
 	void addGameResultReward();
 private:
 };
@@ -59,10 +57,8 @@ public:
 	CREATE_FUNC(GameFailLayer);
 	bool init();
 private:
-	virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 	void initPanel();
 	void onBuyPetBtnClicked(CCObject *pSender);
-	virtual void handelConfirm();
 	void addGameResultReward();
 private:
 

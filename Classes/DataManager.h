@@ -72,7 +72,8 @@ public:
 	const LotteryPetConfig *getLotteryPetConfigByStage(int stage);
 
 	void loadLotteryOutput();
-	const std::vector<LotteryOutputConfig> &getLotteryOutputConfig();
+	const LotteryOutputConfig &getLotteryOutputConfig(int id);
+	const std::vector<LotteryOutputConfig> &getLotteryOutputConfigs();
 
 	void loadGuideConfig();
 	const std::vector<GuideConfig> &getGuideConfig();

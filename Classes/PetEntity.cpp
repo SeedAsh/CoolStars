@@ -79,6 +79,13 @@ bool PetEntity::isMaxLevel()
 	return m_data.level == MAX_PET_LEVEL;
 }
 
+void PetEntity::getThisNewPet()
+{
+	m_data.level = 1;
+	refreshPetData();
+	PetSavingHelper::setPetState(m_data);
+}
+
 void PetEntity::upgrade()
 {
 	int foodNum = UserInfo::theInfo()->getFood();

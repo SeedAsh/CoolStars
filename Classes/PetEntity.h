@@ -60,6 +60,7 @@ public:
 
 	bool isMaxLevel();
 	void upgrade();
+	void getThisNewPet();
 	
 	void useNoTargetSkill();
 	void useToStarSkill(const LogicGrid &grid);

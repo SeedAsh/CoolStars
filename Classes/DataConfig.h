@@ -79,6 +79,7 @@ struct SystemConfig
 	int stageAmount;
 	int starPetEnergy;
 	std::vector<int> runeStoneReward; //ËÇÁÏ£¬ ×êÊ¯£¬Ô¿³×
+	int lotteryCanGetPetStage;
 };
 
 struct StarsColorConfig
@@ -139,6 +140,7 @@ struct LotteryOutputConfig
 	int id;
 	int amount;
 	float percent;
+	std::string resPath;
 	std::string desc;
 };
 
