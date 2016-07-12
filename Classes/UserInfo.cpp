@@ -80,7 +80,7 @@ void UserInfo::setStrength(int value)
 
 void UserInfo::setRuneStone(int value)
 {
-	m_runeStone = value;
+	m_runeStone = max(0, min(value, MAX_RUNESTORN_AMOUNT));
 
 	SqliteHelper sqlHelper(DB_SAVING);
 	char str[100] = { 0 };

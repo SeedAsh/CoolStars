@@ -34,6 +34,7 @@ private:
 	void addFood(int value);
 	void addDiamond(int value);
 	void addKey(int value);
+	void saveRewards();
 protected:
 	UiLayout *m_layout;
 	GameResultReward m_reward;

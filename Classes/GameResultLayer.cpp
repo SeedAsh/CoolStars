@@ -20,6 +20,7 @@ bool GameResultLayer::init(string xmlFile)
 
 	m_layout = UiLayout::create(xmlFile.c_str());
 	initRewardData();
+	saveRewards();
 	initLayout();
 
 	addChild(m_layout);
@@ -108,8 +109,20 @@ void GameResultLayer::getRuneStoneReward()
 	UserInfo::theInfo()->setRuneStone(0);
 }
 
+void GameResultLayer::saveRewards()
+{
+	int oldFood = UserInfo::theInfo()->getFood();
+	UserInfo::theInfo()->setFood(m_reward.food + oldFood);
+	int oldDiamond = UserInfo::theInfo()->getDiamond();
+	UserInfo::theInfo()->setDiamond(m_reward.diamond + oldDiamond);
+	int oldKey = UserInfo::theInfo()->getKey();
+	UserInfo::theInfo()->setKey(m_reward.key + oldKey);
+}
+
 void GameResultLayer::addFood(int value)
 {
+	m_reward.food += value;
+
 	CCSprite *spr = CCSprite::create("common/title_food.png");
 	m_layout->addChild(spr);
 	spr->setPosition(m_layout->getChildById(8)->getPosition());
@@ -118,16 +131,17 @@ void GameResultLayer::addFood(int value)
 	auto func = CCFunctionAction::create([=]()
 	{
 		CCLabelAtlas *foodNum = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(30));
-		int food = m_reward.food + value;
-		foodNum->setString(CommonUtil::intToStr(food));
-		int oldValue = UserInfo::theInfo()->getFood();
-		UserInfo::theInfo()->setFood(food + oldValue);
+		foodNum->setString(CommonUtil::intToStr(m_reward.food));
+		int oldFood = UserInfo::theInfo()->getFood();
+		UserInfo::theInfo()->setFood(value + oldFood);
 	});
 	spr->runAction(CCSequence::create(moveAction, func, NULL));
 }
 
 void GameResultLayer::addDiamond(int value)
 {
+	m_reward.diamond += value;
+
 	CCSprite *spr = CCSprite::create("common/title_diamond.png");
 	m_layout->addChild(spr);
 	spr->setPosition(m_layout->getChildById(8)->getPosition());
@@ -136,16 +150,17 @@ void GameResultLayer::addDiamond(int value)
 	auto func = CCFunctionAction::create([=]()
 	{
 		CCLabelAtlas *diamondNum = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(31));
-		int diamond = m_reward.diamond + value;
-		diamondNum->setString(CommonUtil::intToStr(diamond));
-		int oldValue = UserInfo::theInfo()->getDiamond();
-		UserInfo::theInfo()->setDiamond(diamond + oldValue);
+		diamondNum->setString(CommonUtil::intToStr(m_reward.diamond));
+		int oldDiamond = UserInfo::theInfo()->getDiamond();
+		UserInfo::theInfo()->setDiamond(value + oldDiamond);
 	});
 	spr->runAction(CCSequence::create(moveAction, func, NULL));
 }
 
 void GameResultLayer::addKey(int value)
 {
+	m_reward.key += value;
+
 	CCSprite *spr = CCSprite::create("lottery/cjjm_yaoshi.png");
 	m_layout->addChild(spr);
 	spr->setPosition(m_layout->getChildById(8)->getPosition());
@@ -154,10 +169,9 @@ void GameResultLayer::addKey(int value)
 	auto func = CCFunctionAction::create([=]()
 	{
 		CCLabelAtlas *keyNum = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(32));
-		int key = m_reward.key + value;
-		keyNum->setString(CommonUtil::intToStr(key));
-		int oldValue = UserInfo::theInfo()->getKey();
-		UserInfo::theInfo()->setKey(key + oldValue);
+		keyNum->setString(CommonUtil::intToStr(m_reward.key));
+		int oldKey = UserInfo::theInfo()->getKey();
+		UserInfo::theInfo()->setKey(value + oldKey);
 	});
 	spr->runAction(CCSequence::create(moveAction, func, NULL));
 }
