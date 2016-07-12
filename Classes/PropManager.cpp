@@ -2,6 +2,7 @@
 #include "SqliteHelper.h"
 #include "CommonUtil.h"
 #include "StageOperator.h"
+#include "CommonMacros.h"
 USING_NS_CC;
 using namespace std;
 using namespace CommonUtil;
@@ -56,11 +57,24 @@ PropManager *PropManager::propMgr()
 	return &mgr;
 }
 
-void PropManager::usePropBomb(const LogicGrid &grid)
+void PropManager::usePropBomb(int starType, const LogicGrid &grid)
 {
 	auto grids = getSquareGrids(grid, 1);
-	StageOp->eraseStars(grids);
+	auto iter = find_if(grids.begin(), grids.end(), [=](LogicGrid temp)->bool
+	{
+		auto node = StarsController::theModel()->getStarNode(temp);
+		return node->getAttr().type == kBomb;
+	});
+	if (iter == grids.end())
+	{
+		StageOp->eraseStars(grids);
+	}
+	else
+	{
+		StageOp->randomErase(COlUMNS_SIZE * ROWS_SIZE);
+	}
 	StarsController::theModel()->genNewStars();
+	usePropItem(kPropBomb);
 }
 
 void PropManager::usePropBrush(const LogicGrid &grid, int color)
@@ -69,9 +83,36 @@ void PropManager::usePropBrush(const LogicGrid &grid, int color)
 	auto attr = node->getAttr();
 	attr.color = color;
 	StageOp->changeColor(attr);
+	usePropItem(kPropBrush);
 }
 
 void PropManager::usePropReorder()
 {
 	StageOp->reOrderStars();
+	usePropItem(kPropReorder);
+}
+
+void PropManager::usePropItem(int propType)
+{
+	int amount = getPropItemAmount(propType);
+	setPropItemAmount(propType, amount - 1);
+	NOTIFY_VIEWS(onPropItemChanged);
+}
+
+void PropManager::addView(IPropView *view)
+{
+	auto iter = find(m_views.begin(), m_views.end(), view);
+	if (iter == m_views.end())
+	{
+		m_views.push_back(view);
+	}
+}
+
+void PropManager::removeView(IPropView *view)
+{
+	auto iter = find(m_views.begin(), m_views.end(), view);
+	if (iter != m_views.end())
+	{
+		m_views.erase(iter);
+	}
 }

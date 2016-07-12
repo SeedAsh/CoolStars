@@ -50,9 +50,23 @@ bool StagePetSkillPanel::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 
 
 ///////////////////////////////////////////////////////////////////////
-ChangeStarColorPanel *ChangeStarColorPanel::create(int touchPriority)
+ChangeStarColorPanel::ChangeStarColorPanel(int myColor, int touchPriority)
+: TouchNode(touchPriority)
 {
-	auto panel = new ChangeStarColorPanel(touchPriority);
+	
+	for (int i = 0; i < COLOR_AMOUNT; ++i)
+	{
+		int color = i + kColorRed;
+		if (color != myColor)
+		{
+			m_colors.push_back(color);
+		}
+	}
+}
+
+ChangeStarColorPanel *ChangeStarColorPanel::create(int myColor, int touchPriority)
+{
+	auto panel = new ChangeStarColorPanel(myColor, touchPriority);
 	panel->init();
 	panel->autorelease();
 	return panel;
@@ -62,11 +76,11 @@ bool ChangeStarColorPanel::init()
 {
 	m_layout = UiLayout::create("layout/stage_change_star_color.xml");
 	auto size = m_layout->getContentSize();
-	int uiIds[] = { 1, 2, 3, 4, 5};
-
-	for (int i = 0; i < COLOR_AMOUNT; ++i)
+	int uiIds[] = { 1, 2, 3, 4};
+	
+	for (size_t i = 0; i < m_colors.size(); ++i)
 	{
-		int color = i + kColorRed;
+		int color = m_colors[i];
 		auto config = DataManagerSelf->getStarsColorConfig(color);
 		auto resPath = config.colorStarRes;
 
@@ -87,8 +101,8 @@ bool ChangeStarColorPanel::init()
 
 bool ChangeStarColorPanel::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 {
-	int uiIds[5] = { 1, 2, 3, 4, 5 };
-	for (int i = 0; i < 5; ++i)
+	int uiIds[4] = { 1, 2, 3, 4};
+	for (int i = 0; i < 4; ++i)
 	{
 		CCNode *node = m_layout->getChildById(uiIds[i]);
 		auto localPos = convertToNodeSpace(pt);
@@ -96,9 +110,10 @@ bool ChangeStarColorPanel::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 		{
 			if (m_callback)
 			{
-				int color = i + 1;
+				int color = m_colors[i];
 				m_callback(color);
 			}
+			break;
 		}
 	}
 	removeFromParent();

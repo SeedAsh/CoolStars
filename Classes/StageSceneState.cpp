@@ -105,18 +105,21 @@ void StagePropsClickState::clickStar(const LogicGrid &grid)
 	int starType = node->getAttr().type;
 	if (m_curType == kPropBrush && starType == kColorStar)
 	{
-		m_uiLayer->showChangeColorPanel(grid);
+		m_uiLayer->showChangeColorPanel(node->getAttr().color, grid);
 	}
-	else if (m_curType == kPropBomb && starType == kBomb)
+	else if (m_curType == kPropBomb)
 	{
-		PropManager::propMgr()->usePropBomb(grid);
+		PropManager::propMgr()->usePropBomb(starType, grid);
 	}
-	
+	else
+	{
+		m_owner->enterNormalState();
+	}
 }
 
 void StagePropsClickState::clickPet(int petId)
 {
-
+	m_owner->enterNormalState();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 void StagePetSkillState::clickStar(const LogicGrid &grid)

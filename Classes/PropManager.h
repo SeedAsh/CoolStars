@@ -12,24 +12,32 @@ enum PropType
 	kPorpTypeAmount,
 };
 
+struct IPropView
+{
+	virtual void onPropItemChanged(){}
+};
 class PropManager
 {
 public:
-	~PropManager(){}
 	static PropManager *propMgr();
 	void loadPropData();
-	void save();
 	
 	int getPropItemAmount(int type);
 	void setPropItemAmount(int type, int amount);
 	
-	void usePropBomb(const LogicGrid &grid);
+	void usePropBomb(int StarType, const LogicGrid &grid);
 	void usePropBrush(const LogicGrid &grid, int color);
 	void usePropReorder();
+
+	void addView(IPropView *view);
+	void removeView(IPropView *view);
 private: 
 	PropManager(){}
+	void usePropItem(int propType);
+	void save();
 
 private:
 	std::vector<int> m_propAmount;
+	std::vector<IPropView *> m_views;
 };
 #endif

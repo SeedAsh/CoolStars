@@ -37,7 +37,7 @@ public:
 	virtual void onHighLightPets(const std::vector<int> &petIds);
 	virtual void onToNormalState();
 public:
-	void showChangeColorPanel(const LogicGrid &grid);
+	void showChangeColorPanel(int myColor, const LogicGrid &grid);
 private:
 	virtual void onEnter();
 	virtual void onExit();

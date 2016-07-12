@@ -14,9 +14,10 @@ protected:
 	TouchNode(int touchPriority = 0): m_touchPriority(touchPriority){}
 	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside){ return true; }
 	void runScale();
-private:
 	virtual void onEnter();
 	virtual void onExit();
+private:
+
 	virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 private:
 	int m_touchPriority;

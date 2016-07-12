@@ -22,6 +22,18 @@ PropItemView::PropItemView(int type, int touchPriority)
 
 }
 
+void PropItemView::onEnter()
+{
+	TouchNode::onEnter();
+	PropManager::propMgr()->addView(this);
+}
+
+void PropItemView::onExit()
+{
+	TouchNode::onExit();
+	PropManager::propMgr()->removeView(this);
+}
+
 bool PropItemView::init()
 {
 	m_layout = UiLayout::create("layout/props_item.xml");
@@ -41,7 +53,7 @@ void PropItemView::refreshItemNum()
 	CCLabelAtlas *num = dynamic_cast<CCLabelAtlas *>(m_layout->getChildById(2));
 	auto mgr = PropManager::propMgr();
 	int amount = mgr->getPropItemAmount(m_type);
-	string str = ":";
+	string str = ";";
 	str += intToStr(amount);
 	num->setString(str.c_str());
 }
@@ -66,15 +78,16 @@ bool PropItemView::onTouchBegan(cocos2d::CCPoint pt, bool isInside)
 		int amount = mgr->getPropItemAmount(m_type);
 		if (amount > 0)
 		{
-			mgr->setPropItemAmount(m_type, amount - 1);
-			refreshItemNum();
 			if (m_touchHandle)
 			{
 				m_touchHandle(m_type);
 			}
-
 		}
 	}
 	return isInside;
 }
 
+void PropItemView::onPropItemChanged()
+{
+	refreshItemNum();
+}

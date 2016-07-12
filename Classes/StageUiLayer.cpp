@@ -206,9 +206,9 @@ void StageUiLayer::onPauseBtnClicked(CCObject *pSender)
 	MainScene::theScene()->showDialog(PauseDialog::create());
 }
 
-void StageUiLayer::showChangeColorPanel(const LogicGrid &grid)
+void StageUiLayer::showChangeColorPanel(int myColor, const LogicGrid &grid)
 {
-	auto *panel = ChangeStarColorPanel::create(kStageUiTouchPriority - 1);
+	auto *panel = ChangeStarColorPanel::create(myColor, kStageUiTouchPriority - 1);
 	panel->setCallback([=](int color)
 	{
 		PropManager::propMgr()->usePropBrush(grid, color);

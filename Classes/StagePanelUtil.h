@@ -21,14 +21,16 @@ private:
 class ChangeStarColorPanel:public TouchNode
 {
 public:
-	static ChangeStarColorPanel *create(int touchPriority);
+	static ChangeStarColorPanel *create(int myColor, int touchPriority);
 	void setCallback(std::function<void(int)> callback){ m_callback = callback; }
-	ChangeStarColorPanel(int touchPriority) : TouchNode(touchPriority){}
 	virtual bool init();
 
 	virtual bool onTouchBegan(cocos2d::CCPoint pt, bool isInside);
 private:
+	ChangeStarColorPanel(int myColor, int touchPriority);
+private:
 	UiLayout *m_layout;
+	std::vector<int> m_colors;
 	std::function<void(int)> m_callback;
 
 };
