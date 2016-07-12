@@ -20,7 +20,9 @@ public :
 	void removeSelf(bool withAction);
 
 private:
+	void removeExplosionAnimation(cocos2d::extension::CCArmature *, cocos2d::extension::MovementEventType, const char *);
 	void doEraseAction();
+	void playExplosionAction();
 protected:
 	bool m_isExploded;
 	StarNode *m_model;

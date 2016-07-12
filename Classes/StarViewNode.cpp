@@ -62,6 +62,19 @@ void StarViewNode::doMove(LogicGrid targetGrid)
 	runAction(CCEaseBackInOut::create(moveTo));
 }
 
+void StarViewNode::playExplosionAction()
+{
+	static const string resPath = "stage/star_explosion/common/baozatexiao.ExportJson";
+	string armatureName = "baozatexiao";
+
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo(resPath.c_str());
+	auto armature = CCArmature::create(armatureName.c_str());
+	armature->getAnimation()->setMovementEventCallFunc(this, SEL_MovementEventCallFunc(&StarViewNode::removeExplosionAnimation));
+	armature->getAnimation()->playWithIndex(0);
+	getParent()->addChild(armature);
+	armature->setPosition(getPosition());
+}
+
 void StarViewNode::doEraseAction()
 {
 	auto attr = m_model->getAttr();
@@ -69,16 +82,11 @@ void StarViewNode::doEraseAction()
 	{
 		auto pos = getParent()->convertToWorldSpace(getPosition());
 		StageLayersMgr::theMgr()->colorStarErased(pos, attr.color);
+		playExplosionAction();
 		return;
 	}
 
-	static const string resPath = "stage/star_explosion/common/baozatexiao.ExportJson";
-	string armatureName = "baozatexiao";
-
-	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo(resPath.c_str());
-	auto armature = CCArmature::create(armatureName.c_str());
-
-
+	playExplosionAction();
 	CCParticleExplosion *pEmitter = CCParticleExplosion::create();
 	string fileImage = m_model->getExplosionPath();
 	if (fileImage.empty()) return;
@@ -104,6 +112,11 @@ void StarViewNode::doEraseAction()
 	pEmitter->setGravity(ccp(0, -200));
 
     getParent()->addChild(pEmitter);
+}
+
+void StarViewNode::removeExplosionAnimation (cocos2d::extension::CCArmature *animation, cocos2d::extension::MovementEventType, const char *)
+{
+	animation->removeFromParent();
 }
 
 void StarViewNode::removeSelf(bool withAction)
