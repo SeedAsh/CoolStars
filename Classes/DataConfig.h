@@ -164,4 +164,10 @@ struct RewardsConfig
 	int id;
 	std::vector<int> rankingOverOpponent;
 };
+
+struct ThiefConfig
+{
+	int id;
+	int percent;
+};
 #endif

@@ -34,6 +34,7 @@ void DataManager::LoadData()
 	loadStarsLoaderConfig();
 	loadGuideConfig();
 	loadRewardsConfig();
+	loadThiefConfig();
 }
 
 void DataManager::loadStarsConfig()
@@ -522,4 +523,24 @@ void DataManager::loadRewardsConfig()
 const RewardsConfig &DataManager::getRewardsConfig()
 {
 	return m_rewardsConfig;
+}
+
+void DataManager::loadThiefConfig()
+{
+	SqliteHelper sqlHelper(DB_CONFIG);
+	auto result = sqlHelper.readRecord("select * from thief");
+
+	for (int i = 0; i < result.size(); ++i)
+	{
+		auto data = result[i];
+		ThiefConfig config;
+		config.id = atoi(data[0]);
+		config.percent = atoi(data[1]);
+		m_thiefConfig.push_back(config);
+	}
+}
+
+const vector<ThiefConfig> &DataManager::getThiefConfigs()
+{
+	return m_thiefConfig;
 }

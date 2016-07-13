@@ -20,6 +20,7 @@ private:
 	void toTreasureGame(cocos2d::CCObject* pSender);
 	void drawLottery(cocos2d::CCObject* pSender);
 	void toPetPanel(cocos2d::CCObject* pSender);
+	void testThief(cocos2d::CCObject* pSender);
 
 	void toSetting(cocos2d::CCObject* pSender);
 	void toMute(cocos2d::CCObject* pSender);

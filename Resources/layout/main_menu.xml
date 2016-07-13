@@ -61,5 +61,16 @@
 		<selected>main_menu/zcd_anniu4.png</selected>
 		<disabled>main_menu/zcd_anniu4.png</disabled>
 	</button>
+	<button>
+		<id>10</id>
+		<x>63.98</x>
+		<y>322.66</y>
+		<anchorPtX>0.50</anchorPtX>
+		<anchorPtY>0.50</anchorPtY>
+		<scale>0.15</scale>
+		<normal>thief/youxijiemian_sentou1.png</normal>
+		<selected>thief/youxijiemian_sentou1.png</selected>
+		<disabled>thief/youxijiemian_sentou1.png</disabled>
+	</button>
 </layout>
 

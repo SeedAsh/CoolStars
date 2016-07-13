@@ -16,6 +16,7 @@
 #include "GuideMacros.h"
 #include "GuideMgr.h"
 #include "RankingModel.h"
+#include "ThiefManager.h"
 
 USING_NS_CC;
 using namespace std;
@@ -60,6 +61,9 @@ void MenuScene::initMainLayout()
 
 	CCMenuItem *toPetBtn = dynamic_cast<CCMenuItem *>((m_mainLayout->getChildById(9)));
 	toPetBtn->setTarget(this, menu_selector(MenuScene::toPetPanel));
+
+	CCMenuItem *thiefBtn = dynamic_cast<CCMenuItem *>((m_mainLayout->getChildById(10)));
+	thiefBtn->setTarget(this, menu_selector(MenuScene::testThief));
 }
 
 void MenuScene::initBottomLayout()
@@ -115,6 +119,12 @@ void MenuScene::toPetPanel(cocos2d::CCObject* pSender)
 {
 	SoundMgr::playEffect(SoundMgr::EFFECT_CLICK);
 	MainScene::theScene()->showPanel(kPetPanel);
+}
+
+void MenuScene::testThief(cocos2d::CCObject* pSender)
+{
+	int panelType = ThiefManager::theMgr()->whitchPanel();
+	CCLog("panelType: %d", panelType);
 }
 
 void MenuScene::toSetting(cocos2d::CCObject* pSender)

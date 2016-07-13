@@ -82,6 +82,8 @@ public:
 	void loadRewardsConfig();
 	const RewardsConfig &getRewardsConfig();
 
+	void loadThiefConfig();
+	const std::vector<ThiefConfig> &getThiefConfigs();
 private:
 	vector<StageConfig> m_stagesConfig;
 	vector<StarsConfig> m_starsConfig;
@@ -99,6 +101,7 @@ private:
 	vector<LotteryOutputConfig> m_lotteryOutputConfig;
 	vector<GuideConfig> m_guideConfig;
 	RewardsConfig m_rewardsConfig;
+	vector<ThiefConfig> m_thiefConfig;
 };
 
 #endif

@@ -11,6 +11,7 @@
 #include "GuideMgr.h"
 #include "RankingModel.h"
 #include "StageDataMgr.h"
+#include "ThiefManager.h"
 
 void GameDataPreLoader::initGameData()
 {
@@ -40,4 +41,5 @@ void GameDataPreLoader::intModels()
 	PetManager::petMgr()->init();
 	GuideMgr::theMgr()->init();
 	RankingModel::theModel()->init();
+	ThiefManager::theMgr()->init();
 }

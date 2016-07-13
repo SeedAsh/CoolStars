@@ -61,6 +61,9 @@
     <Filter Include="Goods">
       <UniqueIdentifier>{28c473c1-fe33-4781-b3c7-de41b6013619}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thief">
+      <UniqueIdentifier>{652e61ab-1900-493b-b10d-abb7c97dee0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -305,6 +308,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\StagePetSkillIconProgress.cpp">
       <Filter>GameStage\StageUi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ThiefManager.cpp">
+      <Filter>Thief</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -580,6 +586,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StagePetSkillIconProgress.h">
       <Filter>GameStage\StageUi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ThiefManager.h">
+      <Filter>Thief</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
