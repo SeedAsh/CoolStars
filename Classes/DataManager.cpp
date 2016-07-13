@@ -518,6 +518,8 @@ void DataManager::loadRewardsConfig()
 	auto data = result[0];
 	m_rewardsConfig.id = atoi(data[0]);
 	m_rewardsConfig.rankingOverOpponent = parseStrToInts(data[1]);
+	m_rewardsConfig.thiefReward = parseStrToInts(data[2]);
+	m_rewardsConfig.redPackage = parseStrToInts(data[3]);
 }
 
 const RewardsConfig &DataManager::getRewardsConfig()

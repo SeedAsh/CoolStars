@@ -178,6 +178,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\RankingOpponent.cpp" />
     <ClCompile Include="..\Classes\RankingPanelUtil.cpp" />
     <ClCompile Include="..\Classes\RankingScene.cpp" />
+    <ClCompile Include="..\Classes\RedPackageModule.cpp" />
     <ClCompile Include="..\Classes\ScaleDialog.cpp" />
     <ClCompile Include="..\Classes\SettingBtnsHelper.cpp" />
     <ClCompile Include="..\Classes\ShopManager.cpp" />
@@ -272,6 +273,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\rapidxml\rapidxml_iterators.hpp" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="..\Classes\rapidxml\rapidxml_utils.hpp" />
+    <ClInclude Include="..\Classes\RedPackageModule.h" />
     <ClInclude Include="..\Classes\ScaleDialog.h" />
     <ClInclude Include="..\Classes\SettingBtnsHelper.h" />
     <ClInclude Include="..\Classes\ShopManager.h" />

@@ -26,6 +26,7 @@ public:
 	void setNextScoreBonus(int bonus){ m_curScoreBonus = bonus; }
 	void addCurScore(int value);
 	void setCurScore(int score);
+	int getTargetScore();
 
 	int getTopScore(){ return m_topScore; }
 	void setTopScore(int topScore){ m_topScore = topScore; }

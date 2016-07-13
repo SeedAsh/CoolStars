@@ -163,6 +163,8 @@ struct RewardsConfig
 {
 	int id;
 	std::vector<int> rankingOverOpponent;
+	std::vector<int> thiefReward;
+	std::vector<int> redPackage;
 };
 
 struct ThiefConfig

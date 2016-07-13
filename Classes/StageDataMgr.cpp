@@ -80,6 +80,12 @@ void StageDataMgr::setCurScore(int score)
 
 }
 
+int StageDataMgr::getTargetScore()
+{
+	auto config = DataManagerSelf->getStageConfig(m_curStage);
+	return config.targetScore;
+}
+
 bool StageDataMgr::isTheLastStage()
 {
 	auto config = DataManagerSelf->getSystemConfig();

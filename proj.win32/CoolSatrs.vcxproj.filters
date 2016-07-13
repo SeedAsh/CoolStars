@@ -312,6 +312,9 @@
     <ClCompile Include="..\Classes\ThiefManager.cpp">
       <Filter>Thief</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\RedPackageModule.cpp">
+      <Filter>GameStage\StageModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -589,6 +592,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ThiefManager.h">
       <Filter>Thief</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RedPackageModule.h">
+      <Filter>GameStage\StageModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
